@@ -15,7 +15,7 @@ class MainWindow(QMainWindow):
         layout = QVBoxLayout()
 
         # Example button
-        balance_button = QPushButton('Balance')
+        balance_button = QPushButton('Balanced mode')
         balance_button.clicked.connect(self.run_balance)
         layout.addWidget(balance_button)
 
@@ -40,9 +40,9 @@ class MainWindow(QMainWindow):
         vulkan_button.clicked.connect(self.run_vulkan)
         layout.addWidget(vulkan_button)
 
-        qualcom_only_button = QPushButton('Qualcomm Only')
-        qualcom_only_button.clicked.connect(self.run_qualcom_only)
-        layout.addWidget(qualcom_only_button)
+        qualcomm_only_button = QPushButton('Qualcomm only')
+        qualcomm_only_button.clicked.connect(self.run_qualcomm_only)
+        layout.addWidget(qualcomm_only_button)
 
         container = QWidget()
         container.setLayout(layout)
@@ -88,28 +88,28 @@ class MainWindow(QMainWindow):
         run('balanced')
 
     def run_compile(self):
-        from command.compile import run_compile
-        run_compile()
+        from command.runner import run
+        run('compile')
 
     def run_extra_boost(self):
-        from command.extra_boost import run_extra_boost
-        run_extra_boost()
-
-    def run_power_saving(self):
-        from command.power_saving import run_power_saving
-        run_power_saving()
+        from command.runner import run
+        run('extra_boost')
 
     def run_hardware(self):
-        from command.hardware import run_hardware
-        run_hardware()
+        from command.runner import run
+        run('hardware')
+
+    def run_power_saving(self):
+        from command.runner import run
+        run('power_saving')
 
     def run_vulkan(self):
-        from command.vulkan import run_vulkan
-        run_vulkan()
+        from command.runner import run
+        run('vulkan')
 
-    def run_qualcom_only(self):
-        from command.qualcom_only import run_qualcom_only
-        run_qualcom_only()
+    def run_qualcomm_only(self):
+        from command.runner import run
+        run('qualcomm_only')
 
 app = QApplication([])
 window = MainWindow()
