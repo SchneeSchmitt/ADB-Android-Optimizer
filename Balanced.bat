@@ -64,11 +64,10 @@ adb shell settings put global DEBUG_DIRTY_REGION false
 adb shell settings put global use_egl_mode 1
 adb shell setprop debug.egl.buffcount 4
 adb shell setprop debug.egl.swapinterval -60
-adb ahell setprop debug.gr.numframebuffers 3
+adb shell setprop debug.gr.numframebuffers 3
 adb shell settings put global composition.type asn
 adb shell setprop debug.composition.type asn
 adb shell settings put global persist.sys.composition.type asn
-adb shell settings put system display_color_mode 10
 adb shell setprop debug.gralloc.gfx_ubwc_disable 0
 adb shell setprop debug.sf.showupdates 0
 adb shell setprop debug.sf.showcpu 0
@@ -182,7 +181,7 @@ adb shell settings put global kernel.random.write_wakeup_threshold 256
 adb shell settings put global kernel.shmmni 4096
 adb shell settings put global kernel.shmall 2097152
 adb shell settings put global kernel.shmmax 268435456
-adb shell settings put global kernel.sem 500 512000 64 2048
+adb shell settings put global kernel.sem 500=512000=64=2048
 adb shell settings put global kernel.sched_features 24189
 adb shell settings put global kernel.hung_task_timeout_secs 30
 adb shell settings put global kernel.sched_latency_ns 1000000
