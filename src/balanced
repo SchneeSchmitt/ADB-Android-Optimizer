@@ -55,16 +55,44 @@ adb shell settings put global enable_gpu_renderer true
 adb shell setprop debug.enable_scissor_optimization true
 adb shell setprop debug.hwui.shadow.renderer monolithic
 adb shell settings put global use_egl_mode 1
-adb shell setprop debug.egl.buffcount 3 
+adb shell settings put global hwui.use_gpu_pixel_buffers true
+adb shell settings put global hwui.text_gamma_correction lookup
+adb shell settings put global hwui.use.blacklist true
+adb shell setprop debug.hwui.use_gpu_pixel_buffers false
+adb shell setprop debug.hwui.render_dirty_regions false
+adb shell setprop debug.hwui.show_dirty_regions false
+adb shell settings put global DEBUG_DIRTY_REGION false
+adb shell setprop debug.egl.buffcount 4 
 adb shell setprop debug.egl.swapinterval -60
 adb shell settings put global composition.type asn
+adb shell setprop debug.gr.numframebuffers 3
 adb shell setprop debug.composition.type asn
 adb shell settings put global persist.sys.composition.type asn
-adb shell settings put system display_color_mode 10
+adb shell setprop debug.gralloc.gfx_ubwc_disable 0
+
+adb shell setprop debug.sf.showupdates 0
+adb shell setprop debug.sf.showcpu 0
+adb shell setprop debug.sf.showbackground 0
+adb shell setprop debug.sf.showfps 0 
+adb shell setprop debug.sf.enable_advanced_sf_phase_offset 1
+adb shell setprop debug.sf.enable_gl_backpressure 1
+adb shell setprop debug.sf.early_app_phase_offset_ns 500000
+adb shell setprop debug.sf.early_gl_app_phase_offset_ns 15000000
+adb shell setprop debug.sf.early_gl_phase_offset_ns 3000000
+adb shell setprop debug.sf.early_phase_offset_ns 500000
+adb shell setprop debug.sf.high_fps_early_gl_phase_offset_ns 6500000
+adb shell setprop debug.sf.high_fps_early_phase_offset_ns 6100000
+adb shell setprop debug.sf.high_fps_late_app_phase_offset_ns 1000000
+adb shell setprop debug.sf.phase_offset_threshold_for_next_vsync_ns 12100000
+adb shell settings put global persist.vendor.power.dfps.level 0
+adb shell settings put global vendor.display.use_layer_ext 0
+adb shell settings put global persist.vendor.vcb.ability true
+adb shell settings put global persist.vendor.vcb.enable true
 
 adb shell settings put global debug.sf.refresh 120
 adb shell settings put global sys.display-refresh 120
 adb shell settings put global persist.sys.display.refresh 120
+adb shell settings put global vendor.display.enable_optimize_refresh 1
 
 adb shell settings put global cache.clean 1
 adb shell settings put global fstrim_mandatory_interval 86400000
@@ -88,6 +116,7 @@ adb shell settings put global logcat.live disable
 adb shell settings put global debug.enabletr false
 adb shell settings put global debug.overlayui.enable 0
 adb shell settings put global debug.egl.prifiler 0
+adb shell setprop debug.hwui.level 0
 adb shell setprop debug.generate-debug-info false
 adb shell setprop debug.egl.traceGpuCompletion false
 adb shell setprop debug.mdpcomp.logs 0
@@ -153,7 +182,7 @@ adb shell settings put global kernel.random.write_wakeup_threshold 256
 adb shell settings put global kernel.shmmni 4096
 adb shell settings put global kernel.shmall 2097152
 adb shell settings put global kernel.shmmax 268435456
-adb shell settings put global kernel.sem 500 512000 64 2048
+adb shell settings put global kernel.sem 500=512000=64=2048
 adb shell settings put global kernel.sched_features 24189
 adb shell settings put global kernel.hung_task_timeout_secs 30
 adb shell settings put global kernel.sched_latency_ns 1000000
