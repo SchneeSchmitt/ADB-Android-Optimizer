@@ -20,8 +20,8 @@ Double-click the .bat files you want to run
 ### Android (Advanced)
 Download both Shizuku and Shizushell on Google Play Store, start Shizuku, and type commands from the .bat files one by one with the header "adb shell" removed 
 
-# How to install adb
-## Windows
+## How to install adb
+### Windows
 1. Download the latest ADB tools at https://dl.google.com/android/repository/platform-tools-latest-windows.zip
 2. Decompress in C:\ You will see a folder called "platform-tools"
 3. Right-click "This PC" in the left bar in the explorer, click Properties
@@ -29,6 +29,7 @@ Download both Shizuku and Shizushell on Google Play Store, start Shizuku, and ty
 5. Click on "Advanced" on the left
 6. Click on "Environment Variables" on the bottom
 7. Click on "path" under "System variables", click edit, and click "Browse...", find your ADB tools and click "OK"
-# Other Platforms
-Just Google it lmfao
-9. Now you installed the ADB tools successfully
+
+### Other Platforms
+Just Google it LMFAO
+Now you installed the ADB tools successfully
