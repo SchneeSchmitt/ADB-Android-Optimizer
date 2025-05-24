@@ -172,7 +172,6 @@ adb shell settings put global fs.inotify.max_user_instances 256
 adb shell settings put global fs.inotify.max_user_watches 10240
 adb shell settings put global vold.post_fs_data_done 1 
 
-
 adb shell settings put global network_recommendations_enabled 0
 adb shell settings put global network_scoring_ui_enabled 0
 adb shell settings put global tether_offload_disabled 0
