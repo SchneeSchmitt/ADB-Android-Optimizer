@@ -44,7 +44,7 @@ adb shell settings put global dev.pm.dyn_samplingrate 0
 adb shell settings put global vendor.audio.low.latency true
 adb shell settings put global vendor.audio.offload.gapless.enabled false 
 adb shell settings put global vendor.audio.offload.multiaac.enable false 
-adb shell settings put global vendor.audio.offload.multiple.enabled=false
+adb shell settings put global vendor.audio.offload.multiple.enabled false
 adb shell settings put global vendor.audio.offload.passthrough false
 adb shell settings put global vendor.audio.offload.track.enable false
 adb shell settings put global vendor.audio.feature.hifi_audio.enable true
