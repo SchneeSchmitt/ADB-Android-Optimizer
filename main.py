@@ -28,7 +28,7 @@ class MainWindow(QMainWindow):
         extra_boost_button.clicked.connect(self.run_extra_boost)
         layout.addWidget(extra_boost_button)
 
-        power_saving_button = QPushButton('Power Saving')
+        power_saving_button = QPushButton('Power Saving mode')
         power_saving_button.clicked.connect(self.run_power_saving)
         layout.addWidget(power_saving_button)
 
@@ -40,7 +40,7 @@ class MainWindow(QMainWindow):
         vulkan_button.clicked.connect(self.run_vulkan)
         layout.addWidget(vulkan_button)
 
-        qualcom_only_button = QPushButton('Qualcom Only')
+        qualcom_only_button = QPushButton('Qualcomm Only')
         qualcom_only_button.clicked.connect(self.run_qualcom_only)
         layout.addWidget(qualcom_only_button)
 
@@ -81,11 +81,11 @@ class MainWindow(QMainWindow):
             f.write('\n# Add ADB to PATH\nexport PATH=/usr/local/adb:$PATH\n')
         subprocess.run(['source', '/Users/gudupao/.zshrc'], shell=True)
 
-        QMessageBox.information(self, 'ADB Installation Complete', 'ADB has been successfully installed.')
+        QMessageBox.information(self, 'ADB installation', 'The ADB tools have successfully been installed.')
 
     def run_balance(self):
-        from command.balanced import run_balanced
-        run_balanced()
+        from command.runner import run
+        run('balanced')
 
     def run_compile(self):
         from command.compile import run_compile

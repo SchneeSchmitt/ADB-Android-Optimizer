@@ -2,7 +2,7 @@ import subprocess
 
 def run_extra_boost():
     commands = [
-       "adb shell settings put system minimal_battery_use 0"
+        "adb shell settings put system minimal_battery_use 0"
         "adb shell settings put global sem_power_mode_limited_apps_and_home_screen 0"
         "adb shell settings put global restricted_device_performance 0,0"
         "adb shell cmd power set-fixed-performance-mode-enabled 0"
