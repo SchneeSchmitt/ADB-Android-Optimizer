@@ -15,13 +15,13 @@ Those scripts can optimize Android from all methods and factors of the ADB possi
 8. **ONLY RUN** the [Hardware.bat](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/Hardware.bat) if you want your device both **HOT AS FUCK** and fast as fuck
 9. Restart the device
 
-# Windows Shell
+### Windows Shell
 Double-click the .bat files you want to run
-#Android (Advanced)
+### Android (Advanced)
 Download both Shizuku and Shizushell on Google Play Store, start Shizuku, and type commands from the .bat files one by one with the header "adb shell" removed 
 
-## How to install adb
-# Windows
+# How to install adb
+## Windows
 1. Download the latest ADB tools at https://dl.google.com/android/repository/platform-tools-latest-windows.zip
 2. Decompress in C:\ You will see a folder called "platform-tools"
 3. Right-click "This PC" in the left bar in the explorer, click Properties
