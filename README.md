@@ -1,6 +1,9 @@
 # ADB-Android-Optimizer
 Rootless (ADB) Android performance optimizer for every condition, from pure performance to power-saving
 
+## What type of optimization those scripts can do?
+Those scripts can optimize Android from all methods and factors of the ADB possibility. Such as disabling logging, accelerating CPU and GPU, rendering, networking, memory settings, Dalvik virtual machine settings, and **even** the kernel settings can also be optimized with those scripts. 
+
 ## How To Use
 1. Make sure your devices/computers/emulators have ADB installed
 2. Download all files from this repository
@@ -10,6 +13,7 @@ Rootless (ADB) Android performance optimizer for every condition, from pure perf
 6. Run the [Compile.bat](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/Compile.bat) if you don't need to use your phone. I recommend enabling "Keep screen on while charging" in developer options during the running process. Your device temperature will also increase during the running process.
 7. Run the [Extra_Boost.bat](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/Extra_Boost.bat) **OR** [Power_Saving.bat](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/Power_Saving.bat) if you want better performance or battery life
 8. **ONLY RUN** the [Hardware.bat](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/Hardware.bat) if you want your device both **HOT AS FUCK** and fast as fuck
+9. Restart the device
 
 # Windows Shell
 Double-click the .bat files you want to run
