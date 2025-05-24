@@ -92,6 +92,7 @@ adb shell settings put global persist.vendor.vcb.enable true
 adb shell settings put global debug.sf.refresh 120
 adb shell settings put global sys.display-refresh 120
 adb shell settings put global persist.sys.display.refresh 120
+adb shell settings put global vendor.display.enable_optimize_refresh 1
 
 adb shell settings put global cache.clean 1
 adb shell settings put global fstrim_mandatory_interval 86400000
