@@ -10,7 +10,7 @@ Those scripts can optimize Android from all methods and factors of the ADB possi
 3. Run the [Balance.bat](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/Balanced.bat) for the main tweaks
 4. Run the [Vulkan.bat](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/Vulkan.bat) if your device supports Vulkan rendering. Most devices after 2020 should support Vulkan rendering
 5. Run the [Qualcom_only.bat](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/Qualcom_only.bat) **ONLY** if you are using a Qualcomm SoC device
-6. Run the [Compile.bat](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/Compile.bat) if you don't need to use your phone. I recommend enabling "Keep screen on while charging" in developer options during the running process. Your device temperature will also increase during the running process.
+6. Run the [Compile.bat](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/Compile.bat) if you don't need to use your phone for now. This one takes around 30 minutes to run. I recommend enabling "Keep screen on while charging" in developer options during the running process. Your device temperature will also increase during the running process.
 7. Run the [Extra_Boost.bat](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/Extra_Boost.bat) **OR** [Power_Saving.bat](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/Power_Saving.bat) if you want better performance or battery life
 8. **ONLY RUN** the [Hardware.bat](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/Hardware.bat) if you want your device both **HOT AS FUCK** and fast as fuck
 9. Restart the device
