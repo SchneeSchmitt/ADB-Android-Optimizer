@@ -9,3 +9,5 @@ adb shell settings put global video.accelerate.hw 1
 adb shell settings put global debug.qctwa.statusbar 1
 adb shell settings put global sys.hwc.gpu_perf_mode 1
 adb shell setprop debug.sf.enable_hwc_vds 1
+adb shell settings put global vendor.display.vds_allow_hwc 1
+adb shell settings put global vendor.display.hwc_allow_copy true
