@@ -21,10 +21,6 @@ adb shell settings put system peak_refresh_rate 120.0
 adb shell settings put secure user_refresh_rate 120.0
 adb shell settings put secure refresh_rate_mode 2
 
-adb shell settings put global composition.type asn
-adb shell setprop debug.composition.type asn
-adb shell settings put global persist.sys.composition.type asn
-
 adb shell settings put global default_restrict_background_data 0
 
 adb shell settings put global enhanced_processing 1
