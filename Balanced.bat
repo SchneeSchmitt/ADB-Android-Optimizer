@@ -1,5 +1,4 @@
 adb shell settings put global burn_in_protection 1
-adb shell settings put global dev.pm.dyn_samplingrate 0
 adb shell settings put global sys.gmaps_hack 1
 
 adb shell settings put global persist.sys.dalvik.multithread true
