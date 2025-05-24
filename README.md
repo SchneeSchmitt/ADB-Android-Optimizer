@@ -2,12 +2,14 @@
 Rootless (ADB) Android performance optimizer for every condition, from pure performance to power-saving
 
 ## How To Use
-1. Run the [Balance.bat](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/Balanced.bat) for the main tweaks
-2. Run the [Vulkan.bat](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/Vulkan.bat) if your device supports Vulkan rendering. Most devices after 2020 should support Vulkan rendering
-3. Run the [Qualcom_only.bat](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/Qualcom_only.bat) **ONLY** if you are using a Qualcomm SoC device
-4. Run the [Compile.bat](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/Compile.bat) if you don't need to use your phone. I recommend enabling "Keep screen on while charging" in developer options during the running process. Your device temperature will also increase during the running process.
-5. Run the [Extra_Boost.bat](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/Extra_Boost.bat) **OR** [Power_Saving.bat](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/Power_Saving.bat) if you want better performance or battery life
-6. **ONLY RUN** the [Hardware.bat](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/Hardware.bat) if you want your device both **HOT AS FUCK** and fast as fuck
+1. Make sure your devices/computers/emulators have ADB installed
+2. Download all files from this repository
+3. Run the [Balance.bat](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/Balanced.bat) for the main tweaks
+4. Run the [Vulkan.bat](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/Vulkan.bat) if your device supports Vulkan rendering. Most devices after 2020 should support Vulkan rendering
+5. Run the [Qualcom_only.bat](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/Qualcom_only.bat) **ONLY** if you are using a Qualcomm SoC device
+6. Run the [Compile.bat](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/Compile.bat) if you don't need to use your phone. I recommend enabling "Keep screen on while charging" in developer options during the running process. Your device temperature will also increase during the running process.
+7. Run the [Extra_Boost.bat](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/Extra_Boost.bat) **OR** [Power_Saving.bat](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/Power_Saving.bat) if you want better performance or battery life
+8. **ONLY RUN** the [Hardware.bat](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/Hardware.bat) if you want your device both **HOT AS FUCK** and fast as fuck
 
 # Windows Shell
 Double-click the .bat files you want to run
@@ -17,7 +19,7 @@ Download both Shizuku and Shizushell on Google Play Store, start Shizuku, and ty
 ## How to install adb
 # Windows
 1. Download the latest ADB tools at https://dl.google.com/android/repository/platform-tools-latest-windows.zip
-2. Decompress in C:\ you will see a folder called "platform-tools"
+2. Decompress in C:\ You will see a folder called "platform-tools"
 3. Right-click "This PC" in the left bar in the explorer, click Properties
 4. Click on the "Advanced System Settings" on the right (Or on the left if you head to the control panel)
 5. Click on "Advanced" on the left
