@@ -1,0 +1,8 @@
+adb shell settings put global sys.ui.hw 1
+adb shell settings put global debug.egl.hw 1
+adb shell settings put global hw2d.force 1 
+adb shell settings put global hw3d.force 1
+adb shell settings put global persist.sys.ui.hw 1
+adb shell settings put global debug.qc.hardware true
+adb shell settings put global video.accelerate.hw 1
+adb shell settings put global debug.qctwa.statusbar 1
