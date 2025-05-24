@@ -35,4 +35,4 @@ Download both Shizuku and Shizushell on Google Play Store, start Shizuku, and ty
 2. Extract them to a new folder.
 3. Make the `adb` binary executable by running `chmod u+x adb`.
 4. Add the folder to your path: `export PATH="/path/to/adb:$PATH"`
-5. Close and open a new shell.
+5. If you're using bash, you may want to add the `export` command to your `.bashrc` file.
