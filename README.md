@@ -31,5 +31,5 @@ Download both Shizuku and Shizushell on Google Play Store, start Shizuku, and ty
 7. Click on "path" under "System variables", click edit, and click "Browse...", find your ADB tools and click "OK"
 
 ### Other Platforms
-Just Google it LMFAO
+Just Google it LMFAO\
 Now you installed the ADB tools successfully
