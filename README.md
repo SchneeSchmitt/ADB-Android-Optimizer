@@ -2,7 +2,7 @@
 Rootless (ADB) Android performance optimizer for every condition, from pure performance to power-saving
 
 ## What type of optimization those scripts can do?
-Those scripts can optimize Android from all methods and factors of the ADB possibility. Such as disabling logging, accelerating CPU and GPU, rendering, networking, memory settings, Dalvik virtual machine settings, and **even** the kernel settings can also be optimized with those scripts. 
+Those scripts can optimize Android from all methods and factors of the ADB possibility. Such as disabling logging, accelerating CPU and GPU, rendering tweaks, network optimizations, memory settings, Dalvik virtual machine settings, and **even** the kernel settings can also be optimized with those scripts. 
 
 ## How To Use
 1. Make sure your devices/computers/emulators have ADB installed
