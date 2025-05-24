@@ -1,5 +1,6 @@
 adb shell settings put global burn_in_protection 1
 adb shell settings put global sys.gmaps_hack 1
+adb shell settings put global vendor.user_experience 1
 
 adb shell settings put global persist.sys.dalvik.multithread true
 adb shell settings put system multicore_packet_scheduler 1
@@ -40,12 +41,19 @@ adb shell settings put secure touch_blocking_period 0.0
 adb shell settings put system tube_amp_effect 0
 adb shell settings put system k2hd_effect 0
 adb shell settings put global dev.pm.dyn_samplingrate 0
+adb shell settings put global vendor.audio.low.latency true
+adb shell settings put global vendor.audio.offload.gapless.enabled false 
+adb shell settings put global vendor.audio.offload.multiaac.enable false 
+adb shell settings put global vendor.audio.offload.multiple.enabled=false
+adb shell settings put global vendor.audio.offload.passthrough false
+adb shell settings put global vendor.audio.offload.track.enable false
+adb shell settings put global vendor.audio.feature.hifi_audio.enable true
 
 adb shell settings put global shutdown.mode hibernate
 adb shell settings put global warmboot.capability 1
 
 adb shell settings put global hwui.render_dirty_regions false
-adb shell settings put global sf.ddms 0
+adb shell settings put global persist.sys.cpu.renderthreads 1
 adb shell setprop debug.hwui.render_thread true
 adb shell setprop debug.skia.threaded_mode true
 adb shell setprop debug.hwui.render_thread_count 1
@@ -62,6 +70,7 @@ adb shell setprop debug.hwui.render_dirty_regions false
 adb shell setprop debug.hwui.show_dirty_regions false
 adb shell settings put global DEBUG_DIRTY_REGION false
 adb shell settings put global use_egl_mode 1
+adb shell settings put global sys.egl.enable_frame_preload true
 adb shell setprop debug.egl.buffcount 4
 adb shell setprop debug.egl.swapinterval -60
 adb shell setprop debug.gr.numframebuffers 3
@@ -69,6 +78,8 @@ adb shell settings put global composition.type asn
 adb shell setprop debug.composition.type asn
 adb shell settings put global persist.sys.composition.type asn
 adb shell setprop debug.gralloc.gfx_ubwc_disable 0
+adb shell settings put global sf.ddms 0
+adb shell setprop debug.sf.lag_adj 0
 adb shell setprop debug.sf.showupdates 0
 adb shell setprop debug.sf.showcpu 0
 adb shell setprop debug.sf.showbackground 0
@@ -83,7 +94,11 @@ adb shell setprop debug.sf.high_fps_early_gl_phase_offset_ns 6500000
 adb shell setprop debug.sf.high_fps_early_phase_offset_ns 6100000
 adb shell setprop debug.sf.high_fps_late_app_phase_offset_ns 1000000
 adb shell setprop debug.sf.phase_offset_threshold_for_next_vsync_ns 12100000
-adb shell settings put global persist.vendor.power.dfps.level 0
+adb shell setprop debug.sf.disable_backpressure 1
+adb shell setprop debug.sf.latch_unsignaled 1
+adb shell setprop debug.sf.enable_advanced_sf_phase_offset 1
+adb shell settings put global persist.sys.sf.native_mode 1
+
 adb shell settings put global vendor.display.use_layer_ext 0
 adb shell settings put global persist.vendor.vcb.ability true
 adb shell settings put global persist.vendor.vcb.enable true
@@ -92,6 +107,8 @@ adb shell settings put global debug.sf.refresh 120
 adb shell settings put global sys.display-refresh 120
 adb shell settings put global persist.sys.display.refresh 120
 adb shell settings put global vendor.display.enable_optimize_refresh 1
+adb shell setprop debug.hwui.fps_divisor -1
+adb shell settings put global persist.vendor.power.dfps.level 0
 
 adb shell settings put global cache.clean 1
 adb shell settings put global fstrim_mandatory_interval 86400000
@@ -115,6 +132,8 @@ adb shell settings put global logcat.live disable
 adb shell settings put global debug.enabletr false
 adb shell settings put global debug.overlayui.enable 0
 adb shell settings put global debug.egl.prifiler 0
+adb shell setprop debug.atrace.tags.enableflags false
+adb shell setprop debug.hwui.skia_atrace_enabled 0
 adb shell setprop debug.hwui.level 0
 adb shell setprop debug.generate-debug-info false
 adb shell setprop debug.egl.traceGpuCompletion false
@@ -153,6 +172,8 @@ adb shell settings put global dalvik.vm.heapsize 512m
 adb shell settings put global dalvik.vm.heaptargetutilization 0.75
 adb shell settings put global dalvik.vm.heapminfree 512k
 adb shell settings put global dalvik.vm.heapmaxfree 8m
+adb shell settings put global dalvik.vm.appdexformat odex
+adb shell settings put global dalvik.vm.execution-mode quicken
 
 adb shell settings put global vm.min_free_kbytes 8192
 adb shell settings put global vm.oom_kill_allocating_task 0
