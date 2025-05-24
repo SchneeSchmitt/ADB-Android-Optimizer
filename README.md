@@ -22,14 +22,17 @@ Download both Shizuku and Shizushell on Google Play Store, start Shizuku, and ty
 
 ## How to install adb
 ### Windows
-1. Download the latest ADB tools at https://dl.google.com/android/repository/platform-tools-latest-windows.zip
-2. Decompress in C:\ You will see a folder called "platform-tools"
+1. [Download the latest ADB tools](https://dl.google.com/android/repository/platform-tools-latest-windows.zip)
+2. Decompress in C:\. You will see a folder called "platform-tools".
 3. Right-click "This PC" in the left bar in the explorer, click Properties
-4. Click on the "Advanced System Settings" on the right (Or on the left if you head to the control panel)
-5. Click on "Advanced" on the left
-6. Click on "Environment Variables" on the bottom
-7. Click on "path" under "System variables", click edit, and click "Browse...", find your ADB tools and click "OK"
+4. Click on the "Advanced System Settings" on the right. (Or on the left if you head to the control panel)
+5. Click on "Advanced" on the left.
+6. Click on "Environment Variables" at the bottom.
+7. Click on "path" under "System variables", click edit, and click "Browse...", find your ADB tools and click "OK".
 
-### Other Platforms
-Just Google it LMFAO\
-Now you installed the ADB tools successfully
+### Linux
+1. [Download the latest ADB tools](https://dl.google.com/android/repository/platform-tools-latest-linux.zip).
+2. Extract them to a new folder.
+3. Make the `adb` binary executable by running `chmod u+x adb`.
+4. Add the folder to your path: `export PATH="/path/to/adb:$PATH"`
+5. Close and open a new shell.
