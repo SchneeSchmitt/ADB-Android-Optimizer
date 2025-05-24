@@ -39,8 +39,8 @@ adb shell settings put global dynamic_power_savings_disable_threshold 20
 
 adb shell settings put system screen_auto_brightness_adj 1.0
 
-adb shell settings put system low_priority 0
-adb shell settings put system high_priority 1
+adb shell settings put system low_priority 1
+adb shell settings put system high_priority 0
 adb shell settings put system performance_mode_on 0
 adb shell settings put system persist.sys_emc_mode power_saving
 adb shell settings put system cpu_max_speed 0
