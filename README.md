@@ -1,10 +1,9 @@
 # ADB-Android-Optimizer
 Rootless (ADB) Android performance optimizer for every condition, from pure performance to power-saving
 
-## What type of optimization those scripts can do?
-Those scripts can optimize Android from all methods and factors of the ADB possibility. Such as disabling logging, accelerating CPU and GPU, rendering tweaks, network optimizations, memory settings, Dalvik virtual machine settings, and **even** the kernel settings can also be optimized with those scripts. 
+Those scripts can optimize Android from all methods and factors of the ADB possibility, such as disabling logging, accelerating CPU and GPU, applying rendering tweaks, network optimizations, memory settings, Dalvik virtual machine settings, and **even** optimizing the kernel settings. 
 
-## What those scripts do:
+## Tweaks List
 - `balanced`: Those are the main tweaks.
 - `vulkan`: Privilege rendering using Vulkan. This works if your device supports Vulkan rendering.
 - `qualcomm_only`: Tweaks for Qualcomm SoC devices **ONLY**.
@@ -14,11 +13,13 @@ Those scripts can optimize Android from all methods and factors of the ADB possi
 - `hardware`: Makes your device become **MUCH FASTER AND WARMER**.
 
 ### Using them on Windows
-Double-click the .bat files within the `src/windows/` folder you want to run.
-### Using them on Android (Advanced)
+Double-click the `command/runner.bat` file. You'll be asked what fix or mode to apply to your device as per the above list.
+
+### Using them on Android (advanced)
 Download both Shizuku and Shizushell on Google Play Store, start Shizuku, and type commands from the .bat files one by one with the header `adb shell` removed.
 
-## How to install adb
+## How to install ADB
+
 ### Windows
 1. [Download the latest ADB tools](https://dl.google.com/android/repository/platform-tools-latest-windows.zip)
 2. Decompress in C:\. You will see a folder called "platform-tools".
