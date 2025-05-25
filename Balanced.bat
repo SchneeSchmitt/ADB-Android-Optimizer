@@ -31,9 +31,9 @@ adb shell settings put system remote_control 0
 adb shell settings put global master_sync_status 0
 adb shell settings put global persist.service.lgospd.enable 0
 adb shell settings put global persist.service.pcsync.enable 0
-adb shell settings put persist.debug.wfd.enable 0
-adb shell settings put persist.sys.wfd.virtual 0
-adb shell settings put persist.debug.sensors.hal 0
+adb shell settings put global persist.debug.wfd.enable 0
+adb shell settings put global persist.sys.wfd.virtual 0
+adb shell settings put global persist.debug.sensors.hal 0
 
 adb shell cmd thermalservice override-status 1
 adb shell settings put secure game_auto_temperature_control 0
@@ -112,7 +112,7 @@ adb shell settings put global persist.sys.sf.native_mode 1
 adb shell settings put global vendor.display.use_layer_ext 0
 adb shell settings put global persist.vendor.vcb.ability true
 adb shell settings put global persist.vendor.vcb.enable true
-adb shell settings put sdm.debug.disable_skip_validate 1
+adb shell settings put global sdm.debug.disable_skip_validate 1
 
 adb shell settings put global debug.sf.refresh 120
 adb shell settings put global sys.display-refresh 120
@@ -185,7 +185,7 @@ adb shell settings put global av.debug.disable.pers.cache true
 adb shell settings put global log.shaders 0
 adb shell settings put global log_frame_info 0
 adb shell settings put global log_ao 0
-adb shell setprop debug_test 0
+adb shell settings put global debug_test 0
 adb shell settings put global db.log.slow_query_threshold 0
 adb shell setprop debug.egl.profiler 0
 adb shell setprop debug.enable.gamed 0
