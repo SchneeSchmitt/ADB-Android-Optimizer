@@ -3,6 +3,7 @@ adb shell settings put global sys.gmaps_hack 1
 adb shell settings put global vendor.user_experience 1
 
 adb shell settings put global persist.sys.dalvik.multithread true
+adb shell settings put global persist.sys.dalvik.hyperthreading true
 adb shell settings put system multicore_packet_scheduler 1
 adb shell setprop debug.cpurend.vsync false
 adb shell settings put global apm_enhancement_enabled 1
@@ -27,6 +28,8 @@ adb shell settings put secure game_bixby_block 1
 adb shell settings put global bixby_pregranted_permissions 0
 adb shell settings put system remote_control 0
 adb shell settings put global master_sync_status 0
+adb shell settings put global persist.service.lgospd.enable 0
+adb shell settings put global persist.service.pcsync.enable 0 
 
 adb shell cmd thermalservice override-status 1
 adb shell settings put secure game_auto_temperature_control 0
@@ -53,8 +56,10 @@ adb shell settings put global shutdown.mode hibernate
 adb shell settings put global warmboot.capability 1
 
 adb shell settings put global hwui.render_dirty_regions false
+adb shell settings put global sys.use_fifo_ui 1
 adb shell settings put global persist.sys.cpu.renderthreads 1
 adb shell setprop debug.hwui.render_thread true
+adb shell settings put global renderthread.skia.reduceopstasksplitting true
 adb shell setprop debug.skia.threaded_mode true
 adb shell setprop debug.hwui.render_thread_count 1
 adb shell setprop debug.skia.num_render_threads 1
@@ -150,10 +155,15 @@ adb shell settings put global persist.sampling_profiler 0
 adb shell settings put system rakuten_denwa 0
 adb shell settings put global persist.service.pcsync.enable 0
 adb shell settings put global persist.service.lgospd.enable 0 
-adb shell settings put global persist.wpa_supplicant.debug false 
+adb shell settings put global persist.wpa_supplicant.debug false
+adb shell settings put global log.tag.stats_log 0
+adb shell settings put global logd.logpersistd.enable false
+adb shell settings put global persist.vendor.verbose_logging_enabled false
+adb shell settings put global persist.traced.enable 0
+adb shell settings put global logd.statistics 0
 
 adb shell settings put global dalvik.vm.checkjni false 
-adb shell settings put global dalvik.vm.dexopt-flags m=y
+adb shell settings put global dalvik.vm.dexopt-flags m=y,o=f,v=n
 adb shell settings put global dalvik.vm.checkjni false
 adb shell settings put global dalvik.vm.check-dex-sum false
 adb shell settings put global dalvik.vm.debug.alloc 0
@@ -174,12 +184,17 @@ adb shell settings put global dalvik.vm.heapminfree 512k
 adb shell settings put global dalvik.vm.heapmaxfree 8m
 adb shell settings put global dalvik.vm.appdexformat odex
 adb shell settings put global dalvik.vm.execution-mode quicken
+adb shell settings put global dalvik.vm.jmiopts forcecopy
+adb shell settings put global dalvik.vm.lockprof.threshold 250 
+adb shell settings put global dalvik.vm.dex2oat64.enabled true
+adb shell settings put global dalvik.vm.dexopt.secondary true
+adb shell settings put global dalvik.gc.type precise
 
 adb shell settings put global vm.min_free_kbytes 8192
 adb shell settings put global vm.oom_kill_allocating_task 0
 adb shell settings put global vm.panic_on_oom 0
-adb shell settings put global vm.dirty_background_ratio 60
-adb shell settings put global vm.dirty_ratio 95
+adb shell settings put global vm.dirty_background_ratio 8
+adb shell settings put global vm.dirty_ratio 64
 adb shell settings put global vm.vfs_cache_pressure 20
 adb shell settings put global vm.overcommit_memory 0
 adb shell settings put global vm.lowmem_reserve_ratio 96 96
@@ -231,6 +246,10 @@ adb shell settings put global mobile_data_always_on 0
 adb shell settings put global ble_scan_always_enabled 0
 adb shell settings put global preferred_network_mode 9,9
 adb shell settings put global radio.add_power_save 1
+adb shell settings put global persist.radio.fd.counter 0
+adb shell settings put global persist.radio.fd.off.counter 0
+adb shell settings put global persist.radio.fd.r8.counter 0
+adb shell settings put global bertahan.radio.fd.off.r8.counter 0
 adb shell settings put global wifi.supplicant_scan_interval 220
 adb shell settings put global default_restrict_background_data 1
 adb shell settings put secure adaptive_connectivity_enabled 1 
@@ -238,6 +257,9 @@ adb shell settings put global persist.cust.tel.eons 1
 adb shell settings put global enable_cellular_on_boot 1
 adb shell settings put system wifi_assistant 1
 adb shell settings put global wifi_country_code SA
+adb shell settings put global net.core.netdev_max_backlog 5000
+adb shell settings put global net.core.netdev_budget 2500
+adb shell settings put global net.core.netdev_budget_usecs 250
 
 adb shell settings put global tcp.buffersize.default 4096,87380,256960,4096,16384,256960
 adb shell settings put global tcp.buffersize.wifi 4096,87380,256960,4096,16384,256960
