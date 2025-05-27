@@ -58,21 +58,33 @@ adb shell settings put global vendor.audio.offload.passthrough false
 adb shell settings put global vendor.audio.offload.track.enable false
 adb shell settings put global vendor.audio.feature.hifi_audio.enable true
 adb shell settings put global vendor.fm.a2dp.conc.disabled true
+adb shell settings put system call_noise_reduction 1
+adb shell settings put system call_extra_volume 1
+adb shell settings put global persist.audio.fluence.mode endfire
+adb shell settings put global persist.audio.hp true
 
 adb shell settings put global shutdown.mode hibernate
 adb shell settings put global warmboot.capability 1
 
 adb shell settings put global hwui.render_dirty_regions false
+adb shell setprop debug.hwui.profile true
+adb shell setprop debug.hwui.webview_overlays_enabled true
 adb shell settings put global sys.use_fifo_ui 1
 adb shell settings put global persist.sys.cpu.renderthreads 1
 adb shell setprop debug.hwui.render_thread true
 adb shell settings put global renderthread.skia.reduceopstasksplitting true
+adb shell settings put global persist.sys.disable_skia_path_ops false
+adb shell setprop debug.skia.max_memory_usage_mb 512
 adb shell setprop debug.skia.threaded_mode true
 adb shell setprop debug.hwui.render_thread_count 1
 adb shell setprop debug.skia.num_render_threads 1
+adb shell setprop debug.skia.render_thread_priority 1
+adb shell settings put global persist.sys.gpu.working_thread_priority 1
 adb shell setprop debug.rs.shader SPIR-V
 adb shell settings put global enable_gpu_renderer true
+adb shell setprop debug.hwui.target_cpu_time_percent 0
 adb shell setprop debug.enable_scissor_optimization true
+adb shell setprop debug.hwui.disable_scissor_opt false
 adb shell setprop debug.hwui.shadow.renderer monolithic
 adb shell settings put global hwui.use_gpu_pixel_buffers true
 adb shell settings put global hwui.text_gamma_correction lookup
@@ -85,7 +97,6 @@ adb shell settings put global use_egl_mode 1
 adb shell settings put global sys.egl.enable_frame_preload true
 adb shell setprop debug.egl.buffcount 4
 adb shell setprop debug.egl.swapinterval -60
-adb shell setprop debug.gr.numframebuffers 3
 adb shell settings put global vendor.debug.egl.swapinterval 1
 adb shell settings put global persist.sys.egl.swapinterval 1
 adb shell setprop debug.gr.swapinterval 1
@@ -96,6 +107,19 @@ adb shell settings put global composition.type asn
 adb shell setprop debug.composition.type asn
 adb shell settings put global persist.sys.composition.type asn
 adb shell setprop debug.gralloc.gfx_ubwc_disable 0
+adb shell setprop debug.hwui.skip_empty_damage true
+adb shell setprop debug.hwui.use_buffer_age false
+adb shell setprop debug.hwui.use_partial_updates false
+adb shell setprop debug.hwui.use_gpu_pixel_buffers false
+adb shell setprop debug.hwui.use_hint_manager true
+adb shell setprop debug.hwui.clip_surfaceviews false
+adb shell setprop debug.hwui.disable_draw_defer false
+adb shell setprop debug.hwui.disable_draw_reorder false
+adb shell setprop debug.hwui.app_memory_policy true
+adb shell settings put global persist.sys.perf.topAppRenderThreadBoost.enable true
+
+adb shell setprop debug.hwui.filter_test_overhead false
+adb shell setprop debug.hwui.overdraw false
 adb shell settings put global sf.ddms 0
 adb shell setprop debug.sf.lag_adj 0
 adb shell setprop debug.sf.showupdates 0
@@ -127,7 +151,7 @@ adb shell settings put global debug.sf.refresh 120
 adb shell settings put global sys.display-refresh 120
 adb shell settings put global persist.sys.display.refresh 120
 adb shell settings put global vendor.display.enable_optimize_refresh 1
-adb shell setprop debug.hwui.fps_divisor -1
+adb shell setprop debug.hwui.fps_divisor 1
 adb shell settings put global persist.vendor.dfps.level 1
 adb shell settings put global persist.vendor.power.dfps.level 1
 
@@ -153,6 +177,14 @@ adb shell settings put global logcat.live disable
 adb shell settings put global debug.enabletr false
 adb shell settings put global debug.overlayui.enable 0
 adb shell settings put global debug.egl.prifiler 0
+adb shell setprop debug.hwui.profile.maxframes 0
+adb shell setprop debug.hwui.skp_filename false
+adb shell setprop debug.hwui.show_non_rect_clip hide
+adb shell setprop debug.hwui.skia_use_perfetto_track_events false
+adb shell setprop debug.hwui.capture_skp_enabled false
+adb shell setprop debug.hwui.trace_gpu_resources false
+adb shell setprop debug.hwui.show_layers_updates false
+adb shell setprop debug.hwui.level 0
 adb shell setprop debug.atrace.tags.enableflags false
 adb shell setprop debug.hwui.skia_atrace_enabled 0
 adb shell setprop debug.hwui.level 0
@@ -294,8 +326,6 @@ adb shell settings put global network_recommendations_enabled 0
 adb shell settings put global network_scoring_ui_enabled 0
 adb shell settings put global tether_offload_disabled 0
 adb shell settings put global wifi_power_save 0
-adb shell settings put system call_noise_reduction 1
-adb shell settings put system call_extra_volume 1
 adb shell settings put global mobile_data_always_on 0
 adb shell settings put global ble_scan_always_enabled 0
 adb shell settings put global bt.max.hfpclient.connections 1
