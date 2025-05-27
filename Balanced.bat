@@ -117,7 +117,6 @@ adb shell setprop debug.hwui.disable_draw_defer false
 adb shell setprop debug.hwui.disable_draw_reorder false
 adb shell setprop debug.hwui.app_memory_policy true
 adb shell settings put global persist.sys.perf.topAppRenderThreadBoost.enable true
-
 adb shell setprop debug.hwui.filter_test_overhead false
 adb shell setprop debug.hwui.overdraw false
 adb shell settings put global sf.ddms 0
