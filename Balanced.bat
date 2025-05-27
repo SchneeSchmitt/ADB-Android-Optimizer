@@ -248,7 +248,7 @@ adb shell settings put global vm.min_free_kbytes 8192
 adb shell settings put global vm.oom_kill_allocating_task 0
 adb shell settings put global vm.panic_on_oom 0
 adb shell settings put global vm.dirty_background_ratio 8
-adb shell settings put global vm.dirty_ratio 64w
+adb shell settings put global vm.dirty_ratio 64
 adb shell settings put global vm.vfs_cache_pressure 20
 adb shell settings put global vm.overcommit_memory 0
 adb shell settings put global vm.lowmem_reserve_ratio 96 96
