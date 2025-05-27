@@ -1,4 +1,5 @@
 adb shell settings put global sys.ui.hw 1
+adb shell settings put global force_hw_ui true
 adb shell settings put global debug.egl.hw 1
 adb shell settings put global debug.sf.hw 1
 adb shell settings put global hw2d.force 1 
