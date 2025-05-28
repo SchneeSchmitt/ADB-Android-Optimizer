@@ -49,3 +49,6 @@ adb shell settings put global sem_low_heat_mode 0
 
 adb shell settings put global boost_cpu 1
 adb shell settings put global sys.gpu_renderer_enhance_set 0mhz
+
+adb shell settings put global debug.sf.enable_gl_backpressure 0
+adb shell settings put global debug.sf.enable.planner_prediction true
