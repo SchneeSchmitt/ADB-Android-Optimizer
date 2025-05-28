@@ -324,7 +324,7 @@ adb shell settings put global dalvik.vm.heapstartsize 8m
 adb shell settings put global dalvik.vm.heapsize 512m
 adb shell settings put global dalvik.vm.heaptargetutilization 0.75
 adb shell settings put global dalvik.vm.heapminfree 6m
-adb shell settings put global dalvik.vm.heapmaxfree 16 m
+adb shell settings put global dalvik.vm.heapmaxfree 16m
 adb shell settings put global dalvik.vm.appdexformat odex
 adb shell settings put global dalvik.vm.execution-mode fast:jit
 adb shell settings put global dalvik.vm.jmiopts forcecopy
