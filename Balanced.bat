@@ -62,6 +62,9 @@ adb shell settings put system call_noise_reduction 1
 adb shell settings put system call_extra_volume 1
 adb shell settings put global persist.audio.fluence.mode endfire
 adb shell settings put global persist.audio.hp true
+adb shell settings put global persist.bluetooth.sbc_hd_higher_bitrate 1
+adb shell settings put global vendor.audio.offload.buffer.size.kb 256
+adb shell settings put global persist.vendor.audio_hal.dsp_bit_width_enforce_mode 24
 
 adb shell settings put global shutdown.mode hibernate
 adb shell settings put global warmboot.capability 1
@@ -168,6 +171,12 @@ adb shell setprop debug.sf.late.sf.duration 22500000
 adb shell setprop debug.sf.use_phase_offsets_as_durations 1
 adb shell setprop debug.sf.disable_client_composition_cache 0
 adb shell setprop debug.sf.treat_170m_as_sRGB 0
+adb shell setprop debug.sf.auto_latch_unsignaled true
+adb shell setprop debug.sf.region_sampling_timer_timeout_ns 200000000
+adb shell setprop debug.sf.region_sampling_period_ns 200000000
+adb shell setprop debug.sf.enable.planner_prediction false
+adb shell setprop debug.sf.hwc_hotplug_error_via_neg_vsync 1
+adb shell setprop debug.sf.hwc_hdcp_via_neg_vsync 1
 adb shell settings put global persist.sys.sf.native_mode 1
 
 adb shell settings put global vendor.display.use_layer_ext 0
@@ -200,6 +209,12 @@ adb shell settings put global zram_enabled 0
 adb shell settings put global ram_expand_size 0
 adb shell settings put global persist.sys.usap_pool_enabled true
 adb shell settings put global persist.device_config.runtime_native.usap_pool_enabled true
+adb shell settings put global suspend.short_suspend_threshold_millis 5000
+adb shell settings put global vendor.power.pasr.enabled false
+adb shell settings put global vendor.pasr.activemode.enabled false
+adb shell settings put global arm64.memtag.process.system_server off
+adb shell settings put global persist.arm64.memtag.system_server off
+adb shell settings put global sys.fflag.override.settings_enable_monitor_phantom_procs false
 
 adb shell settings put global activity_starts_logging_enabled 0
 adb shell settings put secure send_action_app_error 0
@@ -215,6 +230,7 @@ adb shell setprop debug.hwui.profile.maxframes 0
 adb shell setprop debug.hwui.skp_filename false
 adb shell setprop debug.hwui.show_non_rect_clip hide
 adb shell setprop debug.hwui.skia_use_perfetto_track_events false
+adb shell setprop debug.hwui.skia_tracing_enabled false
 adb shell setprop debug.hwui.capture_skp_enabled false
 adb shell setprop debug.hwui.trace_gpu_resources false
 adb shell setprop debug.hwui.show_layers_updates false
@@ -233,6 +249,7 @@ adb shell setprop debug.enable.wl_log 0
 adb shell setprop debug.hwc_dump_en 0
 adb shell setprop debug.sf.dump 0
 adb shell setprop debug.sf.ddms 0
+adb shell setprop debug.sf.enable_transaction_tracing false
 adb shell settings put global log.shaders 0
 adb shell settings put global log_frame_info 0
 adb shell settings put global debugtool.anrhistory 0
@@ -273,6 +290,7 @@ adb shell settings put global debug_test 0
 adb shell settings put global db.log.slow_query_threshold 0
 adb shell settings put global net.ipv4.tcp_no_metrics_save 1
 adb shell settings put global media.stagefright.log-uri 0
+adb shell settings put global persist.ims.disableADBLogs 1
 adb shell settings put global persist.ims.disableDebugLogs 1
 adb shell settings put global persist.ims.disableQXDMLogs 0
 adb shell settings put global persist.ims.disableIMSLogs 0
@@ -289,6 +307,7 @@ adb shell settings put global dalvik.vm.checkjni false
 adb shell settings put global dalvik.vm.dexopt-flags m=y,o=f,v=n
 adb shell settings put global dalvik.vm.check-dex-sum false
 adb shell settings put global dalvik.vm.debug.alloc 0
+adb shell settings put global dalvik.vm.dex2oat-minidebuginfo false
 adb shell settings put global dalvik.vm.deadlock-predict off
 adb shell settings put global dalvik.vm.verify-bytecode false
 adb shell settings put global dalvik.vm.usejit true
@@ -298,12 +317,14 @@ adb shell settings put global dalvik.vm.dex2oat-threads 4
 adb shell settings put global dalvik.vm.image-dex2oat-threads 4
 adb shell settings put global dalvik.vm.dex2oat-filter everything
 adb shell settings put global dalvik.vm.image-dex2oat-filter everything
+adb shell settings put global dalvik.vm.systemuicompilerfilter everything
+adb shell settings put global dalvik.vm.systemservercompilerfilter everything
 adb shell settings put global dalvik.vm.heapgrowthlimit 256m
 adb shell settings put global dalvik.vm.heapstartsize 8m
 adb shell settings put global dalvik.vm.heapsize 512m
 adb shell settings put global dalvik.vm.heaptargetutilization 0.75
-adb shell settings put global dalvik.vm.heapminfree 512k
-adb shell settings put global dalvik.vm.heapmaxfree 8m
+adb shell settings put global dalvik.vm.heapminfree 6m
+adb shell settings put global dalvik.vm.heapmaxfree 16 m
 adb shell settings put global dalvik.vm.appdexformat odex
 adb shell settings put global dalvik.vm.execution-mode fast:jit
 adb shell settings put global dalvik.vm.jmiopts forcecopy
