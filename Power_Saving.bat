@@ -48,3 +48,9 @@ adb shell settings put system speed_mode 0
 
 adb shell settings put global wfc_ims_mode 2
 adb shell settings put global sem_low_heat_mode 1
+
+adb shell settings put global vendor.power.pasr.enabled true
+adb shell settings put global vendor.pasr.activemode.enabled true
+adb shell settings put global persist.vendor.qcomsysd.enabled 0
+adb shell settings put global sys.fflag.override.settings_enable_monitor_phantom_procs true
+adb shell settings put global vendor.hwc.dpp.downscale 4
