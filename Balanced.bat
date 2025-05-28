@@ -109,6 +109,8 @@ adb shell setprop debug.egl.buffcount 4
 adb shell setprop debug.egl.swapinterval -60
 adb shell settings put global vendor.debug.egl.swapinterval 1
 adb shell settings put global persist.sys.egl.swapinterval 1
+adb shell setprop debug.enable.sglscale 1
+adb shell settings put global persist.hwc.ptor.enable true
 adb shell setprop debug.gr.swapinterval 1
 adb shell settings put global vendor.debug.gr.swapinterval 1
 adb shell settings put global persist.sys.debug.gr.swapinterval 1
@@ -141,6 +143,9 @@ adb shell setprop debug.sf.showupdates 0
 adb shell setprop debug.sf.showcpu 0
 adb shell setprop debug.sf.showbackground 0
 adb shell setprop debug.sf.showfps 0
+adb shell setprop debug.sf.disable_hwc 0
+adb shell setprop debug.sf.gpu_comp_tiling 1
+adb shell setprop debug.sf.recomputecrop 0
 adb shell setprop debug.sf.enable_advanced_sf_phase_offset 1
 adb shell setprop debug.sf.enable_gl_backpressure 1
 adb shell setprop debug.sf.early_app_phase_offset_ns 500000
