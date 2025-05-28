@@ -75,6 +75,15 @@ adb shell setprop debug.hwui.render_thread true
 adb shell settings put global renderthread.skia.reduceopstasksplitting true
 adb shell settings put global persist.sys.disable_skia_path_ops false
 adb shell setprop debug.skia.max_memory_usage_mb 512
+adb shell setprop debug.hwui.shadow.renderer monolithic
+adb shell setprop debug.hwui.drop_shadow_cache_size 0
+adb shell setprop debug.hwui.texture_cache_size 50
+adb shell setprop debug.hwui.gradient_cache_size 1
+adb shell setprop debug.hwui.path_cache_size 10
+adb shell setprop debug.hwui.shape_cache_size 5
+adb shell setprop debug.hwui.layer_cache_size 15
+adb shell setprop debug.hwui.enable_f16 true
+adb shell setprop debug.hwui.enable_partial_updates true
 adb shell setprop debug.skia.threaded_mode true
 adb shell setprop debug.hwui.render_thread_count 1
 adb shell setprop debug.skia.num_render_threads 1
@@ -83,6 +92,7 @@ adb shell settings put global persist.sys.gpu.working_thread_priority 1
 adb shell setprop debug.rs.shader SPIR-V
 adb shell settings put global enable_gpu_renderer true
 adb shell setprop debug.hwui.target_cpu_time_percent 0
+adb shell setprop debug.hwui.target_gpu_time_percent 100
 adb shell setprop debug.enable_scissor_optimization true
 adb shell setprop debug.hwui.disable_scissor_opt false
 adb shell setprop debug.hwui.shadow.renderer monolithic
@@ -119,6 +129,12 @@ adb shell setprop debug.hwui.app_memory_policy true
 adb shell settings put global persist.sys.perf.topAppRenderThreadBoost.enable true
 adb shell setprop debug.hwui.filter_test_overhead false
 adb shell setprop debug.hwui.overdraw false
+adb shell settings put global hwui.texture_cache_flushrate 0.4
+adb shell settings put global texture_atlas_cache_override 0.25
+adb shell settings put global texture_atlas_cache_entry_override 0.034
+adb shell settings put global texture_atlas_map_pool_override 0.15
+adb shell settings put global buffer_size 0.5
+adb shell setprop debug.hwui.disable_zrle 1
 adb shell settings put global sf.ddms 0
 adb shell setprop debug.sf.lag_adj 0
 adb shell setprop debug.sf.showupdates 0
@@ -138,6 +154,15 @@ adb shell setprop debug.sf.phase_offset_threshold_for_next_vsync_ns 12100000
 adb shell setprop debug.sf.disable_backpressure 1
 adb shell setprop debug.sf.latch_unsignaled 1
 adb shell setprop debug.sf.enable_advanced_sf_phase_offset 1
+adb shell setprop debug.sf.early.app.duration 25000000
+adb shell setprop debug.sf.early.sf.duration 22500000
+adb shell setprop debug.sf.earlyGl.app.duration 25000000
+adb shell setprop debug.sf.earlyGl.sf.duration 22500000
+adb shell setprop debug.sf.late.app.duration 25000000
+adb shell setprop debug.sf.late.sf.duration 22500000
+adb shell setprop debug.sf.use_phase_offsets_as_durations 1
+adb shell setprop debug.sf.disable_client_composition_cache 0
+adb shell setprop debug.sf.treat_170m_as_sRGB 0
 adb shell settings put global persist.sys.sf.native_mode 1
 
 adb shell settings put global vendor.display.use_layer_ext 0
@@ -153,6 +178,8 @@ adb shell settings put global vendor.display.enable_optimize_refresh 1
 adb shell setprop debug.hwui.fps_divisor 1
 adb shell settings put global persist.vendor.dfps.level 1
 adb shell settings put global persist.vendor.power.dfps.level 1
+adb shell setprop debug.sf.use_frame_rate_priority 1
+adb shell settings put global surface_flinger_use_frame_rate_api true
 
 adb shell settings put global cache.clean 1
 adb shell settings put global fstrim_mandatory_interval 86400000
@@ -173,6 +200,9 @@ adb shell settings put global activity_starts_logging_enabled 0
 adb shell settings put secure send_action_app_error 0
 adb shell settings put system send_security_reports 0
 adb shell settings put global logcat.live disable
+adb shell settings put global persist.log.tag 0
+adb shell settings put global persist.log.tag.snet_event_log 0
+adb shell setprop debug.generate-debug-info false
 adb shell settings put global debug.enabletr false
 adb shell settings put global debug.overlayui.enable 0
 adb shell settings put global debug.egl.prifiler 0
@@ -190,6 +220,16 @@ adb shell setprop debug.hwui.level 0
 adb shell setprop debug.generate-debug-info false
 adb shell setprop debug.egl.traceGpuCompletion false
 adb shell setprop debug.mdpcomp.logs 0
+adb shell setprop debug.gpu.debug_layers_on 0
+adb shell setprop debug.egl.traceGpuCompletion false
+adb shell setprop debug.egl.profiler 0
+adb shell setprop debug.enable.gamed 0
+adb shell setprop debug.enable.wl_log 0
+adb shell setprop debug.hwc_dump_en 0
+adb shell setprop debug.sf.dump 0
+adb shell setprop debug.sf.ddms 0
+adb shell settings put global log.shaders 0
+adb shell settings put global log_frame_info 0
 adb shell settings put global debugtool.anrhistory 0
 adb shell settings put global profiler.debugmonitor false
 adb shell settings put global profiler.launch false
@@ -223,17 +263,9 @@ adb shell settings put global persist.logd.size.system OFF
 adb shell settings put global sys.wifitracing.started 0
 adb shell settings put global libc.debug.malloc 0
 adb shell settings put global av.debug.disable.pers.cache true
-adb shell settings put global log.shaders 0
-adb shell settings put global log_frame_info 0
 adb shell settings put global log_ao 0
 adb shell settings put global debug_test 0
 adb shell settings put global db.log.slow_query_threshold 0
-adb shell setprop debug.egl.profiler 0
-adb shell setprop debug.enable.gamed 0
-adb shell setprop debug.enable.wl_log 0
-adb shell setprop debug.hwc_dump_en 0
-adb shell setprop debug.sf.dump 0
-adb shell setprop debug.sf.ddms 0
 adb shell settings put global net.ipv4.tcp_no_metrics_save 1
 adb shell settings put global media.stagefright.log-uri 0
 adb shell settings put global persist.ims.disableDebugLogs 1
