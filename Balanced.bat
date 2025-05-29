@@ -8,6 +8,7 @@ adb shell settings put system multicore_packet_scheduler 1
 adb shell setprop debug.cpurend.vsync false
 adb shell settings put global apm_enhancement_enabled 1
 adb shell settings put global persist.sys.whetstone.level 0
+adb shell settings put global vendor.perf.workloadclassifier.enable true
 
 adb shell settings put system mcf_continuity 0
 adb shell settings put system mcf_continuity_permission_denied 1
@@ -58,6 +59,7 @@ adb shell settings put global vendor.audio.offload.passthrough false
 adb shell settings put global vendor.audio.offload.track.enable false
 adb shell settings put global vendor.audio.feature.hifi_audio.enable true
 adb shell settings put global vendor.fm.a2dp.conc.disabled true
+adb shell settings put global vendor.audio.spkcal.copy.inhal true
 adb shell settings put system call_noise_reduction 1
 adb shell settings put system call_extra_volume 1
 adb shell settings put global persist.audio.fluence.mode endfire
@@ -65,6 +67,10 @@ adb shell settings put global persist.audio.hp true
 adb shell settings put global persist.bluetooth.sbc_hd_higher_bitrate 1
 adb shell settings put global vendor.audio.offload.buffer.size.kb 256
 adb shell settings put global persist.vendor.audio_hal.dsp_bit_width_enforce_mode 24
+adb shell settings put global persist.vendor.audio.hifi true
+adb shell settings put global persist.audio.fluence.voicerec true
+adb shell settings put global persist.audio.fluence.speaker false
+adb shell settings put global use.voice.path.for.pcm.voip true
 
 adb shell settings put global shutdown.mode hibernate
 adb shell settings put global warmboot.capability 1
@@ -178,6 +184,9 @@ adb shell setprop debug.sf.enable.planner_prediction false
 adb shell setprop debug.sf.hwc_hotplug_error_via_neg_vsync 1
 adb shell setprop debug.sf.hwc_hdcp_via_neg_vsync 1
 adb shell settings put global persist.sys.sf.native_mode 1
+adb shell settings put global viewroot.profile_rendering true
+adb shell settings put global persist.hwc.ptor.enable true
+adb shell settings put global persist.sys.miui_animator_sched.sched_threads 32
 
 adb shell settings put global vendor.display.use_layer_ext 0
 adb shell settings put global persist.vendor.vcb.ability true
@@ -194,6 +203,22 @@ adb shell settings put global persist.vendor.dfps.level 1
 adb shell settings put global persist.vendor.power.dfps.level 1
 adb shell setprop debug.sf.use_frame_rate_priority 1
 adb shell settings put global surface_flinger_use_frame_rate_api true
+adb shell settings put global persist.metadata_dynfps.disable 0
+
+adb shell settings put global media.stagefright.enable-player true
+adb shell settings put global media.stagefright.enable-meta true
+adb shell settings put global media.stagefright.enable-scan true
+adb shell settings put global media.stagefright.enable-http true
+adb shell settings put global media.stagefright.enable-rtsp true
+adb shell settings put global media.stagefright.enable-record true
+adb shell settings put global media.stagefright.enable-aac true
+adb shell settings put global media.stagefright.enable-fma2dp true
+adb shell settings put global media.stagefright.enable-qcp true
+adb shell settings put global vidc.debug.perf.mode 2
+adb shell settings put global mmp.enable.3g2 true
+adb shell settings put global media.aac_51_output_enabled true
+adb shell settings put global mm.enable.smoothstreaming true
+adb shell settings put global mm.enable.qcom_parser 13631487
 
 adb shell settings put global cache.clean 1
 adb shell settings put global fstrim_mandatory_interval 86400000
@@ -207,6 +232,7 @@ adb shell settings put global zram.default 0
 adb shell settings put global zram 0
 adb shell settings put global zram_enabled 0
 adb shell settings put global ram_expand_size 0
+adb shell setprop debug.kill_allocating_task 0
 adb shell settings put global persist.sys.usap_pool_enabled true
 adb shell settings put global persist.device_config.runtime_native.usap_pool_enabled true
 adb shell settings put global suspend.short_suspend_threshold_millis 5000
@@ -215,6 +241,7 @@ adb shell settings put global vendor.pasr.activemode.enabled false
 adb shell settings put global arm64.memtag.process.system_server off
 adb shell settings put global persist.arm64.memtag.system_server off
 adb shell settings put global sys.fflag.override.settings_enable_monitor_phantom_procs false
+adb shell settings put global persist.vendor.sys.memplus.enable true
 
 adb shell settings put global activity_starts_logging_enabled 0
 adb shell settings put secure send_action_app_error 0
@@ -224,6 +251,9 @@ adb shell settings put global persist.log.tag 0
 adb shell settings put global persist.log.tag.snet_event_log 0
 adb shell setprop debug.generate-debug-info false
 adb shell settings put global debug.enabletr false
+adb shell settings put global persist.wpa_supplicant.debug false
+adb shell settings put global vendor.audio.dump.elevoc false
+adb shell settings put global vidc.debug.level 0
 adb shell settings put global debug.overlayui.enable 0
 adb shell settings put global debug.egl.prifiler 0
 adb shell setprop debug.hwui.profile.maxframes 0
@@ -322,7 +352,8 @@ adb shell settings put global dalvik.vm.systemservercompilerfilter everything
 adb shell settings put global dalvik.vm.heapgrowthlimit 256m
 adb shell settings put global dalvik.vm.heapstartsize 8m
 adb shell settings put global dalvik.vm.heapsize 512m
-adb shell settings put global dalvik.vm.heaptargetutilization 0.75
+adb shell settings put global dalvik.vm.heaputilization 0.75
+adb shell settings put global dalvik.vm.heaptargetutilization 0.95
 adb shell settings put global dalvik.vm.heapminfree 6m
 adb shell settings put global dalvik.vm.heapmaxfree 16m
 adb shell settings put global dalvik.vm.appdexformat odex
@@ -332,6 +363,7 @@ adb shell settings put global dalvik.vm.lockprof.threshold 250
 adb shell settings put global dalvik.vm.dex2oat64.enabled true
 adb shell settings put global dalvik.vm.dexopt.secondary true
 adb shell settings put global dalvik.gc.type precise
+adb shell settings put global persist.sys.dalvik.vm.lib.2 libart.so
 
 adb shell settings put global vm.min_free_kbytes 8192
 adb shell settings put global vm.oom_kill_allocating_task 0
@@ -392,7 +424,7 @@ adb shell settings put global persist.radio.fd.counter 0
 adb shell settings put global persist.radio.fd.off.counter 0
 adb shell settings put global persist.radio.fd.r8.counter 0
 adb shell settings put global bertahan.radio.fd.off.r8.counter 0
-adb shell settings put global wifi.supplicant_scan_interval 220
+adb shell settings put global wifi.supplicant_scan_interval 300
 adb shell settings put global default_restrict_background_data 1
 adb shell settings put secure adaptive_connectivity_enabled 1 
 adb shell settings put global persist.cust.tel.eons 1 
@@ -443,11 +475,16 @@ adb shell settings put global persist.ims.disabled 1
 adb shell settings put global telephony.lteOnCdmaDevice 1
 adb shell settings put global persist.telephony.support.ipv6 1
 adb shell settings put global persist.telephony.support.ipv4 1
+adb shell settings put global persist.data_netmgrd_mtu 1500
+adb shell settings put global persist.cne.feature 4
 
 adb shell settings put global tcp.buffersize.default 4096,87380,256960,4096,16384,256960
 adb shell settings put global tcp.buffersize.wifi 4096,87380,256960,4096,16384,256960
+adb shell settings put global tcp.buffersize.lte 4096,87380,256960,4096,16384,256960
 adb shell settings put global tcp.buffersize.umts 4096,87380,256960,4096,16384,256960
 adb shell settings put global tcp.buffersize.evdo 4096,87380,256960,4096,16384,256960
+adb shell settings put global tcp.buffersize.evdo_a 4096,87380,256960,4096,16384,256960
+adb shell settings put global tcp.buffersize.evdo_b 4096,87380,256960,4096,16384,256960
 adb shell settings put global tcp.buffersize.gprs 4096,87380,256960,4096,16384,256960
 adb shell settings put global tcp.buffersize.edge 4096,87380,256960,4096,16384,256960
 adb shell settings put global tcp.buffersize.hsdpa 4096,87380,256960,4096,16384,256960
