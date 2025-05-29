@@ -5,6 +5,7 @@ adb shell settings put global restricted_device_performance 0,0
 
 adb shell cmd power set-fixed-performance-mode-enabled 0
 adb shell cmd power set-mode 1
+adb shell setprop debug.performance.tuning 1
 
 adb shell settings put global sys_uidcpupower 1
 
