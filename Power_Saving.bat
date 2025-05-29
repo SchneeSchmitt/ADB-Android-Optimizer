@@ -55,3 +55,4 @@ adb shell settings put global vendor.pasr.activemode.enabled true
 adb shell settings put global persist.vendor.qcomsysd.enabled 0
 adb shell settings put global sys.fflag.override.settings_enable_monitor_phantom_procs true
 adb shell settings put global vendor.hwc.dpp.downscale 4
+adb shell settings put global pm.sleep_mode 1
