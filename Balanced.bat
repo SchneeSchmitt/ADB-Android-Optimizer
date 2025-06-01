@@ -242,6 +242,10 @@ adb shell settings put global arm64.memtag.process.system_server off
 adb shell settings put global persist.arm64.memtag.system_server off
 adb shell settings put global sys.fflag.override.settings_enable_monitor_phantom_procs false
 adb shell settings put global persist.vendor.sys.memplus.enable true
+adb shell settings put global persist.sys.minfree_6g 16384,20480,32768,131072,230400,286720
+adb shell settings put global persist.sys.minfree_8g 16384,20480,32768,131072,384000,524288
+adb shell settings put global persist.sys.minfree_12g 16384,20480,131072,384000,524288,819200
+adb shell settings put global persist.sys.minfree_def 16384,20480,32768,131072,230400,286720
 
 adb shell settings put global activity_starts_logging_enabled 0
 adb shell settings put secure send_action_app_error 0
@@ -434,11 +438,12 @@ adb shell settings put global wifi_country_code SA
 adb shell settings put global net.core.netdev_max_backlog 5000
 adb shell settings put global net.core.netdev_budget 2500
 adb shell settings put global net.core.netdev_budget_usecs 250
-adb shell settings put global net.core.wmem_max 1048576
-adb shell settings put global net.core.rmem_max 1048576
+adb shell settings put global net.core.wmem_max 8388608
+adb shell settings put global net.core.rmem_max 8388608
 adb shell settings put global net.core.rmem_default 262144
 adb shell settings put global net.core.wmem_default 262144
 adb shell settings put global net.core.optmem_max 20480
+adb shell settings put global net.core.netdev_max_backlog 250000
 adb shell settings put global net.unix.max_dgram_qlen 50
 adb shell settings put global net.ipv4.tcp_ecn 0
 adb shell settings put global net.ipv4.route.flush 1
@@ -448,9 +453,9 @@ adb shell settings put global net.ipv4.tcp_sack 1
 adb shell settings put global net.ipv4.tcp_fack 1
 adb shell settings put global net.ipv4.tcp_window_scaling 1
 adb shell settings put global net.ipv4.tcp_timestamps 1
-adb shell settings put global net.ipv4.tcp_rmem 4096,39000,187000
-adb shell settings put global net.ipv4.tcp_wmem 4096,39000,187000
-adb shell settings put global net.ipv4.tcp_mem 187000,187000,187000
+adb shell settings put global net.ipv4.tcp_rmem 4096,87380,8388608
+adb shell settings put global net.ipv4.tcp_wmem 4096,87380,8388608
+adb shell settings put global net.ipv4.tcp_mem 4096,87380,8388608
 adb shell settings put global net.ipv4.tcp_no_metrics_save 1
 adb shell settings put global net.ipv4.tcp_moderate_rcvbuf 1
 adb shell settings put global net.ipv6.tcp_ecn 0
@@ -461,9 +466,9 @@ adb shell settings put global net.ipv6.tcp_sack 1
 adb shell settings put global net.ipv6.tcp_fack 1
 adb shell settings put global net.ipv6.tcp_window_scaling 1
 adb shell settings put global net.ipv6.tcp_timestamps 1
-adb shell settings put global net.ipv6.tcp_rmem 4096,39000,187000
-adb shell settings put global net.ipv6.tcp_wmem 4096,39000,187000
-adb shell settings put global net.ipv6.tcp_mem 187000,187000,187000
+adb shell settings put global net.ipv6.tcp_rmem 4096,87380,8388608
+adb shell settings put global net.ipv6.tcp_wmem 4096,87380,8388608
+adb shell settings put global net.ipv6.tcp_mem 4096,87380,8388608
 adb shell settings put global net.ipv6.tcp_no_metrics_save 1
 adb shell settings put global net.ipv6.tcp_moderate_rcvbuf 1
 adb shell settings put global net.tethering.noprovisioning true
