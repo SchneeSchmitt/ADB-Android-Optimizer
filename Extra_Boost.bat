@@ -54,3 +54,7 @@ adb shell settings put global sys.gpu_renderer_enhance_set 0mhz
 adb shell settings put global debug.sf.enable_gl_backpressure 0
 adb shell settings put global debug.sf.enable.planner_prediction true
 adb shell settings put global vidc.debug.perf.mode 1
+adb shell settings put global iorapd.readahead.enable true
+adb shell settings put global persist.sys.powmillet.enable false
+adb shell settings put global sys.hwc.gpu_perf_mode 1
+adb shell settings put global sys.usap.enable true
