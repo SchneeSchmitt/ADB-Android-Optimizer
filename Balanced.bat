@@ -1,6 +1,7 @@
 adb shell settings put global burn_in_protection 1
 adb shell settings put global sys.gmaps_hack 1
 adb shell settings put global vendor.user_experience 1
+adb shell settings put global persist.vendor.gnss.hpLocSetUI 1
 
 adb shell settings put global persist.sys.dalvik.multithread true
 adb shell settings put global persist.sys.dalvik.hyperthreading true
@@ -9,6 +10,10 @@ adb shell setprop debug.cpurend.vsync false
 adb shell settings put global apm_enhancement_enabled 1
 adb shell settings put global persist.sys.whetstone.level 0
 adb shell settings put global vendor.perf.workloadclassifier.enable true
+adb shell settings put global dev.pm.dyn_samplingrate 1
+adb shell settings put global persist.sys.miui_sptm.enable true
+adb shell settings put global persist.miui.miperf.enable true
+adb shell settings put global persist.sys.horae.enable 1
 
 adb shell settings put system mcf_continuity 0
 adb shell settings put system mcf_continuity_permission_denied 1
@@ -35,6 +40,7 @@ adb shell settings put global persist.service.pcsync.enable 0
 adb shell settings put global persist.debug.wfd.enable 0
 adb shell settings put global persist.sys.wfd.virtual 0
 adb shell settings put global persist.debug.sensors.hal 0
+adb shell settings put global persist.sys.oiface.enable 0
 
 adb shell cmd thermalservice override-status 1
 adb shell settings put secure game_auto_temperature_control 0
@@ -45,10 +51,10 @@ adb shell setprop debug.sqlite.syncmode 1
 
 adb shell settings put secure tap_duration_threshold 0.0
 adb shell settings put secure touch_blocking_period 0.0
+adb shell settings put system persist.vendor.qti.inputopts.enable true
 
 adb shell settings put system tube_amp_effect 0
 adb shell settings put system k2hd_effect 0
-adb shell settings put global dev.pm.dyn_samplingrate 0
 adb shell settings put global af.resampler.quality 255
 adb shell settings put global persist.af.resampler.quality 255
 adb shell settings put global vendor.audio.low.latency true
@@ -187,6 +193,10 @@ adb shell settings put global persist.sys.sf.native_mode 1
 adb shell settings put global viewroot.profile_rendering true
 adb shell settings put global persist.hwc.ptor.enable true
 adb shell settings put global persist.sys.miui_animator_sched.sched_threads 32
+adb shell settings put global persist.vendor.display.miui.composer_boost 0-7
+adb shell settings put global persist.sys.miui_animator_sched.bigcores 4-7
+adb shell settings put global persist.sys.miui.sf_cores 0-7
+adb shell settings put global persist.sys.force_sw_gles 0
 
 adb shell settings put global vendor.display.use_layer_ext 0
 adb shell settings put global persist.vendor.vcb.ability true
@@ -204,6 +214,8 @@ adb shell settings put global persist.vendor.power.dfps.level 1
 adb shell setprop debug.sf.use_frame_rate_priority 1
 adb shell settings put global surface_flinger_use_frame_rate_api true
 adb shell settings put global persist.metadata_dynfps.disable 0
+adb shell settings put global vendor.perf.framepacing.enable true
+adb shell settings put global persist.sys.framepredict.enable false
 
 adb shell settings put global media.stagefright.enable-player true
 adb shell settings put global media.stagefright.enable-meta true
@@ -219,6 +231,9 @@ adb shell settings put global mmp.enable.3g2 true
 adb shell settings put global media.aac_51_output_enabled true
 adb shell settings put global mm.enable.smoothstreaming true
 adb shell settings put global mm.enable.qcom_parser 13631487
+adb shell settings put global av.debug.disable.pers.cache false
+adb shell settings put global vendor.vidc.enc.disable_bframes 1
+adb shell settings put global video.disable.ubwc 0
 
 adb shell settings put global cache.clean 1
 adb shell settings put global fstrim_mandatory_interval 86400000
@@ -226,13 +241,14 @@ adb shell settings put global persist.sys.scrollingcache 3
 adb shell settings put global persist.sys.purgeable_assets 1
 adb shell settings put global debug.qctwa.preservebuf 0
 adb shell settings put global app_standby_enabled 1
+adb shell settings put global persist.sys.spc.screenoff_kill_enable false
+adb shell setprop debug.kill_allocating_task 0
 
 adb shell settings put global service.zram 0
 adb shell settings put global zram.default 0
 adb shell settings put global zram 0
 adb shell settings put global zram_enabled 0
 adb shell settings put global ram_expand_size 0
-adb shell setprop debug.kill_allocating_task 0
 adb shell settings put global persist.sys.usap_pool_enabled true
 adb shell settings put global persist.device_config.runtime_native.usap_pool_enabled true
 adb shell settings put global suspend.short_suspend_threshold_millis 5000
@@ -246,11 +262,19 @@ adb shell settings put global persist.sys.minfree_6g 16384,20480,32768,131072,23
 adb shell settings put global persist.sys.minfree_8g 16384,20480,32768,131072,384000,524288
 adb shell settings put global persist.sys.minfree_12g 16384,20480,131072,384000,524288,819200
 adb shell settings put global persist.sys.minfree_def 16384,20480,32768,131072,230400,286720
+adb shell settings put global persist.sys.gz.enable false
+adb shell settings put global persist.sys.spc.enabled false
+adb shell settings put global persist.sys.spc.extra_free_enable false
+adb shell settings put global sys.usap.enable false
 
 adb shell settings put global activity_starts_logging_enabled 0
+adb shell setprop debug.atrace.tags.enableflags false
 adb shell settings put secure send_action_app_error 0
 adb shell settings put system send_security_reports 0
 adb shell settings put global logcat.live disable
+adb shell settings put global logcast.live disable
+adb shell settings put global live.logcat disable
+adb shell settings put global persist.android.strictmode 0
 adb shell settings put global persist.log.tag 0
 adb shell settings put global persist.log.tag.snet_event_log 0
 adb shell setprop debug.generate-debug-info false
@@ -258,6 +282,8 @@ adb shell settings put global debug.enabletr false
 adb shell settings put global persist.wpa_supplicant.debug false
 adb shell settings put global vendor.audio.dump.elevoc false
 adb shell settings put global vidc.debug.level 0
+adb shell settings put global media.stagefright.log-uri 0
+adb shell settings put global vendor.vidc.debug.level 0
 adb shell settings put global debug.overlayui.enable 0
 adb shell settings put global debug.egl.prifiler 0
 adb shell setprop debug.hwui.profile.maxframes 0
@@ -269,10 +295,10 @@ adb shell setprop debug.hwui.capture_skp_enabled false
 adb shell setprop debug.hwui.trace_gpu_resources false
 adb shell setprop debug.hwui.show_layers_updates false
 adb shell setprop debug.hwui.level 0
-adb shell setprop debug.atrace.tags.enableflags false
 adb shell setprop debug.hwui.skia_atrace_enabled 0
 adb shell setprop debug.hwui.level 0
-adb shell setprop debug.generate-debug-info false
+adb shell setprop debug.hwc.otf 0
+adb shell setprop debug.hwc_dump_en 0
 adb shell setprop debug.egl.traceGpuCompletion false
 adb shell setprop debug.mdpcomp.logs 0
 adb shell setprop debug.gpu.debug_layers_on 0
@@ -286,6 +312,7 @@ adb shell setprop debug.sf.ddms 0
 adb shell setprop debug.sf.enable_transaction_tracing false
 adb shell settings put global log.shaders 0
 adb shell settings put global log_frame_info 0
+adb shell settings put global sys.games.gt.prof 0
 adb shell settings put global debugtool.anrhistory 0
 adb shell settings put global profiler.debugmonitor false
 adb shell settings put global profiler.launch false
@@ -297,13 +324,11 @@ adb shell settings put global profiler.force_disable_ulog 1
 adb shell settings put global persist.sampling_profiler 0
 adb shell settings put system rakuten_denwa 0
 adb shell settings put global persist.service.pcsync.enable 0
-adb shell settings put global persist.service.lgospd.enable 0 
+adb shell settings put global persist.service.lgospd.enable 0
 adb shell settings put global persist.wpa_supplicant.debug false
 adb shell settings put global log.tag.stats_log 0
-adb shell settings put global logd.logpersistd.enable false
 adb shell settings put global persist.vendor.verbose_logging_enabled false
 adb shell settings put global persist.traced.enable 0
-adb shell settings put global logd.statistics 0
 adb shell settings put global persist.camera.mct.debug 0
 adb shell settings put global persist.camera.iface.logs 0
 adb shell settings put global persist.camera.imglib.logs 0
@@ -313,21 +338,28 @@ adb shell settings put global persist.camera.debug.logfile 0
 adb shell settings put global persist.sys.strictmode.disable true
 adb shell settings put global persist.vendor.radio.adb_log_on 0
 adb shell settings put global persist.vendor.sys.modem.logging.enable false
+adb shell settings put global sys.wifitracing.started 0
+adb shell settings put global persist.sys.offlinelog.kernel 1
+adb shell settings put global persist.sys.offlinelog.logcat 1
+adb shell settings put global logd.statistics 0
+adb shell settings put global logd.logpersistd.enable false
 adb shell settings put global persist.logd.size OFF
 adb shell settings put global persist.logd.size.radio OFF
 adb shell settings put global persist.logd.size.system OFF
-adb shell settings put global sys.wifitracing.started 0
 adb shell settings put global libc.debug.malloc 0
-adb shell settings put global av.debug.disable.pers.cache true
 adb shell settings put global log_ao 0
 adb shell settings put global debug_test 0
 adb shell settings put global db.log.slow_query_threshold 0
 adb shell settings put global net.ipv4.tcp_no_metrics_save 1
-adb shell settings put global media.stagefright.log-uri 0
+adb shell settings put global net.ipv6.tcp_no_metrics_save 1
+adb shell settings put global persist.vendor.wifienhancelog 0
+adb shell settings put global persist.sys.wifi_track false
 adb shell settings put global persist.ims.disableADBLogs 1
 adb shell settings put global persist.ims.disableDebugLogs 1
 adb shell settings put global persist.ims.disableQXDMLogs 0
 adb shell settings put global persist.ims.disableIMSLogs 0
+adb shell settings put global persist.ims.enableADBLogs 0
+adb shell settings put global persist.ims.enableDebugLogs 0
 adb shell settings put global persist.data.qmi.adb_logmask 0
 adb shell settings put global persist.oem.dump 0
 adb shell settings put global sys.games.gt.prof 0
@@ -335,7 +367,53 @@ adb shell settings put global sys.miui.ndcd off
 adb shell settings put global persist.sys.perf.debug false
 adb shell settings put global sys.lmk.reportkills false
 adb shell settings put global persist.traced_perf.enable 0
-adb shell settings put global vendor.vidc.debug.level 0
+adb shell settings put global sdm.debug.disable_inline_rotator 1
+adb shell settings put global sdm.debug.disable_skip_validate 1
+adb shell settings put global iorapd.perfetto.enable false
+adb shell settings put global config.disable_rtt true
+adb shell settings put global db.log.slow_query_threshold 0
+adb shell setprop debug.qualcomm.sns.hal 0
+adb shell setprop debug.qualcomm.sns.daemon 0
+adb shell setprop debug.qualcomm.sns.libsensor1 0
+adb shell settings put global persist.data.qmi.adb_logmask 0
+adb shell settings put global persist.brcm.log none 
+adb shell settings put global persist.brcm.cp_crash none 
+adb shell settings put global persist.brcm.ap_crash none
+adb shell setprop debug.enable.gamed 0
+adb shell setprop debug.enable.wl_log 0
+adb shell settings put global rw.logger 0
+adb shell settings put global persist.debug.sensors.hal 0
+adb shell settings put global persist.service.logging.disable true
+adb shell settings put global log.redirect-stdio false
+adb shell settings put global log.resolves 0
+adb shell settings put global log.pm4 0
+adb shell settings put global log.pm4mem 0
+adb shell settings put global log.shaders 0
+adb shell settings put global log.sc_dev 0
+adb shell settings put global log.cffdump 0
+adb shell settings put global log.cffdump_with_ifh 0         
+adb shell settings put global log.cffdump_no_memzero 0    
+adb shell settings put global log.dumpx 0 
+adb shell settings put global log.primitives 0
+adb shell settings put global log_frame_info 0
+adb shell settings put global log_mp4dectime 0
+adb shell settings put global log_posttime 0
+adb shell settings put global log_profile 0
+adb shell settings put global log_playerdriver 0
+adb shell settings put global log_metadatadriver 0
+adb shell settings put global log_playerengine 0
+adb shell settings put global log_datapath 0
+adb shell settings put global log_mp4parsernode 0
+adb shell settings put global log_basedecnode 0
+adb shell settings put global log_audiodecnode 0
+adb shell settings put global log_videodecnode 0
+adb shell settings put global log_outputnode 0
+adb shell settings put global log_outputnodeinputport 0
+adb shell settings put global log_audiooutput 0
+adb shell settings put global log_surfaceoutput 0
+adb shell settings put global log_omxmp4 0
+adb shell settings put global log_ao 0
+adb shell settings put global log_fps_interval 0
 
 adb shell settings put global dalvik.vm.checkjni false 
 adb shell settings put global dalvik.vm.dexopt-flags m=y,o=f,v=n
@@ -368,6 +446,8 @@ adb shell settings put global dalvik.vm.dex2oat64.enabled true
 adb shell settings put global dalvik.vm.dexopt.secondary true
 adb shell settings put global dalvik.gc.type precise
 adb shell settings put global persist.sys.dalvik.vm.lib.2 libart.so
+adb shell settings put global dev.pm.precompile_layouts 1
+adb shell settings put global persist.miui.dexopt.first_use true
 
 adb shell settings put global vm.min_free_kbytes 8192
 adb shell settings put global vm.oom_kill_allocating_task 0
@@ -456,7 +536,6 @@ adb shell settings put global net.ipv4.tcp_timestamps 1
 adb shell settings put global net.ipv4.tcp_rmem 4096,87380,8388608
 adb shell settings put global net.ipv4.tcp_wmem 4096,87380,8388608
 adb shell settings put global net.ipv4.tcp_mem 4096,87380,8388608
-adb shell settings put global net.ipv4.tcp_no_metrics_save 1
 adb shell settings put global net.ipv4.tcp_moderate_rcvbuf 1
 adb shell settings put global net.ipv6.tcp_ecn 0
 adb shell settings put global net.ipv6.route.flush 1
@@ -469,7 +548,6 @@ adb shell settings put global net.ipv6.tcp_timestamps 1
 adb shell settings put global net.ipv6.tcp_rmem 4096,87380,8388608
 adb shell settings put global net.ipv6.tcp_wmem 4096,87380,8388608
 adb shell settings put global net.ipv6.tcp_mem 4096,87380,8388608
-adb shell settings put global net.ipv6.tcp_no_metrics_save 1
 adb shell settings put global net.ipv6.tcp_moderate_rcvbuf 1
 adb shell settings put global net.tethering.noprovisioning true
 adb shell settings put global config.disable_rtt true
@@ -482,6 +560,15 @@ adb shell settings put global persist.telephony.support.ipv6 1
 adb shell settings put global persist.telephony.support.ipv4 1
 adb shell settings put global persist.data_netmgrd_mtu 1500
 adb shell settings put global persist.cne.feature 4
+adb shell settings put global persist.sys.millet.handshake false
+adb shell settings put global persist.sys.mms.compact_enable true
+adb shell settings put global persist.sys.mms.bg_apps_limit 256
+adb shell settings put global persist.sys.dun.override 0
+adb shell settings put global persist.radio.oem_socket false
+adb shell settings put global vendor.fm.a2dp.conc.disabled true
+adb shell settings put global wifi.interface wlan0
+adb shell settings put global persist.vendor.wifi.interrupt_test_mode false
+adb shell settings put global persist.miui.wifi.upf.enable 1
 
 adb shell settings put global tcp.buffersize.default 4096,87380,256960,4096,16384,256960
 adb shell settings put global tcp.buffersize.wifi 4096,87380,256960,4096,16384,256960
