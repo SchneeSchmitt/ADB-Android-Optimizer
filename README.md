@@ -1,4 +1,7 @@
 # ADB-Android-Optimizer
+### Other Languages / 其他語言
+[中文（繁體）](https://github.com/SchneeSchmitt/ADB-Android-Optimizer/blob/main/CH_TD.md)
+
 Rootless (ADB) Android performance optimizer for every condition, from pure performance to power-saving
 
 ## What type of optimization those scripts can do?
