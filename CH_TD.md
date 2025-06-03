@@ -33,16 +33,24 @@
 
 ### Windows
 1. [下載最新的ADB工具](https://dl.google.com/android/repository/platform-tools-latest-windows.zip)
-2. 解壓到 C:\. You will see a folder called "platform-tools".
+2. 解壓縮到 C:\. You will see a folder called "platform-tools".
 3. Right-click "This PC" in the left bar in the explorer, click Properties
-4. Click on the "Advanced System Settings" on the right. (Or on the left if you head to the control panel)
-5. Click on "Advanced" on the left.
-6. Click on "Environment Variables" at the bottom.
-7. Click on "path" under "System variables", click edit, and click "Browse...", find your ADB tools and click "OK".
+在「本機」按滑鼠右鍵，選擇「內容」
+5. Click on the "Advanced System Settings" on the right. (Or on the left if you head to the control panel)
+選擇左邊的「進階系統設定」
+7. Click on "Advanced" on the left.
+8. Click on "Environment Variables" at the bottom.
+選擇「進階」標籤，然後按下「環境變數」
+10. Click on "path" under "System variables", click edit, and click "Browse...", find your ADB tools and click "OK".
+在環境變數視窗內，先找到「系統變數」內的「Path」欄位。反白後按下下方的編輯。
+按下「瀏覽」，然後在瀏覽資料夾中選擇剛剛解壓縮到 C 槽下的 ADB 資料夾「platform-tools」，按下確定。
 
 ### Linux
-1. [Download the latest ADB tools](https://dl.google.com/android/repository/platform-tools-latest-linux.zip).
+1. [下載最新的ADB工具](https://dl.google.com/android/repository/platform-tools-latest-linux.zip).
 2. Extract them to a new folder.
 3. Make the `adb` binary executable by running `chmod u+x adb`.
 4. Add the folder to your path: `export PATH="/path/to/adb:$PATH"`
 5. If you're using bash, you may want to add the `export` command to your `.bashrc` file.
+
+### MAC
+1. [下載最新的ADB工具](https://dl.google.com/android/repository/platform-tools-latest-darwin.zip)
