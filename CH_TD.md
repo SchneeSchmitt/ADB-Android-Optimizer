@@ -16,7 +16,7 @@
 
 ### Windows電腦：
 1. 確保你電腦上已安裝ADB
-2. 從項目主頁按`Code`，再按`Download ZIP`下載
+2. 從項目主頁按一個叫`Code`的綠色大按鈕，再按`Download ZIP`下載
 3. 解壓縮到任意資料夾
 4. 運行`Balanced.bat`套用主要優化設定
 5. 如果你裝置採用高通SoC/CPU晶片，你可以運行`Qualcomm_only.bat`
