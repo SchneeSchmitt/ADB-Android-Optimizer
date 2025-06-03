@@ -59,3 +59,4 @@ adb shell settings put global pm.sleep_mode 1
 adb shell settings put global iorapd.readahead.enable false
 adb shell settings put global persist.sys.powmillet.enable true
 adb shell settings put global sys.hwc.gpu_perf_mode 2
+adb shell setprop debug.sf.gpu_freq_indeks 2
