@@ -58,3 +58,4 @@ adb shell settings put global iorapd.readahead.enable true
 adb shell settings put global persist.sys.powmillet.enable false
 adb shell settings put global sys.hwc.gpu_perf_mode 1
 adb shell settings put global sys.usap.enable true
+adb shell setprop debug.sf.gpu_freq_indeks 8
