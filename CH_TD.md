@@ -33,22 +33,17 @@
 
 ### Windows
 1. [下載最新的ADB工具](https://dl.google.com/android/repository/platform-tools-latest-windows.zip)
-2. 解壓縮到 C:\. You will see a folder called "platform-tools".
-3. Right-click "This PC" in the left bar in the explorer, click Properties
-在「本機」按滑鼠右鍵，選擇「內容」
-5. Click on the "Advanced System Settings" on the right. (Or on the left if you head to the control panel)
-選擇左邊的「進階系統設定」
-7. Click on "Advanced" on the left.
-8. Click on "Environment Variables" at the bottom.
-選擇「進階」標籤，然後按下「環境變數」
-10. Click on "path" under "System variables", click edit, and click "Browse...", find your ADB tools and click "OK".
-在環境變數視窗內，先找到「系統變數」內的「Path」欄位。反白後按下下方的編輯。
-按下「瀏覽」，然後在瀏覽資料夾中選擇剛剛解壓縮到 C 槽下的 ADB 資料夾「platform-tools」，按下確定。
+2. 解壓縮到 C:\。你會看到一個叫"platform-tools"的資料夾
+3. 在右邊欄的「本機」按滑鼠右鍵，選擇「內容」
+4. 選擇右邊的「進階系統設定」（如果你是引導至控制台，它是在左邊）
+5. 選擇左邊的「進階」標籤，然後按下方的「環境變數」
+6. 在環境變數視窗內，先找到「系統變數」內的「Path」欄位。按一下後按下下方的編輯。
+7. 按下「瀏覽」，然後在瀏覽資料夾中選擇剛剛解壓縮到 C:\ 的 ADB 資料夾「platform-tools」，按下確定。
 
 ### Linux
 1. [下載最新的ADB工具](https://dl.google.com/android/repository/platform-tools-latest-linux.zip).
-2. Extract them to a new folder.
-3. Make the `adb` binary executable by running `chmod u+x adb`.
+2. 解壓縮到一個新文件夾。
+3. 運行`chmod u+x adb`，讓`adb`進制可運行。
 4. Add the folder to your path: `export PATH="/path/to/adb:$PATH"`
 5. If you're using bash, you may want to add the `export` command to your `.bashrc` file.
 
