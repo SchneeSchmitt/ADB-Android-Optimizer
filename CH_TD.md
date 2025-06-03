@@ -27,7 +27,7 @@
 
 ### （進階）在安卓機上運行
 從Google應用商店下載Shizuku和Shizushell。
-啟動Shizuku，再把.bat文件的命令移除開頭的`adb shell`並複製貼上至Shizushell。
+啟動Shizuku，再把.bat文件裏面的指令移除開頭的`adb shell`並複製貼上至Shizushell。
 
 ## 如何安裝ADB工具
 
