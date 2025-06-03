@@ -1,6 +1,5 @@
 adb shell dumpsys deviceidle force-idle
 
-adb shell settings put system minimal_battery_use 1
 adb shell settings put global restricted_device_performance 1,1
 
 adb shell cmd power set-fixed-performance-mode-enabled 0
