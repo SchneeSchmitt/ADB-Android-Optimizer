@@ -37,6 +37,8 @@ adb shell settings put system remote_control 0
 adb shell settings put global master_sync_status 0
 adb shell settings put global persist.service.lgospd.enable 0
 adb shell settings put global persist.service.pcsync.enable 0
+adb shell settings put global persist.sys.lgospd.enable 0
+adb shell settings put global persist.sys.pcsync.enable 0
 adb shell settings put global persist.debug.wfd.enable 0
 adb shell settings put global persist.sys.wfd.virtual 0
 adb shell settings put global persist.debug.sensors.hal 0
@@ -122,6 +124,7 @@ adb shell settings put global use_egl_mode 1
 adb shell settings put global sys.egl.enable_frame_preload true
 adb shell setprop debug.egl.buffcount 4
 adb shell setprop debug.egl.swapinterval -60
+adb shell setprop debug.egl.force_msaa false
 adb shell settings put global vendor.debug.egl.swapinterval 1
 adb shell settings put global persist.sys.egl.swapinterval 1
 adb shell setprop debug.enable.sglscale 1
@@ -161,6 +164,7 @@ adb shell setprop debug.sf.showfps 0
 adb shell setprop debug.sf.disable_hwc 0
 adb shell setprop debug.sf.gpu_comp_tiling 1
 adb shell setprop debug.sf.recomputecrop 0
+adb shell setprop debug.sf.gpu_freq_indeks 5
 adb shell setprop debug.sf.enable_advanced_sf_phase_offset 1
 adb shell setprop debug.sf.enable_gl_backpressure 1
 adb shell setprop debug.sf.early_app_phase_offset_ns 500000
@@ -216,6 +220,7 @@ adb shell settings put global surface_flinger_use_frame_rate_api true
 adb shell settings put global persist.metadata_dynfps.disable 0
 adb shell settings put global vendor.perf.framepacing.enable true
 adb shell settings put global persist.sys.framepredict.enable false
+adb shell setprop debug.display.render_frame_rate_is_physical_refresh_rate true
 
 adb shell settings put global media.stagefright.enable-player true
 adb shell settings put global media.stagefright.enable-meta true
@@ -281,11 +286,14 @@ adb shell setprop debug.generate-debug-info false
 adb shell settings put global debug.enabletr false
 adb shell settings put global persist.wpa_supplicant.debug false
 adb shell settings put global vendor.audio.dump.elevoc false
+adb shell settings put global media.metrics.enabled 0
+adb shell settings put global media.metrics 0
 adb shell settings put global vidc.debug.level 0
 adb shell settings put global media.stagefright.log-uri 0
 adb shell settings put global vendor.vidc.debug.level 0
 adb shell settings put global debug.overlayui.enable 0
 adb shell settings put global debug.egl.prifiler 0
+adb shell setprop debug.systemui.latency_tracking 0
 adb shell setprop debug.hwui.profile.maxframes 0
 adb shell setprop debug.hwui.skp_filename false
 adb shell setprop debug.hwui.show_non_rect_clip hide
@@ -384,6 +392,12 @@ adb shell setprop debug.enable.wl_log 0
 adb shell settings put global rw.logger 0
 adb shell settings put global persist.debug.sensors.hal 0
 adb shell settings put global persist.service.logging.disable true
+adb shell settings put global persist.sample.eyetracking.log 0
+adb shell settings put global sys.debug.watchdog 0
+adb shell settings put global config.stats 0
+adb shell settings put global persist.sys.loglevel 0
+adb shell settings put global sys.log.app 0
+adb shell settings put global trustkernel.log.state disable
 adb shell settings put global log.redirect-stdio false
 adb shell settings put global log.resolves 0
 adb shell settings put global log.pm4 0
