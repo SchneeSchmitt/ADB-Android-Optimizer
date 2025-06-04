@@ -618,7 +618,6 @@ adb shell settings put global vendor.fm.a2dp.conc.disabled true
 adb shell settings put global wifi.interface wlan0
 adb shell settings put global persist.vendor.wifi.interrupt_test_mode false
 adb shell settings put global persist.miui.wifi.upf.enable 1
-adb shell settings put global telephony.lteOnCdmaDevice 1
 
 adb shell settings put global tcp.buffersize.default 4096,87380,256960,4096,16384,256960
 adb shell settings put global tcp.buffersize.wifi 4096,87380,256960,4096,16384,256960
