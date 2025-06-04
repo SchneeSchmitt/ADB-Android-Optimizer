@@ -14,7 +14,7 @@
 
 ## 如何使用 ❓
 
-### Windows電腦 🪟
+### Windows電腦 ⊞
 1. 確保你電腦上已安裝ADB
 2. 從項目主頁按一個叫`Code`的綠色大按鈕，再按`Download ZIP`下載
 3. 解壓縮到任意資料夾
@@ -31,7 +31,7 @@
 
 ## 如何安裝ADB工具 ⚒️
 
-### Windows 🪟
+### Windows ⊞
 1. [下載最新的ADB工具](https://dl.google.com/android/repository/platform-tools-latest-windows.zip)
 2. 解壓縮到 C:\。你會看到一個叫"platform-tools"的資料夾
 3. 在右邊欄的「本機」按滑鼠右鍵，選擇「內容」
