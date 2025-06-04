@@ -58,4 +58,4 @@ Download both Shizuku and Shizushell on Google Play Store, start Shizuku, and ty
 
 ## Unsupported list ❌
 ### [Halcyon](https://hlcyn.co/)
-The script will result in the phone auto-restarting to Fastboot. Tested on Redmi Note 9 (merlinx), Build ID: 20250316-0234
+Running the script on this ROM will result in the phone auto-restarting to Fastboot. Tested on Redmi Note 9 (merlinx), Build ID: 20250316-0234
