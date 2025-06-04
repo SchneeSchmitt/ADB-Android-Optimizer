@@ -40,5 +40,5 @@ Just Google it LMFAO\
 Now you installed the ADB tools successfully
 
 ## Unsupported list
-### [🇭alcyon](https://hlcyn.co/)
+### [Halcyon](https://hlcyn.co/)
 The script will result in the phone auto-restarting to Fastboot. Tested on Redmi Note 9 (merlinx), Build ID: 20250316-0234
