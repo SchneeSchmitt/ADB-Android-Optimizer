@@ -58,4 +58,10 @@ adb shell settings put global pm.sleep_mode 1
 adb shell settings put global iorapd.readahead.enable false
 adb shell settings put global persist.sys.powmillet.enable true
 adb shell settings put global sys.hwc.gpu_perf_mode 2
+adb shell settings put global suspend.short_suspend_threshold_millis 2000
+adb shell settings put global vendor.power.pasr.enabled true
+adb shell settings put global vendor.pasr.activemode.enabled true
+adb shell settings put global sys.fflag.override.settings_enable_monitor_phantom_procs true
+adb shell settings put global zygote.critical_window.minute 6
+adb shell settings put global persist.device_config.activity_manager.use_compaction true
 adb shell setprop debug.sf.gpu_freq_indeks 2
