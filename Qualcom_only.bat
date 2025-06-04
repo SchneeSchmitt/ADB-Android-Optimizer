@@ -8,8 +8,6 @@ adb shell settings put global debug.qctwa.preservebuf 1
 adb shell setprop debug.qctwa.statusbar 1
 adb shell settings put global vendor.gralloc.disable_ubwc 0
 adb shell settings put global sdm.debug.disable_skip_validate 1
-adb shell setprop debug.qualcomm.sns.daemon 0
-adb shell setprop debug.qualcomm.sns.libsensor1 0
 adb shell settings put global persist.sys.ssr.restart_level 1
 adb shell settings put global sdm.debug.disable_inline_rotator 1
 adb shell settings put global vendor.vidc.enc.disable_bframes 1
