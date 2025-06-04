@@ -249,6 +249,7 @@ adb shell settings put global mm.enable.qcom_parser 13631487
 adb shell settings put global av.debug.disable.pers.cache false
 adb shell settings put global vendor.vidc.enc.disable_bframes 1
 adb shell settings put global video.disable.ubwc 0
+adb shell settings put global vidc.enc.dcvs.extra-buff-count 2
 
 adb shell settings put global cache.clean 1
 adb shell settings put global fstrim_mandatory_interval 86400000
