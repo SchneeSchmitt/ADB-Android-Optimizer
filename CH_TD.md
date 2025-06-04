@@ -3,7 +3,7 @@
 
 這些腳本可以利用ADB（USB除錯）的所有方法來優化安卓，例如禁用日誌記錄、加速CPU和GPU、渲染調整、網路優化、記憶體設定、Dalvik虛擬機器設定，甚至優化**內核**的設定。
 
-## 優化列表
+## 優化列表 📑
 - `balanced`：平衡模式，也是最主要的優化腳本。
 - `vulkan`：偏好使用Vulkan進行渲染，建議給支援Vulkan的裝置執行此腳本。
 - `qualcomm_only`：**僅提供**給使用高通SoC/CPU晶片裝置的優化。
@@ -12,7 +12,7 @@
 - `power_saving`：提升手機續航，減低性能和耗電量，並且調節系統的運行模式。
 - `hardware`：讓你的裝置**非常快**，但是也**很他媽燙**。
 
-## 如何使用
+## 如何使用 ❓
 
 ### Windows電腦：
 1. 確保你電腦上已安裝ADB
@@ -25,13 +25,13 @@
 8. 如果你想要裝置進一步提升性能或者省電，你可以運行`Extra_Boost.bat`提升性能**或者**`Power_saving.bat`進一步省電
 9. 如果你喜歡**極速**且**燙手**的裝置，你也可以運行`Hardware.bat`
 
-### （進階）在安卓機上運行
+### （進階）在安卓機上運行 🤖
 從Google應用商店下載Shizuku和Shizushell。
 啟動Shizuku，再把.bat文件裏面的指令移除開頭的`adb shell`並複製貼上至Shizushell。
 
-## 如何安裝ADB工具
+## 如何安裝ADB工具 ⚒️
 
-### Windows
+### Windows 🪟
 1. [下載最新的ADB工具](https://dl.google.com/android/repository/platform-tools-latest-windows.zip)
 2. 解壓縮到 C:\。你會看到一個叫"platform-tools"的資料夾
 3. 在右邊欄的「本機」按滑鼠右鍵，選擇「內容」
@@ -40,12 +40,16 @@
 6. 在環境變數視窗內，先找到「系統變數」內的「Path」欄位。按一下後按下下方的編輯。
 7. 按下「瀏覽」，然後在瀏覽資料夾中選擇剛剛解壓縮到 C:\ 的 ADB 資料夾「platform-tools」，按下確定。
 
-### Linux
+### Linux 🐧
 1. [下載最新的ADB工具](https://dl.google.com/android/repository/platform-tools-latest-linux.zip).
 2. 解壓縮到一個新文件夾。
 3. 運行`chmod u+x adb`，讓`adb`進制可運行。
 4. Add the folder to your path: `export PATH="/path/to/adb:$PATH"`
 5. If you're using bash, you may want to add the `export` command to your `.bashrc` file.
 
-### MAC
+### MAC 🍎
 1. [下載最新的ADB工具](https://dl.google.com/android/repository/platform-tools-latest-darwin.zip)
+
+## 不支援列表 ❌
+### [Halcyon](https://hlcyn.co/)
+在此系統上運行腳本會導致裝置重新啟動至Fastboot。已在紅米Note 9 (merlinx)上測試。構建版本ID：20250316-0234
