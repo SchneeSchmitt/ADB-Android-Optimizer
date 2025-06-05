@@ -58,6 +58,24 @@ adb shell pm clear --user 0 com.samsung.android.game.gos
 adb shell setprop debug.sqlite.journalmode WAL
 adb shell setprop debug.sqlite.syncmode 1
 
+adb shell settings put global ENFORCE_PROCESS_LIMIT false
+adb shell settings put global MAX_SERVICE_INACTIVITY false
+adb shell settings put global MIN_HIDDEN_APPS false
+adb shell settings put global MAX_HIDDEN_APPS false
+adb shell settings put global CONTENT_APP_IDLE_OFFSET false
+adb shell settings put global EMPTY_APP_IDLE_OFFSET false
+adb shell settings put global MAX_ACTIVITIES false
+adb shell settings put global ACTIVITY_INACTIVE_RESET_TIME false
+adb shell settings put global MAX_RECENT_TASKS false
+adb shell settings put global MIN_RECENT_TASKS false
+adb shell settings put global APP_SWITCH_DELAY_TIME false
+adb shell settings put global MAX_PROCESSES false
+adb shell settings put global PROC_START_TIMEOUT false
+adb shell settings put global CPU_MIN_CHECK_DURATION false
+adb shell settings put global GC_TIMEOUT false
+adb shell settings put global SERVICE_TIMEOUT false
+adb shell settings put global MIN_CRASH_INTERVAL false
+
 adb shell settings put secure tap_duration_threshold 0.0
 adb shell settings put secure touch_blocking_period 0.0
 adb shell settings put system persist.vendor.qti.inputopts.enable true
@@ -156,6 +174,7 @@ adb shell setprop debug.hwui.app_memory_policy true
 adb shell settings put global persist.sys.perf.topAppRenderThreadBoost.enable true
 adb shell setprop debug.hwui.filter_test_overhead false
 adb shell setprop debug.hwui.overdraw false
+adb shell setprop debug.gralloc.enable_fb_ubwc 1
 adb shell settings put global hwui.texture_cache_flushrate 0.4
 adb shell settings put global texture_atlas_cache_override 0.25
 adb shell settings put global texture_atlas_cache_entry_override 0.034
@@ -168,6 +187,15 @@ adb shell setprop debug.sf.showupdates 0
 adb shell setprop debug.sf.showcpu 0
 adb shell setprop debug.sf.showbackground 0
 adb shell setprop debug.sf.showfps 0
+adb shell setprop debug.sf.showentropy 0
+adb shell setprop debug.sf.showgpu 0
+adb shell setprop debug.sf.showopengl 0
+adb shell setprop debug.sf.showram 0
+adb shell setprop debug.sf.showswap 0
+adb shell setprop debug.sf.showthermal 0
+adb shell setprop debug.sf.showvulkan 0
+adb shell setprop debug.sf.showzram 0
+adb shell setprop debug.sf.showtouchscreen 0
 adb shell setprop debug.sf.disable_hwc 0
 adb shell setprop debug.sf.gpu_comp_tiling 1
 adb shell setprop debug.sf.recomputecrop 0
@@ -221,6 +249,8 @@ adb shell settings put global persist.sys.use_dithering 1
 adb shell settings put global debug.sf.refresh 120
 adb shell settings put global sys.display-refresh 120
 adb shell settings put global persist.sys.display.refresh 120
+adb shell settings put global cpu.fps auto
+adb shell settings put global gpu.fps auto
 adb shell settings put global vendor.display.enable_optimize_refresh 1
 adb shell setprop debug.hwui.fps_divisor 1
 adb shell settings put global persist.vendor.dfps.level 1
