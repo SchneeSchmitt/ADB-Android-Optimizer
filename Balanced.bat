@@ -130,7 +130,7 @@ adb shell settings put global DEBUG_DIRTY_REGION false
 adb shell settings put global use_egl_mode 1
 adb shell settings put global sys.egl.enable_frame_preload true
 adb shell setprop debug.egl.buffcount 4
-adb shell setprop debug.egl.swapinterval -60
+adb shell setprop debug.egl.swapinterval 1
 adb shell setprop debug.egl.force_msaa false
 adb shell settings put global vendor.debug.egl.swapinterval 1
 adb shell settings put global persist.sys.egl.swapinterval 1
@@ -498,7 +498,7 @@ adb shell settings put global persist.sys.dalvik.vm.lib.2 libart.so
 adb shell settings put global dev.pm.precompile_layouts 1
 adb shell settings put global persist.miui.dexopt.first_use true
 
-adb shell settings put global vm.min_free_kbytes 8192
+adb shell settings put global vm.min_free_kbytes 4096
 adb shell settings put global vm.oom_kill_allocating_task 0
 adb shell settings put global vm.panic_on_oom 0
 adb shell settings put global vm.dirty_background_ratio 8
