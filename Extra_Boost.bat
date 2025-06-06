@@ -51,6 +51,9 @@ adb shell settings put global sem_low_heat_mode 0
 adb shell settings put global boost_cpu 1
 adb shell settings put global sys.gpu_renderer_enhance_set 0mhz
 
+adb shell settings put global persist.hvdcp.allow_opti 1
+adb shell settings put global persist.vendor.usb.hvdcp.detect true
+
 adb shell settings put global debug.sf.enable_gl_backpressure 0
 adb shell settings put global debug.sf.enable.planner_prediction true
 adb shell settings put global vidc.debug.perf.mode 1
@@ -61,3 +64,6 @@ adb shell settings put global sys.usap.enable true
 adb shell setprop debug.sf.gpu_freq_indeks 8
 adb shell settings put global suspend.short_suspend_threshold_millis 8000
 adb shell settings put global zygote.critical_window.minute 14
+adb shell settings put global game_accelerator_state 1
+adb shell settings put system is_game_mode 1
+adb shell settings put system ai_turbo_enabled 1
