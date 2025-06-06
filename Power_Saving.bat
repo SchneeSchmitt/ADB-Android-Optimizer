@@ -65,3 +65,5 @@ adb shell settings put global sys.fflag.override.settings_enable_monitor_phantom
 adb shell settings put global zygote.critical_window.minute 6
 adb shell settings put global persist.device_config.activity_manager.use_compaction true
 adb shell setprop debug.sf.gpu_freq_indeks 2
+adb shell settings put global cached_apps_freezer 1
+adb shell settings put system power_sleep_mode_enabled 1
