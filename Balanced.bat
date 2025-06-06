@@ -170,7 +170,7 @@ adb shell setprop debug.hwui.shadow.renderer monolithic
 adb shell settings put global hwui.use_gpu_pixel_buffers true
 adb shell settings put global hwui.text_gamma_correction lookup
 adb shell settings put global hwui.use.blacklist true
-adb shell setprop debug.hwui.use_gpu_pixel_buffers false
+adb shell setprop debug.hwui.use_gpu_pixel_buffers true
 adb shell setprop debug.hwui.render_dirty_regions false
 adb shell setprop debug.hwui.show_dirty_regions false
 adb shell settings put global DEBUG_DIRTY_REGION false
@@ -192,9 +192,8 @@ adb shell setprop debug.composition.type asn
 adb shell settings put global persist.sys.composition.type asn
 adb shell setprop debug.gralloc.gfx_ubwc_disable 0
 adb shell setprop debug.hwui.skip_empty_damage true
-adb shell setprop debug.hwui.use_buffer_age false
-adb shell setprop debug.hwui.use_partial_updates false
-adb shell setprop debug.hwui.use_gpu_pixel_buffers false
+adb shell setprop debug.hwui.use_buffer_age true
+adb shell setprop debug.hwui.use_partial_updates true
 adb shell setprop debug.hwui.use_hint_manager true
 adb shell setprop debug.hwui.clip_surfaceviews false
 adb shell setprop debug.hwui.disable_draw_defer false
@@ -209,7 +208,7 @@ adb shell settings put global texture_atlas_cache_override 0.25
 adb shell settings put global texture_atlas_cache_entry_override 0.034
 adb shell settings put global texture_atlas_map_pool_override 0.15
 adb shell settings put global buffer_size 0.5
-adb shell setprop debug.hwui.disable_zrle 1
+adb shell setprop debug.hwui.disable_zrle 0
 adb shell settings put global sf.ddms 0
 adb shell setprop debug.sf.lag_adj 0
 adb shell setprop debug.sf.showupdates 0
