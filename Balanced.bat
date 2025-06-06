@@ -55,11 +55,11 @@ adb shell settings put global persist.sys.oiface.enable 0
 adb shell cmd thermalservice override-status 1
 adb shell settings put secure game_auto_temperature_control 0
 adb shell pm clear --user 0 com.samsung.android.game.gos
+adb shell settings put system vivo_gamethermal_switch 0
 
 adb shell setprop debug.sqlite.wal.poolsize 8
 adb shell setprop debug.sqlite.wal.syncmode OFF
 adb shell setprop debug.sqlite.journalmode OFF
-adb shell settings put global settings put system vivo_gamethermal_switch 0
 
 adb shell settings put global ENFORCE_PROCESS_LIMIT false
 adb shell settings put global MAX_SERVICE_INACTIVITY false
