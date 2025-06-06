@@ -2,6 +2,7 @@ adb shell settings put global burn_in_protection 1
 adb shell settings put global sys.gmaps_hack 1
 adb shell settings put global vendor.user_experience 1
 adb shell settings put global persist.vendor.gnss.hpLocSetUI 1
+adb shell settings put global enable_freeform_support 1
 
 adb shell settings put global persist.sys.dalvik.multithread true
 adb shell settings put global persist.sys.dalvik.hyperthreading true
@@ -55,8 +56,10 @@ adb shell cmd thermalservice override-status 1
 adb shell settings put secure game_auto_temperature_control 0
 adb shell pm clear --user 0 com.samsung.android.game.gos
 
-adb shell setprop debug.sqlite.journalmode WAL
-adb shell setprop debug.sqlite.syncmode 1
+adb shell setprop debug.sqlite.wal.poolsize 8
+adb shell setprop debug.sqlite.wal.syncmode OFF
+adb shell setprop debug.sqlite.journalmode OFF
+adb shell settings put global settings put system vivo_gamethermal_switch 0
 
 adb shell settings put global ENFORCE_PROCESS_LIMIT false
 adb shell settings put global MAX_SERVICE_INACTIVITY false
@@ -97,13 +100,38 @@ adb shell settings put system call_noise_reduction 1
 adb shell settings put system call_extra_volume 1
 adb shell settings put global persist.audio.fluence.mode endfire
 adb shell settings put global persist.audio.hp true
-adb shell settings put global persist.bluetooth.sbc_hd_higher_bitrate 1
 adb shell settings put global vendor.audio.offload.buffer.size.kb 256
 adb shell settings put global persist.vendor.audio_hal.dsp_bit_width_enforce_mode 24
 adb shell settings put global persist.vendor.audio.hifi true
 adb shell settings put global persist.audio.fluence.voicerec true
 adb shell settings put global persist.audio.fluence.speaker false
 adb shell settings put global use.voice.path.for.pcm.voip true
+adb shell settings put global tunnel.audio.encode true
+adb shell settings put global qc.tunnel.audio.encode true
+adb shell settings put global vendor.audio.tunnel.encode true
+adb shell settings put global audio.deep_buffer.media true
+adb shell settings put global audio_hal.period_size 192
+adb shell settings put global audio.safx.pbe.enabled false
+adb shell settings put global audio.pp.asphere.enabled false
+
+adb shell settings put global ble_scan_always_enabled 0
+adb shell settings put global bt.max.hfpclient.connections 1
+adb shell settings put global persist.bluetooth.sbc_hd_higher_bitrate 1
+adb shell settings put global persist.bt.enableAptXHD true
+adb shell settings put global persist.service.btui.use_aptx 1
+adb shell settings put global persist.vendor.bt.a2dp_offload_cap sbc-aptx-aptxtws-aptxhd-aptxadaptive-aac-ldac
+adb shell settings put global persist.bluetooth.a2dp_offload.cap sbc-aptx-aptxtws-aptxhd-aptxadaptive-aac-ldac
+adb shell settings put global persist.vendor.btstack.a2dp_offload_cap sbc-aptx-aptxtws-aptxhd-aptxadaptive-aac-ldac
+adb shell settings put global persist.vendor.qcom.bluetooth.a2dp_offload_cap sbc-aptx-aptxtws-aptxhd-aptxadaptive-aac-ldac
+adb shell settings put global persist.bluetooth.disableabsvol true
+adb shell settings put global persist.vendor.btstack.enable.splita2dp true
+adb shell settings put global persist.vendor.btstack.aac_frm_ctl.enabled true
+adb shell settings put global persist.vendor.btstack.enable.twsplus true
+adb shell settings put global persist.vendor.btstack.connect.peer_earbud true
+adb shell settings put global persist.vendor.btstack.enable.twsplussho true
+adb shell settings put global persist.vendor.qcom.bluetooth.aac_frm_ctl.enabled true
+adb shell settings put global persist.vendor.qcom.bluetooth.twsp_state.enabled false
+adb shell settings put global persist.vendor.qcom.bluetooth.enable.splita2dp true
 
 adb shell settings put global shutdown.mode hibernate
 adb shell settings put global warmboot.capability 1
@@ -132,6 +160,7 @@ adb shell setprop debug.skia.num_render_threads 1
 adb shell setprop debug.skia.render_thread_priority 1
 adb shell settings put global persist.sys.gpu.working_thread_priority 1
 adb shell setprop debug.rs.shader SPIR-V
+adb shell settings put global rs.gpu.renderscript 1
 adb shell settings put global enable_gpu_renderer true
 adb shell setprop debug.hwui.target_cpu_time_percent 0
 adb shell setprop debug.hwui.target_gpu_time_percent 100
@@ -238,6 +267,7 @@ adb shell settings put global persist.vendor.display.miui.composer_boost 0-7
 adb shell settings put global persist.sys.miui_animator_sched.bigcores 4-7
 adb shell settings put global persist.sys.miui.sf_cores 0-7
 adb shell settings put global persist.sys.force_sw_gles 0
+adb shell settings put global persist.sys.force_sw_vulkan 0
 adb shell settings put global sdm.debug.disable_inline_rotator 0
 
 adb shell settings put global vendor.display.use_layer_ext 0
@@ -245,6 +275,26 @@ adb shell settings put global persist.vendor.vcb.ability true
 adb shell settings put global persist.vendor.vcb.enable true
 adb shell settings put global sdm.debug.disable_skip_validate 1
 adb shell settings put global persist.sys.use_dithering 1
+adb shell settings put global persist.hwc.enable_vds 0
+adb shell settings put global vendor.display.enable_async_powermode 1
+adb shell settings put global vendor.display.use_smooth_motion 1
+
+adb shell settings put global doze.display.supported true
+adb shell settings put global doze.pulse.notifications true
+adb shell settings put global doze.use.accelerometer 0
+adb shell settings put global doze.pickup.vibration.threshold 2000
+adb shell settings put global doze.pulse.brightness 5
+adb shell settings put global doze.pulse.delay.in 200
+adb shell settings put global doze.pulse.duration.in 1000
+adb shell settings put global doze.pulse.duration.out 1000
+adb shell settings put global doze.pulse.duration.visible 3000
+adb shell settings put global doze.pulse.proxcheck 0
+adb shell settings put global doze.pulse.schedule 1s,10s,30s,60s,120s,180s
+adb shell settings put global doze.pulse.schedule.resets 3
+adb shell settings put global doze.pulse.sigmotion 0
+adb shell settings put global doze.shake.acc.threshold 10
+adb shell settings put global doze.vibrate.sigmotion 0
+adb shell setprop debug.doze.component 0
 
 adb shell settings put global debug.sf.refresh 120
 adb shell settings put global sys.display-refresh 120
@@ -275,11 +325,14 @@ adb shell settings put global vidc.debug.perf.mode 2
 adb shell settings put global mmp.enable.3g2 true
 adb shell settings put global media.aac_51_output_enabled true
 adb shell settings put global mm.enable.smoothstreaming true
+adb shell settings put global mm.disable.sec_smoothstreaming false
 adb shell settings put global mm.enable.qcom_parser 13631487
 adb shell settings put global av.debug.disable.pers.cache false
 adb shell settings put global vendor.vidc.enc.disable_bframes 1
 adb shell settings put global video.disable.ubwc 0
 adb shell settings put global vidc.enc.dcvs.extra-buff-count 2
+adb shell settings put global media.swhevccodectype 0
+adb shell settings put global media.hwhevccodectype 1
 
 adb shell settings put global cache.clean 1
 adb shell settings put global fstrim_mandatory_interval 86400000
@@ -326,6 +379,7 @@ adb shell settings put system send_security_reports 0
 adb shell settings put global logcat.live disable
 adb shell settings put global logcast.live disable
 adb shell settings put global live.logcat disable
+adb shell settings put global persist.sys.offlinelog.logcatkernel false
 adb shell settings put global persist.android.strictmode 0
 adb shell settings put global persist.log.tag 0
 adb shell settings put global persist.log.tag.snet_event_log 0
@@ -373,12 +427,10 @@ adb shell settings put global profiler.hung.dumpdobugreport false
 adb shell settings put global profiler.force_disable_err_rpt 1
 adb shell settings put global profiler.force_disable_ulog true
 adb shell settings put global profiler.force_disable_err_rpt true
-adb shell settings put global profiler.force_disable_ulog 1
 adb shell settings put global persist.sampling_profiler 0
 adb shell settings put system rakuten_denwa 0
 adb shell settings put global persist.service.pcsync.enable 0
 adb shell settings put global persist.service.lgospd.enable 0
-adb shell settings put global persist.wpa_supplicant.debug false
 adb shell settings put global persist.vendor.verbose_logging_enabled false
 adb shell settings put global persist.traced.enable 0
 adb shell settings put global persist.camera.mct.debug 0
@@ -417,6 +469,7 @@ adb shell settings put global sys.games.gt.prof 0
 adb shell settings put global sys.miui.ndcd off
 adb shell settings put global persist.sys.perf.debug false
 adb shell settings put global sys.lmk.reportkills false
+adb shell settings put global persist.sys.lmk.reportkills false
 adb shell settings put global persist.traced_perf.enable 0
 adb shell settings put global sdm.debug.disable_inline_rotator 1
 adb shell settings put global sdm.debug.disable_skip_validate 1
@@ -442,7 +495,6 @@ adb shell settings put global persist.sys.loglevel 0
 adb shell settings put global sys.log.app 0
 adb shell settings put global trustkernel.log.state disable
 adb shell settings put global persist.vendor.sys.reduce_qdss_log 1
-adb shell settings put global persist.vendor.verbose_logging_enabled false
 adb shell settings put global persist.debug.trace 0
 adb shell settings put global persist.mtk.wcn.dynamic.dump 0
 adb shell settings put global persist.vendor.dpm.loglevel 0
@@ -451,6 +503,8 @@ adb shell settings put global persist.sys.ssr.restart_level 1
 adb shell settings put global persist.anr.dumpthr 0
 adb shell settings put global persist.sys.perf.debug false
 adb shell settings put global persist.traced_perf.enable 0
+adb shell settings put global persist.vendor.ssr.enable_ramdumps 0
+adb shell settings put global vendor.bluetooth.startbtlogger false
 adb shell settings put global log_ao 0
 adb shell settings put global log.redirect-stdio false
 adb shell settings put global log.resolves 0
@@ -488,6 +542,7 @@ adb shell settings put global log_frame_info 0
 
 adb shell settings put global dalvik.vm.checkjni false 
 adb shell settings put global dalvik.vm.dexopt-flags m=y,o=f,v=n
+adb shell settings put global dalvik.vm.execution-mode int:jit
 adb shell settings put global dalvik.vm.check-dex-sum false
 adb shell settings put global dalvik.vm.debug.alloc 0
 adb shell settings put global dalvik.vm.dex2oat-minidebuginfo false
@@ -505,7 +560,16 @@ adb shell settings put global dalvik.vm.dex2oat-filter everything
 adb shell settings put global dalvik.vm.image-dex2oat-filter everything
 adb shell settings put global dalvik.vm.systemuicompilerfilter everything
 adb shell settings put global dalvik.vm.systemservercompilerfilter everything
+adb shell settings put global pm.dexopt.first-boot everything
+adb shell settings put global pm.dexopt.install everything
+adb shell settings put global pm.dexopt.bg-dexopt everything
+adb shell settings put global pm.dexopt.boot everything
+adb shell settings put global pm.dexopt.ab-ota everything
 adb shell settings put global pm.dexopt.shared everything
+adb shell settings put global pm.dexopt.shared-apk everything
+adb shell settings put global pm.dexopt.untrusted-apk everything
+adb shell settings put global pm.dexopt.system-server everything
+adb shell settings put global pm.dexopt.preopt everything
 adb shell settings put global persist.bg.dexopt.enable true
 adb shell settings put global dalvik.vm.heapgrowthlimit 384m
 adb shell settings put global dalvik.vm.heapstartsize 24m
@@ -577,10 +641,8 @@ adb shell settings put global vold.post_fs_data_done 1
 adb shell settings put global network_recommendations_enabled 0
 adb shell settings put global network_scoring_ui_enabled 0
 adb shell settings put global tether_offload_disabled 0
-adb shell settings put global wifi_power_save 0
+adb shell settings put global wifi_power_save 1
 adb shell settings put global mobile_data_always_on 0
-adb shell settings put global ble_scan_always_enabled 0
-adb shell settings put global bt.max.hfpclient.connections 1
 adb shell settings put global preferred_network_mode 9,9
 adb shell settings put global radio.add_power_save 1
 adb shell settings put global persist.radio.fd.counter 0
