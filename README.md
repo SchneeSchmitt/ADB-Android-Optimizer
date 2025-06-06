@@ -24,13 +24,16 @@ Those scripts can optimize Android from all methods and factors of the ADB possi
 ### Windows Shell ⊞
 1. Make sure your devices/computers/emulators have ADB installed
 2. Download all files from this repository by clicking on `Code`, and clicking `Download ZIP`
-3. Run the `Balance.bat` for the main tweaks
-4. Run the `Vulkan.bat` if your device supports Vulkan rendering. Most devices after 2020 should support Vulkan rendering
-5. Run the `Qualcom_only.bat` **ONLY** if you are using a Qualcomm SoC device
-6. Run the `Compile.bat` if you don't need to use your phone for now. This one takes around 30 minutes to run. I recommend enabling "Keep screen on while charging" in developer options during the running process. Your device temperature will also increase during the running process.
-7. Run the `Extra_Boost.bat` **OR** `Power_Saving.bat` if you want better performance or battery life
-8. **ONLY RUN** the `Hardware.bat` if you want your device both **HOT AS FUCK** and fast as fuck
-9. Restart the device
+3. Enable Developer Options in the Settings app on the phone
+4. Enable USB Debugging in the Developer Options
+5. Connect your phone to the PC with a USB data cable
+6. Run the `Balance.bat` for the main tweaks
+7. Run the `Vulkan.bat` if your device supports Vulkan rendering. Most devices after 2020 should support Vulkan rendering
+8. Run the `Qualcom_only.bat` **ONLY** if you are using a Qualcomm SoC device
+9. Run the `Compile.bat` if you don't need to use your phone for now. This one takes around 30 minutes to run. I recommend enabling "Keep screen on while charging" in developer options during the running process. Your device temperature will also increase during the running process.
+10. Run the `Extra_Boost.bat` **OR** `Power_Saving.bat` if you want better performance or battery life
+11. **ONLY RUN** the `Hardware.bat` if you want your device both **HOT AS FUCK** and fast as fuck
+12. Restart the device
 
 ### Android (Advanced) 🤖
 Download both Shizuku and Shizushell on Google Play Store, start Shizuku, and type commands from the .bat files one by one with the header "adb shell" removed 
