@@ -2,6 +2,8 @@ adb shell dumpsys deviceidle force-idle
 
 adb shell settings put global restricted_device_performance 1,1
 
+adb shell settings put global persist.sys.use_8bpp_alpha 1
+
 adb shell cmd power set-fixed-performance-mode-enabled 0
 adb shell cmd power set-mode 2
 adb shell setprop debug.performance.tuning 2
