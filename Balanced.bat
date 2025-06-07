@@ -18,13 +18,13 @@ adb shell settings put global persist.sys.miui_sptm.enable true
 adb shell settings put global persist.miui.miperf.enable true
 adb shell settings put global persist.sys.horae.enable 1
 adb shell settings put global suspend.short_suspend_threshold_millis 5000
+adb shell settings put global suspend.short_suspend_backoff_enabled true
 adb shell settings put global sys.fflag.override.settings_enable_monitor_phantom_procs false
 adb shell settings put global zygote.critical_window.minute 10
 adb shell settings put global persist.vendor.qcomsysd.enabled 1
 adb shell settings put global persist.device_config.runtime_native.use_app_image_startup_cache true
 adb shell settings put global persist.device_config.runtime_native_boot.pin_camera false
 adb shell settings put global persist.vendor.camera.realtimethread 1
-adb shell settings put global suspend.short_suspend_backoff_enabled true
 adb shell settings put global sched.colocate.enable 1
 adb shell settings put global sys.config.phone_start_early true
 
