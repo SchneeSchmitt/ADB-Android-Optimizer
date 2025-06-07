@@ -69,3 +69,11 @@ adb shell settings put global zygote.critical_window.minute 14
 adb shell settings put global game_accelerator_state 1
 adb shell settings put system is_game_mode 1
 adb shell settings put system ai_turbo_enabled 1
+adb shell settings put global iop.enable_prefetch_ofr 1
+adb shell settings put global persist.preload.common 1
+adb shell settings put global persist.zygote.preload_threads 3
+adb shell settings put global persist.cpu.gov.performance performance
+adb shell settings put global persist.sys.force_highendgfx true
+adb shell settings put global sys.games.gt.prof 1
+adb shell settings put global persist.vendor.qti.games.gt.prof 1
+adb shell settings put global persist.vendor.qti.games.at.prof 1
