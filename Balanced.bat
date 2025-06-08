@@ -289,7 +289,6 @@ adb shell setprop debug.sf.gpu_comp_tiling 1
 adb shell setprop debug.sf.recomputecrop 0
 adb shell setprop debug.sf.gpu_freq_indeks 5
 adb shell setprop debug.sf.enable_layer_caching true
-adb shell setprop debug.sf.enable_hwc_vds true
 adb shell setprop debug.sf.enable_advanced_sf_phase_offset 1
 adb shell setprop debug.sf.enable_gl_backpressure 1
 adb shell setprop debug.sf.early_app_phase_offset_ns 500000
@@ -319,7 +318,7 @@ adb shell setprop debug.sf.enable.planner_prediction false
 adb shell setprop debug.sf.hwc_hotplug_error_via_neg_vsync 1
 adb shell setprop debug.sf.hwc_hdcp_via_neg_vsync 1
 adb shell setprop debug.sf.layer_caching_active_layer_timeout_ms 1050
-adb shell setprop debug.sf.predict_hwc_composition_strategy 1
+adb shell setprop debug.sf.predict_hwc_composition_strategy 0
 adb shell settings put global persist.sys.sf.native_mode 1
 adb shell device_config put surface_flinger_native_boot max_frame_buffer_acquired_buffers 3
 adb shell settings put global viewroot.profile_rendering true
@@ -347,7 +346,6 @@ adb shell settings put global persist.vendor.vcb.ability true
 adb shell settings put global persist.vendor.vcb.enable true
 adb shell settings put global sdm.debug.disable_skip_validate 0
 adb shell settings put global persist.sys.use_dithering 0
-adb shell settings put global persist.hwc.enable_vds 1
 adb shell settings put global vendor.display.enable_async_powermode 1
 adb shell settings put global vendor.display.use_smooth_motion 1
 adb shell settings put global persist.qfp.wup_display 0
