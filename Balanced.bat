@@ -467,9 +467,6 @@ adb shell device_config put activity_manager_native_boot offload_queue_enabled t
 adb shell device_config put runtime_native_boot enable_readahead false
 adb shell device_config put runtime_native_boot iorap_readahead_enable false
 
-adb shell settings put global storage_benchmark_interval 604800000
-adb shell settings put global fstrim_mandatory_interval 2592000000
-
 adb shell settings put global activity_starts_logging_enabled 0
 adb shell setprop debug.atrace.tags.enableflags false
 adb shell settings put secure send_action_app_error 0
@@ -759,6 +756,8 @@ adb shell settings put global fs.inotify.max_queued_events 32000
 adb shell settings put global fs.inotify.max_user_instances 256
 adb shell settings put global fs.inotify.max_user_watches 10240
 adb shell settings put global vold.post_fs_data_done 1 
+adb shell settings put global storage_benchmark_interval 604800000
+adb shell settings put global fstrim_mandatory_interval 2592000000
 
 adb shell settings put global network_recommendations_enabled 0
 adb shell settings put global network_scoring_ui_enabled 0
