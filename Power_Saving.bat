@@ -68,4 +68,5 @@ adb shell settings put global zygote.critical_window.minute 6
 adb shell settings put global persist.device_config.activity_manager.use_compaction true
 adb shell setprop debug.sf.gpu_freq_indeks 2
 adb shell settings put global cached_apps_freezer 1
+adb shell device_config put activity_manager_native_boot use_freezer true
 adb shell settings put system power_sleep_mode_enabled 1
