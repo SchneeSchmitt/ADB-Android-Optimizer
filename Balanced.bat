@@ -616,7 +616,7 @@ adb shell settings put global persist.sys.memory.debug.enable 0
 adb shell settings put global sys.logbootcomplete 0
 adb shell settings put global netstats_enabled 0
 adb shell device_config put runtime_native_boot disable_lock_profiling true
-adb shell device_config put interaction_jank_monitor enabled false
+adb shell device_config put interaction_jank_monitor_enabled false
 adb shell device_config put latency_tracker enabled false
 adb shell device_config put runtime_native_boot enable_perfetto false
 adb shell settings put global log_ao 0
