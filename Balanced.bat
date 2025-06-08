@@ -194,7 +194,7 @@ adb shell settings put global shutdown.mode hibernate
 adb shell settings put global warmboot.capability 1
 
 adb shell settings put global hwui.render_dirty_regions false
-adb shell setprop debug.hwui.profile true
+adb shell setprop debug.hwui.profile false
 adb shell setprop debug.hwui.webview_overlays_enabled true
 adb shell settings put global sys.use_fifo_ui 1
 adb shell settings put global persist.sys.cpu.renderthreads 1
