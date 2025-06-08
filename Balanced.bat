@@ -323,7 +323,6 @@ adb shell setprop debug.sf.predict_hwc_composition_strategy 1
 adb shell settings put global persist.sys.sf.native_mode 1
 adb shell device_config put surface_flinger_native_boot max_frame_buffer_acquired_buffers 3
 adb shell settings put global viewroot.profile_rendering true
-adb shell settings put global persist.hwc.ptor.enable true
 adb shell settings put global persist.sys.miui_animator_sched.sched_threads 32
 adb shell settings put global persist.vendor.display.miui.composer_boost 0-7
 adb shell settings put global persist.sys.miui_animator_sched.bigcores 4-7
@@ -342,6 +341,7 @@ adb shell setprop debug.hwui.enable_bp_cache true
 adb shell settings put global vendor.iop.enable_uxe 1
 adb shell settings put global running_without_sync_framework false
 adb shell settings put global present_time_offset_from_vsync_ns 0
+adb shell settings put global vendor.display.hwc_allow_copy true
 
 adb shell settings put global vendor.display.use_layer_ext 0
 adb shell settings put global persist.vendor.vcb.ability true
@@ -349,6 +349,7 @@ adb shell settings put global persist.vendor.vcb.enable true
 adb shell settings put global sdm.debug.disable_skip_validate 0
 adb shell settings put global persist.sys.use_dithering 0
 adb shell settings put global persist.hwc.enable_vds 1
+adb shell settings put global vendor.display.vds_allow_hwc 1
 adb shell settings put global vendor.display.enable_async_powermode 1
 adb shell settings put global vendor.display.use_smooth_motion 1
 adb shell settings put global persist.qfp.wup_display 0
