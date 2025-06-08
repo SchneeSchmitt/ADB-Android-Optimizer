@@ -13,3 +13,8 @@ adb shell settings put global sys.hwc.gpu_perf_mode 1
 adb shell settings put global composition.type hardware
 adb shell setprop debug.composition.type hardware
 adb shell settings put global persist.sys.composition.type hardware
+adb shell settings put global persist.hwc.mdpcomp.enable true
+adb shell settings put global persist.hwc.ptor.enable
+adb shell setprop debug.sf.enable_hwc_vds 1
+adb shell settings put global vendor.display.vds_allow_hwc 1
+adb shell settings put global vendor.display.hwc_allow_copy true
