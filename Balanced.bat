@@ -212,8 +212,8 @@ adb shell setprop debug.hwui.layer_cache_size 15
 adb shell setprop debug.hwui.enable_f16 true
 adb shell setprop debug.hwui.enable_partial_updates true
 adb shell setprop debug.skia.threaded_mode true
-adb shell setprop debug.hwui.render_thread_count 1
-adb shell setprop debug.skia.num_render_threads 1
+adb shell setprop debug.hwui.render_thread_count 5
+adb shell setprop debug.skia.num_render_threads 5
 adb shell setprop debug.skia.render_thread_priority 1
 adb shell settings put global persist.sys.gpu.working_thread_priority 1
 adb shell setprop debug.rs.shader SPIR-V
@@ -319,7 +319,7 @@ adb shell setprop debug.sf.hwc_hdcp_via_neg_vsync 1
 adb shell setprop debug.sf.layer_caching_active_layer_timeout_ms 1050
 adb shell setprop debug.sf.predict_hwc_composition_strategy 0
 adb shell settings put global persist.sys.sf.native_mode 1
-adb shell device_config put surface_flinger_native_boot max_frame_buffer_acquired_buffers 3
+adb shell device_config put surface_flinger_native_boot max_frame_buffer_acquired_buffers 4
 adb shell settings put global viewroot.profile_rendering true
 adb shell settings put global persist.sys.miui_animator_sched.sched_threads 32
 adb shell settings put global persist.vendor.display.miui.composer_boost 0-7
