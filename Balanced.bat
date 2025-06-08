@@ -549,7 +549,7 @@ adb shell settings put global persist.logd.size.radio OFF
 adb shell settings put global persist.logd.size.system OFF
 adb shell settings put global libc.debug.malloc 0
 adb shell settings put global debug_test 0
-adb shell settings put global db.log.slow_query_threshold 0
+adb shell settings put global db.log.slow_query_threshold 5000
 adb shell settings put global net.ipv4.tcp_no_metrics_save 1
 adb shell settings put global net.ipv6.tcp_no_metrics_save 1
 adb shell settings put global persist.vendor.wifienhancelog 0
@@ -570,7 +570,6 @@ adb shell settings put global persist.sys.lmk.reportkills false
 adb shell settings put global persist.traced_perf.enable 0
 adb shell device_config put runtime_native_boot iorapd.perfetto.enable false
 adb shell settings put global config.disable_rtt true
-adb shell settings put global db.log.slow_query_threshold 0
 adb shell setprop debug.qualcomm.sns.hal 0
 adb shell setprop debug.qualcomm.sns.daemon 0
 adb shell setprop debug.qualcomm.sns.libsensor1 0
