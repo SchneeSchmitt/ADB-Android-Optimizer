@@ -504,7 +504,6 @@ adb shell setprop debug.mdpcomp.logs 0
 adb shell setprop debug.gpu.debug_layers_on 0
 adb shell setprop debug.egl.traceGpuCompletion false
 adb shell setprop debug.egl.profiler 0
-adb shell setprop debug.enable.gamed 0
 adb shell setprop debug.enable.wl_log 0
 adb shell setprop debug.hwc_dump_en 0
 adb shell setprop debug.sf.dump 0
