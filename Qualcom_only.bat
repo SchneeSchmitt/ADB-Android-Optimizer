@@ -13,4 +13,3 @@ adb shell settings put global sdm.debug.disable_inline_rotator 1
 adb shell settings put global vendor.vidc.enc.disable_bframes 1
 adb shell settings put global video.disable.ubwc 0
 adb shell settings put global persist.vendor.qcomsysd.enabled 1
-adb shell settings put global persist.hwc.mdpcomp.enable true
