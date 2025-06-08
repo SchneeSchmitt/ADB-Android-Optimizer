@@ -18,3 +18,6 @@ adb shell settings put global persist.hwc.ptor.enable
 adb shell setprop debug.sf.enable_hwc_vds 1
 adb shell settings put global vendor.display.vds_allow_hwc 1
 adb shell settings put global vendor.display.hwc_allow_copy true
+adb shell setprop debug.sf.enable_hwc_vds true
+adb shell setprop debug.sf.predict_hwc_composition_strategy 1
+adb shell settings put global persist.hwc.enable_vds 1
