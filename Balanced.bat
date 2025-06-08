@@ -284,7 +284,6 @@ adb shell setprop debug.sf.showthermal 0
 adb shell setprop debug.sf.showvulkan 0
 adb shell setprop debug.sf.showzram 0
 adb shell setprop debug.sf.showtouchscreen 0
-adb shell setprop debug.sf.disable_hwc 0
 adb shell setprop debug.sf.gpu_comp_tiling 1
 adb shell setprop debug.sf.recomputecrop 0
 adb shell setprop debug.sf.gpu_freq_indeks 5
