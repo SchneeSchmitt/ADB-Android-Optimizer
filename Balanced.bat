@@ -6,6 +6,8 @@ adb shell settings put global enable_freeform_support 1
 adb shell settings put global lockscreen.rot_override true
 adb shell settings put global sys.autobrightness_optimize true
 adb shell settings put global persist.adb.notify 0
+adb shell settings put global audio_safe_volume_state 0
+adb shell settings put global audio.safemedia.bypass true
 
 adb shell settings put global persist.sys.dalvik.multithread true
 adb shell settings put global persist.sys.dalvik.hyperthreading true
