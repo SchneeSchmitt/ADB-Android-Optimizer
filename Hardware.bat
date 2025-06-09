@@ -23,3 +23,6 @@ adb shell setprop debug.sf.predict_hwc_composition_strategy 1
 adb shell settings put global persist.hwc.enable_vds 1
 adb shell setprop debug.sf.disable_hwc 0
 adb shell settings put global persist.hwc.ptor.enable true
+adb shell setprop debug.sf.hwinterpolation 1
+adb shell setprop debug.gl.hw 1
+adb shell setprop debug.hwui.force_hw_layers 1
