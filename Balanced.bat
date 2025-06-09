@@ -193,7 +193,6 @@ adb shell settings put global persist.vendor.qcom.bluetooth.twsp_state.enabled f
 adb shell settings put global shutdown.mode hibernate
 adb shell settings put global warmboot.capability 1
 
-adb shell settings put global hwui.render_dirty_regions false
 adb shell setprop debug.hwui.profile false
 adb shell setprop debug.hwui.webview_overlays_enabled true
 adb shell settings put global sys.use_fifo_ui 1
@@ -228,9 +227,10 @@ adb shell settings put global hwui.use_gpu_pixel_buffers true
 adb shell settings put global hwui.text_gamma_correction lookup
 adb shell settings put global hwui.use.blacklist true
 adb shell setprop debug.hwui.use_gpu_pixel_buffers true
-adb shell setprop debug.hwui.render_dirty_regions false
+adb shell settings put global hwui.render_dirty_regions true
+adb shell setprop debug.hwui.render_dirty_regions true
 adb shell setprop debug.hwui.show_dirty_regions false
-adb shell settings put global DEBUG_DIRTY_REGION false
+adb shell settings put global DEBUG_DIRTY_REGION true
 adb shell settings put global use_egl_mode 1
 adb shell settings put global sys.egl.enable_frame_preload true
 adb shell setprop debug.egl.buffcount 4
