@@ -740,7 +740,7 @@ adb shell setprop debug.hwui.trace 0
 adb shell setprop debug.hwui.force_gpu_for_layer_tests 0
 adb shell setprop debug.perfhudes 1
 adb shell setprop debug.hwui.use_gl_trace 0
-adb shell settings put global gpu_debug_layers ""
+adb shell settings put global gpu_debug_layers 0
 adb shell setprop debug.hwc.logvsync 0
 adb shell settings put global sys.games.gt.prof 0
 adb shell settings put global debugtool.anrhistory 0
@@ -842,7 +842,7 @@ adb shell settings put global persist.sys.memory.debug.enable 0
 adb shell settings put global sys.logbootcomplete 0
 adb shell settings put global netstats_enabled 0
 adb shell device_config put runtime_native_boot disable_lock_profiling true
-adb shell device_config put interaction_jank_monitor_enabled false
+adb shell device_config put interaction_jank_monitor enabled false
 adb shell device_config put latency_tracker enabled false
 adb shell device_config put runtime_native_boot enable_perfetto false
 adb shell setprop debug.MB.running 0
