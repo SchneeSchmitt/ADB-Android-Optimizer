@@ -311,16 +311,16 @@ adb shell settings put global texture_atlas_map_pool_override 0.15
 adb shell settings put global buffer_size 0.5
 adb shell setprop debug.hwui.disable_zrle 0
 adb shell settings put global sf.ddms 0
-adb shell setprop debug.sf.enable 1
-adb shell setprop debug.sf.gpuoverlay 1
+adb shell setprop debug.sf.enable 0
+adb shell setprop debug.sf.gpuoverlay 0
 adb shell setprop debug.sf.layer_smoothness 5
-adb shell setprop debug.sf.sa_enable 1
+adb shell setprop debug.sf.sa_enable 0
 adb shell setprop debug.sf.layer_timeout 50
 adb shell setprop debug.sf.early_phase_limit 3
-adb shell setprop debug.sf.viewmotion 1
+adb shell setprop debug.sf.viewmotion 0
 adb shell setprop debug.sf.swapinterval 1
-adb shell setprop debug.sf.enable_egl_backpressure 0
-adb shell setprop debug.sf.enable_hgl 1
+adb shell setprop debug.sf.enable_egl_backpressure 1
+adb shell setprop debug.sf.enable_hgl 0
 adb shell setprop debug.sf.gpu_freq_index 1
 adb shell setprop debug.sf.hwc.min.duration 0
 adb shell setprop debug.sf.max_igbp_list_size 0
