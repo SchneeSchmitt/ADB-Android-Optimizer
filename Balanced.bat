@@ -28,10 +28,10 @@ adb shell settings put global persist.vendor.qcomsysd.enabled 1
 adb shell settings put global persist.device_config.runtime_native.use_app_image_startup_cache true
 adb shell settings put global persist.device_config.runtime_native_boot.pin_camera false
 adb shell settings put global persist.vendor.camera.realtimethread 1
-adb shell settings put global sched.colocate.enable 1
+adb shell settings put global sched.colocate.enable 0
 adb shell settings put global sys.config.phone_start_early true
 adb shell device_config put activity_manager uses_weight true
-adb shell setprop debug.OVRManager.cpuLevel 3
+adb shell setprop debug.OVRManager.cpuLevel 2
 adb shell setprop debug.cpuprio 20
 adb shell setprop debug.mtk_tflite.target_nnapi 33
 adb shell setprop debug.disable_sched_boost false
@@ -39,14 +39,13 @@ adb shell setprop debug.enable.gamed 1
 adb shell setprop debug.enable.hwacc 1
 adb shell setprop debug.smart_scheduling 1
 adb shell setprop debug.qcom.hw_haplite 1
-adb shell setprop debug.qcom.hspm.enabled 1
-adb shell setprop debug.syncopts 3
+adb shell setprop debug.qcom.hspm.enabled 0
+adb shell setprop debug.syncopts 1
 adb shell setprop debug.multicore.processing 1
 adb shell setprop debug.use_app_native 1
-adb shell setprop debug.performance.cap 110
-adb shell setprop debug.performance.disturb true
-adb shell setprop debug.performance_schema_max_memory_classes 750
-adb shell setprop debug.sched.colocate.enable 1
+adb shell setprop debug.performance.cap 100
+adb shell setprop debug.performance.disturb false
+adb shell setprop debug.sched.colocate.enable 0
 adb shell setprop debug.singlecore.processing 0
 adb shell setprop debug.threadedOpt 1
 adb shell settings put system thread_priority_highest FOREGROUND
@@ -741,6 +740,7 @@ adb shell setprop debug.perfhudes 1
 adb shell setprop debug.hwui.use_gl_trace 0
 adb shell settings put global gpu_debug_layers 0
 adb shell setprop debug.hwc.logvsync 0
+adb shell setprop debug.performance_schema_max_memory_classes 0
 adb shell settings put global sys.games.gt.prof 0
 adb shell settings put global debugtool.anrhistory 0
 adb shell settings put global profiler.debugmonitor false
