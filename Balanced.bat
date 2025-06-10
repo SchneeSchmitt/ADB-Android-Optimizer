@@ -40,8 +40,6 @@ adb shell setprop debug.enable.hwacc 1
 adb shell setprop debug.smart_scheduling 1
 adb shell setprop debug.qcom.hw_haplite 1
 adb shell setprop debug.qcom.hspm.enabled 1
-adb shell setprop debug.gpu.mode 1
-adb shell setprop debug.hwui.use_dvfs 1
 adb shell setprop debug.syncopts 3
 adb shell setprop debug.multicore.processing 1
 adb shell setprop debug.use_app_native 1
@@ -244,7 +242,7 @@ adb shell setprop debug.hwui.texture_cache_size 50
 adb shell setprop debug.hwui.gradient_cache_size 1
 adb shell setprop debug.hwui.path_cache_size 10
 adb shell setprop debug.hwui.shape_cache_size 5
-adb shell setprop debug.hwui.layer_cache_size 15
+adb shell setprop debug.hwui.layer_cache_size 14
 adb shell setprop debug.hwui.enable_f16 true
 adb shell setprop debug.hwui.enable_partial_updates true
 adb shell setprop debug.skia.threaded_mode true
@@ -253,7 +251,7 @@ adb shell setprop debug.skia.num_render_threads 5
 adb shell setprop debug.skia.render_thread_priority 1
 adb shell settings put global persist.sys.gpu.working_thread_priority 1
 adb shell setprop debug.rs.shader SPIR-V
-adb shell settings put global rs.gpu.renderscript 1
+adb shell settings put global rs.gpu.renderscript 0
 adb shell settings put global enable_gpu_renderer true
 adb shell setprop debug.hwui.target_cpu_time_percent 0
 adb shell setprop debug.hwui.target_gpu_time_percent 100
@@ -407,16 +405,16 @@ adb shell setprop debug.rs.max-threads 3
 adb shell setprop debug.hwui.force_flush_of_tiles 0
 adb shell setprop debug.hwui.force_gpu_filter_bicubic 0
 adb shell setprop debug.hwui.render_priority 1
-adb shell setprop debug.hwui.use_renderscript 1
+adb shell setprop debug.hwui.use_renderscript 0
 adb shell setprop debug.mdpcomp.maxpermixer 4
 adb shell setprop debug.egl.native_scaling true
 adb shell setprop debug.hwui.render_dirty_region_size 1
 adb shell setprop debug.hwui.composition 1
-adb shell setprop debug.hwui.force_gpu_render 1
-adb shell setprop debug.oculus.gpuLevel 3
-adb shell setprop debug.OVRManager.gpuLevel 3
+adb shell setprop debug.hwui.force_gpu_render 0
+adb shell setprop debug.oculus.gpuLevel 2
+adb shell setprop debug.OVRManager.gpuLevel 2
 adb shell setprop debug.mdp.ctl.enable_a_llcc true
-adb shell setprop debug.enable-force-gpu-rendering true
+adb shell setprop debug.enable-force-gpu-rendering false
 adb shell setprop debug.disable.hwacc 0
 adb shell setprop debug.mediatek.appgamepq_compress 1
 adb shell setprop debug.mediatek.disp_decompress 1
@@ -427,18 +425,17 @@ adb shell setprop debug.hwc.dynThreshold 3.5
 adb shell setprop debug.hwc.dynThresholdYuv 2.0
 adb shell setprop debug.gles.layers EGL_KHR_gl_texture_cubemap_image,EGL_KHR_gl_texture_3D_image,EGL_KHR_gl_renderbuffer_image
 adb shell setprop debug.hwc.swapchain 1
-adb shell setprop debug.hwc.debug_composition_cache 1
+adb shell setprop debug.hwc.debug_composition_cache 0
 adb shell setprop debug.hwui.disable_gpu_cache false
 adb shell setprop debug.gralloc.gfx_ubwc_disable 0
 adb shell setprop debug.gralloc.map_fb_memory 1
 adb shell setprop debug.hal_client_domain hal_perf
 adb shell setprop debug.hwc.bq_count 3
 adb shell setprop debug.hwc.compose_level 1
-adb shell setprop debug.hwui.force_gpu_for_2d 1
+adb shell setprop debug.hwui.force_gpu_for_2d 0
 adb shell setprop debug.hwc.disabletonemapping false
 adb shell setprop debug.hwc.mdpThreshold 5.0
-adb shell setprop debug.hwui.renderscript 1
-adb shell setprop debug.hwui.layer_cache_size 18
+adb shell setprop debug.hwui.renderscript 0
 adb shell setprop debug.hwui.force_cpu_layers 0
 adb shell setprop debug.hwui.use_small_cache 0
 adb shell setprop debug.hwc.nodirtyregion 0
@@ -449,14 +446,14 @@ adb shell setprop debug.hwui.use_d2d_for_layer_draws 1
 adb shell setprop debug.hwui.use_gl_surface_for_screenshots 0
 adb shell setprop debug.mdpcomp.4k2kSplit 1
 adb shell setprop debug.qsg_renderer qsggl
-adb shell setprop debug.renderer.process 1
-adb shell setprop debug.renderer.process_compound 1
+adb shell setprop debug.renderer.process 0
+adb shell setprop debug.renderer.process_compound 0
 adb shell setprop debug.renderthread.reduceopstasksplitting true
-adb shell setprop debug.rs.default-CPU-buffer 65536
+adb shell setprop debug.rs.default-CPU-buffer 32768
 adb shell setprop debug.rs.forcecompat 0
-adb shell setprop debug.scenegraph.batching_performance 1
+adb shell setprop debug.scenegraph.batching_performance 0
 adb shell setprop debug.sdm.support_writeback 1
-adb shell setprop debug.gpu.texture_cache_size 8192
+adb shell setprop debug.gpu.texture_cache_size 2048
 adb shell settings put global render_shadows_in_compositor true
 adb shell settings put global hardware_accelerated_rendering_enabled 1
 adb shell settings put global gpu_renderer 1
@@ -696,6 +693,8 @@ adb shell setprop debug.sf.sa_log 0
 adb shell setprop debug.sf.enable_transaction_tracing false
 adb shell settings put global sf.debug.enable3D 0
 adb shell settings put global sf.debug.enable2D 0
+adb shell setprop debug.gpu.mode 0
+adb shell setprop debug.hwui.use_dvfs 0
 adb shell setprop debug.rs.debug 0
 adb shell setprop debug.rs.rsov 0
 adb shell setprop debug.rs.profile 0
