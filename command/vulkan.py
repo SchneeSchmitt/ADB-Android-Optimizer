@@ -11,3 +11,4 @@ def run_vulkan():
     for command in commands:
         subprocess.run(command, shell=True)
 
+run_vulkan()

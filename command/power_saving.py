@@ -42,3 +42,5 @@ def run_power_saving():
     ]
     for command in commands:
         subprocess.run(command, shell=True)
+        
+run_power_saving()

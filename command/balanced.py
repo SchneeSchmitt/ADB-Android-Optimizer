@@ -190,3 +190,4 @@ def run_balanced():
     for command in commands:
         subprocess.run(command, shell=True)
 
+run_balanced()
