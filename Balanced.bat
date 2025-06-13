@@ -28,7 +28,7 @@ adb shell settings put global persist.vendor.qcomsysd.enabled 1
 adb shell settings put global persist.device_config.runtime_native.use_app_image_startup_cache true
 adb shell settings put global persist.device_config.runtime_native_boot.pin_camera false
 adb shell settings put global persist.vendor.camera.realtimethread 1
-adb shell settings put global sched.colocate.enable 0
+adb shell settings put global sched.colocate.enable 1
 adb shell settings put global sys.config.phone_start_early true
 adb shell device_config put activity_manager uses_weight true
 adb shell setprop debug.OVRManager.cpuLevel 2
@@ -320,7 +320,7 @@ adb shell setprop debug.sf.early_phase_limit 3
 adb shell setprop debug.sf.viewmotion 0
 adb shell setprop debug.sf.swapinterval 1
 adb shell setprop debug.sf.enable_egl_backpressure 1
-adb shell setprop debug.sf.enable_hgl 0
+adb shell setprop debug.sf.enable_hgl 1
 adb shell setprop debug.sf.gpu_freq_index 1
 adb shell setprop debug.sf.hwc.min.duration 0
 adb shell setprop debug.sf.max_igbp_list_size 0
