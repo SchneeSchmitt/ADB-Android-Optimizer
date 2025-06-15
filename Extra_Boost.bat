@@ -21,6 +21,15 @@ adb shell settings put global performance_mode 1
 adb shell settings put global dynamic_power_savings_enabled 0
 adb shell settings put global background_power_saving_enable 0
 adb shell settings put global perf_profile_gpu high
+adb shell settings put global persist.vendor.power.high_perf 1
+adb shell settings put global persist.sys.power.high_perf_mode 1
+adb shell settings put global persist.sys.boost.performance 1
+adb shell setprop debug.qualcomm.perf_coex 0
+adb shell settings put global vendor.perf.performancemode.support 1
+
+adb shell settings put global persist.sys.cpu.governor performance
+adb shell settings put global persist.sys.gpu.governor performance
+adb shell settings put global persist.cpu.gov.performance performance
 
 adb shell settings put global sys_uidcpupower 1
 adb shell settings put global persist.sys.powmillet.enable false
@@ -47,6 +56,8 @@ adb shell setprop debug.performance.force_high_fps true
 adb shell setprop debug.performance.force_fps 3
 adb shell setprop debug.enable-force-120hz true
 adb shell settings put secure refresh_rate_mode 2
+adb shell settings put global persist.sys.fps.constant 1
+adb shell settings put global persist.sys.sf.hs_mode 1
 
 adb shell settings put global default_restrict_background_data 0
 adb shell settings put global location_mode 3
@@ -124,6 +135,7 @@ adb shell settings put global debug.sf.enable.planner_prediction true
 adb shell settings put global iorapd.readahead.enable true
 adb shell settings put global device_config put runtime_native_boot enable_readahead true
 adb shell settings put global device_config put runtime_native_boot iorap_readahead_enable true
+adb shell settings put global iop.enable_prefetch_ofr 1
 
 adb shell settings put global sys.usap.enable true
 
