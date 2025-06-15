@@ -10,6 +10,10 @@ adb shell settings put global persist.sys.use_8bpp_alpha 1
 
 adb shell settings put global location_mode 1
 
+adb shell settings put global persist.sys.cpu.governor powersave
+adb shell settings put global persist.sys.gpu.governor powersave
+adb shell settings put global persist.cpu.gov.performance powersave
+
 adb shell cmd power set-fixed-performance-mode-enabled 0
 adb shell cmd power set-mode 2
 adb shell setprop debug.performance.tuning 2
@@ -88,6 +92,8 @@ adb shell settings put global persist.vendor.qcomsysd.enabled 0
 adb shell settings put global sys.fflag.override.settings_enable_monitor_phantom_procs true
 adb shell settings put global vendor.hwc.dpp.downscale 4
 adb shell settings put global iorapd.readahead.enable false
+adb shell settings put global iop.enable_prefetch_ofr 0
+adb shell settings put global persist.preload.common 0
 
 adb shell setprop debug.rs.max-threads 1
 adb shell setprop debug.hwui.render_thread_count 1
