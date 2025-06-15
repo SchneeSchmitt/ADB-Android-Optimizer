@@ -555,7 +555,7 @@ adb shell settings put global adaptive_refresh_rate 120
 adb shell settings put global render.max_fps 120
 adb shell settings put global cpu.fps auto
 adb shell settings put global gpu.fps auto
-adb shell settings put global vendor.display.enable_optimize_refresh 13
+adb shell settings put global vendor.display.enable_optimize_refresh 1
 adb shell setprop debug.hwui.fps_divisor 1
 adb shell settings put global persist.vendor.dfps.level 1
 adb shell settings put global persist.vendor.power.dfps.level 1
