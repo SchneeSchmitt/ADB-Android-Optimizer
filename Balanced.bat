@@ -9,7 +9,7 @@ adb shell settings put global persist.adb.notify 0
 adb shell settings put global audio_safe_volume_state 0
 adb shell settings put global audio.safemedia.bypass true
 adb shell settings put global game_low_latency_mode 1
-adb shell settings put global persist.added_boot_bgservices=3
+adb shell settings put global persist.added_boot_bgservices 3
 
 adb shell settings put global persist.sys.dalvik.multithread true
 adb shell settings put global persist.sys.dalvik.hyperthreading true
