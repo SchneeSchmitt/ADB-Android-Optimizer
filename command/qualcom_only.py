@@ -12,3 +12,5 @@ def run_qualcom_only():
     ]
     for command in commands:
         subprocess.run(command, shell=True)
+
+run_qualcom_only()

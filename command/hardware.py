@@ -14,3 +14,4 @@ def run_hardware():
     for command in commands:
         subprocess.run(command, shell=True)
 
+run_hardware()

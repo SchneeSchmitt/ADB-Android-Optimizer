@@ -8,3 +8,4 @@ def run_compile():
     for command in commands:
         subprocess.run(command, shell=True)
 
+run_compile()
