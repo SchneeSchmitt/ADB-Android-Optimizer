@@ -265,7 +265,7 @@ adb shell setprop debug.skia.num_render_threads 5
 adb shell setprop debug.skia.render_thread_priority 1
 adb shell settings put global persist.sys.gpu.working_thread_priority 1
 adb shell setprop debug.rs.shader SPIR-V
-adb shell settings put global rs.gpu.renderscript 0
+adb shell settings put global rs.gpu.renderscript 1
 adb shell settings put global enable_gpu_renderer true
 adb shell setprop debug.hwui.target_cpu_time_percent 0
 adb shell setprop debug.hwui.target_gpu_time_percent 100
@@ -301,7 +301,7 @@ adb shell settings put global vendor.debug.egl.swapinterval 1
 adb shell settings put global persist.sys.egl.swapinterval 1
 adb shell setprop debug.gl.swapinterval 1
 adb shell setprop debug.enable.sglscale 1
-adb shell settings put global persist.hwc.ptor.enable true
+adb shell settings put global persist.hwc.ptor.enable false
 adb shell setprop debug.gr.swapinterval 1
 adb shell settings put global vendor.debug.gr.swapinterval 1
 adb shell settings put global persist.sys.debug.gr.swapinterval 1
@@ -425,7 +425,7 @@ adb shell setprop debug.rs.max-threads 3
 adb shell setprop debug.hwui.force_flush_of_tiles 0
 adb shell setprop debug.hwui.force_gpu_filter_bicubic 0
 adb shell setprop debug.hwui.render_priority 1
-adb shell setprop debug.hwui.use_renderscript 0
+adb shell setprop debug.hwui.use_renderscript 1
 adb shell setprop debug.mdpcomp.maxpermixer 4
 adb shell setprop debug.egl.native_scaling true
 adb shell setprop debug.hwui.render_dirty_region_size 1
@@ -450,12 +450,12 @@ adb shell setprop debug.hwui.disable_gpu_cache false
 adb shell setprop debug.gralloc.gfx_ubwc_disable 0
 adb shell setprop debug.gralloc.map_fb_memory 1
 adb shell setprop debug.hal_client_domain hal_perf
-adb shell setprop debug.hwc.bq_count 3
-adb shell setprop debug.hwc.compose_level 1
+adb shell setprop debug.hwc.bq_count 0
+adb shell setprop debug.hwc.compose_level 0
 adb shell setprop debug.hwui.force_gpu_for_2d 0
 adb shell setprop debug.hwc.disabletonemapping false
 adb shell setprop debug.hwc.mdpThreshold 5.0
-adb shell setprop debug.hwui.renderscript 0
+adb shell setprop debug.hwui.renderscript 1
 adb shell setprop debug.hwui.force_cpu_layers 0
 adb shell setprop debug.hwui.use_small_cache 0
 adb shell setprop debug.hwc.nodirtyregion 0
@@ -489,7 +489,6 @@ adb shell settings put global vendor.display.disable_excl_rect_partial_fb 0
 adb shell settings put global vendor.display.enable_posted_start_dyn 1
 adb shell settings put global persist.sys.force_highendgfx true
 adb shell settings put global sys.hwc.mdp_downscale_enable true
-adb shell settings put global vendor.display.use_layer_ext 0
 adb shell settings put global vendor.display.disable_excl_rect_partial_fb 0
 adb shell settings put global vendor.display.enable_posted_start_dyn 1
 
