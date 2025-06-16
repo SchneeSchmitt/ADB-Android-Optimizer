@@ -250,7 +250,6 @@ adb shell setprop debug.hwui.render_thread true
 adb shell settings put global renderthread.skia.reduceopstasksplitting true
 adb shell settings put global persist.sys.disable_skia_path_ops false
 adb shell setprop debug.skia.max_memory_usage_mb 512
-adb shell setprop debug.hwui.shadow.renderer monolithic
 adb shell setprop debug.hwui.drop_shadow_cache_size 0
 adb shell setprop debug.hwui.texture_cache_size 50
 adb shell setprop debug.hwui.gradient_cache_size 1
@@ -265,7 +264,7 @@ adb shell setprop debug.skia.num_render_threads 5
 adb shell setprop debug.skia.render_thread_priority 1
 adb shell settings put global persist.sys.gpu.working_thread_priority 1
 adb shell setprop debug.rs.shader SPIR-V
-adb shell settings put global rs.gpu.renderscript 1
+adb shell settings put global rs.gpu.renderscript 0
 adb shell settings put global enable_gpu_renderer true
 adb shell setprop debug.hwui.target_cpu_time_percent 0
 adb shell setprop debug.hwui.target_gpu_time_percent 100
@@ -281,7 +280,7 @@ adb shell setprop debug.hwui.render_dirty_regions true
 adb shell setprop debug.hwui.show_dirty_regions false
 adb shell settings put global DEBUG_DIRTY_REGION true
 adb shell settings put global use_egl_mode 1
-adb shell settings put global sys.egl.enable_frame_preload true
+adb shell settings put global sys.egl.enable_frame_preload false
 adb shell setprop debug.egl.buffcount 4
 adb shell setprop debug.egl.swapinterval 1
 adb shell setprop debug.egl.force_msaa false
@@ -425,7 +424,7 @@ adb shell setprop debug.rs.max-threads 3
 adb shell setprop debug.hwui.force_flush_of_tiles 0
 adb shell setprop debug.hwui.force_gpu_filter_bicubic 0
 adb shell setprop debug.hwui.render_priority 1
-adb shell setprop debug.hwui.use_renderscript 1
+adb shell setprop debug.hwui.use_renderscript 0
 adb shell setprop debug.mdpcomp.maxpermixer 4
 adb shell setprop debug.egl.native_scaling true
 adb shell setprop debug.hwui.render_dirty_region_size 1
@@ -449,13 +448,13 @@ adb shell setprop debug.hwc.debug_composition_cache 0
 adb shell setprop debug.hwui.disable_gpu_cache false
 adb shell setprop debug.gralloc.gfx_ubwc_disable 0
 adb shell setprop debug.gralloc.map_fb_memory 1
-adb shell setprop debug.hal_client_domain hal_perf
+adb shell setprop debug.hal_client_domain default
 adb shell setprop debug.hwc.bq_count 0
 adb shell setprop debug.hwc.compose_level 0
 adb shell setprop debug.hwui.force_gpu_for_2d 0
 adb shell setprop debug.hwc.disabletonemapping false
 adb shell setprop debug.hwc.mdpThreshold 5.0
-adb shell setprop debug.hwui.renderscript 1
+adb shell setprop debug.hwui.renderscript 0
 adb shell setprop debug.hwui.force_cpu_layers 0
 adb shell setprop debug.hwui.use_small_cache 0
 adb shell setprop debug.hwc.nodirtyregion 0
