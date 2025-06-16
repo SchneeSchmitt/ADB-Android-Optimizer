@@ -27,3 +27,6 @@ adb shell setprop debug.sf.hwinterpolation 1
 adb shell setprop debug.gl.hw 1
 adb shell setprop debug.hwui.force_hw_layers 1
 adb shell setprop debug.hwui.use_hw_layers 1
+adb shell setprop debug.hwc.compose_level 1
+adb shell settings put global persist.hwc.ptor.enable true
+adb shell setprop debug.hwc.bq_count 3
