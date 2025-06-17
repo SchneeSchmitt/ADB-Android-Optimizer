@@ -88,7 +88,7 @@ adb shell settings put global persist.sys.wfd.virtual 0
 adb shell settings put global persist.debug.sensors.hal 0
 adb shell settings put global persist.sys.oiface.enable 0
 adb shell settings put secure screensaver_activate_on_dock 0
-adb shell settings put secure screensaver_activate_on_sleep 0 
+adb shell settings put secure screensaver_activate_on_sleep 0
 adb shell settings put secure screensaver_enabled 0
 
 adb shell cmd thermalservice override-status 1
@@ -141,8 +141,8 @@ adb shell settings put system k2hd_effect 0
 adb shell settings put global af.resampler.quality 255
 adb shell settings put global persist.af.resampler.quality 255
 adb shell settings put global vendor.audio.low.latency true
-adb shell settings put global vendor.audio.offload.gapless.enabled false 
-adb shell settings put global vendor.audio.offload.multiaac.enable false 
+adb shell settings put global vendor.audio.offload.gapless.enabled false
+adb shell settings put global vendor.audio.offload.multiaac.enable false
 adb shell settings put global vendor.audio.offload.multiple.enabled false
 adb shell settings put global vendor.audio.offload.passthrough false
 adb shell settings put global vendor.audio.offload.track.enable false
@@ -175,7 +175,7 @@ adb shell settings put global vendor.audio.flac.sw.decoder.24bit true
 adb shell settings put global flac.sw.decoder.24bit.support true
 adb shell settings put global vendor.audio.aac.sw.decoder.24bit true
 adb shell settings put global vendor.audio.use.sw.alac.decoder true
-adb shell settings put global vendor.audio.flac.sw.encoder.24bit true 
+adb shell settings put global vendor.audio.flac.sw.encoder.24bit true
 adb shell settings put global vendor.audio.aac.sw.encoder.24bit true
 adb shell settings put global vendor.audio.use.sw.ape.decoder true
 adb shell settings put global use.non-omx.mp3.decoder false
@@ -846,8 +846,8 @@ adb shell setprop debug.qualcomm.sns.hal 0
 adb shell setprop debug.qualcomm.sns.daemon 0
 adb shell setprop debug.qualcomm.sns.libsensor1 0
 adb shell settings put global persist.data.qmi.adb_logmask 0
-adb shell settings put global persist.brcm.log none 
-adb shell settings put global persist.brcm.cp_crash none 
+adb shell settings put global persist.brcm.log none
+adb shell settings put global persist.brcm.cp_crash none
 adb shell settings put global persist.brcm.ap_crash none
 adb shell setprop debug.enable.gamed 0
 adb shell setprop debug.enable.wl_log 0
@@ -925,9 +925,9 @@ adb shell settings put global log.pm4mem 0
 adb shell settings put global log.shaders 0
 adb shell settings put global log.sc_dev 0
 adb shell settings put global log.cffdump 0
-adb shell settings put global log.cffdump_with_ifh 0         
-adb shell settings put global log.cffdump_no_memzero 0    
-adb shell settings put global log.dumpx 0 
+adb shell settings put global log.cffdump_with_ifh 0
+adb shell settings put global log.cffdump_no_memzero 0
+adb shell settings put global log.dumpx 0
 adb shell settings put global log.primitives 0
 adb shell settings put global log_frame_info 0
 adb shell settings put global log_mp4dectime 0
@@ -960,7 +960,7 @@ adb shell settings put global log.tag.APM_AudioPolicyManager SUPPRESS
 adb shell settings put global log.tag.stats_log SUPPRESS
 adb shell settings put global log.tag.BatchInternal SUPPRESS
 
-adb shell settings put global dalvik.vm.checkjni false 
+adb shell settings put global dalvik.vm.checkjni false
 adb shell settings put global dalvik.vm.dexopt-flags m=y,o=f,v=n
 adb shell settings put global dalvik.vm.execution-mode int:jit
 adb shell settings put global dalvik.vm.check-dex-sum false
@@ -1007,7 +1007,7 @@ adb shell settings put global dalvik.vm.appdexformat odex
 adb shell settings put global dalvik.vm.appimageformat lz4
 adb shell settings put global dalvik.vm.execution-mode fast:jit
 adb shell settings put global dalvik.vm.jmiopts false
-adb shell settings put global dalvik.vm.lockprof.threshold 250 
+adb shell settings put global dalvik.vm.lockprof.threshold 250
 adb shell settings put global dalvik.vm.dex2oat64.enabled true
 adb shell settings put global dalvik.vm.dexopt.secondary true
 adb shell settings put global dalvik.gc.type precise
@@ -1023,7 +1023,7 @@ adb shell settings put global vm.dirty_background_ratio 8
 adb shell settings put global vm.dirty_ratio 64
 adb shell settings put global vm.vfs_cache_pressure 20
 adb shell settings put global vm.overcommit_memory 0
-adb shell settings put global vm.lowmem_reserve_ratio 96 96
+adb shell settings put global vm.lowmem_reserve_ratio 96,96
 adb shell settings put global vm.page-cluster 3
 adb shell settings put global vm.overcommit_ratio 50
 adb shell settings put global vm.min_free_order_shift 4
@@ -1085,8 +1085,8 @@ adb shell settings put global persist.radio.fd.r8.counter 0
 adb shell settings put global bertahan.radio.fd.off.r8.counter 0
 adb shell settings put global wifi.supplicant_scan_interval 300
 adb shell settings put global default_restrict_background_data 1
-adb shell settings put secure adaptive_connectivity_enabled 1 
-adb shell settings put global persist.cust.tel.eons 1 
+adb shell settings put secure adaptive_connectivity_enabled 1
+adb shell settings put global persist.cust.tel.eons 1
 adb shell settings put global enable_cellular_on_boot 1
 adb shell settings put system wifi_assistant 1
 adb shell settings put global wifi_country_code SA
