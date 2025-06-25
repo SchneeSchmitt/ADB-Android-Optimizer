@@ -1,0 +1,81 @@
+name: Build Packages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    
+    steps:
+    - uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+        
+    - name: Install dependencies
+      run: pip install PySide6
+      
+    - name: Remove .bat files
+      run: |
+        find . -name "*.bat" -type f -delete
+        
+    - name: Create package
+      run: |
+        python -c "
+        import os
+        import shutil
+        import zipfile
+        from pathlib import Path
+        
+        system = '${{ runner.os }}'
+        package_name = f'ADB_Android_Optimizer_{system}'
+        
+        # Create temp directory
+        temp_dir = Path('temp_package')
+        if temp_dir.exists():
+            shutil.rmtree(temp_dir)
+        temp_dir.mkdir()
+        
+        # Copy files
+        for item in os.listdir('.'):
+            if os.path.isfile(item):
+                shutil.copy2(item, temp_dir)
+            elif os.path.isdir(item):
+                shutil.copytree(item, temp_dir/item)
+        
+        # Create package
+        if system == 'Windows':
+            with zipfile.ZipFile(f'{package_name}.zip', 'w', zipfile.ZIP_DEFLATED) as zipf:
+                for root, dirs, files in os.walk(temp_dir):
+                    for file in files:
+                        zipf.write(os.path.join(root, file), 
+                                  os.path.relpath(os.path.join(root, file), temp_dir))
+        elif system == 'macOS':
+            with zipfile.ZipFile(f'{package_name}.zip', 'w', zipfile.ZIP_DEFLATED) as zipf:
+                for root, dirs, files in os.walk(temp_dir):
+                    for file in files:
+                        zipf.write(os.path.join(root, file), 
+                                  os.path.relpath(os.path.join(root, file), temp_dir))
+        else:  # Linux
+            shutil.make_archive(package_name, 'gztar', temp_dir)
+        
+        # Clean up
+        shutil.rmtree(temp_dir)
+        "
+        
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: ${{ runner.os }}-package
+        path: |
+          ADB_Android_Optimizer_*.zip
+          ADB_Android_Optimizer_*.tar.gz

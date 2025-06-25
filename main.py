@@ -5,6 +5,7 @@ import sys
 import urllib.request
 import zipfile
 import shutil
+import platform
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -59,6 +60,18 @@ class MainWindow(QMainWindow):
             self.install_adb()
 
     def install_adb(self):
+        system = platform.system().lower()
+        
+        if system == 'darwin':
+            self._install_adb_macos()
+        elif system == 'windows':
+            self._install_adb_windows()
+        elif system == 'linux':
+            self._install_adb_linux()
+        else:
+            QMessageBox.critical(self, 'Unsupported System', f'Your system {system} is not supported')
+
+    def _install_adb_macos(self):
         url = 'https://dl.google.com/android/repository/platform-tools-latest-darwin.zip'
         zip_path = 'platform-tools-latest-darwin.zip'
         unzip_path = '/usr/local/'
@@ -77,9 +90,51 @@ class MainWindow(QMainWindow):
         os.chmod('/usr/local/adb/fastboot', 0o755)
 
         # Add adb to PATH
-        with open('/Users/gudupao/.zshrc', 'a') as f:
+        with open(os.path.expanduser('~/.zshrc'), 'a') as f:
             f.write('\n# Add ADB to PATH\nexport PATH=/usr/local/adb:$PATH\n')
-        subprocess.run(['source', '/Users/gudupao/.zshrc'], shell=True)
+        subprocess.run(['source', os.path.expanduser('~/.zshrc')], shell=True)
+
+        QMessageBox.information(self, 'ADB Installation Complete', 'ADB has been successfully installed.')
+
+    def _install_adb_windows(self):
+        url = 'https://dl.google.com/android/repository/platform-tools-latest-windows.zip'
+        zip_path = 'platform-tools-latest-windows.zip'
+        unzip_path = os.path.join(os.environ['ProgramFiles'], 'platform-tools')
+
+        urllib.request.urlretrieve(url, zip_path)
+        with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+            zip_ref.extractall(unzip_path)
+
+        # Add to PATH
+        path = os.environ['PATH']
+        if unzip_path not in path:
+            os.environ['PATH'] = f"{unzip_path};{path}"
+            subprocess.run(['setx', 'PATH', os.environ['PATH']], shell=True)
+
+        QMessageBox.information(self, 'ADB Installation Complete', 'ADB has been successfully installed.')
+
+    def _install_adb_linux(self):
+        url = 'https://dl.google.com/android/repository/platform-tools-latest-linux.zip'
+        zip_path = 'platform-tools-latest-linux.zip'
+        unzip_path = '/usr/local/'
+
+        urllib.request.urlretrieve(url, zip_path)
+        with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+            zip_ref.extractall(unzip_path)
+
+        os.makedirs('/usr/local/adb', exist_ok=True)
+        shutil.move(f'{unzip_path}platform-tools/adb', '/usr/local/adb/adb')
+        shutil.move(f'{unzip_path}platform-tools/fastboot', '/usr/local/adb/fastboot')
+        shutil.rmtree(unzip_path)
+        os.remove(zip_path)
+
+        os.chmod('/usr/local/adb/adb', 0o755)
+        os.chmod('/usr/local/adb/fastboot', 0o755)
+
+        # Add adb to PATH
+        with open(os.path.expanduser('~/.bashrc'), 'a') as f:
+            f.write('\n# Add ADB to PATH\nexport PATH=/usr/local/adb:$PATH\n')
+        subprocess.run(['source', os.path.expanduser('~/.bashrc')], shell=True)
 
         QMessageBox.information(self, 'ADB Installation Complete', 'ADB has been successfully installed.')
 
