@@ -48,3 +48,4 @@ def run_extra_boost():
     for command in commands:
         subprocess.run(command, shell=True)
 
+run_extra_boost()
