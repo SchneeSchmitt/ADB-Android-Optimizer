@@ -74,6 +74,7 @@ jobs:
           # Linux - Create DEB package
           mkdir -p debian/usr/local/bin
           mkdir -p debian/usr/share/applications
+          mkdir -p debian/DEBIAN
           
           cp dist/ADB_Android_Optimizer debian/usr/local/bin/
           
