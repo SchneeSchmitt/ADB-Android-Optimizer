@@ -57,7 +57,6 @@ adb shell settings put global persist.cpu.ondemand.enable 1
 adb shell settings put global persist.cpu.gov.performance ondemand
 adb shell settings put global vendor.skip.init 0
 adb shell settings put global vendor.perf.iop_v3.enable 1
-adb shell settings put global vendor.skip.init 0
 
 adb shell settings put system mcf_continuity 0
 adb shell settings put system mcf_continuity_permission_denied 1
@@ -266,8 +265,8 @@ adb shell settings put global persist.sys.gpu.working_thread_priority 1
 adb shell setprop debug.rs.shader SPIR-V
 adb shell settings put global rs.gpu.renderscript 0
 adb shell settings put global enable_gpu_renderer true
-adb shell setprop debug.hwui.target_cpu_time_percent 0
-adb shell setprop debug.hwui.target_gpu_time_percent 100
+adb shell setprop debug.hwui.target_cpu_time_percent 72
+adb shell setprop debug.hwui.target_gpu_time_percent 40
 adb shell setprop debug.enable_scissor_optimization true
 adb shell setprop debug.hwui.disable_scissor_opt false
 adb shell setprop debug.hwui.shadow.renderer monolithic
@@ -598,7 +597,7 @@ adb shell settings put global vendor.vidc.enc.disable_bframes 1
 adb shell settings put global video.disable.ubwc 0
 adb shell settings put global vidc.enc.dcvs.extra-buff-count 2
 adb shell settings put global media.swhevccodectype 0
-adb shell settings put global media.hwhevccodectype 1
+adb shell settings put global media.hwhevccodectype 0
 adb shell settings put global media.stagefright.audio.deep true
 adb shell settings put global persist.sys.media.use-awesome 1
 adb shell settings put global encoder.video.profile high
@@ -614,8 +613,8 @@ adb shell setprop debug.stagefright.omx_default_rank 0
 adb shell setprop debug.media.codec2 1
 adb shell setprop debug.stagefright.c2inputsurface -1
 adb shell settings put global render.enable_gpu_decoding true
-adb shell settings put global hardware_accelerated_video_decode 1
-adb shell settings put global hardware_accelerated_video_encode 1
+adb shell settings put global hardware_accelerated_video_decode 0
+adb shell settings put global hardware_accelerated_video_encode 0
 
 adb shell settings put global cache.clean 1
 adb shell settings put global fstrim_mandatory_interval 86400000
@@ -1006,7 +1005,7 @@ adb shell settings put global dalvik.vm.dex2oat-Xmx 512m
 adb shell settings put global dalvik.vm.appdexformat odex
 adb shell settings put global dalvik.vm.appimageformat lz4
 adb shell settings put global dalvik.vm.execution-mode fast:jit
-adb shell settings put global dalvik.vm.jmiopts false
+adb shell settings put global dalvik.vm.jmiopts fastinvoke
 adb shell settings put global dalvik.vm.lockprof.threshold 250
 adb shell settings put global dalvik.vm.dex2oat64.enabled true
 adb shell settings put global dalvik.vm.dexopt.secondary true
