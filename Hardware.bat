@@ -30,3 +30,6 @@ adb shell setprop debug.hwui.use_hw_layers 1
 adb shell setprop debug.hwc.compose_level 1
 adb shell settings put global persist.hwc.ptor.enable true
 adb shell setprop debug.hwc.bq_count 3
+adb shell settings put global hardware_accelerated_video_decode 1
+adb shell settings put global hardware_accelerated_video_encode 1
+adb shell settings put global media.hwhevccodectype 1
