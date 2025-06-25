@@ -28,49 +28,69 @@ jobs:
       run: |
         find . -name "*.bat" -type f -delete
         
-    - name: Create package
+    - name: Create installer
       run: |
-        python -c "
-        import os
-        import shutil
-        import zipfile
-        from pathlib import Path
-        
-        system = '${{ runner.os }}'
-        package_name = f'ADB_Android_Optimizer_{system}'
-        
-        # Create temp directory
-        temp_dir = Path('temp_package')
-        if temp_dir.exists():
-            shutil.rmtree(temp_dir)
-        temp_dir.mkdir()
-        
-        # Copy files
-        for item in os.listdir('.'):
-            if os.path.isfile(item):
-                shutil.copy2(item, temp_dir)
-            elif os.path.isdir(item):
-                shutil.copytree(item, temp_dir/item)
-        
-        # Create package
-        if system == 'Windows':
-            with zipfile.ZipFile(f'{package_name}.zip', 'w', zipfile.ZIP_DEFLATED) as zipf:
-                for root, dirs, files in os.walk(temp_dir):
-                    for file in files:
-                        zipf.write(os.path.join(root, file), 
-                                  os.path.relpath(os.path.join(root, file), temp_dir))
-        elif system == 'macOS':
-            with zipfile.ZipFile(f'{package_name}.zip', 'w', zipfile.ZIP_DEFLATED) as zipf:
-                for root, dirs, files in os.walk(temp_dir):
-                    for file in files:
-                        zipf.write(os.path.join(root, file), 
-                                  os.path.relpath(os.path.join(root, file), temp_dir))
-        else:  # Linux
-            shutil.make_archive(package_name, 'gztar', temp_dir)
-        
-        # Clean up
-        shutil.rmtree(temp_dir)
-        "
+        if [[ '${{ runner.os }}' == 'Windows' ]]; then
+          # Windows installer using Inno Setup
+          echo "Downloading Inno Setup..."
+          curl -O https://jrsoftware.org/download.php/is.exe
+          ./is.exe /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-
+          
+          echo "Creating installer script..."
+          cat > installer.iss << 'EOF'
+          [Setup]
+          AppName=ADB Android Optimizer
+          AppVersion=1.0
+          DefaultDirName={pf}\ADB_Android_Optimizer
+          DefaultGroupName=ADB Android Optimizer
+          OutputDir=.
+          OutputBaseFilename=ADB_Android_Optimizer_Setup
+          Compression=lzma
+          SolidCompression=yes
+          
+          [Files]
+          Source: "*"; Excludes: "*.bat,*.iss,is.exe"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
+          
+          [Icons]
+          Name: "{group}\ADB Android Optimizer"; Filename: "{app}\main.py"
+          EOF
+          
+          echo "Building installer..."
+          "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer.iss
+          
+        elif [[ '${{ runner.os }}' == 'macOS' ]]; then
+          # macOS .pkg installer
+          echo "Creating macOS package..."
+          pkgbuild --root . \
+                   --identifier com.example.adboptimizer \
+                   --version 1.0 \
+                   --install-location /Applications \
+                   --filter ".*\.bat" \
+                   ADB_Android_Optimizer.pkg
+                   
+        else  # Linux
+          # Linux .deb package
+          echo "Creating DEB package structure..."
+          mkdir -p debian/DEBIAN
+          mkdir -p debian/usr/local/bin
+          mkdir -p debian/usr/share/applications
+          
+          cp -r * debian/usr/local/bin/
+          rm -f debian/usr/local/bin/*.bat
+          
+          cat > debian/DEBIAN/control << 'EOF'
+          Package: adb-android-optimizer
+          Version: 1.0
+          Section: utils
+          Priority: optional
+          Architecture: all
+          Maintainer: Your Name <your.email@example.com>
+          Description: ADB Android Optimizer Tool
+          EOF
+          
+          echo "Building DEB package..."
+          dpkg-deb --build debian ADB_Android_Optimizer.deb
+        fi
         
     - name: Upload artifact
       uses: actions/upload-artifact@v4
