@@ -1,10 +1,10 @@
-name: Build Packages
+name: Build Installers
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
@@ -22,80 +22,77 @@ jobs:
         python-version: '3.10'
         
     - name: Install dependencies
-      run: pip install PySide6
-      
+      run: pip install PySide6 pyinstaller
+
     - name: Remove .bat files
-      run: |
-        find . -name "*.bat" -type f -delete
+      run: find . -name "*.bat" -type f -delete
+
+    - name: Create executable
+      run: pyinstaller --onefile --windowed --name ADB_Android_Optimizer main.py
         
-    - name: Create installer
+    - name: Package installer
       run: |
         if [[ '${{ runner.os }}' == 'Windows' ]]; then
-          # Windows installer using Inno Setup
-          echo "Downloading Inno Setup..."
+          # Windows - Create EXE installer
+          mkdir -p installer
+          cp -r dist/* installer/
+          
           curl -O https://jrsoftware.org/download.php/is.exe
           ./is.exe /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-
           
-          echo "Creating installer script..."
-          cat > installer.iss << 'EOF'
-          [Setup]
-          AppName=ADB Android Optimizer
-          AppVersion=1.0
-          DefaultDirName={pf}\ADB_Android_Optimizer
-          DefaultGroupName=ADB Android Optimizer
-          OutputDir=.
-          OutputBaseFilename=ADB_Android_Optimizer_Setup
-          Compression=lzma
-          SolidCompression=yes
-          
-          [Files]
-          Source: "*"; Excludes: "*.bat,*.iss,is.exe"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
-          
-          [Icons]
-          Name: "{group}\ADB Android Optimizer"; Filename: "{app}\main.py"
-          EOF
-          
-          echo "Building installer..."
+          echo "[Setup]" > installer.iss
+          echo "AppName=ADB Android Optimizer" >> installer.iss
+          echo "AppVersion=1.0" >> installer.iss
+          echo "DefaultDirName={pf}\ADB_Android_Optimizer" >> installer.iss
+          echo "DefaultGroupName=ADB Android Optimizer" >> installer.iss
+          echo "OutputDir=." >> installer.iss
+          echo "OutputBaseFilename=ADB_Android_Optimizer_Setup" >> installer.iss
+          echo "Compression=lzma" >> installer.iss
+          echo "SolidCompression=yes" >> installer.iss
+          echo "" >> installer.iss
+          echo "[Files]" >> installer.iss
+          echo 'Source: "installer\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs' >> installer.iss
+          echo "" >> installer.iss
+          echo "[Icons]" >> installer.iss
+          echo 'Name: "{group}\ADB Android Optimizer"; Filename: "{app}\ADB_Android_Optimizer.exe"' >> installer.iss
+
           "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer.iss
           
         elif [[ '${{ runner.os }}' == 'macOS' ]]; then
-          # macOS .pkg installer
-          echo "Creating macOS package..."
-          pkgbuild --root . \
-                   --identifier com.example.adboptimizer \
-                   --version 1.0 \
-                   --install-location /Applications \
-                   --filter ".*\.bat" \
-                   ADB_Android_Optimizer.pkg
-                   
-        else  # Linux
-          # Linux .deb package
-          echo "Creating DEB package structure..."
-          mkdir -p debian/DEBIAN
+          # macOS - Create DMG
+          mkdir -p dist/dmg
+          cp -r dist/ADB_Android_Optimizer.app dist/dmg/
+          
+          hdiutil create \
+            -volname "ADB Android Optimizer" \
+            -srcfolder dist/dmg \
+            -ov \
+            -format UDZO \
+            ADB_Android_Optimizer.dmg
+            
+        else
+          # Linux - Create DEB package
           mkdir -p debian/usr/local/bin
           mkdir -p debian/usr/share/applications
           
-          cp -r * debian/usr/local/bin/
-          rm -f debian/usr/local/bin/*.bat
+          cp dist/ADB_Android_Optimizer debian/usr/local/bin/
           
-          cat > debian/DEBIAN/control << 'EOF'
-          Package: adb-android-optimizer
-          Version: 1.0
-          Section: utils
-          Priority: optional
-          Architecture: all
-          Maintainer: Your Name <your.email@example.com>
-          Description: ADB Android Optimizer Tool
-          EOF
-          
-          echo "Building DEB package..."
+          echo "Package: adb-android-optimizer" > debian/DEBIAN/control
+          echo "Version: 1.0" >> debian/DEBIAN/control
+          echo "Section: utils" >> debian/DEBIAN/control
+          echo "Priority: optional" >> debian/DEBIAN/control
+          echo "Architecture: amd64" >> debian/DEBIAN/control
+          echo "Maintainer: Your Name <your.email@example.com>" >> debian/DEBIAN/control
+          echo "Description: ADB Android Optimizer Tool" >> debian/DEBIAN/control
+
           dpkg-deb --build debian ADB_Android_Optimizer.deb
         fi
         
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ runner.os }}-package
+        name: ${{ runner.os }}-installer
         path: |
-          ADB_Android_Optimizer_*.zip
-          ADB_Android_Optimizer_*.tar.gz
+          ADB_Android_Optimizer_Setup.exe
+          ADB_Android_Optimizer.dmg
+          ADB_Android_Optimizer.deb
