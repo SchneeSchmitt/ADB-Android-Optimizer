@@ -140,45 +140,73 @@ class MainWindow(QMainWindow):
 
     def run_balance(self):
         system = platform.system().lower()
-        script = 'Balanced.bat' if system == 'windows' else 'Balanced.sh'
-        script_dir = 'command/bat' if system == 'windows' else 'command/sh'
-        subprocess.run([os.path.join(script_dir, script)], shell=True)
+        if system == 'windows':
+            script = os.path.join('command', 'bat', 'Balanced.bat')
+            subprocess.run(script, shell=True)
+        else:
+            script = os.path.join('command', 'sh', 'Balanced.sh')
+            os.chmod(script, 0o755)
+            subprocess.run(['sh', script])
 
     def run_compile(self):
         system = platform.system().lower()
-        script = 'Compile.bat' if system == 'windows' else 'Compile.sh'
-        script_dir = 'command/bat' if system == 'windows' else 'command/sh'
-        subprocess.run([os.path.join(script_dir, script)], shell=True)
+        if system == 'windows':
+            script = os.path.join('command', 'bat', 'Compile.bat')
+            subprocess.run(script, shell=True)
+        else:
+            script = os.path.join('command', 'sh', 'Compile.sh')
+            os.chmod(script, 0o755)
+            subprocess.run(['sh', script])
 
     def run_extra_boost(self):
         system = platform.system().lower()
-        script = 'Extra_Boost.bat' if system == 'windows' else 'Extra_Boost.sh'
-        script_dir = 'command/bat' if system == 'windows' else 'command/sh'
-        subprocess.run([os.path.join(script_dir, script)], shell=True)
+        if system == 'windows':
+            script = os.path.join('command', 'bat', 'Extra_Boost.bat')
+            subprocess.run(script, shell=True)
+        else:
+            script = os.path.join('command', 'sh', 'Extra_Boost.sh')
+            os.chmod(script, 0o755)
+            subprocess.run(['sh', script])
 
     def run_power_saving(self):
         system = platform.system().lower()
-        script = 'Power_Saving.bat' if system == 'windows' else 'Power_Saving.sh'
-        script_dir = 'command/bat' if system == 'windows' else 'command/sh'
-        subprocess.run([os.path.join(script_dir, script)], shell=True)
+        if system == 'windows':
+            script = os.path.join('command', 'bat', 'Power_Saving.bat')
+            subprocess.run(script, shell=True)
+        else:
+            script = os.path.join('command', 'sh', 'Power_Saving.sh')
+            os.chmod(script, 0o755)
+            subprocess.run(['sh', script])
 
     def run_hardware(self):
         system = platform.system().lower()
-        script = 'Hardware.bat' if system == 'windows' else 'Hardware.sh'
-        script_dir = 'command/bat' if system == 'windows' else 'command/sh'
-        subprocess.run([os.path.join(script_dir, script)], shell=True)
+        if system == 'windows':
+            script = os.path.join('command', 'bat', 'Hardware.bat')
+            subprocess.run(script, shell=True)
+        else:
+            script = os.path.join('command', 'sh', 'Hardware.sh')
+            os.chmod(script, 0o755)
+            subprocess.run(['sh', script])
 
     def run_vulkan(self):
         system = platform.system().lower()
-        script = 'Vulkan.bat' if system == 'windows' else 'Vulkan.sh'
-        script_dir = 'command/bat' if system == 'windows' else 'command/sh'
-        subprocess.run([os.path.join(script_dir, script)], shell=True)
+        if system == 'windows':
+            script = os.path.join('command', 'bat', 'Vulkan.bat')
+            subprocess.run(script, shell=True)
+        else:
+            script = os.path.join('command', 'sh', 'Vulkan.sh')
+            os.chmod(script, 0o755)
+            subprocess.run(['sh', script])
 
     def run_qualcom_only(self):
         system = platform.system().lower()
-        script = 'Qualcom_only.bat' if system == 'windows' else 'Qualcom_only.sh'
-        script_dir = 'command/bat' if system == 'windows' else 'command/sh'
-        subprocess.run([os.path.join(script_dir, script)], shell=True)
+        if system == 'windows':
+            script = os.path.join('command', 'bat', 'Qualcom_only.bat')
+            subprocess.run(script, shell=True)
+        else:
+            script = os.path.join('command', 'sh', 'Qualcom_only.sh')
+            os.chmod(script, 0o755)
+            subprocess.run(['sh', script])
 
 app = QApplication([])
 window = MainWindow()
