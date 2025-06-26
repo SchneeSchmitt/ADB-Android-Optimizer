@@ -30,6 +30,8 @@ jobs:
         echo "$HOME/bin" >> $GITHUB_PATH
 
     - name: Run reviewdog to comment PR
+      env:
+        REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         reviewdog \
           -f=pylint \
