@@ -1,4 +1,4 @@
-name: Pylint Check and Comment
+name: Pylint with reviewdog
 
 on:
   pull_request:
@@ -9,19 +9,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
-    - name: Set up Python
+    - name: Setup Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.11'
+        python-version: 3.11
 
-    - name: Install dependencies
-      run: |
-        pip install pylint reviewdog
+    - name: Install pylint
+      run: pip install pylint
 
-    - name: Run pylint and send reviewdog comments
+    - name: Run pylint and annotate PR with reviewdog
+      id: reviewdog
       run: |
         pylint **/*.py --output-format=text > pylint_report.txt || true
-        reviewdog -f=eslint -name="pylint" -reporter=github-pr-review -fail-on-error=false -level=warning < pylint_report.txt
+      continue-on-error: true
+
+    - name: reviewdog
+      uses: reviewdog/action-eslint@v1
+      with:
+        reporter: github-pr-review
+        filter_mode: diff_context
+        fail_on_error: false
+        level: warning
+        name: pylint
+        # pylint 使用 eslint 格式解析，输入从上一步保存的文件传递
+        # reviewdog-action 目前不支持直接文件输入，这里用 workaround
+        # 参考：https://github.com/reviewdog/action-eslint/issues/28
+        # 所以这里演示基础用法，需要配合后续改进
