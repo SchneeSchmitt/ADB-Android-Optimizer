@@ -39,8 +39,8 @@ jobs:
           pip install py2app
           py2applet --make-setup main.py
           echo "DATA_FILES = [('command/sh', ['command/sh/*.sh'])]" >> setup.py
-          echo "OPTIONS = {'argv_emulation': True, 'includes': ['PySide6'], 'packages': ['PySide6'], 'plist': {'PyRuntimeLocations': ['@executable_path/../Frameworks/Python.framework/Versions/Current/Python']}}" >> setup.py
-          python setup.py py2app --packages=PySide6 --no-strip
+          echo "OPTIONS = {'argv_emulation': True, 'includes': ['PySide6.QtCore','PySide6.QtGui','PySide6.QtWidgets'], 'packages': ['PySide6'], 'plist': {'PyRuntimeLocations': ['@executable_path/../Frameworks/Python.framework/Versions/Current/Python']}}" >> setup.py
+          python setup.py py2app --packages=PySide6 --no-strip --use-pythonpath
         else
           pyinstaller --onefile main.py
         fi
