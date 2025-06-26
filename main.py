@@ -139,32 +139,46 @@ class MainWindow(QMainWindow):
         QMessageBox.information(self, 'ADB Installation Complete', 'ADB has been successfully installed.')
 
     def run_balance(self):
-        from command.balanced import run_balanced
-        run_balanced()
+        system = platform.system().lower()
+        script = 'Balanced.bat' if system == 'windows' else 'Balanced.sh'
+        script_dir = 'command/bat' if system == 'windows' else 'command/sh'
+        subprocess.run([os.path.join(script_dir, script)], shell=True)
 
     def run_compile(self):
-        from command.compile import run_compile
-        run_compile()
+        system = platform.system().lower()
+        script = 'Compile.bat' if system == 'windows' else 'Compile.sh'
+        script_dir = 'command/bat' if system == 'windows' else 'command/sh'
+        subprocess.run([os.path.join(script_dir, script)], shell=True)
 
     def run_extra_boost(self):
-        from command.extra_boost import run_extra_boost
-        run_extra_boost()
+        system = platform.system().lower()
+        script = 'Extra_Boost.bat' if system == 'windows' else 'Extra_Boost.sh'
+        script_dir = 'command/bat' if system == 'windows' else 'command/sh'
+        subprocess.run([os.path.join(script_dir, script)], shell=True)
 
     def run_power_saving(self):
-        from command.power_saving import run_power_saving
-        run_power_saving()
+        system = platform.system().lower()
+        script = 'Power_Saving.bat' if system == 'windows' else 'Power_Saving.sh'
+        script_dir = 'command/bat' if system == 'windows' else 'command/sh'
+        subprocess.run([os.path.join(script_dir, script)], shell=True)
 
     def run_hardware(self):
-        from command.hardware import run_hardware
-        run_hardware()
+        system = platform.system().lower()
+        script = 'Hardware.bat' if system == 'windows' else 'Hardware.sh'
+        script_dir = 'command/bat' if system == 'windows' else 'command/sh'
+        subprocess.run([os.path.join(script_dir, script)], shell=True)
 
     def run_vulkan(self):
-        from command.vulkan import run_vulkan
-        run_vulkan()
+        system = platform.system().lower()
+        script = 'Vulkan.bat' if system == 'windows' else 'Vulkan.sh'
+        script_dir = 'command/bat' if system == 'windows' else 'command/sh'
+        subprocess.run([os.path.join(script_dir, script)], shell=True)
 
     def run_qualcom_only(self):
-        from command.qualcom_only import run_qualcom_only
-        run_qualcom_only()
+        system = platform.system().lower()
+        script = 'Qualcom_only.bat' if system == 'windows' else 'Qualcom_only.sh'
+        script_dir = 'command/bat' if system == 'windows' else 'command/sh'
+        subprocess.run([os.path.join(script_dir, script)], shell=True)
 
 app = QApplication([])
 window = MainWindow()
