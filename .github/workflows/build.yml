@@ -49,16 +49,19 @@ jobs:
         fi
       shell: bash
 
-    - name: Package files
+        - name: Package files
       run: |
         if [[ "$RUNNER_OS" == "Windows" ]]; then
-          powershell Compress-Archive -Path output/* -DestinationPath adb-optimizer-windows.zip
+          powershell -Command "
+            Compress-Archive -Path @( 'output/adb-optimizer.exe', 'output/command' ) -DestinationPath adb-optimizer-windows.zip
+          "
         elif [[ "$RUNNER_OS" == "macOS" ]]; then
           tar -czf adb-optimizer-macos.tar.gz -C output .
         else
           tar -czf adb-optimizer-linux.tar.gz -C output .
         fi
       shell: bash
+
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
