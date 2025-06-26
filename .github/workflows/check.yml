@@ -20,7 +20,12 @@ jobs:
 
       - name: Run pylint with checkstyle output
         run: |
-          pylint **/*.py --output-format=checkstyle > pylint_report.xml || true
+          pylint . --output-format=checkstyle > pylint_report.xml || true
+
+      - name: Check pylint report content
+        run: |
+          ls -l pylint_report.xml
+          head -40 pylint_report.xml
 
       - name: Install reviewdog CLI
         run: |
