@@ -25,20 +25,29 @@ jobs:
         python -m pip install --upgrade pip
         pip install PyInstaller py2app
         
-    - name: Build application
+    - name: Install macOS dependencies
+      if: runner.os == 'macOS'
       run: |
-        if [[ "${{ runner.os }}" == "Windows" ]]; then
+        brew install create-dmg
+        
+    - name: Build application
+      timeout-minutes: 15
+      run: |
+        if [ "${{ runner.os }}" = "Windows" ]; then
           pyinstaller --onefile --windowed main.py
-        elif [[ "${{ runner.os }}" == "macOS" ]]; then
+        elif [ "${{ runner.os }}" = "macOS" ]; then
+          pip install py2app
           py2applet --make-setup main.py
-          python setup.py py2app
+          echo "DATA_FILES = [('command/sh', ['command/sh/*.sh'])]" >> setup.py
+          python setup.py py2app -A
         else
           pyinstaller --onefile main.py
         fi
         
     - name: Package installer
+      timeout-minutes: 10
       run: |
-        if [[ "${{ runner.os }}" == "Windows" ]]; then
+        if [ "${{ runner.os }}" = "Windows" ]; then
           # Create Windows installer
           mkdir -p dist/ADB-Android-Optimizer
           cp -r dist/main.exe command/bat/* dist/ADB-Android-Optimizer/
