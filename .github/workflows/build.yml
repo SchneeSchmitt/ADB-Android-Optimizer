@@ -61,9 +61,6 @@ jobs:
           tar -czf adb-optimizer-linux.tar.gz -C output .
         fi
       shell: bash
-
-
-      
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
