@@ -1,81 +1,76 @@
-name: Build Installers
+name: Build and Release Qt Python App
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
     runs-on: ${{ matrix.os }}
+    permissions:
+      contents: write
+
     steps:
-    - uses: actions/checkout@v4
-    
+    - name: Checkout source
+      uses: actions/checkout@v4
+
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
-        python-version: '3.10'
-        
+        python-version: '3.11'
+
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install PyInstaller py2app PySide6
-        
-    - name: Install macOS dependencies
-      if: runner.os == 'macOS'
+        pip install -U pip
+        pip install pyinstaller PySide6
+
+    - name: Build with PyInstaller
       run: |
-        brew install create-dmg
-        
-    - name: Build application
-      timeout-minutes: 15
+        pyinstaller --name adb-optimizer --onefile --noconsole main.py
+
+    - name: Rename output file
       run: |
-        if [ "${{ runner.os }}" = "Windows" ]; then
-          pyinstaller --onefile --windowed main.py
-        elif [ "${{ runner.os }}" = "macOS" ]; then
-          pip install py2app
-          py2applet --make-setup main.py
-          echo "DATA_FILES = [('command/sh', ['command/sh/*.sh'])]" >> setup.py
-          echo "OPTIONS = {'argv_emulation': True, 'includes': ['PySide6.QtCore','PySide6.QtGui','PySide6.QtWidgets'], 'packages': ['PySide6'], 'plist': {'PyRuntimeLocations': ['@executable_path/../Frameworks/Python.framework/Versions/Current/Python']}}" >> setup.py
-          python setup.py py2app --packages=PySide6 --no-strip --use-pythonpath
+        mkdir output
+        if [[ "$RUNNER_OS" == "Windows" ]]; then
+          mv dist/adb-optimizer.exe output/adb-optimizer-windows.exe
+        elif [[ "$RUNNER_OS" == "macOS" ]]; then
+          mv dist/adb-optimizer output/adb-optimizer-macos
         else
-          pyinstaller --onefile main.py
+          mv dist/adb-optimizer output/adb-optimizer-linux
         fi
-        
-    - name: Package installer
-      timeout-minutes: 10
-      run: |
-        if [ "${{ runner.os }}" = "Windows" ]; then
-          # Create Windows installer
-          mkdir -p dist/ADB-Android-Optimizer
-          cp -r dist/main.exe command/bat/* dist/ADB-Android-Optimizer/
-          # Create zip package
-          cd dist && zip -r ADB-Android-Optimizer-Windows.zip ADB-Android-Optimizer
-        elif [[ "${{ runner.os }}" == "macOS" ]]; then
-          # Create macOS package
-          hdiutil create -volname "ADB Android Optimizer" -srcfolder dist/main.app -ov -format UDZO dist/ADB-Android-Optimizer.dmg
-        else
-          # Create Linux package
-          mkdir -p dist/ADB-Android-Optimizer/DEBIAN
-          mkdir -p dist/ADB-Android-Optimizer/usr/local/bin
-          mkdir -p dist/ADB-Android-Optimizer/usr/share/ADB-Android-Optimizer
-          cp dist/main dist/ADB-Android-Optimizer/usr/local/bin/adb-android-optimizer
-          cp -r command/sh/* dist/ADB-Android-Optimizer/usr/share/ADB-Android-Optimizer/
-          # Create control file
-          echo "Package: adb-android-optimizer" > dist/ADB-Android-Optimizer/DEBIAN/control
-          echo "Version: 1.0" >> dist/ADB-Android-Optimizer/DEBIAN/control
-          echo "Architecture: all" >> dist/ADB-Android-Optimizer/DEBIAN/control
-          echo "Maintainer: Your Name <your.email@example.com>" >> dist/ADB-Android-Optimizer/DEBIAN/control
-          echo "Description: ADB Android Optimizer Tool" >> dist/ADB-Android-Optimizer/DEBIAN/control
-          # Build package
-          dpkg-deb --build dist/ADB-Android-Optimizer
-        fi
-        
-    - name: Upload artifact
+      shell: bash
+
+    - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: ADB-Android-Optimizer-${{ runner.os }}
-        path: dist/ADB-Android-Optimizer*
+        name: build-${{ matrix.os }}
+        path: output/*
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+    - name: Download artifacts
+      uses: actions/download-artifact@v4
+      with:
+        path: dist
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: auto-release-${{ github.run_number }}
+        name: Release Build ${{ github.run_number }}
+        body: |
+          自動從 main 分支編譯並打包的 Qt 應用程式。
+          包含三個平台版本（Windows、macOS、Linux）。
+        files: |
+          dist/**/*
+

@@ -1,0 +1,4 @@
+packaging==24.2
+protobuf==4.25.1
+wheel @ file:///opt/homebrew/Cellar/python%403.12/3.12.8/libexec/wheel-0.45.1-py3-none-any.whl#sha256=ff30fbe2536d325272e73cd91fbfbda0f3ea73559a5c26e22e9f5b65429fa0b9
+PySide6>=6.6.0
