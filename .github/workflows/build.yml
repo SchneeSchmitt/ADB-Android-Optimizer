@@ -101,7 +101,8 @@ jobs:
         tag_name: auto-release-${{ github.run_number }}
         name: ADB Optimizer ${{ github.run_number }}
         body: |
-          包含所有平台可執行檔及原始 command 目錄的壓縮包：
+          This includes the executeable programs for following platforms in compressed files:\
+          此包含支援下列平台可執行檔案的壓縮包：
           - Windows: adb-optimizer-windows.zip
           - macOS: adb-optimizer-macos.tar.gz
           - Linux: adb-optimizer-linux.tar.gz
