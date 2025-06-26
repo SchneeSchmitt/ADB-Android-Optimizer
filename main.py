@@ -144,7 +144,7 @@ class MainWindow(QMainWindow):
             script = os.path.join('command', 'bat', 'Balanced.bat')
             subprocess.run(script, shell=True)
         else:
-            script = os.path.join('command', 'sh', 'Balanced.sh')
+            script = os.path.join('.', 'command', 'sh', 'Balanced.sh')
             os.chmod(script, 0o755)
             subprocess.run(['sh', script])
 
@@ -154,7 +154,7 @@ class MainWindow(QMainWindow):
             script = os.path.join('command', 'bat', 'Compile.bat')
             subprocess.run(script, shell=True)
         else:
-            script = os.path.join('command', 'sh', 'Compile.sh')
+            script = os.path.join('.', 'command', 'sh', 'Compile.sh')
             os.chmod(script, 0o755)
             subprocess.run(['sh', script])
 
@@ -164,7 +164,7 @@ class MainWindow(QMainWindow):
             script = os.path.join('command', 'bat', 'Extra_Boost.bat')
             subprocess.run(script, shell=True)
         else:
-            script = os.path.join('command', 'sh', 'Extra_Boost.sh')
+            script = os.path.join('.', 'command', 'sh', 'Extra_Boost.sh')
             os.chmod(script, 0o755)
             subprocess.run(['sh', script])
 
@@ -174,7 +174,7 @@ class MainWindow(QMainWindow):
             script = os.path.join('command', 'bat', 'Power_Saving.bat')
             subprocess.run(script, shell=True)
         else:
-            script = os.path.join('command', 'sh', 'Power_Saving.sh')
+            script = os.path.join('.', 'command', 'sh', 'Power_Saving.sh')
             os.chmod(script, 0o755)
             subprocess.run(['sh', script])
 
@@ -184,7 +184,7 @@ class MainWindow(QMainWindow):
             script = os.path.join('command', 'bat', 'Hardware.bat')
             subprocess.run(script, shell=True)
         else:
-            script = os.path.join('command', 'sh', 'Hardware.sh')
+            script = os.path.join('.', 'command', 'sh', 'Hardware.sh')
             os.chmod(script, 0o755)
             subprocess.run(['sh', script])
 
@@ -194,7 +194,7 @@ class MainWindow(QMainWindow):
             script = os.path.join('command', 'bat', 'Vulkan.bat')
             subprocess.run(script, shell=True)
         else:
-            script = os.path.join('command', 'sh', 'Vulkan.sh')
+            script = os.path.join('.', 'command', 'sh', 'Vulkan.sh')
             os.chmod(script, 0o755)
             subprocess.run(['sh', script])
 
@@ -204,7 +204,7 @@ class MainWindow(QMainWindow):
             script = os.path.join('command', 'bat', 'Qualcom_only.bat')
             subprocess.run(script, shell=True)
         else:
-            script = os.path.join('command', 'sh', 'Qualcom_only.sh')
+            script = os.path.join('.', 'command', 'sh', 'Qualcom_only.sh')
             os.chmod(script, 0o755)
             subprocess.run(['sh', script])
 
