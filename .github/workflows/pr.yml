@@ -1,0 +1,68 @@
+name: PR Build ADB Optimizer
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Checkout source
+      uses: actions/checkout@v4
+
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install pyinstaller PySide6
+
+    - name: Build executable
+      run: |
+        pyinstaller --name adb-optimizer --onefile main.py
+
+    - name: Prepare output folder
+      shell: bash
+      run: |
+        mkdir -p output
+        if [ "${{ runner.os }}" = "Windows" ]; then
+          mv dist/adb-optimizer.exe output/
+        else
+          mv dist/adb-optimizer output/
+          chmod +x output/adb-optimizer
+        fi
+
+    - name: Package files (Windows)
+      if: runner.os == 'Windows'
+      shell: pwsh
+      run: |
+        Compress-Archive -Path "output/adb-optimizer.exe" -DestinationPath "adb-optimizer-windows.zip" -Force
+
+    - name: Package files (macOS)
+      if: runner.os == 'macOS'
+      shell: bash
+      run: |
+        tar -czf adb-optimizer-macos.tar.gz -C output .
+
+    - name: Package files (Linux)
+      if: runner.os == 'Linux'
+      shell: bash
+      run: |
+        tar -czf adb-optimizer-linux.tar.gz -C output .
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: adb-optimizer-${{ matrix.os }}
+        path: |
+          *.zip
+          *.tar.gz

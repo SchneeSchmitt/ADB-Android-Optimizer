@@ -1,0 +1,110 @@
+name: Build and Release ADB Optimizer
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    runs-on: ${{ matrix.os }}
+    permissions:
+      contents: write
+
+    steps:
+    - name: Checkout source
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        pip install -U pip
+        pip install pyinstaller PySide6
+
+    - name: Build executable
+      run: |
+        pyinstaller --name adb-optimizer --onefile main.py
+
+    - name: Prepare full output directory
+      shell: bash
+      run: |
+        mkdir -p output
+        [ -d command ] && cp -r command output/command
+
+        if [ "${{ runner.os }}" = "Windows" ]; then
+          mv dist/adb-optimizer.exe output/
+        else
+          mv dist/adb-optimizer output/
+          chmod +x output/adb-optimizer
+        fi
+
+    - name: Debug output contents
+      shell: bash
+      run: |
+        echo "== dist =="
+        ls -la dist || echo "dist not found"
+        echo "== output =="
+        ls -la output || echo "output not found"
+
+    - name: Package files (Windows)
+      if: runner.os == 'Windows'
+      shell: pwsh
+      run: |
+        Compress-Archive -Path "output/adb-optimizer.exe", "output/command" -DestinationPath "adb-optimizer-windows.zip" -Force
+
+    - name: Package files (macOS)
+      if: runner.os == 'macOS'
+      shell: bash
+      run: |
+        echo "Check output directory before packaging"
+        ls -la ./output || exit 1
+        tar -czf adb-optimizer-macos.tar.gz -C ./output .
+        test -f adb-optimizer-macos.tar.gz || (echo "macOS package creation failed" && exit 1)
+
+    - name: Package files (Linux)
+      if: runner.os == 'Linux'
+      shell: bash
+      run: |
+        tar -czf adb-optimizer-linux.tar.gz -C output .
+        test -f adb-optimizer-linux.tar.gz || (echo "Linux package creation failed" && exit 1)
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-${{ matrix.os }}
+        path: |
+          *.zip
+          *.tar.gz
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+    - name: Download artifacts
+      uses: actions/download-artifact@v4
+      with:
+        path: dist
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: auto-release-${{ github.run_number }}
+        name: ADB Optimizer ${{ github.run_number }}
+        body: |
+          包含所有平台可執行檔及原始 command 目錄的壓縮包：
+          - Windows: adb-optimizer-windows.zip
+          - macOS: adb-optimizer-macos.tar.gz
+          - Linux: adb-optimizer-linux.tar.gz
+        files: |
+          dist/**/*.zip
+          dist/**/*.tar.gz
