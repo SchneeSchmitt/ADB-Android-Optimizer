@@ -32,7 +32,9 @@ jobs:
       run: |
         pyinstaller --name adb-optimizer --onefile main.py
 
+    # ✅ 為所有平台統一準備輸出資料夾，使用 bash 語法
     - name: Prepare full output directory
+      shell: bash
       run: |
         mkdir -p output
         [ -d command ] && cp -r command output/command
@@ -44,13 +46,14 @@ jobs:
           chmod +x output/adb-optimizer
         fi
 
-    - name: Debug output directory
+    - name: Debug output contents
       run: |
         echo "== dist =="
         ls -la dist || echo "dist not found"
         echo "== output =="
         ls -la output || echo "output not found"
 
+    # ✅ 平台特定打包步驟，分開處理
     - name: Package files (Windows)
       if: runner.os == 'Windows'
       shell: pwsh
@@ -59,11 +62,13 @@ jobs:
 
     - name: Package files (macOS)
       if: runner.os == 'macOS'
+      shell: bash
       run: |
         tar -czf adb-optimizer-macos.tar.gz -C output .
 
     - name: Package files (Linux)
       if: runner.os == 'Linux'
+      shell: bash
       run: |
         tar -czf adb-optimizer-linux.tar.gz -C output .
 
