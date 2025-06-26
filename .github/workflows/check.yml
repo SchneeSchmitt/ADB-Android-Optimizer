@@ -7,10 +7,8 @@ on:
 jobs:
   pylint:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -20,9 +18,9 @@ jobs:
       - name: Install pylint
         run: pip install pylint
 
-      - name: Run pylint and save report with simple custom format
+      - name: Run pylint with checkstyle output
         run: |
-          pylint **/*.py --msg-template="{path}:{line}:{column}: {msg_id} {msg}" > pylint_report.txt || true
+          pylint **/*.py --output-format=checkstyle > pylint_report.xml || true
 
       - name: Install reviewdog CLI
         run: |
@@ -34,8 +32,8 @@ jobs:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           reviewdog \
-            -f=regexp \
+            -f=checkstyle \
             -reporter=github-pr-review \
             -level=warning \
             -fail-on-error=false \
-            -filter-mode=diff_context < pylint_report.txt
+            -filter-mode=diff_context < pylint_report.xml
