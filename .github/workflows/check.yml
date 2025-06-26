@@ -1,0 +1,27 @@
+name: Pylint Check and Comment
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  pylint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        pip install pylint reviewdog
+
+    - name: Run pylint and send reviewdog comments
+      run: |
+        pylint **/*.py --output-format=text > pylint_report.txt || true
+        reviewdog -f=eslint -name="pylint" -reporter=github-pr-review -fail-on-error=false -level=warning < pylint_report.txt
