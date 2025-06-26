@@ -34,33 +34,35 @@ jobs:
 
     - name: Prepare full output directory
       run: |
-        mkdir output
-        cp -r command output/command
+        mkdir -p output
+        [ -d command ] && cp -r command output/command
 
-        # 你可以按需要添加其他資源，例如:
-        # cp README.md output/
-        # cp LICENSE output/
-
-        if [[ "$RUNNER_OS" == "Windows" ]]; then
+        if [ "${{ runner.os }}" = "Windows" ]; then
           mv dist/adb-optimizer.exe output/
         else
           mv dist/adb-optimizer output/
           chmod +x output/adb-optimizer
         fi
-      shell: bash
+
+    - name: Debug output directory
+      run: |
+        echo "== dist =="
+        ls -la dist || echo "dist not found"
+        echo "== output =="
+        ls -la output || echo "output not found"
 
     - name: Package files
-      run: |
-        if [[ "$RUNNER_OS" == "Windows" ]]; then
-          powershell -Command "
-            Compress-Archive -Path @( 'output/adb-optimizer.exe', 'output/command' ) -DestinationPath adb-optimizer-windows.zip
-          "
-        elif [[ "$RUNNER_OS" == "macOS" ]]; then
-          tar -czf adb-optimizer-macos.tar.gz -C output .
-        else
-          tar -czf adb-optimizer-linux.tar.gz -C output .
-        fi
       shell: bash
+      run: |
+        if [ "${{ runner.os }}" = "Windows" ]; then
+          powershell -Command "
+            Compress-Archive -Path @( 'output/adb-optimizer.exe', 'output/command' ) -DestinationPath adb-optimizer-windows.zip -Force
+          "
+        elif [ "${{ runner.os }}" = "macOS" ]; then
+          tar -czf adb-optimizer-macos.tar.gz -C output . || (echo 'tar failed' && exit 1)
+        else
+          tar -czf adb-optimizer-linux.tar.gz -C output . || (echo 'tar failed' && exit 1)
+
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
