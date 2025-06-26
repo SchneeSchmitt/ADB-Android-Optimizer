@@ -1,0 +1,71 @@
+name: Build Installers
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install PyInstaller py2app
+        
+    - name: Build application
+      run: |
+        if [[ "${{ runner.os }}" == "Windows" ]]; then
+          pyinstaller --onefile --windowed main.py
+        elif [[ "${{ runner.os }}" == "macOS" ]]; then
+          py2applet --make-setup main.py
+          python setup.py py2app
+        else
+          pyinstaller --onefile main.py
+        fi
+        
+    - name: Package installer
+      run: |
+        if [[ "${{ runner.os }}" == "Windows" ]]; then
+          # Create Windows installer
+          mkdir -p dist/ADB-Android-Optimizer
+          cp -r dist/main.exe command/bat/* dist/ADB-Android-Optimizer/
+          # Create zip package
+          cd dist && zip -r ADB-Android-Optimizer-Windows.zip ADB-Android-Optimizer
+        elif [[ "${{ runner.os }}" == "macOS" ]]; then
+          # Create macOS package
+          hdiutil create -volname "ADB Android Optimizer" -srcfolder dist/main.app -ov -format UDZO dist/ADB-Android-Optimizer.dmg
+        else
+          # Create Linux package
+          mkdir -p dist/ADB-Android-Optimizer/DEBIAN
+          mkdir -p dist/ADB-Android-Optimizer/usr/local/bin
+          mkdir -p dist/ADB-Android-Optimizer/usr/share/ADB-Android-Optimizer
+          cp dist/main dist/ADB-Android-Optimizer/usr/local/bin/adb-android-optimizer
+          cp -r command/sh/* dist/ADB-Android-Optimizer/usr/share/ADB-Android-Optimizer/
+          # Create control file
+          echo "Package: adb-android-optimizer" > dist/ADB-Android-Optimizer/DEBIAN/control
+          echo "Version: 1.0" >> dist/ADB-Android-Optimizer/DEBIAN/control
+          echo "Architecture: all" >> dist/ADB-Android-Optimizer/DEBIAN/control
+          echo "Maintainer: Your Name <your.email@example.com>" >> dist/ADB-Android-Optimizer/DEBIAN/control
+          echo "Description: ADB Android Optimizer Tool" >> dist/ADB-Android-Optimizer/DEBIAN/control
+          # Build package
+          dpkg-deb --build dist/ADB-Android-Optimizer
+        fi
+        
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: ADB-Android-Optimizer-${{ runner.os }}
+        path: dist/ADB-Android-Optimizer*
