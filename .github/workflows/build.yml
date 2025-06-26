@@ -49,7 +49,7 @@ jobs:
         fi
       shell: bash
 
-        - name: Package files
+    - name: Package files
       run: |
         if [[ "$RUNNER_OS" == "Windows" ]]; then
           powershell -Command "
