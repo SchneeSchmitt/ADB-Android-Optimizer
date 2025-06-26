@@ -7,6 +7,7 @@ on:
 jobs:
   pylint:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -19,9 +20,9 @@ jobs:
       - name: Install pylint
         run: pip install pylint
 
-      - name: Run pylint and save report
+      - name: Run pylint and save report with simple custom format
         run: |
-          pylint **/*.py --output-format=parseable > pylint_report.txt || true
+          pylint **/*.py --msg-template="{path}:{line}:{column}: {msg_id} {msg}" > pylint_report.txt || true
 
       - name: Install reviewdog CLI
         run: |
@@ -34,7 +35,6 @@ jobs:
         run: |
           reviewdog \
             -f=regexp \
-            -efm="%f:%l:%c: %t: %m" \
             -reporter=github-pr-review \
             -level=warning \
             -fail-on-error=false \
