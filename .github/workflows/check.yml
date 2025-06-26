@@ -7,7 +7,6 @@ on:
 jobs:
   pylint:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -36,7 +35,6 @@ jobs:
           reviewdog \
             -f=regexp \
             -efm="%f:%l:%c: %t: %m" \
-            -name="pylint" \
             -reporter=github-pr-review \
             -level=warning \
             -fail-on-error=false \
