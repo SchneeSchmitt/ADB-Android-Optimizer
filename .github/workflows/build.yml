@@ -51,17 +51,21 @@ jobs:
         echo "== output =="
         ls -la output || echo "output not found"
 
-    - name: Package files
-      shell: bash
+    - name: Package files (Windows)
+      if: runner.os == 'Windows'
+      shell: pwsh
       run: |
-        if [ "${{ runner.os }}" = "Windows" ]; then
-          powershell -Command "
-            Compress-Archive -Path @( 'output/adb-optimizer.exe', 'output/command' ) -DestinationPath adb-optimizer-windows.zip -Force
-          "
-        elif [ "${{ runner.os }}" = "macOS" ]; then
-          tar -czf adb-optimizer-macos.tar.gz -C output . || (echo 'tar failed' && exit 1)
-        else
-          tar -czf adb-optimizer-linux.tar.gz -C output . || (echo 'tar failed' && exit 1)
+        Compress-Archive -Path "output/adb-optimizer.exe", "output/command" -DestinationPath "adb-optimizer-windows.zip" -Force
+
+    - name: Package files (macOS)
+      if: runner.os == 'macOS'
+      run: |
+        tar -czf adb-optimizer-macos.tar.gz -C output .
+
+    - name: Package files (Linux)
+      if: runner.os == 'Linux'
+      run: |
+        tar -czf adb-optimizer-linux.tar.gz -C output .
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
