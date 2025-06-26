@@ -1,4 +1,4 @@
-name: Pylint with reviewdog
+name: Pylint + Reviewdog PR Comment
 
 on:
   pull_request:
@@ -9,7 +9,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
 
     - name: Setup Python
       uses: actions/setup-python@v5
@@ -23,13 +24,17 @@ jobs:
       run: |
         pylint **/*.py --output-format=text > pylint_report.txt || true
 
-    - name: Run reviewdog
-      uses: reviewdog/action@v1
-      with:
-        name: pylint
-        reporter: github-pr-review
-        level: warning
-        fail_level: error
-        filter_mode: diff_context
-        tool_name: pylint
-        input: pylint_report.txt
+    - name: Install reviewdog CLI
+      run: |
+        curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b $HOME/bin latest
+        echo "$HOME/bin" >> $GITHUB_PATH
+
+    - name: Run reviewdog to comment PR
+      run: |
+        reviewdog \
+          -f=pylint \
+          -name="pylint" \
+          -reporter=github-pr-review \
+          -level=warning \
+          -fail-on-error=false \
+          -filter-mode=diff_context < pylint_report.txt
