@@ -8,7 +8,7 @@ Rootless (ADB) Android performance optimizer for every condition, from pure perf
 
 ## What type of optimization can those scripts do?
 Those scripts can optimize Android from all methods and factors of the ADB possibility. Such as disabling logging, accelerating CPU and GPU, rendering tweaks, network optimizations, memory settings, Dalvik virtual machine settings, and **even** the kernel settings can also be optimized with those scripts. 
-
+test
 ## Tweaks List 📑
 - `balanced`: Those are the main tweaks.
 - `vulkan`: Privilege rendering using Vulkan. This works if your device supports Vulkan rendering.
