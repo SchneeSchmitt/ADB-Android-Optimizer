@@ -28,24 +28,35 @@ jobs:
         pip install -U pip
         pip install pyinstaller PySide6
 
-    - name: Build with PyInstaller
+    - name: Build executable
       run: |
         pyinstaller --name adb-optimizer --onefile main.py
 
-    - name: Package output
+    - name: Prepare full output directory
       run: |
         mkdir output
+        cp -r command output/command
+
+        # 你可以按需要添加其他資源，例如:
+        # cp README.md output/
+        # cp LICENSE output/
+
         if [[ "$RUNNER_OS" == "Windows" ]]; then
           mv dist/adb-optimizer.exe output/
-          powershell Compress-Archive -Path output/adb-optimizer.exe -DestinationPath adb-optimizer-windows.zip
-        elif [[ "$RUNNER_OS" == "macOS" ]]; then
-          mv dist/adb-optimizer output/adb-optimizer-macos
-          chmod +x output/adb-optimizer-macos
-          tar -czf adb-optimizer-macos.tar.gz -C output adb-optimizer-macos
         else
-          mv dist/adb-optimizer output/adb-optimizer-linux
-          chmod +x output/adb-optimizer-linux
-          tar -czf adb-optimizer-linux.tar.gz -C output adb-optimizer-linux
+          mv dist/adb-optimizer output/
+          chmod +x output/adb-optimizer
+        fi
+      shell: bash
+
+    - name: Package files
+      run: |
+        if [[ "$RUNNER_OS" == "Windows" ]]; then
+          powershell Compress-Archive -Path output/* -DestinationPath adb-optimizer-windows.zip
+        elif [[ "$RUNNER_OS" == "macOS" ]]; then
+          tar -czf adb-optimizer-macos.tar.gz -C output .
+        else
+          tar -czf adb-optimizer-linux.tar.gz -C output .
         fi
       shell: bash
 
@@ -64,7 +75,7 @@ jobs:
       contents: write
 
     steps:
-    - name: Download all artifacts
+    - name: Download artifacts
       uses: actions/download-artifact@v4
       with:
         path: dist
@@ -75,7 +86,7 @@ jobs:
         tag_name: auto-release-${{ github.run_number }}
         name: ADB Optimizer ${{ github.run_number }}
         body: |
-          自動打包發布的版本（帶終端）：
+          包含所有平台可執行檔及原始 command 目錄的壓縮包：
           - Windows: adb-optimizer-windows.zip
           - macOS: adb-optimizer-macos.tar.gz
           - Linux: adb-optimizer-linux.tar.gz
