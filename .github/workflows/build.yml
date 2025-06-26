@@ -65,7 +65,7 @@ jobs:
         fi
         
     - name: Upload artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ADB-Android-Optimizer-${{ runner.os }}
         path: dist/ADB-Android-Optimizer*
