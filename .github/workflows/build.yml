@@ -33,7 +33,7 @@ jobs:
         pyinstaller --name adb-optimizer --onefile main.py
 
     - name: Prepare full output directory
-      shell: bash  # ✅ 指定 bash，防止 Windows 出錯
+      shell: bash
       run: |
         mkdir -p output
         [ -d command ] && cp -r command output/command
@@ -46,7 +46,7 @@ jobs:
         fi
 
     - name: Debug output contents
-      shell: bash  # ✅ 統一使用 bash 語法
+      shell: bash
       run: |
         echo "== dist =="
         ls -la dist || echo "dist not found"
@@ -63,13 +63,17 @@ jobs:
       if: runner.os == 'macOS'
       shell: bash
       run: |
-        tar -czf adb-optimizer-macos.tar.gz -C output .
+        echo "Check output directory before packaging"
+        ls -la ./output || exit 1
+        tar -czf adb-optimizer-macos.tar.gz -C ./output .
+        test -f adb-optimizer-macos.tar.gz || (echo "macOS package creation failed" && exit 1)
 
     - name: Package files (Linux)
       if: runner.os == 'Linux'
       shell: bash
       run: |
         tar -czf adb-optimizer-linux.tar.gz -C output .
+        test -f adb-optimizer-linux.tar.gz || (echo "Linux package creation failed" && exit 1)
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
