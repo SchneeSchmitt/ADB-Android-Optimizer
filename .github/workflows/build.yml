@@ -32,9 +32,8 @@ jobs:
       run: |
         pyinstaller --name adb-optimizer --onefile main.py
 
-    # ✅ 為所有平台統一準備輸出資料夾，使用 bash 語法
     - name: Prepare full output directory
-      shell: bash
+      shell: bash  # ✅ 指定 bash，防止 Windows 出錯
       run: |
         mkdir -p output
         [ -d command ] && cp -r command output/command
@@ -47,13 +46,13 @@ jobs:
         fi
 
     - name: Debug output contents
+      shell: bash  # ✅ 統一使用 bash 語法
       run: |
         echo "== dist =="
         ls -la dist || echo "dist not found"
         echo "== output =="
         ls -la output || echo "output not found"
 
-    # ✅ 平台特定打包步驟，分開處理
     - name: Package files (Windows)
       if: runner.os == 'Windows'
       shell: pwsh
