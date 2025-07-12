@@ -21,13 +21,12 @@ Those scripts can optimize Android from all methods and factors of the ADB possi
 
 ## How To Use ❓
 
-### Windows Shell ⊞
 1. Make sure your devices/computers/emulators have ADB installed
-2. Download all files from this repository by clicking on `Code`, and clicking `Download ZIP`
+2. Download the executable program by clicking `Releases` on the right
 3. Enable Developer Options in the Settings app on the phone
 4. Enable USB Debugging in the Developer Options
 5. Connect your phone to the PC with a USB data cable
-6. Open the `command` folder, and open the `bat` folder **ONLY** if you are using **Windows**, or the `sh` folder **ONLY** if you are using **macOS** or **Linux**
+6. Run the executable program
 7. Run the `Balance` for the main tweaks
 8. Run the `Vulkan` if your device supports Vulkan rendering. Most devices after 2020 should support Vulkan rendering
 9. Run the `Qualcom_only` **ONLY** if you are using a Qualcomm SoC device
@@ -38,6 +37,8 @@ Those scripts can optimize Android from all methods and factors of the ADB possi
 
 ### Android (Advanced) 🤖
 Download both Shizuku and Shizushell on Google Play Store, start Shizuku, and type commands from the .bat files one by one with the header "adb shell" removed 
+
+6. (Legacy mode) Open the `command` folder, and open the `bat` folder **ONLY** if you are using **Windows**, or the `sh` folder **ONLY** if you are using **macOS** or **Linux**
 
 ## How to install adb tools ⚒️
 
