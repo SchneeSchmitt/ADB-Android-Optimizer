@@ -35,7 +35,7 @@ Those scripts can optimize Android from all methods and factors of the ADB possi
 12. **ONLY RUN** the `Hardware` if you want your device both **HOT AS FUCK** and fast as fuck
 13. Restart the device
 
-6. (Legacy mode) Open the `command` folder, and open the `bat` folder **ONLY** if you are using **Windows**, or the `sh` folder **ONLY** if you are using **macOS** or **Linux**
+(6. Legacy mode) Open the `command` folder, and open the `bat` folder **ONLY** if you are using **Windows**, or the `sh` folder **ONLY** if you are using **macOS** or **Linux**
 
 ### Android (Advanced) 🤖
 Download both Shizuku and Shizushell on Google Play Store, start Shizuku, and type commands from the .bat files one by one with the header "adb shell" removed 
