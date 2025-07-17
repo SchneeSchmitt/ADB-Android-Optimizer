@@ -361,6 +361,7 @@ adb shell setprop debug.sf.gpu_comp_tiling 1
 adb shell setprop debug.sf.recomputecrop 0
 adb shell setprop debug.sf.gpu_freq_indeks 5
 adb shell setprop debug.sf.hwc.canUseABC 1
+adb shell setprop debug.sf.enable_small_dirty_detection true
 adb shell setprop debug.sf.send_late_power_session_hint true
 adb shell setprop debug.sf.perf_fps_early_gl_phase_offset_ns 10000000
 adb shell setprop debug.surface_flinger.vsync_event_phase_offset_ns 3000000
@@ -728,8 +729,10 @@ adb shell setprop debug.sf.ddms 0
 adb shell setprop debug.sf.gpuoverlay 0
 adb shell setprop debug.sf.sa_log 0
 adb shell setprop debug.sf.enable_transaction_tracing false
+adb shell setprop debug.sf.nativedump false
 adb shell settings put global sf.debug.enable3D 0
 adb shell settings put global sf.debug.enable2D 0
+adb shell settings put global persist.debug.sf.enable_layer_lifecycle_manager false
 adb shell setprop debug.gpu.mode 0
 adb shell setprop debug.hwui.use_dvfs 0
 adb shell setprop debug.rs.debug 0
