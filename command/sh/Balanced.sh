@@ -10,6 +10,7 @@ adb shell settings put global audio_safe_volume_state 0
 adb shell settings put global audio.safemedia.bypass true
 adb shell settings put global game_low_latency_mode 1
 adb shell settings put global persist.added_boot_bgservices 3
+adb shell settings put global persist.zygote.preload_threads 3
 
 adb shell settings put global persist.sys.dalvik.multithread true
 adb shell settings put global persist.sys.dalvik.hyperthreading true
@@ -476,6 +477,7 @@ adb shell setprop debug.gpu.texture_cache_size 2048
 adb shell settings put global render_shadows_in_compositor true
 adb shell settings put global hardware_accelerated_rendering_enabled 1
 adb shell settings put global gpu_renderer 1
+adb shell settings put global persist.sys.gpu.rendering true
 adb shell settings put global gpu_texture_cache_size 4096
 adb shell settings put global hardware_accelerated_graphics_decoding 1
 adb shell settings put global gpu_mode 1
@@ -544,6 +546,7 @@ adb shell setprop debug.sf.max_frame_rate 120
 adb shell setprop debug.javafx.animation.framerate 120.0
 adb shell setprop debug.oculus.refreshRate 120.0
 adb shell setprop debug.redroid.fps 120.0
+adb shell setprop debug.sf.frame_rate_multiple_threshold 90
 adb shell settings put global max_refresh_rate 120.0
 adb shell settings put global user_refresh_rate 120.0
 adb shell settings put global peak_refresh_rate 120.0
@@ -566,6 +569,8 @@ adb shell settings put global persist.sys.fps.constant 0
 adb shell setprop debug.display.render_frame_rate_is_physical_refresh_rate true
 adb shell settings put global persist.sys.oem_smooth 1
 adb shell settings put global debug.hwc.asyncdisp 1
+adb shell settings put global persist.sys.surfaceflinger.idle_reduce_framerate_enable true
+adb shell settings put global vendor.boostfwk.transsion.frameprefetcher 0
 adb shell setprop debug.sf.set_idle_timer_ms 1000c
 adb shell setprop debug.composition.sync_mode 0
 adb shell setprop debug.hwui.fb_size_percent 100
@@ -733,6 +738,7 @@ adb shell setprop debug.sf.nativedump false
 adb shell settings put global sf.debug.enable3D 0
 adb shell settings put global sf.debug.enable2D 0
 adb shell settings put global persist.debug.sf.enable_layer_lifecycle_manager false
+adb shell settings put global persist.sys.use_gpu_fps_counter 0
 adb shell setprop debug.gpu.mode 0
 adb shell setprop debug.hwui.use_dvfs 0
 adb shell setprop debug.rs.debug 0

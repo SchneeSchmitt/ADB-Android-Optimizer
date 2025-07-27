@@ -51,6 +51,7 @@ adb shell settings put secure user_refresh_rate 120.0
 adb shell setprop debug.refresh_rate.min_fps 1.0
 adb shell setprop debug.enable-force-120hz false
 adb shell settings put secure refresh_rate_mode 1
+adb shell settings debug.sf.frame_rate_multiple_threshold 60
 adb shell setprop debug.performance.force_fps 3
 adb shell settings put global min_frame_rate 1
 adb shell settings put global min_refresh_rate 1.0
@@ -94,6 +95,7 @@ adb shell settings put global vendor.hwc.dpp.downscale 4
 adb shell settings put global iorapd.readahead.enable false
 adb shell settings put global iop.enable_prefetch_ofr 0
 adb shell settings put global persist.preload.common 0
+adb shell settings put global persist.zygote.preload_threads 1
 
 adb shell setprop debug.rs.max-threads 1
 adb shell setprop debug.hwui.render_thread_count 1

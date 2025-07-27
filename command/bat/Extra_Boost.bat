@@ -55,9 +55,12 @@ adb shell settings put global min_refresh_rate 120.0
 adb shell setprop debug.performance.force_high_fps true
 adb shell setprop debug.performance.force_fps 3
 adb shell setprop debug.enable-force-120hz true
+adb shell setprop debug.sf.frame_rate_multiple_threshold 120
 adb shell settings put secure refresh_rate_mode 2
 adb shell settings put global persist.sys.fps.constant 1
 adb shell settings put global persist.sys.sf.hs_mode 1
+adb shell settings put global persist.sys.surfaceflinger.idle_reduce_framerate_enable false
+adb shell settings put global vendor.boostfwk.transsion.frameprefetcher 1
 
 adb shell settings put global default_restrict_background_data 0
 adb shell settings put global location_mode 3
@@ -136,6 +139,7 @@ adb shell settings put global iorapd.readahead.enable true
 adb shell settings put global device_config put runtime_native_boot enable_readahead true
 adb shell settings put global device_config put runtime_native_boot iorap_readahead_enable true
 adb shell settings put global iop.enable_prefetch_ofr 1
+adb shell settings put global persist.zygote.preload_threads 5
 
 adb shell settings put global sys.usap.enable true
 

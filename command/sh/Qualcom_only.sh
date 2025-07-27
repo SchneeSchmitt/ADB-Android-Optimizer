@@ -7,6 +7,7 @@ adb shell setprop debug.mdpcomp.idletime -1
 adb shell settings put global persist.hwc.mdpcomp.enable true
 adb shell setprop debug.qctwa.preservebuf 1
 adb shell setprop debug.qctwa.statusbar 1
+adb shell setprop debug.gralloc.gfx_ubwc_disable 0
 adb shell settings put global vendor.gralloc.disable_ubwc 0
 adb shell settings put global sdm.debug.disable_skip_validate 1
 adb shell settings put global persist.sys.ssr.restart_level 1
