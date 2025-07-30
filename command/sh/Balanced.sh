@@ -247,7 +247,7 @@ adb shell setprop debug.hwui.webview_overlays_enabled true
 adb shell settings put global sys.use_fifo_ui 1
 adb shell settings put global persist.sys.cpu.renderthreads 1
 adb shell setprop debug.hwui.render_thread true
-adb shell settings put global renderthread.skia.reduceopstasksplitting true
+adb shell settings put global renderthread.skia.reduceopstasksplitting false
 adb shell settings put global persist.sys.disable_skia_path_ops false
 adb shell setprop debug.skia.max_memory_usage_mb 512
 adb shell setprop debug.hwui.drop_shadow_cache_size 0
@@ -340,7 +340,6 @@ adb shell setprop debug.sf.viewmotion 0
 adb shell setprop debug.sf.swapinterval 1
 adb shell setprop debug.sf.enable_egl_backpressure 1
 adb shell setprop debug.sf.enable_hgl 1
-adb shell setprop debug.sf.gpu_freq_index 1
 adb shell setprop debug.sf.hwc.min.duration 0
 adb shell setprop debug.sf.max_igbp_list_size 0
 adb shell setprop debug.sf.sa_enable 1
@@ -360,7 +359,7 @@ adb shell setprop debug.sf.showzram 0
 adb shell setprop debug.sf.showtouchscreen 0
 adb shell setprop debug.sf.gpu_comp_tiling 1
 adb shell setprop debug.sf.recomputecrop 0
-adb shell setprop debug.sf.gpu_freq_indeks 5
+adb shell setprop debug.sf.gpu_freq_index -1
 adb shell setprop debug.sf.hwc.canUseABC 1
 adb shell setprop debug.sf.enable_small_dirty_detection true
 adb shell setprop debug.sf.send_late_power_session_hint true
@@ -402,7 +401,7 @@ adb shell setprop debug.sf.layer_caching_active_layer_timeout_ms 1050
 adb shell setprop debug.sf.predict_hwc_composition_strategy 0
 adb shell settings put global persist.sys.sf.native_mode 1
 adb shell device_config put surface_flinger_native_boot max_frame_buffer_acquired_buffers 4
-adb shell settings put global viewroot.profile_rendering true
+adb shell settings put global viewroot.profile_rendering false
 adb shell settings put global persist.sys.miui_animator_sched.sched_threads 32
 adb shell settings put global persist.vendor.display.miui.composer_boost 0-7
 adb shell settings put global persist.sys.miui_animator_sched.bigcores 4-7
@@ -468,7 +467,7 @@ adb shell setprop debug.mdpcomp.4k2kSplit 1
 adb shell setprop debug.qsg_renderer qsggl
 adb shell setprop debug.renderer.process 0
 adb shell setprop debug.renderer.process_compound 0
-adb shell setprop debug.renderthread.reduceopstasksplitting true
+adb shell setprop debug.renderthread.reduceopstasksplitting false
 adb shell setprop debug.rs.default-CPU-buffer 32768
 adb shell setprop debug.rs.forcecompat 0
 adb shell setprop debug.scenegraph.batching_performance 0
