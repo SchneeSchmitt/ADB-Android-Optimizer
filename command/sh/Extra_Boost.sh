@@ -115,7 +115,7 @@ adb shell setprop debug.skia.num_render_threads 8
 adb shell setprop debug.oculus.gpuLevel 4
 adb shell setprop debug.OVRManager.cpuLevel 4
 adb shell setprop debug.OVRManager.gpuLevel 4
-adb shell setprop debug.sf.set_idle_timer_ms 3000c
+adb shell setprop debug.sf.set_idle_timer_ms 3000
 adb shell settings put global gpu_rendering_mode force_gpu
 adb shell setprop debug.sf.gpu_freq_indeks 8
 adb shell setprop debug.sf.gpu_freq_index 2

@@ -38,9 +38,9 @@ adb shell settings put global app_standby_enabled 1
 adb shell settings put global cached_apps_freezer 1
 adb shell device_config put activity_manager_native_boot use_freezer true
 adb shell settings put system power_sleep_mode_enabled 1
-adb shell settings put global sys.fflag.override.settings_enable_monitor_phantom_procs true
+adb shell settings put global sys.fflag.override.settings_enable_monitor_phantom_procs false
 
-adb shell device_config put activity_manager bg_prompt_fgs_on_long_running 0
+adb shell device_config put activity_manager bg_prompt_fgs_on_long_running 1
 adb shell device_config put app_hibernation app_hibernation_enabled 1
 adb shell settings put global app_restriction_enabled true
 
