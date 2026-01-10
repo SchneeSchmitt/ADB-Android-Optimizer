@@ -28,7 +28,7 @@ adb shell settings put global vendor.pasr.activemode.enabled true
 adb shell setprop debug.hwui.perf_mode 2
 adb shell settings put global hwc.gpu_perf_mode 2
 adb shell setprop debug.sf.perf_mode 2
-adb shell setprop debug.performance.cap 70
+adb shell setprop debug.performance.cap 60
 adb shell setprop debug.performance_schema_max_memory_classes 500
 adb shell setprop debug.performance_schema_max_socket_classes 40
 adb shell settings put global battery_performance_mode 0
