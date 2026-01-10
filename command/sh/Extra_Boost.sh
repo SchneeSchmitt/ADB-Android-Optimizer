@@ -41,6 +41,9 @@ adb shell device_config put activity_manager bg_prompt_fgs_on_long_running 0
 adb shell device_config put activity_manager bg_current_drain_auto_restrict_abusive_apps_enabled 0
 adb shell device_config put app_hibernation app_hibernation_enabled 0
 adb shell settings put global app_restriction_enabled false
+adb shell settings put global activity_launch_scheduler aggressive
+adb shell settings put global activity_start_boost_level extreme
+adb shell settings put global prelaunch_activity_optimization true
 
 adb shell setprop debug.refresh_rate.min_fps 120
 adb shell settings put system min_refresh_rate 120
@@ -61,6 +64,8 @@ adb shell settings put global persist.sys.fps.constant 1
 adb shell settings put global persist.sys.sf.hs_mode 1
 adb shell settings put global persist.sys.surfaceflinger.idle_reduce_framerate_enable false
 adb shell settings put global vendor.boostfwk.transsion.frameprefetcher 1
+adb shell settings put global frame_render_smoothness_enhancer 1
+adb shell settings put global display_vsync_smoothness_boost 1
 
 adb shell settings put global default_restrict_background_data 0
 adb shell settings put global location_mode 3
@@ -92,6 +97,11 @@ adb shell settings put global game_accelerator_state 1
 adb shell settings put global boost_cpu 1
 adb shell setprop debug.dev.ssrm.turbo true
 adb shell setprop debug.performance.gpu_boost 1
+adb shell setprop debug.hwui.render_throttle 0
+adb shell setprop debug.sf.pipeline_composition_mode locked
+adb shell setprop debug.gpu.composition_optimization_mode aggressive
+adb shell cmd device_config put surfaceflinger composition_type full
+adb shell cmd device_config put surfaceflinger force_present_hint true
 
 adb shell setprop debug.hwui.target_cpu_freq_percent 200
 adb shell setprop debug.hwui.target_cpu_time_percent 200
@@ -123,6 +133,23 @@ adb shell setprop debug.rs.max-freq 5000000000
 adb shell setprop debug.rs.min-freq 5000000000
 adb shell setprop debug.rs.min-perf_percent 100
 adb shell setprop debug.rs.precision rs_fp_full
+adb shell setprop debug.renderengine.present_thread_priority high
+adb shell settings put global compositor_latency_optimize 1
+adb shell settings put global app_thread_to_render_latency 0
+adb shell settings put global prevent_gpu_drop_allapps 1
+adb shell settings put global fast_jank_recovery 1
+adb shell settings put global enable_draw_handler_priority 1
+adb shell settings put global enable_render_cache_priority 1
+adb shell settings put global draw_pipeline_resync_frame 2
+adb shell settings put global ui_scroll_frame_queue_optimize 2
+adb shell settings put global hardware_draw_thread_priority_boost 2
+adb shell settings put global scroll_rasterizer_latency_optimize 2
+adb shell settings put global game_engine_performance_unlock 1
+adb shell settings put global high_fps_scheduler_game_mode 1
+adb shell settings put global allow_max_cpu_boost 1
+adb shell settings put global disable_game_power_capping 1
+adb shell setprop persist.sys.gpu.working_thread_priority true
+adb shell setprop debug.hwc.bq_count 5
 
 adb shell settings put global persist.hvdcp.allow_opti 1
 adb shell settings put global persist.vendor.usb.hvdcp.detect true

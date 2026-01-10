@@ -2,11 +2,14 @@ adb shell dumpsys deviceidle force-idle
 adb shell settings put global pm.sleep_mode 1
 
 adb shell settings put global restricted_device_performance 1,1
-adb shell settings put global zygote.critical_window.minute 6
+adb shell settings put global zygote.critical_window.minute 2
 adb shell settings put global persist.device_config.activity_manager.use_compaction true
 adb shell setprop debug.app.performance_restricted true
 
 adb shell settings put global persist.sys.use_8bpp_alpha 1
+adb shell setprop debug.renderengine.restore_blur_step false
+adb shell setprop debug.hwc.disabletonemapping true
+adb shell settings put global scroll_rasterizer_latency_optimize 0
 
 adb shell settings put global location_mode 1
 
@@ -25,7 +28,7 @@ adb shell settings put global vendor.pasr.activemode.enabled true
 adb shell setprop debug.hwui.perf_mode 2
 adb shell settings put global hwc.gpu_perf_mode 2
 adb shell setprop debug.sf.perf_mode 2
-adb shell setprop debug.performance.cap 90
+adb shell setprop debug.performance.cap 70
 adb shell setprop debug.performance_schema_max_memory_classes 500
 adb shell setprop debug.performance_schema_max_socket_classes 40
 adb shell settings put global battery_performance_mode 0
@@ -38,7 +41,7 @@ adb shell settings put global app_standby_enabled 1
 adb shell settings put global cached_apps_freezer 1
 adb shell device_config put activity_manager_native_boot use_freezer true
 adb shell settings put system power_sleep_mode_enabled 1
-adb shell settings put global sys.fflag.override.settings_enable_monitor_phantom_procs false
+adb shell settings put global sys.fflag.override.settings_enable_monitor_phantom_procs true
 
 adb shell device_config put activity_manager bg_prompt_fgs_on_long_running 1
 adb shell device_config put app_hibernation app_hibernation_enabled 1
@@ -55,11 +58,14 @@ adb shell settings debug.sf.frame_rate_multiple_threshold 60
 adb shell setprop debug.performance.force_fps 3
 adb shell settings put global min_frame_rate 1
 adb shell settings put global min_refresh_rate 1.0
+adb shell cmd device_config put hwui anim_frame_skip 1
+adb shell cmd device_config put game_driver_settings max_render_ahead 0
+adb shell settings put global draw_pipeline_resync_frame 0
 
 adb shell settings put global composition.type gpu
 adb shell setprop debug.composition.type gpu
 adb shell settings put global persist.sys.composition.type gpu
-
+adb shell setprop debug.mediatek.composition.type gpu
 
 adb shell settings put global battery_saver_constants "advertise_is_enabled=false,datasaver_disabled=false,launch_boost_disabled=true,vibration_disabled=true,soundtrigger_disabled=true,fullbackup_deferred=true,keyvaluebackup_deferred=true,firewall_disabled=true,gps_mode=0,adjust_brightness_disabled=false,adjust_brightness_factor=2,force_all_apps_standby=true,force_background_check=true,optional_sensors_disabled=true,quick_doze_enabled=true"
 
@@ -85,12 +91,14 @@ adb shell settings put system speed_mode 0
 adb shell settings put global suspend.short_suspend_threshold_millis 2000
 adb shell settings put global sys.hwc.gpu_perf_mode 2
 adb shell setprop debug.sf.gpu_freq_indeks 2
+adb shell setprop debug.mdpcomp.idletime -1
+adb shell settings put global hardware_draw_thread_priority_boost 0
+adb shell setprop debug.hwc.bq_count 0
 
 adb shell settings put global wfc_ims_mode 2
 adb shell settings put global sem_low_heat_mode 1
 
 adb shell settings put global persist.vendor.qcomsysd.enabled 0
-adb shell settings put global sys.fflag.override.settings_enable_monitor_phantom_procs true
 adb shell settings put global vendor.hwc.dpp.downscale 4
 adb shell settings put global iorapd.readahead.enable false
 adb shell settings put global iop.enable_prefetch_ofr 0
