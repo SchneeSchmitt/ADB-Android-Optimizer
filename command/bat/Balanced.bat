@@ -650,7 +650,7 @@ adb shell settings put global draw_pipeline_resync_frame 1
 adb shell settings put global ui_scroll_frame_queue_optimize 1
 adb shell settings put global scroll_rasterizer_latency_optimize 1
 adb shell settings put global vendor.display.enable_async_powermode 1
-adb shell settings put global vendor.display.use_smooth_motion 1
+adb shell settings put global vendor.display.use_smooth_motion 0
 
 adb shell settings put global media.stagefright.enable-player true
 adb shell settings put global media.stagefright.enable-meta true
