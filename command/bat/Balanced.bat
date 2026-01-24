@@ -412,7 +412,7 @@ adb shell setprop debug.sf.late.sf.duration 22500000
 adb shell setprop debug.sf.use_phase_offsets_as_durations 1
 adb shell setprop debug.sf.disable_client_composition_cache 0
 adb shell setprop debug.sf.treat_170m_as_sRGB 0
-adb shell setprop debug.sf.latch_unsignaled 1
+adb shell setprop debug.sf.latch_unsignaled 0
 adb shell setprop debug.sf.auto_latch_unsignaled true
 adb shell setprop debug.sf.region_sampling_timer_timeout_ns 200000000
 adb shell setprop debug.sf.region_sampling_period_ns 200000000
