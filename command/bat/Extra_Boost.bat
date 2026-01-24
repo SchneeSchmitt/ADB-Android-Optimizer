@@ -26,10 +26,14 @@ adb shell settings put global persist.sys.power.high_perf_mode 1
 adb shell settings put global persist.sys.boost.performance 1
 adb shell setprop debug.qualcomm.perf_coex 0
 adb shell settings put global vendor.perf.performancemode.support 1
+adb shell settings put global android.os.adpf_platform_power_efficiency false
 
 adb shell settings put global persist.sys.cpu.governor performance
 adb shell settings put global persist.sys.gpu.governor performance
 adb shell settings put global persist.cpu.gov.performance performance
+adb shell settings put global uclamp_min_high_scheduling_group 50
+adb shell settings put global uclamp_min_top_app 50
+adb shell settings put global uclamp_min_latency_sensitive 60
 
 adb shell settings put global sys_uidcpupower 1
 adb shell settings put global persist.sys.powmillet.enable false
@@ -66,6 +70,10 @@ adb shell settings put global persist.sys.surfaceflinger.idle_reduce_framerate_e
 adb shell settings put global vendor.boostfwk.transsion.frameprefetcher 1
 adb shell settings put global frame_render_smoothness_enhancer 1
 adb shell settings put global display_vsync_smoothness_boost 1
+adb shell settings put global persist.sys.smartfps 0
+adb shell settings put global persist.sys.autofps.mode 0
+adb shell settings put global persist.sys.fpsctrl.enable 0
+adb shell settings put global persist.sys.dynamic_fps.enable 0
 
 adb shell settings put global default_restrict_background_data 0
 adb shell settings put global location_mode 3
@@ -150,6 +158,11 @@ adb shell settings put global allow_max_cpu_boost 1
 adb shell settings put global disable_game_power_capping 1
 adb shell setprop persist.sys.gpu.working_thread_priority true
 adb shell setprop debug.hwc.bq_count 5
+adb shell setprop debug.sf.vsync_reactor 1
+adb shell setprop debug.sf.vsync_reactor_apply_phase_offsets 1
+adb shell setprop debug.sf.enable_vsync_immed 1
+adb shell setprop debug.choreographer.low_latency 1
+adb shell setprop debug.choreographer.zero_jitter 1
 
 adb shell settings put global persist.hvdcp.allow_opti 1
 adb shell settings put global persist.vendor.usb.hvdcp.detect true

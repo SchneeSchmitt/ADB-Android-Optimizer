@@ -5,17 +5,23 @@ adb shell settings put global restricted_device_performance 1,1
 adb shell settings put global zygote.critical_window.minute 2
 adb shell settings put global persist.device_config.activity_manager.use_compaction true
 adb shell setprop debug.app.performance_restricted true
+adb shell settings put global android.os.adpf_platform_power_efficiency true
 
 adb shell settings put global persist.sys.use_8bpp_alpha 1
 adb shell setprop debug.renderengine.restore_blur_step false
 adb shell setprop debug.hwc.disabletonemapping true
 adb shell settings put global scroll_rasterizer_latency_optimize 0
+adb shell setprop debug.sf.enable_advanced_dithering 0
+adb shell setprop debug.sf.predict_composition_strategy 0
 
 adb shell settings put global location_mode 1
 
 adb shell settings put global persist.sys.cpu.governor powersave
 adb shell settings put global persist.sys.gpu.governor powersave
 adb shell settings put global persist.cpu.gov.performance powersave
+adb shell settings put global uclamp_min_high_scheduling_group 10
+adb shell settings put global uclamp_min_top_app 10
+adb shell settings put global uclamp_min_latency_sensitive 20
 
 adb shell cmd power set-fixed-performance-mode-enabled 0
 adb shell cmd power set-mode 2
@@ -28,7 +34,7 @@ adb shell settings put global vendor.pasr.activemode.enabled true
 adb shell setprop debug.hwui.perf_mode 2
 adb shell settings put global hwc.gpu_perf_mode 2
 adb shell setprop debug.sf.perf_mode 2
-adb shell setprop debug.performance.cap 60
+adb shell setprop debug.performance.cap 55
 adb shell setprop debug.performance_schema_max_memory_classes 500
 adb shell setprop debug.performance_schema_max_socket_classes 40
 adb shell settings put global battery_performance_mode 0

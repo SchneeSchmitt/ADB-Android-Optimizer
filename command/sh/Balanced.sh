@@ -59,6 +59,9 @@ adb shell settings put global persist.cpu.gov.performance ondemand
 adb shell settings put global vendor.skip.init 0
 adb shell settings put global vendor.perf.iop_v3.enable 1
 adb shell setprop debug.gpu.render.async true
+adb shell settings put global uclamp_min_high_scheduling_group 25
+adb shell settings put global uclamp_min_top_app 30
+adb shell settings put global uclamp_min_latency_sensitive 40
 
 adb shell settings put system mcf_continuity 0
 adb shell settings put system mcf_continuity_permission_denied 1
@@ -114,11 +117,14 @@ adb shell setprop debug.performance_schema_digests_size 75000
 adb shell setprop debug.strncmp.property 1
 adb shell setprop debug.sqlite.journalmode PERSIST
 adb shell setprop debug.sqlite.syncmode NORMAL
+adb shell setprop debug.sqlite.mmap_size 2097152
+adb shell setprop debug.sqlite.lookaside "1200_120"
 adb shell setprop debug.sqlite.wal.syncmode NORMAL
 adb shell setprop debug.sqlite.journalsizelimit 1048576
 adb shell setprop debug.sqlite.wal.truncatesize 1048576
 adb shell setprop debug.sqlite.wal.poolsize 1048576
 adb shell setprop debug.sqlite.wal.autocheckpoint 350
+adb shell setprop debug.sqlite.busy_timeout 1250
 adb shell setprop debug.sqlite.idle_connection_timeout 30000
 adb shell setprop debug.sqlite.no_double_quoted_strs false
 adb shell setprop debug.sqlite.close_idle_connections true
@@ -273,8 +279,8 @@ adb shell setprop debug.hwui.layer_cache_size 14
 adb shell setprop debug.hwui.enable_f16 true
 adb shell setprop debug.hwui.enable_partial_updates true
 adb shell setprop debug.skia.threaded_mode true
-adb shell setprop debug.hwui.render_thread_count 5
-adb shell setprop debug.skia.num_render_threads 5
+adb shell setprop debug.hwui.render_thread_count 2
+adb shell setprop debug.skia.num_render_threads 2
 adb shell setprop debug.skia.render_thread_priority 1
 adb shell settings put global persist.sys.gpu.working_thread_priority 1
 adb shell setprop debug.rs.shader SPIR-V
@@ -356,7 +362,8 @@ adb shell setprop debug.sf.swapinterval 1
 adb shell setprop debug.sf.enable_egl_backpressure 1
 adb shell setprop debug.sf.enable_hgl 1
 adb shell setprop debug.sf.hwc.min.duration 0
-adb shell setprop debug.sf.max_igbp_list_size 0
+adb shell setprop debug.sf.max_igbp_list_size 8
+adb shell setprop debug.sf.max_igbp_buffers 3
 adb shell setprop debug.sf.sa_enable 1
 adb shell setprop debug.sf.lag_adj 0
 adb shell setprop debug.sf.showupdates 0
@@ -394,8 +401,7 @@ adb shell setprop debug.sf.high_fps_early_gl_phase_offset_ns 6500000
 adb shell setprop debug.sf.high_fps_early_phase_offset_ns 6100000
 adb shell setprop debug.sf.high_fps_late_app_phase_offset_ns 1000000
 adb shell setprop debug.sf.phase_offset_threshold_for_next_vsync_ns 12100000
-adb shell setprop debug.sf.disable_backpressure 1
-adb shell setprop debug.sf.latch_unsignaled 1
+adb shell setprop debug.sf.disable_backpressure 0
 adb shell setprop debug.sf.enable_advanced_sf_phase_offset 1
 adb shell setprop debug.sf.early.app.duration 25000000
 adb shell setprop debug.sf.early.sf.duration 22500000
@@ -406,6 +412,7 @@ adb shell setprop debug.sf.late.sf.duration 22500000
 adb shell setprop debug.sf.use_phase_offsets_as_durations 1
 adb shell setprop debug.sf.disable_client_composition_cache 0
 adb shell setprop debug.sf.treat_170m_as_sRGB 0
+adb shell setprop debug.sf.latch_unsignaled 1
 adb shell setprop debug.sf.auto_latch_unsignaled true
 adb shell setprop debug.sf.region_sampling_timer_timeout_ns 200000000
 adb shell setprop debug.sf.region_sampling_period_ns 200000000
@@ -545,7 +552,7 @@ adb shell setprop debug.renderengine.restore_blur_step true
 adb shell setprop debug.renderengine.graphite_preview_optin true
 adb shell setprop debug.sf.hwc_service_name drmfb
 adb shell setprop debug.sf.enable_hwc_vds 0
-adb shell setprop persist.sys.rendercomposer.enable true
+adb shell settings put global persist.sys.rendercomposer.enable true
 
 adb shell settings put global vendor.display.use_layer_ext 0
 adb shell settings put global persist.vendor.vcb.ability true
@@ -639,6 +646,18 @@ adb shell setprop debug.renderengine.vsync_enforce_mode relaxed
 adb shell setprop debug.fps.governor relaxed
 adb shell setprop debug.hwc.asyncdisetprop 1
 adb shell setprop debug.sf.vsync.native 0
+adb shell setprop debug.hwc.fakevsync 0
+adb shell setprop debug.sf.recompute_visible_regions 0
+adb shell setprop debug.sf.enable_advanced_dithering 1
+adb shell setprop debug.sf.predict_composition_strategy 1
+adb shell setprop debug.hwui.jank_threshold 100
+adb shell setprop debug.hwui.enable_buffer_queue_pacing 1
+adb shell settings put global persist.sys.smartfps 1
+adb shell settings put global persist.sys.autofps.mode 1
+adb shell settings put global persist.sys.fpsctrl.enable 1
+adb shell settings put global persist.sys.dynamic_fps.enable 1
+adb shell settings put global default_fps_override 0
+adb shell settings put global enable_frame_pacing true
 adb shell settings put global persist.sys.vsync.controller_mode relaxed
 adb shell settings put global disable_vsync_fallback false
 adb shell settings put global max_render_ahead_frames 0
@@ -718,6 +737,8 @@ adb shell settings put global vendor.pasr.activemode.enabled false
 adb shell settings put global arm64.memtag.process.system_server off
 adb shell settings put global persist.arm64.memtag.system_server off
 adb shell settings put global sys.fflag.override.settings_enable_monitor_phantom_procs false
+adb shell settings put global max_phantom_processes 192
+adb shell settings put global boot_time_max_phantom_processes 192
 adb shell settings put global persist.vendor.sys.memplus.enable true
 adb shell settings put global persist.sys.minfree_6g 16384,20480,32768,131072,230400,286720
 adb shell settings put global persist.sys.minfree_8g 16384,20480,32768,131072,384000,524288
@@ -907,7 +928,6 @@ adb shell settings put global persist.sys.qlogd 0
 adb shell settings put global persist.sys.qc.sub.rdump.on 0
 adb shell settings put global libc.debug.malloc 0
 adb shell settings put global debug_test 0
-adb shell settings put global db.log.slow_query_threshold 5000
 adb shell settings put global net.ipv4.tcp_no_metrics_save 1
 adb shell settings put global net.ipv6.tcp_no_metrics_save 1
 adb shell settings put global persist.vendor.wifienhancelog 0
@@ -997,6 +1017,8 @@ adb shell setprop debug.vendor.nhmonitor.delay30dump true
 adb shell setprop debug.vendor.nhmonitor.status false
 adb shell setprop debug.wave.perfmonitor.mode 0
 adb shell setprop debug.tracing.battery_status 0
+adb shell cmd looper_stats disable
+adb shell settings put global looper_stats enabled false
 adb shell settings put global persist.mm.sta.enable 0
 adb shell settings put global persist.brcm.ap_crash none
 adb shell settings put global persist.brcm.cp_crash none
@@ -1108,6 +1130,7 @@ adb shell settings put global persist.sys.dalvik.vm.lib.2 libart.so
 adb shell settings put global dev.pm.precompile_layouts 1
 adb shell settings put global persist.miui.dexopt.first_use true
 adb shell settings put global enable_app_launch_jit_mode 1
+adb shell settings put global disable_compact_dex true
 adb shell setprop debug.usejit true
 
 adb shell settings put global vm.min_free_kbytes 4096
