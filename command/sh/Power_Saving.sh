@@ -77,7 +77,7 @@ adb shell setprop debug.composition.type gpu
 adb shell settings put global persist.sys.composition.type gpu
 adb shell setprop debug.mediatek.composition.type gpu
 
-adb shell settings put global battery_saver_constants "advertise_is_enabled=false,datasaver_disabled=false,launch_boost_disabled=true,vibration_disabled=true,soundtrigger_disabled=true,fullbackup_deferred=true,keyvaluebackup_deferred=true,firewall_disabled=true,gps_mode=0,adjust_brightness_disabled=false,adjust_brightness_factor=2,force_all_apps_standby=true,force_background_check=true,optional_sensors_disabled=true,quick_doze_enabled=true"
+adb shell settings put global battery_saver_constants 'advertise_is_enabled=false,datasaver_disabled=false,launch_boost_disabled=true,vibration_disabled=true,soundtrigger_disabled=true,fullbackup_deferred=true,keyvaluebackup_deferred=true,firewall_disabled=true,gps_mode=0,adjust_brightness_disabled=false,adjust_brightness_factor=2,force_all_apps_standby=true,force_background_check=true,optional_sensors_disabled=true,quick_doze_enabled=true'
 
 
 adb shell settings put global sem_enhanced_cpu_responsiveness 0
@@ -119,7 +119,7 @@ adb shell settings put global iorapd.readahead.enable false
 adb shell settings put global iop.enable_prefetch_ofr 0
 adb shell settings put global persist.preload.common 0
 adb shell settings put global persist.zygote.preload_threads 0
-adb shell settings put system touch_prestart_opt_config "{featureDisable:false,bgExceptionInterceptDisable:false,touchDownPreStartBlackList:[disable_all_package]}"
+adb shell settings put system touch_prestart_opt_config '{featureDisable:false,bgExceptionInterceptDisable:false,touchDownPreStartBlackList:[disable_all_package]}'
 adb shell cmd device_config put runtime_native usap_pool_refill_delay_ms 550
 adb shell cmd device_config put runtime_native usap_pool_size_min 0
 adb shell cmd device_config put runtime_native usap_pool_size_max 0

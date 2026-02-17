@@ -1289,7 +1289,7 @@ adb shell settings put global wifi_scan_throttle_enabled 1
 adb shell settings put global wifi_poor_connection_warning 1
 adb shell settings put global wifi_verbose_logging_enabled 0
 adb shell settings put global wifi_wakeup_enabled 0
-adb shell cmd wifi force-hi-perf-mode disabled
+adb shell settings put global force-hi-perf-mode 0
 adb shell cmd wifi set-ipreach-disconnect disabled
 adb shell adb shell cmd connectivity set-multipath-preference true
 adb shell cmd connectivity set-default-network-active true
