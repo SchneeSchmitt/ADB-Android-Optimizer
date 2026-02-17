@@ -33,3 +33,4 @@ adb shell setprop debug.hwc.bq_count 3
 adb shell settings put global hardware_accelerated_video_decode 1
 adb shell settings put global hardware_accelerated_video_encode 1
 adb shell settings put global media.hwhevccodectype 1
+adb shell setprop debug.sf.vsync.native 1

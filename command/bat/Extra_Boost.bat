@@ -27,6 +27,7 @@ adb shell settings put global persist.sys.boost.performance 1
 adb shell setprop debug.qualcomm.perf_coex 0
 adb shell settings put global vendor.perf.performancemode.support 1
 adb shell settings put global android.os.adpf_platform_power_efficiency false
+adb shell device_config put game android.os.adpf_override_power_efficiency true
 
 adb shell settings put global persist.sys.cpu.governor performance
 adb shell settings put global persist.sys.gpu.governor performance
@@ -171,6 +172,13 @@ adb shell settings put global adaptive_fast_charging 1
 adb shell settings put global iop.enable_prefetch_ofr 1
 adb shell settings put global persist.preload.common 1
 adb shell settings put global persist.zygote.preload_threads 3
+adb shell cmd device_config put runtime_native usap_prefer_idle false
+adb shell cmd device_config put runtime_native usap_priority_boost true
+adb shell cmd device_config put runtime_native usap_aggressive_refill true
+adb shell cmd device_config put runtime_native usap_refill_threshold 2
+adb shell cmd device_config put runtime_native usap_pool_refill_delay_ms 0
+adb shell cmd device_config put runtime_native usap_pool_size_min 8
+adb shell cmd device_config put runtime_native usap_pool_size_max 16
 
 adb shell settings put global debug.sf.enable_gl_backpressure 0
 adb shell settings put global debug.sf.enable.planner_prediction true

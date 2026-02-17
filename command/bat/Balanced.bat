@@ -10,7 +10,7 @@ adb shell settings put global audio_safe_volume_state 0
 adb shell settings put global audio.safemedia.bypass true
 adb shell settings put global game_low_latency_mode 1
 adb shell settings put global persist.added_boot_bgservices 3
-adb shell settings put global persist.zygote.preload_threads 3
+adb shell settings put global persist.zygote.preload_threads 2
 
 adb shell settings put global persist.sys.dalvik.multithread true
 adb shell settings put global persist.sys.dalvik.hyperthreading true
@@ -569,6 +569,9 @@ adb shell setprop debug.hwc.force_gpu_reset_on_hotplug true
 adb shell setprop debug.hwc.force_gpu_reset_on_change true
 adb shell setprop debug.hwc.force_gpu_reset_on_vsync true
 adb shell setprop debug.sf.enable_adpf_cpu_hint true
+adb shell device_config put game android.os.adpf_use_fmq_channel true
+adb shell device_config put game android.os.adpf_use_fmq_channel_fixed true
+adb shell device_config put game android.os.adpf_fmq_eager_send true
 
 adb shell settings put global doze.display.supported true
 adb shell settings put global doze.pulse.notifications true
@@ -725,12 +728,20 @@ adb shell settings put global zram.default 0
 adb shell settings put global zram 0
 adb shell settings put global zram_enabled 0
 adb shell settings put global ram_expand_size 0
+adb shell settings put global sys.usap.enable false
 adb shell settings put global persist.sys.usap_pool_enabled true
 adb shell settings put global persist.device_config.runtime_native.usap_pool_enabled true
 adb shell settings put global persist.device_config.runtime_native.usap_pool_refill_delay_ms 3000
 adb shell settings put global persist.device_config.runtime_native.usap_pool_size_max 10
 adb shell settings put global persist.device_config.runtime_native.usap_pool_size_min 1
 adb shell settings put global persist.device_config.runtime_native.usap_refill_threshold 5
+adb shell cmd device_config put runtime_native usap_prefer_idle true
+adb shell cmd device_config put runtime_native usap_priority_boost false
+adb shell cmd device_config put runtime_native usap_aggressive_refill false
+adb shell cmd device_config put runtime_native usap_refill_threshold 0
+adb shell cmd device_config put runtime_native usap_pool_refill_delay_ms 250
+adb shell cmd device_config put runtime_native usap_pool_size_min 2
+adb shell cmd device_config put runtime_native usap_pool_size_max 4
 adb shell settings put global persist.device_config.activity_manager.use_compaction true
 adb shell settings put global vendor.power.pasr.enabled false
 adb shell settings put global vendor.pasr.activemode.enabled false
@@ -747,7 +758,6 @@ adb shell settings put global persist.sys.minfree_def 16384,20480,32768,131072,2
 adb shell settings put global persist.sys.gz.enable false
 adb shell settings put global persist.sys.spc.enabled false
 adb shell settings put global persist.sys.spc.extra_free_enable false
-adb shell settings put global sys.usap.enable false
 adb shell settings put global lmk.autocalc true
 adb shell settings put global vendor.perf.iop_v3.enable 1
 adb shell settings put global persist.sys.autoclearsave 3
@@ -1269,6 +1279,20 @@ adb shell settings put global persist.cellbroadcast.enabled false
 adb shell settings put global wifi_scan_always_enabled 0
 adb shell settings put global persist.radio.atfwd.start false
 adb shell setprop debug.performance_schema_max_socket_classes 75
+adb shell settings put global captive_portal_mode 1
+adb shell settings put global captive_portal_detection_enabled 1
+adb shell settings put global adaptive_connectivity_enabled 1
+adb shell settings put global network_avoid_bad_wifi 1
+adb shell cmd netpolicy set restrict-background true
+adb shell settings put global network_prediction_enabled 0
+adb shell settings put global wifi_scan_throttle_enabled 1
+adb shell settings put global wifi_poor_connection_warning 1
+adb shell settings put global wifi_verbose_logging_enabled 0
+adb shell settings put global wifi_wakeup_enabled 0
+adb shell cmd wifi force-hi-perf-mode disabled
+adb shell cmd wifi set-ipreach-disconnect disabled
+adb shell adb shell cmd connectivity set-multipath-preference true
+adb shell cmd connectivity set-default-network-active true
 
 adb shell settings put global tcp.buffersize.default 4096,87380,256960,4096,16384,256960
 adb shell settings put global tcp.buffersize.wifi 4096,87380,256960,4096,16384,256960

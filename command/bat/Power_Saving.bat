@@ -6,6 +6,10 @@ adb shell settings put global zygote.critical_window.minute 2
 adb shell settings put global persist.device_config.activity_manager.use_compaction true
 adb shell setprop debug.app.performance_restricted true
 adb shell settings put global android.os.adpf_platform_power_efficiency true
+adb shell device_config put game android.os.adpf_gpu_report_actual_work_duration false
+adb shell device_config put game android.os.adpf_use_fmq_channel false
+adb shell device_config put game android.os.adpf_use_fmq_channel_fixed false
+adb shell device_config put game android.os.adpf_fmq_eager_send false
 
 adb shell settings put global persist.sys.use_8bpp_alpha 1
 adb shell setprop debug.renderengine.restore_blur_step false
@@ -24,18 +28,18 @@ adb shell settings put global uclamp_min_top_app 10
 adb shell settings put global uclamp_min_latency_sensitive 20
 
 adb shell cmd power set-fixed-performance-mode-enabled 0
-adb shell cmd power set-mode 2
-adb shell setprop debug.performance.tuning 2
+adb shell cmd power set-mode 0
+adb shell setprop debug.performance.tuning 0
 adb shell settings put global persist.sys.powmillet.enable true
 adb shell settings put global vendor.power.pasr.enabled true
 adb shell settings put global vendor.pasr.activemode.enabled true
 adb shell settings put global vendor.power.pasr.enabled true
 adb shell settings put global vendor.pasr.activemode.enabled true
-adb shell setprop debug.hwui.perf_mode 2
-adb shell settings put global hwc.gpu_perf_mode 2
-adb shell setprop debug.sf.perf_mode 2
+adb shell setprop debug.hwui.perf_mode 0
+adb shell settings put global hwc.gpu_perf_mode 0
+adb shell setprop debug.sf.perf_mode 0
 adb shell setprop debug.performance.cap 55
-adb shell setprop debug.performance_schema_max_memory_classes 500
+adb shell setprop debug.performance_schema_max_memory_classes 100
 adb shell setprop debug.performance_schema_max_socket_classes 40
 adb shell settings put global battery_performance_mode 0
 adb shell settings put global dynamic_power_savings_enabled 1
@@ -85,6 +89,7 @@ adb shell settings put global automatic_power_save_mode 0
 adb shell settings put global dynamic_power_savings_enabled 1
 adb shell settings put global dynamic_power_savings_disable_threshold 20
 adb shell setprop debug.disable_sched_boost true
+adb shell setprop debug.mtk.powerhal.hint.bypass 1
 
 adb shell settings put system screen_auto_brightness_adj 1.0
 
@@ -95,7 +100,7 @@ adb shell settings put system persist.sys_emc_mode power_saving
 adb shell settings put system cpu_max_speed 0
 adb shell settings put system speed_mode 0
 adb shell settings put global suspend.short_suspend_threshold_millis 2000
-adb shell settings put global sys.hwc.gpu_perf_mode 2
+adb shell settings put global sys.hwc.gpu_perf_mode 0
 adb shell setprop debug.sf.gpu_freq_indeks 2
 adb shell setprop debug.mdpcomp.idletime -1
 adb shell settings put global hardware_draw_thread_priority_boost 0
@@ -104,12 +109,20 @@ adb shell setprop debug.hwc.bq_count 0
 adb shell settings put global wfc_ims_mode 2
 adb shell settings put global sem_low_heat_mode 1
 
+adb shell settings put global network_avoid_bad_wifi 0
+adb shell settings put global network_watchlist_enabled 0
+adb shell cmd wifi set-poll-rssi-interval-msecs 5000
+
 adb shell settings put global persist.vendor.qcomsysd.enabled 0
 adb shell settings put global vendor.hwc.dpp.downscale 4
 adb shell settings put global iorapd.readahead.enable false
 adb shell settings put global iop.enable_prefetch_ofr 0
 adb shell settings put global persist.preload.common 0
-adb shell settings put global persist.zygote.preload_threads 1
+adb shell settings put global persist.zygote.preload_threads 0
+adb shell settings put system touch_prestart_opt_config "{featureDisable:false,bgExceptionInterceptDisable:false,touchDownPreStartBlackList:[disable_all_package]}"
+adb shell cmd device_config put runtime_native usap_pool_refill_delay_ms 550
+adb shell cmd device_config put runtime_native usap_pool_size_min 0
+adb shell cmd device_config put runtime_native usap_pool_size_max 0
 
 adb shell setprop debug.rs.max-threads 1
 adb shell setprop debug.hwui.render_thread_count 1
