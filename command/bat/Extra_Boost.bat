@@ -27,7 +27,8 @@ adb shell settings put global persist.sys.boost.performance 1
 adb shell setprop debug.qualcomm.perf_coex 0
 adb shell settings put global vendor.perf.performancemode.support 1
 adb shell settings put global android.os.adpf_platform_power_efficiency false
-adb shell device_config put game android.os.adpf_override_power_efficiency true
+adb shell settings put global android.os.adpf_override_power_efficiency true
+adb shell settings put global cpu_gpu_render_bridge_mode 1
 
 adb shell settings put global persist.sys.cpu.governor performance
 adb shell settings put global persist.sys.gpu.governor performance
@@ -75,6 +76,14 @@ adb shell settings put global persist.sys.smartfps 0
 adb shell settings put global persist.sys.autofps.mode 0
 adb shell settings put global persist.sys.fpsctrl.enable 0
 adb shell settings put global persist.sys.dynamic_fps.enable 0
+adb shell settings put global persist.sys.dynamic_fps_scaling 0
+adb shell settings put global persist.sys.auto_refresh_downscale 0
+adb shell settings put global frame_dispatch_engine_mode dedicated
+adb shell settings put global ui_surface_render_frame_push 1
+adb shell settings put global frame_rate_protection_disable 1
+adb shell settings put global hwui_frame_defer_disable 1
+adb shell settings put global input_frame_sync_resolution ultra
+adb shell settings put global system_frame_policy_persisted 1
 
 adb shell settings put global default_restrict_background_data 0
 adb shell settings put global location_mode 3
@@ -164,6 +173,7 @@ adb shell setprop debug.sf.vsync_reactor_apply_phase_offsets 1
 adb shell setprop debug.sf.enable_vsync_immed 1
 adb shell setprop debug.choreographer.low_latency 1
 adb shell setprop debug.choreographer.zero_jitter 1
+adb shell settings put global enable_app_draw_immediate 1
 
 adb shell settings put global persist.hvdcp.allow_opti 1
 adb shell settings put global persist.vendor.usb.hvdcp.detect true
@@ -182,6 +192,21 @@ adb shell cmd device_config put runtime_native usap_pool_size_max 16
 
 adb shell settings put global debug.sf.enable_gl_backpressure 0
 adb shell settings put global debug.sf.enable.planner_prediction true
+adb shell setprop debug.renderengine.present_thread_priority highest
+adb shell setprop debug.hwui.renderer_mode force_full
+adb shell setprop debug.hwui.anim_pipeline zero_latency
+adb shell setprop debug.sf.draw_policy force_now
+adb shell setprop debug.sf.pipeline_composition_mode locked
+adb shell setprop debug.gpu.composition_optimization_mode aggressive
+adb shell setprop debug.hwui.render_throttle 0
+adb shell setprop debug.sf.flush_behavior_immediate 1
+adb shell setprop debug.sf.pipeline_sync_strict true
+adb shell setprop debug.gpu.render.async true
+adb shell setprop persist.gpu.pipeline_bypass_limiter true
+adb shell setprop persist.sys.surface_throttling_bypass 1
+adb shell settings put global render_queue_policy hard_force
+adb shell settings put global buffer_hold_full_render 1
+adb shell settings put global render_thread_draw_queue_extend 1
 
 adb shell settings put global iorapd.readahead.enable true
 adb shell settings put global device_config put runtime_native_boot enable_readahead true

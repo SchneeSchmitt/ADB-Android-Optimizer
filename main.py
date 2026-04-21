@@ -45,6 +45,10 @@ class MainWindow(QMainWindow):
         qualcom_only_button.clicked.connect(self.run_qualcom_only)
         layout.addWidget(qualcom_only_button)
 
+        lite_ps_button = QPushButton('Lite Power Saving')
+        lite_ps_button.clicked.connect(self.run_lite_ps)
+        layout.addWidget(lite_ps_button)
+
         container = QWidget()
         container.setLayout(layout)
         self.setCentralWidget(container)
@@ -205,6 +209,16 @@ class MainWindow(QMainWindow):
             subprocess.run(script, shell=True)
         else:
             script = os.path.join('.', 'command', 'sh', 'Qualcom_only.sh')
+            os.chmod(script, 0o755)
+            subprocess.run(['sh', script])
+
+    def run_lite_ps(self):
+        system = platform.system().lower()
+        if system == 'windows':
+            script = os.path.join('command', 'bat', 'Lite_ps.bat')
+            subprocess.run(script, shell=True)
+        else:
+            script = os.path.join('.', 'command', 'sh', 'Lite_ps.sh')
             os.chmod(script, 0o755)
             subprocess.run(['sh', script])
 

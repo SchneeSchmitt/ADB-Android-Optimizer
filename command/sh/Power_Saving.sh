@@ -6,10 +6,11 @@ adb shell settings put global zygote.critical_window.minute 2
 adb shell settings put global persist.device_config.activity_manager.use_compaction true
 adb shell setprop debug.app.performance_restricted true
 adb shell settings put global android.os.adpf_platform_power_efficiency true
-adb shell device_config put game android.os.adpf_gpu_report_actual_work_duration false
-adb shell device_config put game android.os.adpf_use_fmq_channel false
-adb shell device_config put game android.os.adpf_use_fmq_channel_fixed false
-adb shell device_config put game android.os.adpf_fmq_eager_send false
+adb shell settings put global game android.os.adpf_gpu_report_actual_work_duration false
+adb shell settings put global game android.os.adpf_use_fmq_channel false
+adb shell settings put global android.os.adpf_use_fmq_channel_fixed false
+adb shell settings put global android.os.adpf_fmq_eager_send false
+adb shell settings put global android.os.adpf_hwui_gpu false
 
 adb shell settings put global persist.sys.use_8bpp_alpha 1
 adb shell setprop debug.renderengine.restore_blur_step false
@@ -17,6 +18,8 @@ adb shell setprop debug.hwc.disabletonemapping true
 adb shell settings put global scroll_rasterizer_latency_optimize 0
 adb shell setprop debug.sf.enable_advanced_dithering 0
 adb shell setprop debug.sf.predict_composition_strategy 0
+adb shell setprop debug.hwui.renderer_mode partial
+adb settings put global wallpaper_power_saver_mode 1
 
 adb shell settings put global location_mode 1
 
@@ -38,7 +41,7 @@ adb shell settings put global vendor.pasr.activemode.enabled true
 adb shell setprop debug.hwui.perf_mode 0
 adb shell settings put global hwc.gpu_perf_mode 0
 adb shell setprop debug.sf.perf_mode 0
-adb shell setprop debug.performance.cap 55
+adb shell setprop debug.performance.cap 40
 adb shell setprop debug.performance_schema_max_memory_classes 100
 adb shell setprop debug.performance_schema_max_socket_classes 40
 adb shell settings put global battery_performance_mode 0

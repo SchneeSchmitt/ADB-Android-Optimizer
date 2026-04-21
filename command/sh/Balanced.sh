@@ -62,6 +62,7 @@ adb shell setprop debug.gpu.render.async true
 adb shell settings put global uclamp_min_high_scheduling_group 25
 adb shell settings put global uclamp_min_top_app 30
 adb shell settings put global uclamp_min_latency_sensitive 40
+adb shell settings put global cpu_gpu_render_bridge_mode 0
 
 adb shell settings put system mcf_continuity 0
 adb shell settings put system mcf_continuity_permission_denied 1
@@ -109,6 +110,7 @@ adb shell setprop debug.thermal_zone.cpu_hotplug_control 0
 adb shell setprop debug.thermal_zone.gpu_hotplug_control 0
 adb shell settings put system heat_cooldown_schedule 30s
 adb shell settings put system persist.vendor.disable.thermal.control 1
+adb shell settings put global thermal_policy_core_lock 0
 
 adb shell setprop debug.sqlite.wal.poolsize 8
 adb shell setprop debug.sqlite.wal.syncmode OFF
@@ -458,9 +460,8 @@ adb shell setprop debug.mdp.ctl.enable_a_llcc true
 adb shell setprop debug.enable-force-gpu-rendering false
 adb shell setprop debug.disable.hwacc 0
 adb shell setprop debug.mediatek.appgamepq_compress 1
-adb shell setprop debug.mediatek.disp_decompress 1
+adb shell setprop debug.mediatek.disp_decompress 0
 adb shell setprop debug.disable_client_composition_cache 0
-adb shell setprop debug.enable.sglscale 1
 adb shell setprop debug.forceAutoTextureCompression 1
 adb shell setprop debug.hwc.dynThreshold 3.5
 adb shell setprop debug.hwc.dynThresholdYuv 2.0
@@ -508,7 +509,7 @@ adb shell setprop debug.fps.divisor 1
 adb shell setprop debug.hwui.renderer.batch true
 adb shell settings put global vendor.display.disable_excl_rect_partial_fb 0
 adb shell settings put global vendor.display.enable_posted_start_dyn 1
-adb shell settings put global persist.sys.force_highendgfx true
+adb shell settings put global persist.sys.force_highendgfx false
 adb shell settings put global sys.hwc.mdp_downscale_enable true
 adb shell settings put global vendor.display.disable_excl_rect_partial_fb 0
 adb shell settings put global vendor.display.enable_posted_start_dyn 1
@@ -547,12 +548,53 @@ adb shell settings put global persist.sys.downscale.disable false
 adb shell setprop debug.hwui.anim_pipeline deferred
 adb shell setprop debug.skia.enable_reuse_scratch_textures 1
 adb shell setprop debug.renderengine.blur_algorithm true
-adb shell setprop debug.renderengine.capture_filename ""
+adb shell setprop debug.renderengine.capture_filename 0
 adb shell setprop debug.renderengine.restore_blur_step true
 adb shell setprop debug.renderengine.graphite_preview_optin true
 adb shell setprop debug.sf.hwc_service_name drmfb
 adb shell setprop debug.sf.enable_hwc_vds 0
 adb shell settings put global persist.sys.rendercomposer.enable true
+adb shell setprop debug.renderengine.frame_interval_ns 8333333
+adb shell setprop debug.hwui.frame_time_budget_ns 8333333
+adb shell setprop debug.sf.present_time_offset_ns 0
+adb shell setprop debug.hwui.renderer_mode adaptive
+adb shell setprop debug.hwui.anim_pipeline adaptive
+adb shell setprop debug.sf.draw_policy adaptive
+adb shell setprop debug.sf.pipeline_composition_mode adaptive
+adb shell setprop debug.gpu.composition_optimization_mode adaptive
+adb shell setprop debug.hwui.render_throttle 1
+adb shell setprop debug.sf.flush_behavior_immediate 0
+adb shell settings put global persist.sys.surface_throttling_bypass 0
+adb shell settings put global persist.gpu.pipeline_bypass_limiter true
+adb shell settings put global enable_app_draw_immediate 0
+adb shell settings put global wallpaper_display_optimization 1
+adb shell settings put global wallpaper_render_priority 0
+adb shell settings put global compositor_jank_ignore false
+adb shell settings put global render_engine_retries 0
+adb shell settings put global vsync_skew_control 0
+adb shell settings put global display_vsync_smoothness_boost 0
+adb shell settings put global dynamic_render_task_control 1
+adb shell settings put global dynamic_thread_priority_control 1
+adb shell settings put global fast_jank_recovery 0
+adb shell settings put global enforce_render_path_consistency 0
+adb shell settings put global frame_jank_detector_disable 1
+adb shell settings put global render_pipeline_injection_override 0
+adb shell settings put global frame_buffer_flush_disable 1
+adb shell settings put global frame_dispatch_engine_mode shared
+adb shell settings put global render_queue_policy adaptive
+adb shell settings put global gpu_thread_frame_persist 0
+adb shell settings put global ui_surface_render_frame_push 0
+adb shell settings put global surfaceflinger_composition_mode overlay
+adb shell settings put global frame_rate_protection_disable 0
+adb shell settings put global animation_frame_hold_force 0
+adb shell settings put global hwui_frame_defer_disable 0
+adb shell settings put global buffer_hold_full_render 0
+adb shell settings put global render_thread_draw_queue_extend 0
+adb shell settings put global input_frame_sync_resolution normal
+adb shell settings put global system_frame_policy_persisted 0
+adb shell settings put global com.android.graphics.surfaceflinger.flags.graphite_renderengine true
+adb shell settings put global com.android.graphics.surfaceflinger.flags.multithreaded_present true
+adb shell settings put global com.android.graphics.surfaceflinger.flags.enable_layer_command_batching true
 
 adb shell settings put global vendor.display.use_layer_ext 0
 adb shell settings put global persist.vendor.vcb.ability true
@@ -569,9 +611,11 @@ adb shell setprop debug.hwc.force_gpu_reset_on_hotplug true
 adb shell setprop debug.hwc.force_gpu_reset_on_change true
 adb shell setprop debug.hwc.force_gpu_reset_on_vsync true
 adb shell setprop debug.sf.enable_adpf_cpu_hint true
-adb shell device_config put game android.os.adpf_use_fmq_channel true
-adb shell device_config put game android.os.adpf_use_fmq_channel_fixed true
-adb shell device_config put game android.os.adpf_fmq_eager_send true
+adb shell settings put global android.os.adpf_use_fmq_channel true
+adb shell settings put global android.os.adpf_use_fmq_channel_fixed true
+adb shell settings put global android.os.adpf_fmq_eager_send true
+adb shell settings put global android.os.adpf_hwui_gpu true
+adb shell settings put global android.os.adpf_prefer_power_efficiency true
 
 adb shell settings put global doze.display.supported true
 adb shell settings put global doze.pulse.notifications true
@@ -583,7 +627,7 @@ adb shell settings put global doze.pulse.duration.in 1000
 adb shell settings put global doze.pulse.duration.out 1000
 adb shell settings put global doze.pulse.duration.visible 3000
 adb shell settings put global doze.pulse.proxcheck 0
-adb shell settings put global doze.pulse.schedule 1s,10s,30s,60s,120s,180s
+adb shell settings put global doze.pulse.schedule 300s,900s,1800s
 adb shell settings put global doze.pulse.schedule.resets 3
 adb shell settings put global doze.pulse.sigmotion 0
 adb shell settings put global doze.shake.acc.threshold 10
@@ -662,7 +706,7 @@ adb shell settings put global persist.sys.dynamic_fps.enable 1
 adb shell settings put global default_fps_override 0
 adb shell settings put global enable_frame_pacing true
 adb shell settings put global persist.sys.vsync.controller_mode relaxed
-adb shell settings put global disable_vsync_fallback false
+adb shell settings put global disable_vsync_fallback true
 adb shell settings put global max_render_ahead_frames 0
 adb shell settings put global refresh_rate_switching_type 1
 adb shell settings put global frame_drop_guard 0
@@ -673,6 +717,16 @@ adb shell settings put global ui_scroll_frame_queue_optimize 1
 adb shell settings put global scroll_rasterizer_latency_optimize 1
 adb shell settings put global vendor.display.enable_async_powermode 1
 adb shell settings put global vendor.display.use_smooth_motion 0
+adb shell settings put global persist.sys.dynamic_fps_scaling 1
+adb shell settings put global persist.sys.auto_refresh_downscale 1
+adb shell settings put global frame_render_smoothness_enhancer 0
+adb shell settings put global vsync_phase_adjust 1
+adb shell settings put global frame_buffer_drop_fix 0
+adb shell settings put global enable_global_frame_scheduler 0
+adb shell settings put global enforce_frame_coherence 0
+adb shell settings put global ui_render_skip_limit 0
+adb shell settings put global bypass_framerate_scaling 0
+adb shell settings put global stable_framerate_mode 0
 
 adb shell settings put global media.stagefright.enable-player true
 adb shell settings put global media.stagefright.enable-meta true
@@ -735,13 +789,13 @@ adb shell settings put global persist.device_config.runtime_native.usap_pool_ref
 adb shell settings put global persist.device_config.runtime_native.usap_pool_size_max 10
 adb shell settings put global persist.device_config.runtime_native.usap_pool_size_min 1
 adb shell settings put global persist.device_config.runtime_native.usap_refill_threshold 5
-adb shell cmd device_config put runtime_native usap_prefer_idle true
-adb shell cmd device_config put runtime_native usap_priority_boost false
-adb shell cmd device_config put runtime_native usap_aggressive_refill false
-adb shell cmd device_config put runtime_native usap_refill_threshold 0
-adb shell cmd device_config put runtime_native usap_pool_refill_delay_ms 250
-adb shell cmd device_config put runtime_native usap_pool_size_min 2
-adb shell cmd device_config put runtime_native usap_pool_size_max 4
+adb shell settings put global usap_prefer_idle true
+adb shell settings put global usap_priority_boost false
+adb shell settings put global usap_aggressive_refill false
+adb shell settings put global usap_refill_threshold 0
+adb shell settings put global usap_pool_refill_delay_ms 250
+adb shell settings put global usap_pool_size_min 2
+adb shell settings put global usap_pool_size_max 4
 adb shell settings put global persist.device_config.activity_manager.use_compaction true
 adb shell settings put global vendor.power.pasr.enabled false
 adb shell settings put global vendor.pasr.activemode.enabled false
@@ -895,6 +949,10 @@ adb shell setprop debug.perfhudes 1
 adb shell setprop debug.hwui.use_gl_trace 0
 adb shell settings put global gpu_debug_layers 0
 adb shell setprop debug.hwc.logvsync 0
+adb shell settings put global assist_launch_event_logging_enabled 0
+adb shell settings put global frame_skip_debug 0
+adb shell settings put global interaction_jank_monitor_enabled false
+adb shell settings put global interaction_jank_monitor_debug_overlay_enabled false
 adb shell setprop debug.performance_schema_max_memory_classes 0
 adb shell settings put global sys.games.gt.prof 0
 adb shell settings put global debugtool.anrhistory 0
@@ -942,6 +1000,8 @@ adb shell settings put global net.ipv4.tcp_no_metrics_save 1
 adb shell settings put global net.ipv6.tcp_no_metrics_save 1
 adb shell settings put global persist.vendor.wifienhancelog 0
 adb shell settings put global persist.sys.wifi_track false
+adb shell settings put global netstats_store_files_in_apexdata false
+adb shell settings put global netstats_import_legacy_target_attempts 0
 adb shell settings put global persist.ims.disableADBLogs 1
 adb shell settings put global persist.ims.disableDebugLogs 1
 adb shell settings put global persist.ims.disableQXDMLogs 0
@@ -1002,9 +1062,20 @@ adb shell settings put global persist.sys.memory.debug.enable 0
 adb shell settings put global sys.logbootcomplete 0
 adb shell settings put global netstats_enabled 0
 adb shell device_config put runtime_native_boot disable_lock_profiling true
-adb shell device_config put interaction_jank_monitor enabled false
 adb shell device_config put latency_tracker enabled false
 adb shell device_config put runtime_native_boot enable_perfetto false
+adb shell settings put global kernel_cpu_thread_reader_num_buckets 0
+adb shell settings put global disable_lock_profiling true
+adb shell settings put global disable_app_profiler_pss_profiling true
+adb shell settings put global log_history_size 0
+adb shell settings put global max_buffer_size 0
+adb shell settings put global metrics.reporting-mods 0
+adb shell settings put global metrics.reporting-mods-server 0
+adb shell settings put global metrics.reporting-num-mods 0
+adb shell settings put global metrics.reporting-num-mods-server 0
+adb shell settings put global metrics.write-to-statsd false
+adb shell settings put global metrics.reporting-spec 0
+adb shell settings put global metrics.reporting-spec-server 0
 adb shell setprop debug.MB.running 0
 adb shell setprop debug.MB.inner.running 0
 adb shell setprop debug.level 0
