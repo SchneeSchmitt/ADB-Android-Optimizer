@@ -32,7 +32,7 @@ adb shell settings put global persist.device_config.runtime_native_boot.pin_came
 adb shell settings put global persist.vendor.camera.realtimethread 1
 adb shell settings put global sched.colocate.enable 1
 adb shell settings put global sys.config.phone_start_early true
-adb shell device_config put activity_manager uses_weight true
+adb shell device_config put activity_manager_uses_weight true
 adb shell setprop debug.OVRManager.cpuLevel 2
 adb shell setprop debug.cpuprio 20
 adb shell setprop debug.mtk_tflite.target_nnapi 33
@@ -63,6 +63,13 @@ adb shell settings put global uclamp_min_high_scheduling_group 25
 adb shell settings put global uclamp_min_top_app 30
 adb shell settings put global uclamp_min_latency_sensitive 40
 adb shell settings put global cpu_gpu_render_bridge_mode 0
+adb shell settings put global vendor.perf.test_avc 0
+adb shell settings put global vendor.perf.bgt.enable 1
+adb shell settings put global tran_cpupower_mode 0
+adb shell settings put global persist.sys.cpu_perf_mode 0
+adb shell settings put global sys.init.perf_lsm_hooks 1
+adb shell settings put global persist.sys.fuse.passthrough.enable true
+adb shell settings put global security.perf_harden 0
 
 adb shell settings put system mcf_continuity 0
 adb shell settings put system mcf_continuity_permission_denied 1
@@ -95,6 +102,7 @@ adb shell settings put global persist.sys.oiface.enable 0
 adb shell settings put secure screensaver_activate_on_dock 0
 adb shell settings put secure screensaver_activate_on_sleep 0
 adb shell settings put secure screensaver_enabled 0
+adb shell settings put system oneplus_lab_feature_key 1
 
 adb shell cmd thermalservice override-status 1
 adb shell settings put secure game_auto_temperature_control 0
@@ -272,9 +280,9 @@ adb shell setprop debug.hwui.render_thread true
 adb shell settings put global renderthread.skia.reduceopstasksplitting false
 adb shell settings put global persist.sys.disable_skia_path_ops false
 adb shell setprop debug.skia.max_memory_usage_mb 512
-adb shell setprop debug.hwui.drop_shadow_cache_size 0
+adb shell setprop debug.hwui.drop_shadow_cache_size 20
 adb shell setprop debug.hwui.texture_cache_size 50
-adb shell setprop debug.hwui.gradient_cache_size 1
+adb shell setprop debug.hwui.gradient_cache_size 10
 adb shell setprop debug.hwui.path_cache_size 10
 adb shell setprop debug.hwui.shape_cache_size 5
 adb shell setprop debug.hwui.layer_cache_size 14
@@ -313,6 +321,9 @@ adb shell setprop debug.egl.force_taa false
 adb shell setprop debug.egl.force_txaa false
 adb shell setprop debug.egl.force_csaa false
 adb shell setprop debug.egl.msaa 0
+adb shell setprop debug.hwui.msaa_sample_count 1
+adb shell setprop debug.vulkan.enable_msaa false
+adb shell setprop debug.hwui.disable_msaa true
 adb shell settings put global persist.sys.force_msaa 0
 adb shell settings put global hw3d.force.msaa 0
 adb shell settings put global persist.sys.force_no_aa 1
@@ -354,8 +365,8 @@ adb shell settings put global texture_atlas_map_pool_override 0.15
 adb shell settings put global buffer_size 0.5
 adb shell setprop debug.hwui.disable_zrle 0
 adb shell settings put global sf.ddms 0
-adb shell setprop debug.sf.enable 0
-adb shell setprop debug.sf.gpuoverlay 0
+adb shell setprop debug.sf.enable 1
+adb shell setprop debug.sf.gpuoverlay 1
 adb shell setprop debug.sf.layer_smoothness 5
 adb shell setprop debug.sf.layer_timeout 50
 adb shell setprop debug.sf.early_phase_limit 3
@@ -569,7 +580,7 @@ adb shell settings put global persist.gpu.pipeline_bypass_limiter true
 adb shell settings put global enable_app_draw_immediate 0
 adb shell settings put global wallpaper_display_optimization 1
 adb shell settings put global wallpaper_render_priority 0
-adb shell settings put global compositor_jank_ignore false
+adb shell settings put global compositor_jank_ignore true
 adb shell settings put global render_engine_retries 0
 adb shell settings put global vsync_skew_control 0
 adb shell settings put global display_vsync_smoothness_boost 0
@@ -595,6 +606,7 @@ adb shell settings put global system_frame_policy_persisted 0
 adb shell settings put global com.android.graphics.surfaceflinger.flags.graphite_renderengine true
 adb shell settings put global com.android.graphics.surfaceflinger.flags.multithreaded_present true
 adb shell settings put global com.android.graphics.surfaceflinger.flags.enable_layer_command_batching true
+adb shell settings put global hardware_accelerated true
 
 adb shell settings put global vendor.display.use_layer_ext 0
 adb shell settings put global persist.vendor.vcb.ability true
@@ -771,11 +783,15 @@ adb shell settings put global hardware_accelerated_video_encode 0
 adb shell settings put global cache.clean 1
 adb shell settings put global fstrim_mandatory_interval 86400000
 adb shell settings put global persist.sys.scrollingcache 3
+adb shell settings put global scrollingcache 1
 adb shell settings put global persist.sys.purgeable_assets 1
 adb shell settings put global debug.qctwa.preservebuf 0
 adb shell settings put global app_standby_enabled 1
 adb shell settings put global persist.sys.spc.screenoff_kill_enable false
 adb shell setprop debug.kill_allocating_task 0
+adb shell settings put global always_finish_activities 0
+adb shell settings put global force_background_check false
+adb shell settings put global forced_app_standby_for_small_battery_enabled true
 
 adb shell settings put global service.zram 0
 adb shell settings put global zram.default 0
@@ -836,6 +852,8 @@ adb shell settings put global sys.config.spcm_db_launcher false
 adb shell settings put global sys.config.spcm_preload_enable false
 adb shell settings put global sys.config.spcm_gcm_kill_enable false
 adb shell settings put global cgroup_disable memory
+adb shell settings put global vendor.enable.prefetch 0
+adb shell settings put global vendor.iop.enable_prefetch_ofr 0
 
 adb shell settings put global activity_starts_logging_enabled 0
 adb shell setprop debug.atrace.tags.enableflags false
@@ -1076,6 +1094,16 @@ adb shell settings put global metrics.reporting-num-mods-server 0
 adb shell settings put global metrics.write-to-statsd false
 adb shell settings put global metrics.reporting-spec 0
 adb shell settings put global metrics.reporting-spec-server 0
+adb shell settings put global vendor.debug.enable.lm 0
+adb shell settings put global app_usage_enabled 0
+adb shell settings put global package_usage_stats_enabled 0
+adb shell settings put global recent_usage_data_enabled 0
+adb shell settings put global memory_usage_profiling_enabled 0
+adb shell settings put global max_logcat_lines 0
+adb shell settings put global persist.radio.adb_log_on 0
+adb shell settings put global profiler.debugmonitor false
+adb shell settings put global profiler.hung.dumpdobugreport false
+adb shell settings put global disable_app_profiler_pss_profiling true
 adb shell setprop debug.MB.running 0
 adb shell setprop debug.MB.inner.running 0
 adb shell setprop debug.level 0
@@ -1207,6 +1235,8 @@ adb shell settings put global dalvik.vm.lockprof.threshold 250
 adb shell settings put global dalvik.vm.dex2oat64.enabled true
 adb shell settings put global dalvik.vm.dexopt.secondary true
 adb shell settings put global dalvik.gc.type precise
+adb shell settings put global dalvik.vm.stack-trace-dir 0
+adb shell settings put global dalvik.vm.stack-trace-file 0
 adb shell settings put global persist.sys.dalvik.vm.lib.2 libart.so
 adb shell settings put global dev.pm.precompile_layouts 1
 adb shell settings put global persist.miui.dexopt.first_use true
@@ -1287,17 +1317,54 @@ adb shell settings put secure adaptive_connectivity_enabled 1
 adb shell settings put global persist.cust.tel.eons 1
 adb shell settings put global enable_cellular_on_boot 1
 adb shell settings put system wifi_assistant 1
-adb shell settings put global wifi_country_code SA
+adb shell settings put global connectivity_metrics_buffer_size 0
+adb shell cmd connectivity set-chain3-enabled false
+adb shell settings put global wifi_coverage_extend_feature_enabled 0
+adb shell settings put global wifi_suspend_optimizations_enabled 1
+adb shell settings put global net.netfilter.nf_conntrack_tcp_timeout_established 3600
+adb shell settings put global net.netfilter.nf_conntrack_max 65536
 adb shell settings put global net.core.netdev_max_backlog 5000
 adb shell settings put global net.core.netdev_budget 2500
 adb shell settings put global net.core.netdev_budget_usecs 250
-adb shell settings put global net.core.wmem_max 8388608
-adb shell settings put global net.core.rmem_max 8388608
+adb shell settings put global net.core.wmem_max 16777216
+adb shell settings put global net.core.rmem_max 16777216
 adb shell settings put global net.core.rmem_default 262144
 adb shell settings put global net.core.wmem_default 262144
-adb shell settings put global net.core.optmem_max 20480
+adb shell settings put global net.core.optmem_max 65536
 adb shell settings put global net.core.netdev_max_backlog 250000
+adb shell settings put global net.core.default_qdisc fq_codel
+adb shell settings put global net.core.bpf_jit_enable 1
+adb shell settings put global net.core.bpf_jit_harden 0
+adb shell settings put global net.core.bpf_jit_kallsyms 0
+adb shell settings put global net.core.tstamp_allow_data 0
+adb shell settings put global net.core.somaxconn 1024
+adb shell settings put global net.core.netdev_max_backlog 10000
+adb shell settings put global net.core.dev_weight 64
+adb shell settings put global net.core.dev_weight_rx_bias 1
+adb shell settings put global net.core.dev_weight_tx_bias 1
+adb shell settings put global udp_rmem_min 65536
+adb shell settings put global udp_wmem_min 65536
 adb shell settings put global net.unix.max_dgram_qlen 50
+adb shell settings put global net.ipv4.tcp_fastopen 1
+adb shell settings put global net.ipv4.tcp_congestion_control bbr
+adb shell settings put global net.ipv4.tcp_recovery 1
+adb shell settings put global net.ipv4.tcp_max_orphans 8192
+adb shell settings put global net.ipv4.tcp_retrans_collapse 1
+adb shell settings put global net.ipv4.ip_nonlocal_bind 1
+adb shell settings put global net.ipv4.conf.all.rp_filter 0
+adb shell settings put global net.ipv4.conf.default.rp_filter 0
+adb shell settings put global net.ipv4.udp_mem 4096,87380,16777216
+adb shell settings put global net.ipv4.tcp_dsack 1
+adb shell settings put global net.ipv4.tcp_early_retrans 3
+adb shell settings put global net.ipv4.tcp_mtu_probing 1
+adb shell settings put global net.ipv4.tcp_slow_start_after_idle 0
+adb shell settings put global net.ipv4.tcp_no_metrics_save 1
+adb shell settings put global net.ipv4.conf.all.accept_source_route 0
+adb shell settings put global net.ipv4.conf.all.accept_redirects 0
+adb shell settings put global net.ipv4.conf.all.send_redirects 0
+adb shell settings put global net.ipv4.conf.all.secure_redirects 0
+adb shell settings put global net.ipv4.icmp_echo_ignore_broadcasts 1
+adb shell settings put global net.ipv4.icmp_ignore_bogus_error_responses 1
 adb shell settings put global net.ipv4.tcp_ecn 0
 adb shell settings put global net.ipv4.route.flush 1
 adb shell settings put global net.ipv4.tcp_rfc1337 1
@@ -1306,10 +1373,26 @@ adb shell settings put global net.ipv4.tcp_sack 1
 adb shell settings put global net.ipv4.tcp_fack 1
 adb shell settings put global net.ipv4.tcp_window_scaling 1
 adb shell settings put global net.ipv4.tcp_timestamps 1
-adb shell settings put global net.ipv4.tcp_rmem 4096,87380,8388608
-adb shell settings put global net.ipv4.tcp_wmem 4096,87380,8388608
-adb shell settings put global net.ipv4.tcp_mem 4096,87380,8388608
+adb shell settings put global net.ipv4.tcp_rmem 4096,1310072,16777216
+adb shell settings put global net.ipv4.tcp_wmem 4096,1310072,16777216
+adb shell settings put global net.ipv4.tcp_mem 4096,1310072,16777216
 adb shell settings put global net.ipv4.tcp_moderate_rcvbuf 1
+adb shell settings put global net.ipv4.tcp_congestion_control bbr
+adb shell settings put global net.ipv4.neigh.default.gc_thresh1 128
+adb shell settings put global net.ipv4.neigh.default.gc_thresh2 512
+adb shell settings put global net.ipv4.neigh.default.gc_thresh3 1024
+adb shell settings put global net.ipv6.conf.all.disable_ipv6 0
+adb shell settings put global net.ipv6.ip_nonlocal_bind 1
+adb shell settings put global net.ipv6.conf.all.proxy_ndp 0
+adb shell settings put global net.ipv6.conf.all.accept_ra 2
+adb shell settings put global net.ipv6.conf.all.accept_ra_mtu 1
+adb shell settings put global net.ipv6.conf.default.accept_ra_mtu 1
+adb shell settings put global net.ipv6.conf.all.accept_source_route 0
+adb shell settings put global net.ipv6.conf.all.accept_redirects 0
+adb shell settings put global net.ipv6.conf.all.use_tempaddr 2
+adb shell settings put global net.ipv6.conf.default.use_tempaddr 2
+adb shell settings put global net.ipv6.icmp.echo_ignore_anycast 1
+adb shell settings put global net.ipv6.icmp.echo_ignore_multicast 1
 adb shell settings put global net.ipv6.tcp_ecn 0
 adb shell settings put global net.ipv6.route.flush 1
 adb shell settings put global net.ipv6.tcp_rfc1337 1
@@ -1318,10 +1401,13 @@ adb shell settings put global net.ipv6.tcp_sack 1
 adb shell settings put global net.ipv6.tcp_fack 1
 adb shell settings put global net.ipv6.tcp_window_scaling 1
 adb shell settings put global net.ipv6.tcp_timestamps 1
-adb shell settings put global net.ipv6.tcp_rmem 4096,87380,8388608
-adb shell settings put global net.ipv6.tcp_wmem 4096,87380,8388608
-adb shell settings put global net.ipv6.tcp_mem 4096,87380,8388608
+adb shell settings put global net.ipv6.tcp_rmem 4096,1310072,16777216
+adb shell settings put global net.ipv6.tcp_wmem 4096,1310072,16777216
+adb shell settings put global net.ipv6.tcp_mem 4096,1310072,16777216
 adb shell settings put global net.ipv6.tcp_moderate_rcvbuf 1
+adb shell settings put global net.ipv6.neigh.default.gc_thresh1 128
+adb shell settings put global net.ipv6.neigh.default.gc_thresh2 512
+adb shell settings put global net.ipv6.neigh.default.gc_thresh3 1024
 adb shell settings put global net.tethering.noprovisioning true
 adb shell settings put global config.disable_rtt true
 adb shell settings put global persist.radio.oem_socket false
@@ -1361,13 +1447,59 @@ adb shell settings put global wifi_poor_connection_warning 1
 adb shell settings put global wifi_verbose_logging_enabled 0
 adb shell settings put global wifi_wakeup_enabled 0
 adb shell settings put global force-hi-perf-mode 0
-adb shell cmd wifi set-ipreach-disconnect disabled
-adb shell adb shell cmd connectivity set-multipath-preference true
+adb shell settings put global set-ipreach-disconnect 0
+adb shell cmd connectivity set-multipath-preference true
 adb shell cmd connectivity set-default-network-active true
+adb shell settings put global set-emergency-call-state 0
+adb shell settings put global set-emergency-callback-mode 0
+adb shell settings put global force-softap-band 0
+adb shell settings put system wifi_channel_utilization 0
+adb shell settings put global wifi_country_code_priority 1
+adb shell settings put global wifi_selectable_zone_enable 1
+adb shell settings put global wifi_country_code_source 2
+adb shell settings put global wifi_boost_5g 1
+adb shell settings put global wifi_revert_country_code_on_cellular_loss 0
+adb shell settings put global wifi_verbose_logging_enabled 0
+adb shell settings put global wifi_safe_mode 0
+adb shell settings put global wifi_dynamic_bw_switch 1
+adb shell settings put global subscription_mode 0
+adb shell settings put global sys.dfs.server.ctrl false
+adb shell settings put global persist.vendor.wifienhancelog 0
+adb shell settings put global persist.sys.wifi_track false
+adb shell settings put global persist.vendor.wifi.interrupt_test_mode false
+adb shell settings put global persist.miui.wifi.upf.enable 1
+adb shell settings put global persist.sys.miuitcptracker.ctrl false
+adb shell settings put global persist.vendor.wlan.multi_p2p true
+adb shell settings put global persist.vendor.wifi.country JP
+adb shell settings put global persist.vendor.wifi.reg_country JP
+adb shell settings put global wifi_country_code JP
+adb shell settings put global wifi_region JP
+adb shell settings put global persist.sys.miui_mcc 9999
+adb shell settings put global persist.sys.miui_mnc 9999
+adb shell settings put global persist.sys.wifi.regdom.ignore_sim 1
+adb shell settings put global sys.wifitracing.started 0
+adb shell settings put global persist.vendor.baseband.reg 0
+adb shell settings put global persist.vendor.wifi.reg_channels 0
+adb shell settings put global persist.vendor.wifi.ignore_sim_country 1
+adb shell settings put global persist.vendor.wifi.allow_chan_12_13 1
+adb shell settings put global persist.vendor.wifi.enable_jp_ch14 1
+adb shell settings put global persist.vendor.wifi.vht160_enable 1
+adb shell settings put global persist.vendor.wifi.he80_160_enable 1
+adb shell settings put global persist.vendor.wifi.6ghz.enable 1
+adb shell settings put global persist.vendor.wifi.enable_11d_scan 0
+adb shell settings put global persist.vendor.wifi.enable_11h 0
+adb shell settings put global persist.vendor.wifi.ignore_reg_db 1
+adb shell settings put global persist.vendor.debug.nan.enable 0
+adb shell settings put global persist.vendor.debug.wlm.low_latency_flags 0x104
+adb shell settings put global persist.vendor.sys.cnss.debug_level 0
+adb shell settings put global persist.vendor.sys.cnss.dump_level 0
+adb shell settings put global persist.vendor.wi-fi.logging.level 0
 
 adb shell settings put global tcp.buffersize.default 4096,87380,256960,4096,16384,256960
 adb shell settings put global tcp.buffersize.wifi 4096,87380,256960,4096,16384,256960
 adb shell settings put global tcp.buffersize.lte 4096,87380,256960,4096,16384,256960
+adb shell settings put global tcp.buffersize.5g 4096,87380,256960,4096,16384,256960
+adb shell settings put global tcp.buffersize.nr 4096,87380,256960,4096,16384,256960
 adb shell settings put global tcp.buffersize.umts 4096,87380,256960,4096,16384,256960
 adb shell settings put global tcp.buffersize.evdo 4096,87380,256960,4096,16384,256960
 adb shell settings put global tcp.buffersize.evdo_a 4096,87380,256960,4096,16384,256960
@@ -1375,6 +1507,7 @@ adb shell settings put global tcp.buffersize.evdo_b 4096,87380,256960,4096,16384
 adb shell settings put global tcp.buffersize.gprs 4096,87380,256960,4096,16384,256960
 adb shell settings put global tcp.buffersize.edge 4096,87380,256960,4096,16384,256960
 adb shell settings put global tcp.buffersize.hsdpa 4096,87380,256960,4096,16384,256960
+adb shell settings put global tcp.buffersize.hsupa 4096,87380,256960,4096,16384,256960
 adb shell settings put global tcp.buffersize.hspa 4096,87380,256960,4096,16384,256960
 adb shell settings put global tcp.buffersize.hspap 4096,87380,256960,4096,16384,256960
 adb shell settings put global tcp.buffersize.hsupa 4096,87380,256960,4096,16384,256960
