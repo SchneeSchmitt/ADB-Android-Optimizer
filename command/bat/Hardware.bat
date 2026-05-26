@@ -34,3 +34,4 @@ adb shell settings put global hardware_accelerated_video_decode 1
 adb shell settings put global hardware_accelerated_video_encode 1
 adb shell settings put global media.hwhevccodectype 1
 adb shell setprop debug.sf.vsync.native 1
+adb shell settings put global vendor.perf.enable_gplaf_hw 1

@@ -11,6 +11,7 @@ adb shell settings put global game android.os.adpf_use_fmq_channel false
 adb shell settings put global android.os.adpf_use_fmq_channel_fixed false
 adb shell settings put global android.os.adpf_fmq_eager_send false
 adb shell settings put global android.os.adpf_hwui_gpu false
+adb shell settings put global adaptive_battery_management_enabled 1
 
 adb shell settings put global persist.sys.use_8bpp_alpha 1
 adb shell setprop debug.renderengine.restore_blur_step false
@@ -41,12 +42,14 @@ adb shell settings put global vendor.pasr.activemode.enabled true
 adb shell setprop debug.hwui.perf_mode 0
 adb shell settings put global hwc.gpu_perf_mode 0
 adb shell setprop debug.sf.perf_mode 0
-adb shell setprop debug.performance.cap 40
+adb shell setprop debug.performance.cap 20
 adb shell setprop debug.performance_schema_max_memory_classes 100
 adb shell setprop debug.performance_schema_max_socket_classes 40
 adb shell settings put global battery_performance_mode 0
 adb shell settings put global dynamic_power_savings_enabled 1
 adb shell settings put global background_power_saving_enable 1
+adb shell settings put system tran_cpupower_mode 2
+adb shell settings put global persist.sys.cpu_perf_mode 2
 
 adb shell settings put global sys_uidcpupower 1
 
@@ -55,6 +58,8 @@ adb shell settings put global cached_apps_freezer 1
 adb shell device_config put activity_manager_native_boot use_freezer true
 adb shell settings put system power_sleep_mode_enabled 1
 adb shell settings put global sys.fflag.override.settings_enable_monitor_phantom_procs true
+adb shell settings put global force_background_check true
+adb shell settings put global forced_app_standby_enabled true
 
 adb shell device_config put activity_manager bg_prompt_fgs_on_long_running 1
 adb shell device_config put app_hibernation app_hibernation_enabled 1

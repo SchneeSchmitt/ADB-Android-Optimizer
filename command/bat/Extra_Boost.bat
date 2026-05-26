@@ -29,6 +29,14 @@ adb shell settings put global vendor.perf.performancemode.support 1
 adb shell settings put global android.os.adpf_platform_power_efficiency false
 adb shell settings put global android.os.adpf_override_power_efficiency true
 adb shell settings put global cpu_gpu_render_bridge_mode 1
+adb shell settings put global vendor.enable.vending_perfcore 1
+adb shell settings put global sys.perf.fbooster true
+adb shell settings put global sys.perf.schd true
+adb shell settings put global sys.trancare.performance 1
+adb shell settings put system tran_cpupower_mode 1
+adb shell settings put global sys.trancare.performance.latency 1
+adb shell settings put global sys.perf.boost true
+adb shell settings put global persist.sys.cpu_perf_mode 1
 
 adb shell settings put global persist.sys.cpu.governor performance
 adb shell settings put global persist.sys.gpu.governor performance
