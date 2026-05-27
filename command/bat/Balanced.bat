@@ -32,7 +32,7 @@ adb shell settings put global persist.device_config.runtime_native_boot.pin_came
 adb shell settings put global persist.vendor.camera.realtimethread 1
 adb shell settings put global sched.colocate.enable 1
 adb shell settings put global sys.config.phone_start_early true
-adb shell device_config put activity_manager_uses_weight true
+adb shell device_config put activity_manager uses_weight true
 adb shell setprop debug.OVRManager.cpuLevel 2
 adb shell setprop debug.cpuprio 20
 adb shell setprop debug.mtk_tflite.target_nnapi 33
@@ -1448,8 +1448,8 @@ adb shell settings put global wifi_verbose_logging_enabled 0
 adb shell settings put global wifi_wakeup_enabled 0
 adb shell settings put global force-hi-perf-mode 0
 adb shell settings put global set-ipreach-disconnect 0
-adb shell cmd connectivity set-multipath-preference true
-adb shell cmd connectivity set-default-network-active true
+adb shell settings put global set-multipath-preference true
+adb shell settings put global set-default-network-active true
 adb shell settings put global set-emergency-call-state 0
 adb shell settings put global set-emergency-callback-mode 0
 adb shell settings put global force-softap-band 0
