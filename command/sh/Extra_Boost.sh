@@ -154,7 +154,7 @@ adb shell setprop debug.OVRManager.gpuLevel 4
 adb shell setprop debug.sf.set_idle_timer_ms 3000
 adb shell settings put global gpu_rendering_mode force_gpu
 adb shell setprop debug.sf.gpu_freq_indeks 8
-adb shell setprop debug.sf.gpu_freq_index 2
+adb shell setprop debug.sf.gpu_freq_index 8
 adb shell setprop debug.rs.max-freq 5000000000
 adb shell setprop debug.rs.min-freq 5000000000
 adb shell setprop debug.rs.min-perf_percent 100

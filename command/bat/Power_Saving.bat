@@ -109,6 +109,7 @@ adb shell settings put system cpu_max_speed 0
 adb shell settings put system speed_mode 0
 adb shell settings put global suspend.short_suspend_threshold_millis 2000
 adb shell settings put global sys.hwc.gpu_perf_mode 0
+adb shell setprop debug.sf.gpu_freq_index 2
 adb shell setprop debug.sf.gpu_freq_indeks 2
 adb shell setprop debug.mdpcomp.idletime -1
 adb shell settings put global hardware_draw_thread_priority_boost 0

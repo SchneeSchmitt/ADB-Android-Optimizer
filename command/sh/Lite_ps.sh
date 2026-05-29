@@ -20,7 +20,7 @@ adb shell settings put global battery_performance_mode 0
 adb shell settings put global dynamic_power_savings_enabled 1
 adb shell settings put global background_power_saving_enable 1
 adb shell settings put system persist.sys_emc_mode power_saving
-adb shell setprop debug.performance.cap 26
+adb shell setprop debug.performance.cap 20
 adb shell settings put global sys_uidcpupower 1
 adb shell settings put system tran_cpupower_mode 2
 adb shell settings put global persist.sys.cpu_perf_mode 2

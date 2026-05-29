@@ -275,7 +275,7 @@ adb shell settings put global warmboot.capability 1
 adb shell setprop debug.hwui.profile false
 adb shell setprop debug.hwui.webview_overlays_enabled true
 adb shell settings put global sys.use_fifo_ui 1
-adb shell settings put global persist.sys.cpu.renderthreads 1
+adb shell settings put global persist.sys.cpu.renderthreads 4
 adb shell setprop debug.hwui.render_thread true
 adb shell settings put global renderthread.skia.reduceopstasksplitting false
 adb shell settings put global persist.sys.disable_skia_path_ops false
@@ -289,8 +289,8 @@ adb shell setprop debug.hwui.layer_cache_size 14
 adb shell setprop debug.hwui.enable_f16 true
 adb shell setprop debug.hwui.enable_partial_updates true
 adb shell setprop debug.skia.threaded_mode true
-adb shell setprop debug.hwui.render_thread_count 2
-adb shell setprop debug.skia.num_render_threads 2
+adb shell setprop debug.hwui.render_thread_count 4
+adb shell setprop debug.skia.num_render_threads 4
 adb shell setprop debug.skia.render_thread_priority 1
 adb shell settings put global persist.sys.gpu.working_thread_priority 1
 adb shell setprop debug.rs.shader SPIR-V
@@ -394,7 +394,8 @@ adb shell setprop debug.sf.showzram 0
 adb shell setprop debug.sf.showtouchscreen 0
 adb shell setprop debug.sf.gpu_comp_tiling 1
 adb shell setprop debug.sf.recomputecrop 0
-adb shell setprop debug.sf.gpu_freq_index -1
+adb shell setprop debug.sf.gpu_freq_index 5
+adb shell setprop debug.sf.gpu_freq_indeks 5
 adb shell setprop debug.sf.hwc.canUseABC 1
 adb shell setprop debug.sf.enable_small_dirty_detection true
 adb shell setprop debug.sf.send_late_power_session_hint true
@@ -455,7 +456,7 @@ adb shell setprop debug.hwui.enable_bp_cache true
 adb shell settings put global vendor.iop.enable_uxe 1
 adb shell settings put global running_without_sync_framework false
 adb shell settings put global present_time_offset_from_vsync_ns 0
-adb shell setprop debug.rs.max-threads 3
+adb shell setprop debug.rs.max-threads 4
 adb shell setprop debug.hwui.force_flush_of_tiles 0
 adb shell setprop debug.hwui.force_gpu_filter_bicubic 0
 adb shell setprop debug.hwui.render_priority 1
