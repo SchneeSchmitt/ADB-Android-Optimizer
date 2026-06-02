@@ -547,7 +547,7 @@ adb shell setprop debug.ui.default_gralloc 4
 adb shell setprop debug.renderengine.graphite true
 adb shell setprop debug.hwui.shadow_renderer graphite
 adb shell setprop debug.hwui.drawing_enabled true
-adb shell setprop debug.hwui.app_memory_policy true
+adb shell setprop debug.hwui.app_memory_policy false
 adb shell setprop debug.threadedOpt 1
 adb shell setprop debug.sf.set_binder_thread_rt 1
 adb shell setprop debug.sf.multithreaded_present 1
