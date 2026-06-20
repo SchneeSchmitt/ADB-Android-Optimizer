@@ -32,20 +32,18 @@ adb shell settings put global uclamp_min_top_app 10
 adb shell settings put global uclamp_min_latency_sensitive 20
 
 adb shell cmd power set-fixed-performance-mode-enabled 0
-adb shell cmd power set-mode 0
-adb shell setprop debug.performance.tuning 0
+adb shell cmd power set-mode 2
+adb shell setprop debug.performance.tuning 2
 adb shell settings put global persist.sys.powmillet.enable true
 adb shell settings put global vendor.power.pasr.enabled true
 adb shell settings put global vendor.pasr.activemode.enabled true
 adb shell settings put global vendor.power.pasr.enabled true
 adb shell settings put global vendor.pasr.activemode.enabled true
-adb shell setprop debug.hwui.perf_mode 0
-adb shell settings put global hwc.gpu_perf_mode 0
-adb shell setprop debug.sf.perf_mode 0
+adb shell setprop debug.hwui.perf_mode 2
+adb shell settings put global hwc.gpu_perf_mode 2
+adb shell setprop debug.sf.perf_mode 2
 adb shell setprop debug.performance.cap 20
-adb shell setprop debug.performance_schema_max_memory_classes 100
-adb shell setprop debug.performance_schema_max_socket_classes 40
-adb shell settings put global battery_performance_mode 0
+adb shell settings put global battery_performance_mode 2
 adb shell settings put global dynamic_power_savings_enabled 1
 adb shell settings put global background_power_saving_enable 1
 adb shell settings put system tran_cpupower_mode 2
@@ -86,7 +84,6 @@ adb shell settings put global persist.sys.composition.type gpu
 adb shell setprop debug.mediatek.composition.type gpu
 
 adb shell settings put global battery_saver_constants 'advertise_is_enabled=false,datasaver_disabled=false,launch_boost_disabled=true,vibration_disabled=true,soundtrigger_disabled=true,fullbackup_deferred=true,keyvaluebackup_deferred=true,firewall_disabled=true,gps_mode=0,adjust_brightness_disabled=false,adjust_brightness_factor=2,force_all_apps_standby=true,force_background_check=true,optional_sensors_disabled=true,quick_doze_enabled=true'
-
 
 adb shell settings put global sem_enhanced_cpu_responsiveness 0
 adb shell settings put global enhanced_processing 0
@@ -133,9 +130,10 @@ adb shell cmd device_config put runtime_native usap_pool_refill_delay_ms 550
 adb shell cmd device_config put runtime_native usap_pool_size_min 0
 adb shell cmd device_config put runtime_native usap_pool_size_max 0
 
-adb shell setprop debug.rs.max-threads 1
+adb shell settings put global persist.sys.cpu.renderthreads 1
 adb shell setprop debug.hwui.render_thread_count 1
 adb shell setprop debug.skia.num_render_threads 1
+adb shell setprop debug.rs.max-threads 1
 adb shell setprop debug.mdpcomp.maxpermixer 2
 adb shell setprop debug.oculus.gpuLevel 1
 adb shell setprop debug.OVRManager.cpuLevel 1

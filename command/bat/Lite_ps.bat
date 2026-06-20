@@ -5,6 +5,8 @@ adb shell settings put global doze.pulse.schedule 900s,1800s,3600s
 
 adb shell setprop debug.app.performance_restricted true
 adb shell settings put global restricted_device_performance 1,1
+adb shell cmd power set-mode 2
+adb shell setprop debug.performance.tuning 2
 adb shell settings put global android.os.adpf_platform_power_efficiency true
 adb shell settings put global android.os.adpf_gpu_report_actual_work_duration true
 adb shell settings put global android.os.adpf_use_fmq_channel false
@@ -24,9 +26,14 @@ adb shell setprop debug.performance.cap 20
 adb shell settings put global sys_uidcpupower 1
 adb shell settings put system tran_cpupower_mode 2
 adb shell settings put global persist.sys.cpu_perf_mode 2
+adb shell setprop debug.hwui.perf_mode 2
+adb shell settings put global hwc.gpu_perf_mode 2
+adb shell settings put global sys.hwc.gpu_perf_mode 2
+adb shell setprop debug.sf.perf_mode 2
 adb shell settings put system speed_mode 0
-adb shell setprop debug.sf.gpu_freq_index 3
-adb shell setprop debug.sf.gpu_freq_indeks 3
+adb shell setprop debug.sf.gpu_freq_index 2
+adb shell setprop debug.sf.gpu_freq_indeks 2
+adb shell setprop debug.mdpcomp.idletime 5800
 
 adb shell settings put global persist.device_config.activity_manager.use_compaction true
 adb shell settings put global app_standby_enabled 1
@@ -42,11 +49,15 @@ adb shell settings put global zygote.critical_window.minute 2
 adb shell settings put global sys.fflag.override.settings_enable_monitor_phantom_procs true
 adb shell settings put system touch_prestart_opt_config '{featureDisable:false,bgExceptionInterceptDisable:false,touchDownPreStartBlackList:[disable_all_package]}'
 
+adb shell settings put global uclamp_min_high_scheduling_group 15
+adb shell settings put global uclamp_min_top_app 15
+adb shell settings put global uclamp_min_latency_sensitive 25
+
 adb shell settings put global sem_low_heat_mode 1
 adb shell settings put global wallpaper_power_saver_mode 1
 adb shell settings put global adaptive_battery_management_enabled 1
 
-adb shell settings put global persist.sys.use_16bpp_alpha 1
+adb shell settings put global persist.sys.use_8bpp_alpha 1
 adb shell settings put global game_driver_settings max_render_ahead 0
 adb shell setprop debug.hwui.skip_empty_damage true
 adb shell setprop debug.rs.precision rs_fp_relaxed
@@ -56,6 +67,11 @@ adb shell setprop debug.mdpcomp.maxpermixer 3
 adb shell settings put global vendor.hwc.dpp.downscale 2
 adb shell setprop debug.sf.enable_advanced_dithering 0
 adb shell setprop debug.hwui.renderer_mode partial
+
+adb shell settings put global persist.sys.cpu.renderthreads 2
+adb shell setprop debug.hwui.render_thread_count 2
+adb shell setprop debug.skia.num_render_threads 2
+adb shell setprop debug.rs.max-threads 2
 
 adb shell settings put secure refresh_rate_mode 1
 

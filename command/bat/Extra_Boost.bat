@@ -5,8 +5,6 @@ adb shell settings put global persist.sys.use_8bpp_alpha 1
 
 adb shell settings put global restricted_device_performance 0,0
 adb shell settings put global suspend.short_suspend_threshold_millis 8000
-adb shell setprop debug.performance_schema_max_memory_classes 1000
-adb shell setprop debug.performance_schema_max_socket_classes 110
 
 adb shell cmd power set-fixed-performance-mode-enabled 0
 adb shell cmd power set-mode 1
@@ -37,6 +35,7 @@ adb shell settings put system tran_cpupower_mode 1
 adb shell settings put global sys.trancare.performance.latency 1
 adb shell settings put global sys.perf.boost true
 adb shell settings put global persist.sys.cpu_perf_mode 1
+adb shell setprop debug.mdpcomp.idletime 500
 
 adb shell settings put global persist.sys.cpu.governor performance
 adb shell settings put global persist.sys.gpu.governor performance
@@ -144,10 +143,7 @@ adb shell settings put global wfc_ims_mode 1
 adb shell settings put global sem_low_heat_mode 0
 
 adb shell settings put global sys.gpu_renderer_enhance_set 0mhz
-adb shell setprop debug.rs.max-threads 6
-adb shell setprop debug.hwui.render_thread_count 8
 adb shell setprop debug.mdpcomp.maxpermixer 7
-adb shell setprop debug.skia.num_render_threads 8
 adb shell setprop debug.oculus.gpuLevel 4
 adb shell setprop debug.OVRManager.cpuLevel 4
 adb shell setprop debug.OVRManager.gpuLevel 4
