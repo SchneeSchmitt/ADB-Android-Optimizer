@@ -33,7 +33,7 @@ adb shell setprop debug.sf.perf_mode 2
 adb shell settings put system speed_mode 0
 adb shell setprop debug.sf.gpu_freq_index 2
 adb shell setprop debug.sf.gpu_freq_indeks 2
-adb shell setprop debug.mdpcomp.idletime 5800
+adb shell setprop debug.mdpcomp.idletime 6500
 
 adb shell settings put global persist.device_config.activity_manager.use_compaction true
 adb shell settings put global app_standby_enabled 1
