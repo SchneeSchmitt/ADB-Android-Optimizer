@@ -103,6 +103,9 @@ adb shell settings put secure screensaver_activate_on_dock 0
 adb shell settings put secure screensaver_activate_on_sleep 0
 adb shell settings put secure screensaver_enabled 0
 adb shell settings put system oneplus_lab_feature_key 1
+adb shell settings put global verifier_verify_adb_installs 0
+adb shell settings put system lab_options_visible 1
+adb shell settings put global package_verifier_enable 0
 
 adb shell cmd thermalservice override-status 1
 adb shell settings put secure game_auto_temperature_control 0
@@ -398,14 +401,14 @@ adb shell setprop debug.sf.gpu_freq_indeks 4
 adb shell setprop debug.sf.hwc.canUseABC 1
 adb shell setprop debug.sf.enable_small_dirty_detection true
 adb shell setprop debug.sf.send_late_power_session_hint true
-adb shell setprop debug.sf.perf_fps_early_gl_phase_offset_ns 10000000
-adb shell setprop debug.surface_flinger.vsync_event_phase_offset_ns 3000000
-adb shell setprop debug.surface_flinger.vsync_sf_event_phase_offset_ns 3000000
 adb shell setprop debug.sf.send_early_power_session_hint true
 adb shell setprop debug.surface_flinger.protected_contents false
 adb shell setprop debug.sf.enable_layer_caching true
 adb shell setprop debug.sf.enable_advanced_sf_phase_offset 1
 adb shell setprop debug.sf.enable_gl_backpressure 1
+adb shell setprop debug.sf.perf_fps_early_gl_phase_offset_ns 10000000
+adb shell setprop debug.surface_flinger.vsync_event_phase_offset_ns 3000000
+adb shell setprop debug.surface_flinger.vsync_sf_event_phase_offset_ns 3000000
 adb shell setprop debug.sf.early_app_phase_offset_ns 500000
 adb shell setprop debug.sf.early_gl_app_phase_offset_ns 15000000
 adb shell setprop debug.sf.early_gl_phase_offset_ns 3000000
@@ -414,8 +417,6 @@ adb shell setprop debug.sf.high_fps_early_gl_phase_offset_ns 6500000
 adb shell setprop debug.sf.high_fps_early_phase_offset_ns 6100000
 adb shell setprop debug.sf.high_fps_late_app_phase_offset_ns 1000000
 adb shell setprop debug.sf.phase_offset_threshold_for_next_vsync_ns 12100000
-adb shell setprop debug.sf.disable_backpressure 0
-adb shell setprop debug.sf.enable_advanced_sf_phase_offset 1
 adb shell setprop debug.sf.early.app.duration 16666666
 adb shell setprop debug.sf.early.sf.duration 16666666
 adb shell setprop debug.sf.earlyGl.app.duration 16666666
@@ -423,13 +424,17 @@ adb shell setprop debug.sf.earlyGl.sf.duration 16666666
 adb shell setprop debug.sf.late.app.duration 33333333
 adb shell setprop debug.sf.late.sf.duration 33333333
 adb shell setprop debug.sf.hwc.min.duration 25000000
+adb shell setprop debug.sf.region_sampling_timer_timeout_ns 200000000
+adb shell setprop debug.sf.region_sampling_period_ns 200000000
+adb shell setprop debug.renderengine.frame_interval_ns 8333333
+adb shell setprop debug.hwui.frame_time_budget_ns 8333333
+adb shell setprop debug.sf.disable_backpressure 0
+adb shell setprop debug.sf.enable_advanced_sf_phase_offset 1
 adb shell setprop debug.sf.use_phase_offsets_as_durations 1
 adb shell setprop debug.sf.disable_client_composition_cache 0
 adb shell setprop debug.sf.treat_170m_as_sRGB 0
 adb shell setprop debug.sf.latch_unsignaled 0
 adb shell setprop debug.sf.auto_latch_unsignaled true
-adb shell setprop debug.sf.region_sampling_timer_timeout_ns 200000000
-adb shell setprop debug.sf.region_sampling_period_ns 200000000
 adb shell setprop debug.sf.enable.planner_prediction false
 adb shell setprop debug.sf.hwc_hotplug_error_via_neg_vsync 1
 adb shell setprop debug.sf.hwc_hdcp_via_neg_vsync 1
@@ -566,8 +571,6 @@ adb shell setprop debug.renderengine.graphite_preview_optin true
 adb shell setprop debug.sf.hwc_service_name drmfb
 adb shell setprop debug.sf.enable_hwc_vds 0
 adb shell settings put global persist.sys.rendercomposer.enable true
-adb shell setprop debug.renderengine.frame_interval_ns 8333333
-adb shell setprop debug.hwui.frame_time_budget_ns 8333333
 adb shell setprop debug.sf.present_time_offset_ns 0
 adb shell setprop debug.hwui.renderer_mode adaptive
 adb shell setprop debug.hwui.anim_pipeline adaptive
@@ -1034,6 +1037,9 @@ adb shell settings put global sys.lmk.reportkills false
 adb shell settings put global persist.sys.lmk.reportkills false
 adb shell settings put global persist.traced_perf.enable 0
 adb shell settings put global iorapd.perfetto.enable false
+adb shell settings put global iorapd.readahead.enable false
+adb shell settings put global persist.device_config.runtime_native_boot.iorapd.perfetto.enable false
+adb shell settings put global persist.device_config.runtime_native_boot.iorapd.readahead.enable false
 adb shell settings put global config.disable_rtt true
 adb shell setprop debug.qualcomm.sns.hal 0
 adb shell setprop debug.qualcomm.sns.daemon 0
@@ -1102,7 +1108,11 @@ adb shell settings put global max_logcat_lines 0
 adb shell settings put global persist.radio.adb_log_on 0
 adb shell settings put global profiler.debugmonitor false
 adb shell settings put global profiler.hung.dumpdobugreport false
-adb shell settings put global disable_app_profiler_pss_profiling true
+adb shell settings put global logger_buffer_size 0
+adb shell settings put system force_enable_pss_profiling 0
+adb shell settings put global google_report_safetynet_status 0
+adb shell settings put global upload_log_perf_metrics 0
+adb shell settings put global storage_manager_active_duration 0
 adb shell setprop debug.MB.running 0
 adb shell setprop debug.MB.inner.running 0
 adb shell setprop debug.level 0
@@ -1234,8 +1244,8 @@ adb shell settings put global dalvik.vm.lockprof.threshold 250
 adb shell settings put global dalvik.vm.dex2oat64.enabled true
 adb shell settings put global dalvik.vm.dexopt.secondary true
 adb shell settings put global dalvik.gc.type precise
-adb shell settings put global dalvik.vm.stack-trace-dir 0
-adb shell settings put global dalvik.vm.stack-trace-file 0
+adb shell settings put global dalvik.vm.stack-trace-dir /dev/null
+adb shell settings put global dalvik.vm.stack-trace-file /dev/null
 adb shell settings put global persist.sys.dalvik.vm.lib.2 libart.so
 adb shell settings put global dev.pm.precompile_layouts 1
 adb shell settings put global persist.miui.dexopt.first_use true
@@ -1345,6 +1355,7 @@ adb shell settings put global udp_rmem_min 65536
 adb shell settings put global udp_wmem_min 65536
 adb shell settings put global net.unix.max_dgram_qlen 50
 adb shell settings put global net.ipv4.tcp_fastopen 1
+adb shell settings put global net.ipv4.tcp_available_congestion_control bbr
 adb shell settings put global net.ipv4.tcp_congestion_control bbr
 adb shell settings put global net.ipv4.tcp_recovery 1
 adb shell settings put global net.ipv4.tcp_max_orphans 8192
@@ -1407,6 +1418,9 @@ adb shell settings put global net.ipv6.tcp_moderate_rcvbuf 1
 adb shell settings put global net.ipv6.neigh.default.gc_thresh1 128
 adb shell settings put global net.ipv6.neigh.default.gc_thresh2 512
 adb shell settings put global net.ipv6.neigh.default.gc_thresh3 1024
+adb shell settings put global persist.radio.5g_mode_pref 2
+adb shell settings put global persist.vendor.radio.5g_mode_pref 2
+adb shell settings put system cloud_dns_happy_eyeballs_priority_enabled 1
 adb shell settings put global net.tethering.noprovisioning true
 adb shell settings put global config.disable_rtt true
 adb shell settings put global persist.radio.oem_socket false

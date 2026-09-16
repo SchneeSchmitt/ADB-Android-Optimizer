@@ -22,7 +22,7 @@ adb shell settings put global battery_performance_mode 0
 adb shell settings put global dynamic_power_savings_enabled 1
 adb shell settings put global background_power_saving_enable 1
 adb shell settings put system persist.sys_emc_mode power_saving
-adb shell setprop debug.performance.cap 20
+adb shell setprop debug.performance.cap 18
 adb shell settings put global sys_uidcpupower 1
 adb shell settings put system tran_cpupower_mode 2
 adb shell settings put global persist.sys.cpu_perf_mode 2
@@ -33,11 +33,12 @@ adb shell setprop debug.sf.perf_mode 2
 adb shell settings put system speed_mode 0
 adb shell setprop debug.sf.gpu_freq_index 2
 adb shell setprop debug.sf.gpu_freq_indeks 2
-adb shell setprop debug.mdpcomp.idletime 6500
+adb shell setprop debug.mdpcomp.idletime 6660
 
 adb shell settings put global persist.device_config.activity_manager.use_compaction true
 adb shell settings put global app_standby_enabled 1
 adb shell settings put global cached_apps_freezer 1
+adb shell settings put global app_auto_restriction_enabled 1
 adb shell settings put global force_background_check true
 adb shell device_config put activity_manager_native_boot use_freezer true
 adb shell device_config put app_hibernation app_hibernation_enabled 1
