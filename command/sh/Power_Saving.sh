@@ -1,5 +1,6 @@
 adb shell dumpsys deviceidle force-idle
 adb shell settings put global pm.sleep_mode 1
+adb shell settings put global doze.pulse.schedule 3600s,10800s,21600s
 
 adb shell settings put global restricted_device_performance 1,1
 adb shell settings put global zygote.critical_window.minute 2
@@ -42,7 +43,7 @@ adb shell settings put global vendor.pasr.activemode.enabled true
 adb shell setprop debug.hwui.perf_mode 2
 adb shell settings put global hwc.gpu_perf_mode 2
 adb shell setprop debug.sf.perf_mode 2
-adb shell setprop debug.performance.cap 20
+adb shell setprop debug.performance.cap 17
 adb shell settings put global battery_performance_mode 2
 adb shell settings put global dynamic_power_savings_enabled 1
 adb shell settings put global background_power_saving_enable 1
@@ -105,7 +106,7 @@ adb shell settings put system performance_mode_on 0
 adb shell settings put system persist.sys_emc_mode power_saving
 adb shell settings put system cpu_max_speed 0
 adb shell settings put system speed_mode 0
-adb shell settings put global suspend.short_suspend_threshold_millis 2000
+adb shell settings put global suspend.short_suspend_threshold_millis 1000
 adb shell settings put global sys.hwc.gpu_perf_mode 0
 adb shell setprop debug.sf.gpu_freq_index 2
 adb shell setprop debug.sf.gpu_freq_indeks 2
@@ -127,7 +128,7 @@ adb shell settings put global iop.enable_prefetch_ofr 0
 adb shell settings put global persist.preload.common 0
 adb shell settings put global persist.zygote.preload_threads 0
 adb shell 'settings put global touch_prestart_opt_config "{featureDisable:false,bgExceptionInterceptDisable:false,touchDownPreStartBlackList:[disable_all_package]}"'
-adb shell cmd device_config put runtime_native usap_pool_refill_delay_ms 550
+adb shell cmd device_config put runtime_native usap_pool_refill_delay_ms 2000
 adb shell cmd device_config put runtime_native usap_pool_size_min 0
 adb shell cmd device_config put runtime_native usap_pool_size_max 0
 

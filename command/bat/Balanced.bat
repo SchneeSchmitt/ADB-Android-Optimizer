@@ -41,7 +41,7 @@ adb shell setprop debug.enable.gamed 1
 adb shell setprop debug.enable.hwacc 1
 adb shell setprop debug.smart_scheduling 1
 adb shell setprop debug.qcom.hw_haplite 1
-adb shell setprop debug.qcom.hspm.enabled 0
+adb shell setprop debug.qcom.hspm.enabled 1
 adb shell setprop debug.syncopts 1
 adb shell setprop debug.multicore.processing 1
 adb shell setprop debug.use_app_native 1
@@ -62,7 +62,7 @@ adb shell setprop debug.gpu.render.async true
 adb shell settings put global uclamp_min_high_scheduling_group 25
 adb shell settings put global uclamp_min_top_app 30
 adb shell settings put global uclamp_min_latency_sensitive 40
-adb shell settings put global cpu_gpu_render_bridge_mode 0
+adb shell settings put global cpu_gpu_render_bridge_mode 1
 adb shell settings put global vendor.perf.test_avc 0
 adb shell settings put global vendor.perf.bgt.enable 1
 adb shell settings put global tran_cpupower_mode 0
@@ -107,11 +107,11 @@ adb shell settings put global verifier_verify_adb_installs 0
 adb shell settings put system lab_options_visible 1
 adb shell settings put global package_verifier_enable 0
 
-adb shell cmd thermalservice override-status 1
-adb shell settings put secure game_auto_temperature_control 0
+adb shell cmd thermalservice override-status 0
+adb shell settings put secure game_auto_temperature_control 1
 adb shell pm clear --user 0 com.samsung.android.game.gos
-adb shell settings put system vivo_gamethermal_switch 0
-adb shell setprop debug.heat_suppression 0
+adb shell settings put system vivo_gamethermal_switch 1
+adb shell setprop debug.heat_suppression 1
 adb shell setprop debug.cpu.cooling.callback_freq_limit 0
 adb shell setprop debug.gpu.cooling.callback_freq_limit 0
 adb shell setprop debug.disable.sched.pre_cooling false
@@ -120,7 +120,7 @@ adb shell setprop debug.thermal_zone.battery_hotplug_control 2
 adb shell setprop debug.thermal_zone.cpu_hotplug_control 0
 adb shell setprop debug.thermal_zone.gpu_hotplug_control 0
 adb shell settings put system heat_cooldown_schedule 30s
-adb shell settings put system persist.vendor.disable.thermal.control 1
+adb shell settings put system persist.vendor.disable.thermal.control 0
 adb shell settings put global thermal_policy_core_lock 0
 
 adb shell setprop debug.sqlite.wal.poolsize 8
@@ -174,11 +174,11 @@ adb shell settings put system k2hd_effect 0
 adb shell settings put global af.resampler.quality 255
 adb shell settings put global persist.af.resampler.quality 255
 adb shell settings put global vendor.audio.low.latency true
-adb shell settings put global vendor.audio.offload.gapless.enabled false
-adb shell settings put global vendor.audio.offload.multiaac.enable false
-adb shell settings put global vendor.audio.offload.multiple.enabled false
-adb shell settings put global vendor.audio.offload.passthrough false
-adb shell settings put global vendor.audio.offload.track.enable false
+adb shell settings put global vendor.audio.offload.gapless.enabled true
+adb shell settings put global vendor.audio.offload.multiaac.enable true
+adb shell settings put global vendor.audio.offload.multiple.enabled true
+adb shell settings put global vendor.audio.offload.passthrough true
+adb shell settings put global vendor.audio.offload.track.enable true
 adb shell settings put global vendor.audio.feature.hifi_audio.enable true
 adb shell settings put global vendor.fm.a2dp.conc.disabled true
 adb shell settings put global vendor.audio.spkcal.copy.inhal true
@@ -204,13 +204,13 @@ adb shell settings put global vendor.audio.deep_buffer.media true
 adb shell settings put global vendor.audio.feature.deepbuffer_as_primary.enable true
 adb shell settings put global qc.audio.deep_buffer.media true
 adb shell settings put global persist.vendor.audio.deep_buffer.media true
-adb shell settings put global vendor.audio.flac.sw.decoder.24bit true
-adb shell settings put global flac.sw.decoder.24bit.support true
-adb shell settings put global vendor.audio.aac.sw.decoder.24bit true
-adb shell settings put global vendor.audio.use.sw.alac.decoder true
-adb shell settings put global vendor.audio.flac.sw.encoder.24bit true
-adb shell settings put global vendor.audio.aac.sw.encoder.24bit true
-adb shell settings put global vendor.audio.use.sw.ape.decoder true
+adb shell settings put global vendor.audio.flac.sw.decoder.24bit false
+adb shell settings put global flac.sw.decoder.24bit.support false
+adb shell settings put global vendor.audio.aac.sw.decoder.24bit false
+adb shell settings put global vendor.audio.use.sw.alac.decoder false
+adb shell settings put global vendor.audio.flac.sw.encoder.24bit false
+adb shell settings put global vendor.audio.aac.sw.encoder.24bit false
+adb shell settings put global vendor.audio.use.sw.ape.decoder false
 adb shell settings put global use.non-omx.mp3.decoder false
 adb shell settings put global use.non-omx.aac.decoder false
 adb shell settings put global use.non-omx.flac.decoder false
@@ -336,7 +336,7 @@ adb shell settings put global vendor.debug.egl.swapinterval 1
 adb shell settings put global persist.sys.egl.swapinterval 1
 adb shell setprop debug.gl.swapinterval 1
 adb shell setprop debug.enable.sglscale 1
-adb shell settings put global persist.hwc.ptor.enable false
+adb shell settings put global persist.hwc.ptor.enable true
 adb shell setprop debug.gr.swapinterval 1
 adb shell settings put global vendor.debug.gr.swapinterval 1
 adb shell settings put global persist.sys.debug.gr.swapinterval 1
@@ -531,7 +531,7 @@ adb shell settings put global sys.hwc.mdp_downscale_enable true
 adb shell settings put global vendor.display.disable_excl_rect_partial_fb 0
 adb shell settings put global vendor.display.enable_posted_start_dyn 1
 adb shell setprop debug.renderengine.present_thread_priority normal
-adb shell setprop debug.hwui.renderer_mode default
+adb shell setprop debug.hwui.renderer_mode graphite
 adb shell setprop debug.hwui.render_throttle 1
 adb shell setprop debug.sf.pipeline_composition_mode dynamic
 adb shell settings put global anim_frame_skip 0
@@ -813,7 +813,7 @@ adb shell settings put global usap_prefer_idle true
 adb shell settings put global usap_priority_boost false
 adb shell settings put global usap_aggressive_refill false
 adb shell settings put global usap_refill_threshold 0
-adb shell settings put global usap_pool_refill_delay_ms 250
+adb shell settings put global usap_pool_refill_delay_ms 500
 adb shell settings put global usap_pool_size_min 2
 adb shell settings put global usap_pool_size_max 4
 adb shell settings put global persist.device_config.activity_manager.use_compaction true

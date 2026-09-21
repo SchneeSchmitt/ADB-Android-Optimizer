@@ -1,7 +1,7 @@
 adb shell settings put global pm.sleep_mode 1
 adb shell settings put system intelligent_sleep_mode 1
 adb shell settings put system power_sleep_mode_enabled 1
-adb shell settings put global doze.pulse.schedule 900s,1800s,3600s
+adb shell settings put global doze.pulse.schedule 3600s,10800s,21600s
 
 adb shell setprop debug.app.performance_restricted true
 adb shell settings put global restricted_device_performance 1,1
@@ -22,7 +22,7 @@ adb shell settings put global battery_performance_mode 0
 adb shell settings put global dynamic_power_savings_enabled 1
 adb shell settings put global background_power_saving_enable 1
 adb shell settings put system persist.sys_emc_mode power_saving
-adb shell setprop debug.performance.cap 18
+adb shell setprop debug.performance.cap 17
 adb shell settings put global sys_uidcpupower 1
 adb shell settings put system tran_cpupower_mode 2
 adb shell settings put global persist.sys.cpu_perf_mode 2
@@ -49,6 +49,9 @@ adb shell settings put global activity_start_boost_level low
 adb shell settings put global zygote.critical_window.minute 2
 adb shell settings put global sys.fflag.override.settings_enable_monitor_phantom_procs true
 adb shell settings put system touch_prestart_opt_config '{featureDisable:false,bgExceptionInterceptDisable:false,touchDownPreStartBlackList:[disable_all_package]}'
+adb shell settings put global usap_pool_refill_delay_ms 1000
+adb shell settings put global usap_pool_size_min 1
+adb shell settings put global usap_pool_size_max 2
 
 adb shell settings put global uclamp_min_high_scheduling_group 15
 adb shell settings put global uclamp_min_top_app 15
