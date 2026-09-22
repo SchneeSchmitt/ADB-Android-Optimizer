@@ -10,13 +10,14 @@ Rootless (ADB) Android performance optimizer for every condition, from pure perf
 Those scripts can optimize Android from all methods and factors of the ADB possibility. Such as disabling logging, accelerating CPU and GPU, rendering tweaks, network optimizations, memory settings, Dalvik virtual machine settings, and **even** the kernel settings can also be optimized with those scripts. 
 
 ## Tweaks List 📑
-- `balanced`: Those are the main tweaks.
-- `vulkan`: Privilege rendering using Vulkan. This works if your device supports Vulkan rendering.
-- `qualcomm_only`: Tweaks for Qualcomm SoC devices **ONLY**.
-- `compile`: If you don't need to use your phone for now. This one takes around 30 minutes to run. I recommend enabling "Keep screen on while charging" in developer options during the running process. Your device temperature will also increase during the running process.
-- `extra_boost`: Gives a performance boost to your device but will halve its battery life.
-- `power_saving`: Reduces performance but increases battery life.
-- `hardware`: Makes your device become **MUCH FASTER AND WARMER**.
+- `Balanced`: Those are the main tweaks.
+- `Vulkan`: Privilege rendering using Vulkan. This works if your device supports Vulkan rendering.
+- `Qualcomm Only`: Tweaks for Qualcomm SoC devices **ONLY**.
+- `Compile`: If you don't need to use your phone for now. This one takes around 30 minutes to run. I recommend enabling "Keep screen on while charging" in developer options during the running process. Your device temperature will also increase during the running process.
+- `Extra Boost`: Gives a performance boost to your device but will halve its battery life.
+- `Power Saving`: Reduces performance but increases battery life.
+- `Lite Power Saving`: Balance the performance and battery drain for daily use.
+- `Hardware`: Makes your device become **MUCH FASTER AND WARMER**.
 
 
 ## How To Use ❓
@@ -29,9 +30,9 @@ Those scripts can optimize Android from all methods and factors of the ADB possi
 6. Run the executable program
 7. Run the `Balance` for the main tweaks
 8. Run the `Vulkan` if your device supports Vulkan rendering. Most devices after 2020 should support Vulkan rendering
-9. Run the `Qualcom_only` **ONLY** if you are using a Qualcomm SoC device
+9. Run the `Qualcomm Only` **ONLY** if you are using a Qualcomm SoC device
 10. Run the `Compile` if you don't need to use your phone for now. This one takes around 30 minutes to run. I recommend enabling "Keep screen on while charging" in developer options during the running process. Your device temperature will also increase during the running process.
-11. Run the `Extra_Boost` **OR** `Power_Saving` if you want better performance or battery life
+11. Run the `Extra Boost` **OR** `Power Saving` **OR** ` Lite Power Saving` if you want performance, battery life or for balance.
 12. **ONLY RUN** the `Hardware` if you want your device both **HOT AS FUCK** and fast as fuck
 13. Restart the device
 
