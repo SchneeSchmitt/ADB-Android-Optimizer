@@ -10,7 +10,7 @@ Rootless (ADB) Android performance optimizer for every condition, from pure perf
 Those scripts can optimize Android from all methods and factors of the ADB possibility. Such as disabling logging, accelerating CPU and GPU, rendering tweaks, network optimizations, memory settings, Dalvik virtual machine settings, and **even** the kernel settings can also be optimized with those scripts. 
 
 ## Tweaks List 📑
-- `Balanced`: Those are the main tweaks.
+- `Balance`: Those are the main tweaks.
 - `Vulkan`: Privilege rendering using Vulkan. This works if your device supports Vulkan rendering.
 - `Qualcomm Only`: Tweaks for Qualcomm SoC devices **ONLY**.
 - `Compile`: If you don't need to use your phone for now. This one takes around 30 minutes to run. I recommend enabling "Keep screen on while charging" in developer options during the running process. Your device temperature will also increase during the running process.
