@@ -32,7 +32,7 @@ Those scripts can optimize Android from all methods and factors of the ADB possi
 8. Run the `Vulkan` if your device supports Vulkan rendering. Most devices after 2020 should support Vulkan rendering
 9. Run the `Qualcomm Only` **ONLY** if you are using a Qualcomm SoC device
 10. Run the `Compile` if you don't need to use your phone for now. This one takes around 30 minutes to run. I recommend enabling "Keep screen on while charging" in developer options during the running process. Your device temperature will also increase during the running process.
-11. Run the `Extra Boost` **OR** `Power Saving` **OR** ` Lite Power Saving` if you want performance, battery life or for balance.
+11. Run the `Extra Boost` **OR** `Power Saving` **OR** `Lite Power Saving` if you want performance, battery life or for balance.
 12. **ONLY RUN** the `Hardware` if you want your device both **HOT AS FUCK** and fast as fuck
 13. Restart the device
 
