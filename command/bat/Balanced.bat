@@ -282,13 +282,13 @@ adb shell settings put global persist.sys.cpu.renderthreads 3
 adb shell setprop debug.hwui.render_thread true
 adb shell settings put global renderthread.skia.reduceopstasksplitting false
 adb shell settings put global persist.sys.disable_skia_path_ops false
-adb shell setprop debug.skia.max_memory_usage_mb 512
-adb shell setprop debug.hwui.drop_shadow_cache_size 20
-adb shell setprop debug.hwui.texture_cache_size 50
-adb shell setprop debug.hwui.gradient_cache_size 10
-adb shell setprop debug.hwui.path_cache_size 10
-adb shell setprop debug.hwui.shape_cache_size 5
-adb shell setprop debug.hwui.layer_cache_size 14
+adb shell setprop debug.skia.max_memory_usage_mb 1024
+adb shell setprop debug.hwui.drop_shadow_cache_size 40
+adb shell setprop debug.hwui.texture_cache_size 200
+adb shell setprop debug.hwui.gradient_cache_size 32
+adb shell setprop debug.hwui.path_cache_size 32
+adb shell setprop debug.hwui.shape_cache_size 20
+adb shell setprop debug.hwui.layer_cache_size 64
 adb shell setprop debug.hwui.enable_f16 true
 adb shell setprop debug.hwui.enable_partial_updates true
 adb shell setprop debug.skia.threaded_mode true
@@ -311,7 +311,7 @@ adb shell setprop debug.hwui.use_gpu_pixel_buffers true
 adb shell settings put global hwui.render_dirty_regions true
 adb shell setprop debug.hwui.render_dirty_regions true
 adb shell setprop debug.hwui.show_dirty_regions false
-adb shell settings put global DEBUG_DIRTY_REGION true
+adb shell settings put global DEBUG_DIRTY_REGION false
 adb shell settings put global use_egl_mode 1
 adb shell settings put global sys.egl.enable_frame_preload false
 adb shell setprop debug.egl.buffcount 4
@@ -443,10 +443,10 @@ adb shell setprop debug.sf.predict_hwc_composition_strategy 0
 adb shell settings put global persist.sys.sf.native_mode 1
 adb shell device_config put surface_flinger_native_boot max_frame_buffer_acquired_buffers 4
 adb shell settings put global viewroot.profile_rendering false
-adb shell settings put global persist.sys.miui_animator_sched.sched_threads 32
-adb shell settings put global persist.vendor.display.miui.composer_boost 0-7
-adb shell settings put global persist.sys.miui_animator_sched.bigcores 4-7
-adb shell settings put global persist.sys.miui.sf_cores 0-7
+adb shell settings put global persist.sys.miui_animator_sched.sched_threads 10
+adb shell settings put global persist.vendor.display.miui.composer_boost 2-5
+adb shell settings put global persist.sys.miui_animator_sched.bigcores 2-5
+adb shell settings put global persist.sys.miui.sf_cores 2-6
 adb shell settings put global persist.sys.force_sw_gles 0
 adb shell settings put global persist.sys.force_sw_vulkan 0
 adb shell settings put global sdm.debug.disable_inline_rotator 0
@@ -499,7 +499,7 @@ adb shell setprop debug.hwui.use_small_cache 1
 adb shell setprop debug.hwc.nodirtyregion 0
 adb shell setprop debug.hwc.force_gpu 0
 adb shell setprop debug.hwui.use_d2d 1
-adb shell setprop debug.hwc.winupdate 0
+adb shell setprop debug.hwc.winupdate 1
 adb shell setprop debug.hwui.use_d2d_for_layer_draws 1
 adb shell setprop debug.hwui.use_gl_surface_for_screenshots 0
 adb shell setprop debug.mdpcomp.4k2kSplit 1
@@ -528,11 +528,8 @@ adb shell settings put global vendor.display.disable_excl_rect_partial_fb 0
 adb shell settings put global vendor.display.enable_posted_start_dyn 1
 adb shell settings put global persist.sys.force_highendgfx false
 adb shell settings put global sys.hwc.mdp_downscale_enable true
-adb shell settings put global vendor.display.disable_excl_rect_partial_fb 0
-adb shell settings put global vendor.display.enable_posted_start_dyn 1
 adb shell setprop debug.renderengine.present_thread_priority normal
 adb shell setprop debug.hwui.renderer_mode graphite
-adb shell setprop debug.hwui.render_throttle 1
 adb shell setprop debug.sf.pipeline_composition_mode dynamic
 adb shell settings put global anim_frame_skip 0
 adb shell settings put global launcher_transition_skip 0
@@ -542,7 +539,7 @@ adb shell settings put global enable_render_cache_priority 1
 adb shell settings put global disable_ui_block_watchdog 1
 adb shell settings put global dynamic_render_task_control 1
 adb shell settings put global pre_render_pipeline_optimization 1
-adb shell settings put global enable_sysui_prewarm_cache 0
+adb shell settings put global enable_sysui_prewarm_cache 1
 adb shell settings put global hardware_draw_thread_priority_boost 1
 adb shell settings put global render_frame_batch_optimize 1
 adb shell settings put global ui_draw_batch_priority_boost 1
@@ -577,10 +574,10 @@ adb shell setprop debug.hwui.anim_pipeline adaptive
 adb shell setprop debug.sf.draw_policy adaptive
 adb shell setprop debug.sf.pipeline_composition_mode adaptive
 adb shell setprop debug.gpu.composition_optimization_mode adaptive
-adb shell setprop debug.hwui.render_throttle 1
+adb shell setprop debug.hwui.render_throttle 0
 adb shell setprop debug.sf.flush_behavior_immediate 0
 adb shell settings put global persist.sys.surface_throttling_bypass 0
-adb shell settings put global persist.gpu.pipeline_bypass_limiter true
+adb shell settings put global persist.gpu.pipeline_bypass_limiter false
 adb shell settings put global enable_app_draw_immediate 0
 adb shell settings put global wallpaper_display_optimization 1
 adb shell settings put global wallpaper_render_priority 0
@@ -687,32 +684,32 @@ adb shell settings put global persist.vendor.power.dfps.level 1
 adb shell setprop debug.sf.use_frame_rate_priority 1
 adb shell settings put global surface_flinger_use_frame_rate_api true
 adb shell settings put global persist.metadata_dynfps.disable 0
-adb shell settings put global vendor.perf.framepacing.enable true
+adb shell settings put global vendor.perf.framepacing.enable false
 adb shell settings put global persist.sys.framepredict.enable false
 adb shell settings put global persist.sys.fps.constant 0
 adb shell setprop debug.display.render_frame_rate_is_physical_refresh_rate true
-adb shell settings put global persist.sys.oem_smooth 1
-adb shell settings put global debug.hwc.asyncdisp 1
+adb shell settings put global persist.sys.oem_smooth 0
+adb shell settings put global debug.hwc.asyncdisp 0
 adb shell settings put global persist.sys.surfaceflinger.idle_reduce_framerate_enable true
 adb shell settings put global vendor.boostfwk.transsion.frameprefetcher 0
 adb shell setprop debug.sf.set_idle_timer_ms 1000
 adb shell setprop debug.composition.sync_mode 0
 adb shell setprop debug.hwui.fb_size_percent 100
 adb shell setprop debug.hwui.dyn_fps 1
-adb shell setprop debug.sf_frame_rate_multiple_fences 1
+adb shell setprop debug.sf_frame_rate_multiple_fences 0
 adb shell setprop debug.surface_flinger.refresh_rate_switching 1
 adb shell setprop debug.hwui.frame_time_limit 8
 adb shell setprop debug.javafx.animation.fullspeed true
 adb shell setprop debug.performance.force_fps 0
-adb shell setprop debug.sf.min-frame_rate_multiple_threshold 2
+adb shell setprop debug.sf.min-frame_rate_multiple_threshold 1
 adb shell setprop debug.renderengine.vsync_enforce_mode relaxed
 adb shell setprop debug.fps.governor relaxed
-adb shell setprop debug.hwc.asyncdisetprop 1
-adb shell setprop debug.sf.vsync.native 0
+adb shell setprop debug.hwc.asyncdisetprop 0
+adb shell setprop debug.sf.vsync.native 1
 adb shell setprop debug.hwc.fakevsync 0
 adb shell setprop debug.sf.recompute_visible_regions 0
 adb shell setprop debug.sf.enable_advanced_dithering 1
-adb shell setprop debug.sf.predict_composition_strategy 1
+adb shell setprop debug.sf.predict_composition_strategy 0
 adb shell setprop debug.hwui.jank_threshold 100
 adb shell setprop debug.hwui.enable_buffer_queue_pacing 1
 adb shell settings put global persist.sys.smartfps 1
@@ -720,7 +717,7 @@ adb shell settings put global persist.sys.autofps.mode 1
 adb shell settings put global persist.sys.fpsctrl.enable 1
 adb shell settings put global persist.sys.dynamic_fps.enable 1
 adb shell settings put global default_fps_override 0
-adb shell settings put global enable_frame_pacing true
+adb shell settings put global enable_frame_pacing false
 adb shell settings put global persist.sys.vsync.controller_mode relaxed
 adb shell settings put global disable_vsync_fallback true
 adb shell settings put global max_render_ahead_frames 0
@@ -731,12 +728,12 @@ adb shell settings put global bypass_framerate_scaling 0
 adb shell settings put global draw_pipeline_resync_frame 1
 adb shell settings put global ui_scroll_frame_queue_optimize 1
 adb shell settings put global scroll_rasterizer_latency_optimize 1
-adb shell settings put global vendor.display.enable_async_powermode 1
+adb shell settings put global vendor.display.enable_async_powermode 0
 adb shell settings put global vendor.display.use_smooth_motion 0
 adb shell settings put global persist.sys.dynamic_fps_scaling 1
 adb shell settings put global persist.sys.auto_refresh_downscale 1
 adb shell settings put global frame_render_smoothness_enhancer 0
-adb shell settings put global vsync_phase_adjust 1
+adb shell settings put global vsync_phase_adjust 0
 adb shell settings put global frame_buffer_drop_fix 0
 adb shell settings put global enable_global_frame_scheduler 0
 adb shell settings put global enforce_frame_coherence 0
