@@ -10,7 +10,7 @@ Rootless (ADB) Android performance optimizer for every condition, from pure perf
 Those scripts can optimize Android from all methods and factors of the ADB possibility. Such as disabling logging, accelerating CPU and GPU, rendering tweaks, network optimizations, memory settings, Dalvik virtual machine settings, and **even** the kernel settings can also be optimized with those scripts. 
 
 ### Recommended settings for those who are lazy
-`Balance` > `Qualcomm` (for Qualcomm device) > `Vulkan` > `Lite Power Saving`
+`Balance` -> `Qualcomm` (for Qualcomm device) -> `Vulkan` -> `Lite Power Saving`
 
 ## Tweaks List 📑
 - `Balance`: Those are the main tweaks.
