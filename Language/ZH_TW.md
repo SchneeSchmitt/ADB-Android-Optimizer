@@ -4,7 +4,7 @@
 這些腳本可以利用ADB（USB除錯）的所有方法來優化安卓，例如禁用日誌記錄、加速CPU和GPU、渲染調整、網路優化、記憶體設定、Dalvik虛擬機器設定，甚至優化**內核**的設定。
 
 ### 給懶鬼的建議設定
-`Balance` > `Qualcomm` (給高通設備) > `Vulkan` > `Lite Power Saving`
+`Balance` -> `Qualcomm` (給高通設備) -> `Vulkan` -> `Lite Power Saving`
 
 ## 優化列表 📑
 - `Balance`：平衡模式，也是最主要的優化腳本。
