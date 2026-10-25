@@ -219,6 +219,7 @@ adb shell settings put global iop.enable_prefetch_ofr 1
 adb shell settings put global persist.zygote.preload_threads 5
 
 adb shell settings put global sys.usap.enable true
+adb shell setprop debug.ioprio 7
 
 adb shell settings put system is_game_mode 1
 adb shell settings put global persist.sys.force_highendgfx true

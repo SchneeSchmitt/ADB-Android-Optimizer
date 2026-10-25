@@ -22,7 +22,7 @@ adb shell settings put global battery_performance_mode 0
 adb shell settings put global dynamic_power_savings_enabled 1
 adb shell settings put global background_power_saving_enable 1
 adb shell settings put system persist.sys_emc_mode power_saving
-adb shell setprop debug.performance.cap 17
+adb shell setprop debug.performance.cap 14
 adb shell settings put global sys_uidcpupower 1
 adb shell settings put system tran_cpupower_mode 2
 adb shell settings put global persist.sys.cpu_perf_mode 2
@@ -33,7 +33,7 @@ adb shell setprop debug.sf.perf_mode 2
 adb shell settings put system speed_mode 0
 adb shell setprop debug.sf.gpu_freq_index 2
 adb shell setprop debug.sf.gpu_freq_indeks 2
-adb shell setprop debug.mdpcomp.idletime 6680
+adb shell setprop debug.mdpcomp.idletime 6600
 
 adb shell settings put global persist.device_config.activity_manager.use_compaction true
 adb shell settings put global app_standby_enabled 1
@@ -54,7 +54,7 @@ adb shell settings put global usap_pool_size_min 1
 adb shell settings put global usap_pool_size_max 2
 
 adb shell settings put global uclamp_min_high_scheduling_group 15
-adb shell settings put global uclamp_min_top_app 15
+adb shell settings put global uclamp_min_top_app 20
 adb shell settings put global uclamp_min_latency_sensitive 25
 
 adb shell settings put global sem_low_heat_mode 1
@@ -68,9 +68,11 @@ adb shell setprop debug.rs.precision rs_fp_relaxed
 adb shell settings put global draw_pipeline_resync_frame 0
 adb shell setprop debug.hwc.bq_count 0
 adb shell setprop debug.mdpcomp.maxpermixer 3
+adb shell settings put global persist.hwc.mdpcomp.maxpermixer 3
 adb shell settings put global vendor.hwc.dpp.downscale 2
 adb shell setprop debug.sf.enable_advanced_dithering 0
 adb shell setprop debug.hwui.renderer_mode partial
+adb shell settings put global persist.qfp.wup_display 0
 
 adb shell settings put global persist.sys.cpu.renderthreads 2
 adb shell setprop debug.hwui.render_thread_count 2
@@ -79,13 +81,12 @@ adb shell setprop debug.rs.max-threads 2
 
 adb shell settings put secure refresh_rate_mode 1
 
-adb shell settings put global iorapd.readahead.enable false
-adb shell settings put global iop.enable_prefetch_ofr 0
 adb shell settings put global persist.preload.common 0
 adb shell settings put global persist.zygote.preload_threads 0
 adb shell cmd device_config put runtime_native usap_pool_refill_delay_ms 550
 adb shell cmd device_config put runtime_native usap_pool_size_min 0
 adb shell cmd device_config put runtime_native usap_pool_size_max 0
+adb shell setprop debug.ioprio 3
 
 adb shell settings put global network_avoid_bad_wifi 0
 adb shell settings put global network_watchlist_enabled 0

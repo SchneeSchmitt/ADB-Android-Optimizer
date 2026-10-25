@@ -29,7 +29,7 @@ adb shell settings put global persist.sys.cpu.governor powersave
 adb shell settings put global persist.sys.gpu.governor powersave
 adb shell settings put global persist.cpu.gov.performance powersave
 adb shell settings put global uclamp_min_high_scheduling_group 10
-adb shell settings put global uclamp_min_top_app 10
+adb shell settings put global uclamp_min_top_app 15
 adb shell settings put global uclamp_min_latency_sensitive 20
 
 adb shell cmd power set-fixed-performance-mode-enabled 0
@@ -43,7 +43,7 @@ adb shell settings put global vendor.pasr.activemode.enabled true
 adb shell setprop debug.hwui.perf_mode 2
 adb shell settings put global hwc.gpu_perf_mode 2
 adb shell setprop debug.sf.perf_mode 2
-adb shell setprop debug.performance.cap 17
+adb shell setprop debug.performance.cap 14
 adb shell settings put global battery_performance_mode 2
 adb shell settings put global dynamic_power_savings_enabled 1
 adb shell settings put global background_power_saving_enable 1
@@ -79,6 +79,9 @@ adb shell settings put global min_refresh_rate 1.0
 adb shell cmd device_config put hwui anim_frame_skip 1
 adb shell cmd device_config put game_driver_settings max_render_ahead 0
 adb shell settings put global draw_pipeline_resync_frame 0
+adb shell setprop debug.hwui.render_throttle 1
+adb shell settings put global persist.sys.surface_throttling_bypass 0
+adb shell settings put global persist.qfp.wup_display 0
 
 adb shell settings put global composition.type gpu
 adb shell setprop debug.composition.type gpu
@@ -123,20 +126,20 @@ adb shell cmd wifi set-poll-rssi-interval-msecs 5000
 
 adb shell settings put global persist.vendor.qcomsysd.enabled 0
 adb shell settings put global vendor.hwc.dpp.downscale 4
-adb shell settings put global iorapd.readahead.enable false
-adb shell settings put global iop.enable_prefetch_ofr 0
 adb shell settings put global persist.preload.common 0
 adb shell settings put global persist.zygote.preload_threads 0
 adb shell 'settings put global touch_prestart_opt_config "{featureDisable:false,bgExceptionInterceptDisable:false,touchDownPreStartBlackList:[disable_all_package]}"'
 adb shell cmd device_config put runtime_native usap_pool_refill_delay_ms 2000
 adb shell cmd device_config put runtime_native usap_pool_size_min 0
 adb shell cmd device_config put runtime_native usap_pool_size_max 0
+adb shell setprop debug.ioprio 0
 
 adb shell settings put global persist.sys.cpu.renderthreads 1
 adb shell setprop debug.hwui.render_thread_count 1
 adb shell setprop debug.skia.num_render_threads 1
 adb shell setprop debug.rs.max-threads 1
 adb shell setprop debug.mdpcomp.maxpermixer 2
+adb shell settings put global persist.hwc.mdpcomp.maxpermixer 2
 adb shell setprop debug.oculus.gpuLevel 1
 adb shell setprop debug.OVRManager.cpuLevel 1
 adb shell setprop debug.OVRManager.gpuLevel 1
