@@ -43,7 +43,7 @@ adb shell settings put global vendor.pasr.activemode.enabled true
 adb shell setprop debug.hwui.perf_mode 2
 adb shell settings put global hwc.gpu_perf_mode 2
 adb shell setprop debug.sf.perf_mode 2
-adb shell setprop debug.performance.cap 14
+adb shell setprop debug.performance.cap 13
 adb shell settings put global battery_performance_mode 2
 adb shell settings put global dynamic_power_savings_enabled 1
 adb shell settings put global background_power_saving_enable 1
@@ -115,7 +115,6 @@ adb shell setprop debug.sf.gpu_freq_index 2
 adb shell setprop debug.sf.gpu_freq_indeks 2
 adb shell setprop debug.mdpcomp.idletime -1
 adb shell settings put global hardware_draw_thread_priority_boost 0
-adb shell setprop debug.hwc.bq_count 0
 
 adb shell settings put global wfc_ims_mode 2
 adb shell settings put global sem_low_heat_mode 1
@@ -138,8 +137,6 @@ adb shell settings put global persist.sys.cpu.renderthreads 1
 adb shell setprop debug.hwui.render_thread_count 1
 adb shell setprop debug.skia.num_render_threads 1
 adb shell setprop debug.rs.max-threads 1
-adb shell setprop debug.mdpcomp.maxpermixer 2
-adb shell settings put global persist.hwc.mdpcomp.maxpermixer 2
 adb shell setprop debug.oculus.gpuLevel 1
 adb shell setprop debug.OVRManager.cpuLevel 1
 adb shell setprop debug.OVRManager.gpuLevel 1

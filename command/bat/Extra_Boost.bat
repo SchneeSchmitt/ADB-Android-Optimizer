@@ -143,7 +143,6 @@ adb shell settings put global wfc_ims_mode 1
 adb shell settings put global sem_low_heat_mode 0
 
 adb shell settings put global sys.gpu_renderer_enhance_set 0mhz
-adb shell setprop debug.mdpcomp.maxpermixer 7
 adb shell setprop debug.oculus.gpuLevel 4
 adb shell setprop debug.OVRManager.cpuLevel 4
 adb shell setprop debug.OVRManager.gpuLevel 4
@@ -171,7 +170,6 @@ adb shell settings put global high_fps_scheduler_game_mode 1
 adb shell settings put global allow_max_cpu_boost 1
 adb shell settings put global disable_game_power_capping 1
 adb shell setprop persist.sys.gpu.working_thread_priority true
-adb shell setprop debug.hwc.bq_count 5
 adb shell setprop debug.sf.vsync_reactor 1
 adb shell setprop debug.sf.vsync_reactor_apply_phase_offsets 1
 adb shell setprop debug.sf.enable_vsync_immed 1

@@ -22,7 +22,7 @@ adb shell settings put global battery_performance_mode 0
 adb shell settings put global dynamic_power_savings_enabled 1
 adb shell settings put global background_power_saving_enable 1
 adb shell settings put system persist.sys_emc_mode power_saving
-adb shell setprop debug.performance.cap 14
+adb shell setprop debug.performance.cap 13
 adb shell settings put global sys_uidcpupower 1
 adb shell settings put system tran_cpupower_mode 2
 adb shell settings put global persist.sys.cpu_perf_mode 2
@@ -66,9 +66,6 @@ adb shell settings put global game_driver_settings max_render_ahead 0
 adb shell setprop debug.hwui.skip_empty_damage true
 adb shell setprop debug.rs.precision rs_fp_relaxed
 adb shell settings put global draw_pipeline_resync_frame 0
-adb shell setprop debug.hwc.bq_count 0
-adb shell setprop debug.mdpcomp.maxpermixer 3
-adb shell settings put global persist.hwc.mdpcomp.maxpermixer 3
 adb shell settings put global vendor.hwc.dpp.downscale 2
 adb shell setprop debug.sf.enable_advanced_dithering 0
 adb shell setprop debug.hwui.renderer_mode partial

@@ -435,7 +435,7 @@ adb shell setprop debug.sf.auto_latch_unsignaled true
 adb shell setprop debug.sf.enable_planner_prediction true
 adb shell setprop debug.sf.hwc_hotplug_error_via_neg_vsync 0
 adb shell setprop debug.sf.hwc_hdcp_via_neg_vsync 0
-adb shell setprop debug.sf.layer_caching_active_layer_timeout_ms 150
+adb shell setprop debug.sf.layer_caching_active_layer_timeout_ms 1000
 adb shell setprop debug.sf.predict_hwc_composition_strategy 0
 adb shell settings put global persist.sys.sf.native_mode 1
 adb shell device_config put surface_flinger_native_boot max_frame_buffer_acquired_buffers 3
@@ -446,7 +446,6 @@ adb shell settings put global persist.sys.miui_animator_sched.bigcores 2-5
 adb shell settings put global persist.sys.miui.sf_cores 2-6
 adb shell settings put global persist.sys.force_sw_gles 0
 adb shell settings put global persist.sys.force_sw_vulkan 0
-adb shell settings put global sdm.debug.disable_inline_rotator 0
 adb shell settings put global sdm.debug.disable_scalar 0
 adb shell settings put global sdm.debug.disable_inline_rotator 0
 adb shell settings put global sdm.debug.disable_inline_rotator_secure 0
@@ -465,6 +464,7 @@ adb shell setprop debug.hwui.render_priority 1
 adb shell setprop debug.hwui.use_renderscript 0
 adb shell setprop debug.mdpcomp.maxpermixer 4
 adb shell settings put global persist.hwc.mdpcomp.maxpermixer 4
+adb shell setprop debug.mdpcomp.maxlayer 3
 adb shell setprop debug.egl.native_scaling true
 adb shell setprop debug.hwui.render_dirty_region_size 1
 adb shell setprop debug.hwui.composition 1
@@ -770,9 +770,9 @@ adb shell setprop debug.config.media.video.ais.support true
 adb shell setprop debug.config.media.video.frc.support true
 adb shell setprop debug.media.video.frc true
 adb shell setprop debug.media.video.vpp false
-adb shell setprop debug.stagefright.ccodec 2
-adb shell setprop debug.stagefright.omx_default_rank 0
-adb shell setprop debug.media.codec2 1
+adb shell setprop debug.stagefright.ccodec 4
+adb shell setprop debug.stagefright.omx_default_rank 256
+adb shell setprop debug.media.codec2 2
 adb shell setprop debug.stagefright.c2inputsurface -1
 adb shell settings put global render.enable_gpu_decoding true
 adb shell settings put global hardware_accelerated_video_decode 1
@@ -830,7 +830,7 @@ adb shell settings put global lmk.autocalc true
 adb shell settings put global vendor.perf.iop_v3.enable 1
 adb shell settings put global persist.sys.autoclearsave 3
 adb shell settings put global config.disable_atlas false
-adb shell device_config put activity_manager use_oom_re_ranking false
+adb shell device_config put activity_manager use_oom_re_ranking true
 adb shell device_config put activity_manager proactive_kills_enabled false
 adb shell device_config put runtime_native_boot enable_generational_cc true
 adb shell device_config put runtime_native_boot is_uffd_gc_enabled true
