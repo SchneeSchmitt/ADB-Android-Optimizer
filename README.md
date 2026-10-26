@@ -50,7 +50,7 @@ Download both Shizuku and Shizushell on Google Play Store, start Shizuku, and ty
 1. Download the latest ADB tools at https://dl.google.com/android/repository/platform-tools-latest-windows.zip
 2. Decompress in C:\ You will see a folder called "platform-tools"
 3. Press `Win+R` hotkey and enter `SystemPropertiesAdvanced`
-4. Click on "Environment Variables" on the bottom
+4. Click on "Environment Variables..." on the bottom
 5. Click on "path" under "System variables", click new, and click "Browse...", find your ADB tools and click "OK"
 
 ### Linux 🐧
