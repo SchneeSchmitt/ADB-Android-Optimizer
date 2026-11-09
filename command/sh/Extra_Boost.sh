@@ -6,6 +6,21 @@ adb shell settings put global persist.sys.use_8bpp_alpha 1
 adb shell settings put global restricted_device_performance 0,0
 adb shell settings put global suspend.short_suspend_threshold_millis 8000
 
+adb shell cmd thermalservice override-status 1
+adb shell settings put secure game_auto_temperature_control 0
+adb shell settings put system vivo_gamethermal_switch 0
+adb shell setprop debug.heat_suppression 0
+adb shell setprop debug.cpu.cooling.callback_freq_limit 0
+adb shell setprop debug.gpu.cooling.callback_freq_limit 0
+adb shell setprop debug.disable.sched.pre_cooling true
+adb shell setprop debug.thermal_zone.display_hotplug_control 0
+adb shell setprop debug.thermal_zone.battery_hotplug_control 0
+adb shell setprop debug.thermal_zone.cpu_hotplug_control 0
+adb shell setprop debug.thermal_zone.gpu_hotplug_control 0
+adb shell settings put system heat_cooldown_schedule 30s
+adb shell settings put system persist.vendor.disable.thermal.control 1
+adb shell settings put global thermal_policy_core_lock 0
+
 adb shell cmd power set-fixed-performance-mode-enabled 0
 adb shell cmd power set-mode 1
 adb shell setprop debug.performance.tuning 1
@@ -36,6 +51,7 @@ adb shell settings put global sys.trancare.performance.latency 1
 adb shell settings put global sys.perf.boost true
 adb shell settings put global persist.sys.cpu_perf_mode 1
 adb shell setprop debug.mdpcomp.idletime 500
+adb shell settings put global sys.use_fifo_ui 1
 
 adb shell settings put global persist.sys.cpu.governor performance
 adb shell settings put global persist.sys.gpu.governor performance
@@ -209,6 +225,8 @@ adb shell setprop persist.sys.surface_throttling_bypass 1
 adb shell settings put global render_queue_policy hard_force
 adb shell settings put global buffer_hold_full_render 1
 adb shell settings put global render_thread_draw_queue_extend 1
+adb shell settings put global sys.egl.enable_frame_preload true
+adb shell setprop debug.hwui.overdraw true
 
 adb shell settings put global iorapd.readahead.enable true
 adb shell settings put global device_config put runtime_native_boot enable_readahead true

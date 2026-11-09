@@ -1,6 +1,6 @@
 adb shell dumpsys deviceidle force-idle
 adb shell settings put global pm.sleep_mode 1
-adb shell settings put global doze.pulse.schedule 3600s,10800s,21600s
+adb shell settings put global doze.pulse.schedule 21600s
 
 adb shell settings put global restricted_device_performance 1,1
 adb shell settings put global zygote.critical_window.minute 2
@@ -43,7 +43,7 @@ adb shell settings put global vendor.pasr.activemode.enabled true
 adb shell setprop debug.hwui.perf_mode 2
 adb shell settings put global hwc.gpu_perf_mode 2
 adb shell setprop debug.sf.perf_mode 2
-adb shell setprop debug.performance.cap 13
+adb shell setprop debug.performance.cap 10
 adb shell settings put global battery_performance_mode 2
 adb shell settings put global dynamic_power_savings_enabled 1
 adb shell settings put global background_power_saving_enable 1

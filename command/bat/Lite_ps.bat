@@ -1,7 +1,7 @@
 adb shell settings put global pm.sleep_mode 1
 adb shell settings put system intelligent_sleep_mode 1
 adb shell settings put system power_sleep_mode_enabled 1
-adb shell settings put global doze.pulse.schedule 3600s,10800s,21600s
+adb shell settings put global doze.pulse.schedule 21600s
 
 adb shell setprop debug.app.performance_restricted true
 adb shell settings put global restricted_device_performance 1,1
@@ -22,7 +22,7 @@ adb shell settings put global battery_performance_mode 0
 adb shell settings put global dynamic_power_savings_enabled 1
 adb shell settings put global background_power_saving_enable 1
 adb shell settings put system persist.sys_emc_mode power_saving
-adb shell setprop debug.performance.cap 13
+adb shell setprop debug.performance.cap 10
 adb shell settings put global sys_uidcpupower 1
 adb shell settings put system tran_cpupower_mode 2
 adb shell settings put global persist.sys.cpu_perf_mode 2
@@ -78,8 +78,7 @@ adb shell setprop debug.rs.max-threads 2
 
 adb shell settings put secure refresh_rate_mode 1
 
-adb shell settings put global persist.preload.common 0
-adb shell settings put global persist.zygote.preload_threads 0
+adb shell settings put global persist.zygote.preload_threads 1
 adb shell cmd device_config put runtime_native usap_pool_refill_delay_ms 550
 adb shell cmd device_config put runtime_native usap_pool_size_min 0
 adb shell cmd device_config put runtime_native usap_pool_size_max 0

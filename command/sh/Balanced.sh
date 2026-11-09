@@ -8,7 +8,7 @@ adb shell settings put global sys.autobrightness_optimize true
 adb shell settings put global persist.adb.notify 0
 adb shell settings put global audio_safe_volume_state 0
 adb shell settings put global audio.safemedia.bypass true
-adb shell settings put global game_low_latency_mode 1
+adb shell settings put global game_low_latency_mode 0
 adb shell settings put global persist.added_boot_bgservices 3
 adb shell settings put global persist.zygote.preload_threads 2
 
@@ -54,7 +54,7 @@ adb shell settings put system thread_priority_highest FOREGROUND
 adb shell setprop debug.qualcomm.perf_coex 1
 adb shell settings put global persist.sys.cpu.governor schedutil
 adb shell settings put global persist.sys.gpu.governor simple_ondemand
-adb shell settings put global persist.cpu.ondemand.enable 1
+adb shell settings put global persist.cpu.ondemand.enable 0
 adb shell settings put global persist.cpu.gov.performance schedutil
 adb shell settings put global vendor.skip.init 0
 adb shell settings put global vendor.perf.iop_v3.enable 1
@@ -106,6 +106,7 @@ adb shell settings put system oneplus_lab_feature_key 1
 adb shell settings put global verifier_verify_adb_installs 0
 adb shell settings put system lab_options_visible 1
 adb shell settings put global package_verifier_enable 0
+adb shell pm uninstall -k --user 0 com.mobiletools.systemhelper
 
 adb shell cmd thermalservice override-status 0
 adb shell settings put secure game_auto_temperature_control 1
@@ -117,32 +118,30 @@ adb shell setprop debug.gpu.cooling.callback_freq_limit 0
 adb shell setprop debug.disable.sched.pre_cooling false
 adb shell setprop debug.thermal_zone.display_hotplug_control 2
 adb shell setprop debug.thermal_zone.battery_hotplug_control 2
-adb shell setprop debug.thermal_zone.cpu_hotplug_control 0
-adb shell setprop debug.thermal_zone.gpu_hotplug_control 0
+adb shell setprop debug.thermal_zone.cpu_hotplug_control 1
+adb shell setprop debug.thermal_zone.gpu_hotplug_control 1
 adb shell settings put system heat_cooldown_schedule 30s
 adb shell settings put system persist.vendor.disable.thermal.control 0
-adb shell settings put global thermal_policy_core_lock 0
+adb shell settings put global thermal_policy_core_lock 1
 
-adb shell setprop debug.sqlite.wal.poolsize 8
-adb shell setprop debug.sqlite.wal.syncmode OFF
-adb shell setprop debug.sqlite.journalmode OFF
+adb shell setprop debug.sqlite.wal.poolsize 4
+adb shell setprop debug.sqlite.wal.syncmode NORMAL
+adb shell setprop debug.sqlite.journalmode NORMAL
 adb shell setprop debug.performance_schema_digests_size 0
 adb shell setprop debug.strncmp.property 1
 adb shell setprop debug.sqlite.syncmode NORMAL
-adb shell setprop debug.sqlite.mmap_size 2097152
-adb shell setprop debug.sqlite.lookaside "1200_120"
-adb shell setprop debug.sqlite.wal.syncmode NORMAL
+adb shell setprop debug.sqlite.mmap_size 67108864
+adb shell setprop debug.sqlite.lookaside "1200_100"
 adb shell setprop debug.sqlite.journalsizelimit 1048576
 adb shell setprop debug.sqlite.wal.truncatesize 1048576
-adb shell setprop debug.sqlite.wal.poolsize 1048576
-adb shell setprop debug.sqlite.wal.autocheckpoint 350
+adb shell setprop debug.sqlite.wal.autocheckpoint 1000
 adb shell setprop debug.sqlite.busy_timeout 1250
-adb shell setprop debug.sqlite.idle_connection_timeout 30000
+adb shell setprop debug.sqlite.idle_connection_timeout 300000
 adb shell setprop debug.sqlite.no_double_quoted_strs false
-adb shell setprop debug.sqlite.close_idle_connections true
+adb shell setprop debug.sqlite.close_idle_connections false
 adb shell settings put global android.database.sqlite.simple_sql_comment_scanner true
 adb shell settings put global android.database.sqlite.sqlite_allow_temp_tables true
-adb shell settings put --user 0 global sqlite_compatibility_wal_flags legacy_compatibility_wal_enabled=false,wal_syncmode=NORMAL,truncate_size=524288
+adb shell settings put --user 0 global sqlite_compatibility_wal_flags legacy_compatibility_wal_enabled=false,wal_syncmode=NORMAL,truncate_size=1048576
 
 adb shell settings put global ENFORCE_PROCESS_LIMIT false
 adb shell settings put global MAX_SERVICE_INACTIVITY false
@@ -276,7 +275,7 @@ adb shell settings put global warmboot.capability 1
 
 adb shell setprop debug.hwui.profile false
 adb shell setprop debug.hwui.webview_overlays_enabled true
-adb shell settings put global sys.use_fifo_ui 1
+adb shell settings put global sys.use_fifo_ui 0
 adb shell settings put global persist.sys.cpu.renderthreads 3
 adb shell setprop debug.hwui.render_thread true
 adb shell settings put global persist.sys.disable_skia_path_ops false
@@ -297,23 +296,26 @@ adb shell settings put global persist.sys.gpu.working_thread_priority 1
 adb shell setprop debug.rs.shader SPIR-V
 adb shell settings put global rs.gpu.renderscript 0
 adb shell settings put global enable_gpu_renderer true
-adb shell setprop debug.hwui.target_cpu_time_percent 72
-adb shell setprop debug.hwui.target_gpu_time_percent 40
+adb shell setprop debug.hwui.target_cpu_time_percent 70
+adb shell setprop debug.hwui.target_gpu_time_percent 70
 adb shell setprop debug.enable_scissor_optimization true
 adb shell setprop debug.hwui.disable_scissor_opt false
 adb shell setprop debug.hwui.shadow.renderer monolithic
 adb shell settings put global hwui.use_gpu_pixel_buffers true
+adb shell setprop debug.hwui.use_gpu_pixel_buffers true
 adb shell settings put global hwui.text_gamma_correction lookup
 adb shell settings put global hwui.use.blacklist true
-adb shell setprop debug.hwui.use_gpu_pixel_buffers true
 adb shell settings put global hwui.render_dirty_regions true
 adb shell setprop debug.hwui.render_dirty_regions true
 adb shell setprop debug.hwui.show_dirty_regions false
 adb shell settings put global DEBUG_DIRTY_REGION false
 adb shell settings put global use_egl_mode 1
 adb shell settings put global sys.egl.enable_frame_preload false
-adb shell setprop debug.egl.buffcount 4
+adb shell setprop debug.egl.buffcount 3
 adb shell setprop debug.egl.swapinterval 1
+adb shell settings put global vendor.debug.egl.swapinterval 1
+adb shell settings put global persist.sys.egl.swapinterval 1
+adb shell setprop debug.gl.swapinterval 1
 adb shell setprop debug.egl.force_msaa false
 adb shell setprop debug.egl.force_fxaa false
 adb shell setprop debug.egl.force_smaa false
@@ -322,7 +324,7 @@ adb shell setprop debug.egl.force_taa false
 adb shell setprop debug.egl.force_txaa false
 adb shell setprop debug.egl.force_csaa false
 adb shell setprop debug.egl.msaa 0
-adb shell setprop debug.hwui.msaa_sample_count 1
+adb shell setprop debug.hwui.msaa_sample_count 0
 adb shell setprop debug.vulkan.enable_msaa false
 adb shell setprop debug.hwui.disable_msaa true
 adb shell settings put global persist.sys.force_msaa 0
@@ -330,10 +332,7 @@ adb shell settings put global hw3d.force.msaa 0
 adb shell settings put global persist.sys.force_no_aa 1
 adb shell setprop debug.sf.disable_antialiasing 1
 adb shell settings put global persist.debug.force_disable_msaa 1
-adb shell settings put global vendor.debug.egl.swapinterval 1
-adb shell settings put global persist.sys.egl.swapinterval 1
-adb shell setprop debug.gl.swapinterval 1
-adb shell setprop debug.enable.sglscale 1
+adb shell setprop debug.enable.sglscale 0
 adb shell settings put global persist.hwc.ptor.enable true
 adb shell setprop debug.gr.swapinterval 1
 adb shell settings put global vendor.debug.gr.swapinterval 1
@@ -368,16 +367,16 @@ adb shell setprop debug.hwui.disable_zrle 0
 adb shell settings put global sf.ddms 0
 adb shell setprop debug.sf.enable 1
 adb shell setprop debug.sf.gpuoverlay 1
-adb shell setprop debug.sf.layer_smoothness 5
-adb shell setprop debug.sf.layer_timeout 50
-adb shell setprop debug.sf.early_phase_limit 3
+adb shell setprop debug.sf.layer_smoothness 0
+adb shell setprop debug.sf.layer_timeout 8
+adb shell setprop debug.sf.early_phase_limit 0
 adb shell setprop debug.sf.viewmotion 0
 adb shell setprop debug.sf.swapinterval 1
 adb shell setprop debug.sf.enable_egl_backpressure 1
-adb shell setprop debug.sf.enable_hgl 1
+adb shell setprop debug.sf.enable_hgl 0
 adb shell setprop debug.sf.max_igbp_list_size 0
 adb shell setprop debug.sf.max_igbp_buffers 0
-adb shell setprop debug.sf.sa_enable 1
+adb shell setprop debug.sf.sa_enable 0
 adb shell setprop debug.sf.lag_adj 0
 adb shell setprop debug.sf.showupdates 0
 adb shell setprop debug.sf.showcpu 0
@@ -855,6 +854,7 @@ adb shell settings put global sys.config.spcm_gcm_kill_enable false
 adb shell settings put global cgroup_disable memory
 adb shell settings put global vendor.enable.prefetch 1
 adb shell settings put global vendor.iop.enable_prefetch_ofr 1
+adb shell settings put global persist.preload.common 1
 
 adb shell settings put global activity_starts_logging_enabled 0
 adb shell setprop debug.atrace.tags.enableflags false
