@@ -15,7 +15,7 @@ adb shell settings put global android.os.adpf_hwui_gpu false
 adb shell settings put global adaptive_battery_management_enabled 1
 
 adb shell settings put global persist.sys.use_8bpp_alpha 1
-adb shell setprop debug.renderengine.restore_blur_step false
+adb shell setprop debug.hwui.enable_f16 false
 adb shell setprop debug.hwc.disabletonemapping true
 adb shell settings put global scroll_rasterizer_latency_optimize 0
 adb shell setprop debug.sf.enable_advanced_dithering 0
@@ -43,7 +43,7 @@ adb shell settings put global vendor.pasr.activemode.enabled true
 adb shell setprop debug.hwui.perf_mode 2
 adb shell settings put global hwc.gpu_perf_mode 2
 adb shell setprop debug.sf.perf_mode 2
-adb shell setprop debug.performance.cap 10
+adb shell setprop debug.performance.cap 9
 adb shell settings put global battery_performance_mode 2
 adb shell settings put global dynamic_power_savings_enabled 1
 adb shell settings put global background_power_saving_enable 1

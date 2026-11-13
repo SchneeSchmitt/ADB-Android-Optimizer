@@ -351,7 +351,7 @@ adb shell setprop debug.hwui.skip_empty_damage true
 adb shell setprop debug.hwui.use_buffer_age true
 adb shell setprop debug.hwui.use_partial_updates true
 adb shell setprop debug.hwui.use_hint_manager true
-adb shell setprop debug.hwui.clip_surfaceviews false
+adb shell setprop debug.hwui.clip_surfaceviews true
 adb shell setprop debug.hwui.disable_draw_defer false
 adb shell setprop debug.hwui.disable_draw_reorder false
 adb shell setprop debug.hwui.app_memory_policy true
@@ -402,24 +402,24 @@ adb shell setprop debug.sf.send_early_power_session_hint true
 adb shell setprop debug.surface_flinger.protected_contents false
 adb shell setprop debug.sf.enable_layer_caching true
 adb shell setprop debug.sf.enable_gl_backpressure 1
-adb shell setprop debug.sf.perf_fps_early_gl_phase_offset_ns 10000000
-adb shell setprop debug.surface_flinger.vsync_event_phase_offset_ns 3000000
-adb shell setprop debug.surface_flinger.vsync_sf_event_phase_offset_ns 3000000
-adb shell setprop debug.sf.early_app_phase_offset_ns 500000
-adb shell setprop debug.sf.early_gl_app_phase_offset_ns 15000000
-adb shell setprop debug.sf.early_gl_phase_offset_ns 3000000
-adb shell setprop debug.sf.early_phase_offset_ns 500000
+adb shell setprop debug.sf.perf_fps_early_gl_phase_offset_ns 5000000
+adb shell setprop debug.surface_flinger.vsync_event_phase_offset_ns 1500000
+adb shell setprop debug.surface_flinger.vsync_sf_event_phase_offset_ns 1500000
+adb shell setprop debug.sf.early_app_phase_offset_ns 250000
+adb shell setprop debug.sf.early_gl_app_phase_offset_ns 7500000
+adb shell setprop debug.sf.early_gl_phase_offset_ns 1500000
+adb shell setprop debug.sf.early_phase_offset_ns 250000
 adb shell setprop debug.sf.high_fps_early_gl_phase_offset_ns 6500000
 adb shell setprop debug.sf.high_fps_early_phase_offset_ns 6100000
 adb shell setprop debug.sf.high_fps_late_app_phase_offset_ns 1000000
-adb shell setprop debug.sf.phase_offset_threshold_for_next_vsync_ns 12100000
-adb shell setprop debug.sf.early.app.duration 16666666
-adb shell setprop debug.sf.early.sf.duration 16666666
-adb shell setprop debug.sf.earlyGl.app.duration 16666666
-adb shell setprop debug.sf.earlyGl.sf.duration 16666666
-adb shell setprop debug.sf.late.app.duration 33333333
-adb shell setprop debug.sf.late.sf.duration 33333333
-adb shell setprop debug.sf.hwc.min.duration 25000000
+adb shell setprop debug.sf.phase_offset_threshold_for_next_vsync_ns 6000000
+adb shell setprop debug.sf.early.app.duration 7500000
+adb shell setprop debug.sf.early.sf.duration 4000000
+adb shell setprop debug.sf.earlyGl.app.duration 7500000
+adb shell setprop debug.sf.earlyGl.sf.duration 5000000
+adb shell setprop debug.sf.late.app.duration 8333333
+adb shell setprop debug.sf.late.sf.duration 6000000
+adb shell setprop debug.sf.hwc.min.duration 2000000
 adb shell setprop debug.sf.region_sampling_timer_timeout_ns 200000000
 adb shell setprop debug.sf.region_sampling_period_ns 200000000
 adb shell setprop debug.renderengine.frame_interval_ns 8333333
@@ -511,7 +511,7 @@ adb shell setprop debug.rs.forcecompat 0
 adb shell setprop debug.scenegraph.batching_performance 1
 adb shell setprop debug.sdm.support_writeback 1
 adb shell setprop debug.gpu.texture_cache_size 2048
-adb shell settings put global render_shadows_in_compositor true
+adb shell settings put global render_shadows_in_compositor false
 adb shell settings put global hardware_accelerated_rendering_enabled 1
 adb shell settings put global gpu_renderer 1
 adb shell settings put global persist.sys.gpu.rendering true
@@ -559,9 +559,9 @@ adb shell settings put global persist.sys.ui.rendering 1
 adb shell settings put global persist.sys.downscale.disable false
 adb shell setprop debug.hwui.anim_pipeline deferred
 adb shell setprop debug.skia.enable_reuse_scratch_textures 1
-adb shell setprop debug.renderengine.blur_algorithm true
+adb shell setprop debug.renderengine.blur_algorithm false
 adb shell setprop debug.renderengine.capture_filename ''
-adb shell setprop debug.renderengine.restore_blur_step true
+adb shell setprop debug.renderengine.restore_blur_step false
 adb shell setprop debug.renderengine.graphite_preview_optin true
 adb shell setprop debug.sf.hwc_service_name drmfb
 adb shell setprop debug.sf.enable_hwc_vds 0
@@ -571,7 +571,7 @@ adb shell setprop debug.hwui.anim_pipeline adaptive
 adb shell setprop debug.sf.draw_policy adaptive
 adb shell setprop debug.sf.pipeline_composition_mode adaptive
 adb shell setprop debug.gpu.composition_optimization_mode adaptive
-adb shell setprop debug.hwui.render_throttle 0
+adb shell setprop debug.hwui.render_throttle 1
 adb shell setprop debug.sf.flush_behavior_immediate 0
 adb shell settings put global persist.sys.surface_throttling_bypass 0
 adb shell settings put global persist.gpu.pipeline_bypass_limiter false
@@ -656,7 +656,6 @@ adb shell setprop debug.sf.fps 120
 adb shell setprop debug.sf.scroll_boost_refreshrate 120
 adb shell setprop debug.hwui.fps 120
 adb shell setprop debug.refresh_rate.view_override 120.0
-adb shell setprop debug.frame.pacing 120.0
 adb shell setprop debug.hwc.max_fps 120
 adb shell setprop debug.javafx.animation.frame 120.0
 adb shell setprop debug.sf.max_frame_rate 120
@@ -680,7 +679,7 @@ adb shell settings put global persist.vendor.power.dfps.level 1
 adb shell setprop debug.sf.use_frame_rate_priority 1
 adb shell settings put system surface_flinger_use_frame_rate_api true
 adb shell settings put global persist.metadata_dynfps.disable 0
-adb shell settings put global vendor.perf.framepacing.enable false
+adb shell settings put global vendor.perf.framepacing.enable true
 adb shell settings put global persist.sys.framepredict.enable false
 adb shell settings put global persist.sys.fps.constant 0
 adb shell setprop debug.display.render_frame_rate_is_physical_refresh_rate true
@@ -692,6 +691,7 @@ adb shell setprop debug.sf.set_idle_timer_ms 1000
 adb shell setprop debug.composition.sync_mode 0
 adb shell setprop debug.hwui.fb_size_percent 100
 adb shell setprop debug.hwui.dyn_fps 1
+adb shell setprop debug.frame.pacing 1
 adb shell setprop debug.sf_frame_rate_multiple_fences 0
 adb shell setprop debug.surface_flinger.refresh_rate_switching 1
 adb shell setprop debug.hwui.frame_time_limit 8
@@ -705,7 +705,7 @@ adb shell setprop debug.sf.vsync.native 1
 adb shell setprop debug.hwc.fakevsync 0
 adb shell setprop debug.sf.recompute_visible_regions 0
 adb shell setprop debug.sf.enable_advanced_dithering 1
-adb shell setprop debug.sf.predict_composition_strategy 0
+adb shell setprop debug.sf.predict_composition_strategy 1
 adb shell setprop debug.hwui.jank_threshold 100
 adb shell setprop debug.hwui.enable_buffer_queue_pacing 1
 adb shell settings put global persist.sys.smartfps 1
@@ -713,7 +713,7 @@ adb shell settings put global persist.sys.autofps.mode 1
 adb shell settings put global persist.sys.fpsctrl.enable 1
 adb shell settings put global persist.sys.dynamic_fps.enable 1
 adb shell settings put global default_fps_override 0
-adb shell settings put global enable_frame_pacing false
+adb shell settings put global enable_frame_pacing true
 adb shell settings put global persist.sys.vsync.controller_mode relaxed
 adb shell settings put global disable_vsync_fallback true
 adb shell settings put global max_render_ahead_frames 0
