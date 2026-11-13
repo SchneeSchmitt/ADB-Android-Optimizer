@@ -139,6 +139,8 @@ adb shell settings put global boost_cpu 1
 adb shell setprop debug.dev.ssrm.turbo true
 adb shell setprop debug.performance.gpu_boost 1
 adb shell setprop debug.hwui.render_throttle 0
+adb shell settings put global persist.sys.surface_throttling_bypass 1
+adb shell settings put global ui_surface_render_frame_push 1
 adb shell setprop debug.sf.pipeline_composition_mode locked
 adb shell setprop debug.gpu.composition_optimization_mode aggressive
 adb shell cmd device_config put surfaceflinger composition_type full
